@@ -1,0 +1,134 @@
+{
+  "id": "jBGlPuMdkCM",
+  "title": "イシェド／yowanecity",
+  "fps": 30.0,
+  "res": "1920x1080",
+  "duration_s": 158.44,
+  "bpm": 161.5,
+  "bpm_detected": 161.5,
+  "key": "F minor",
+  "key_confidence": 0.437,
+  "lufs_integrated": -4.5,
+  "lra": 6.7,
+  "crest_db": 10.18,
+  "stereo_side_to_mid_db": -8.03,
+  "onsets_per_s": 1.55,
+  "spectral_centroid_hz": 2901.2,
+  "loudness_p90_minus_p10_db": 10.15,
+  "band_db": {
+    "sub": -7.23,
+    "low": -6.37,
+    "mid": -4.37,
+    "high_mid": -7.37,
+    "high": -15.06
+  },
+  "video": {
+    "full_switch_per_min": 7.6,
+    "partial_per_min": 28.8,
+    "local_per_min": 0.4,
+    "full_switches": 20,
+    "mean_shot_len_s": 7.543,
+    "median_shot_len_s": 5.733,
+    "shot_hold_frames_hist": {
+      "1f": 1,
+      "2f": 0,
+      "3f": 0,
+      "4f": 0,
+      "5f": 1,
+      ">=6f": 19
+    },
+    "one_frame_flash_ABA": 1,
+    "two_stage_ABC": 0,
+    "incl_partial_flash_ABA": 13,
+    "incl_partial_two_stage_ABC": 30,
+    "what_changes_frames": {
+      "color": 31,
+      "layout": 20,
+      "content": 62,
+      "luma": 57
+    },
+    "sync_full_rate_vs_random": {
+      "beat_pm0f": [0.35, 0.079],
+      "beat_pm1f": [0.5, 0.238],
+      "8th_pm0f": [0.65, 0.158],
+      "8th_pm1f": [0.9, 0.475],
+      "16th_pm0f": [0.7, 0.317],
+      "16th_pm1f": [0.95, 0.879],
+      "onset_pm1f": [0.15, 0.154]
+    },
+    "sync_partial_8th_pm1f": [0.645, 0.475],
+    "sync_local_16th_pm1f": [1.0, 0.879],
+    "av_lag_frames": 0,
+    "bpm_check": {
+      "161.5": {
+        "onset_lift": 2.0
+      }
+    },
+    "repetition": {
+      "clip_recur_092": 0.521,
+      "clip_recur_085": 0.568,
+      "clip_clusters_per_min": 8.3,
+      "ocr_text_coverage": 0.285,
+      "ocr_text_repeat_ratio": 0.467
+    },
+    "legibility_corr_loudness": {
+      "ocr_chars": 0.188,
+      "ocr_conf": 0.25,
+      "edge_density": 0.605,
+      "entropy": 0.606,
+      "colorfulness": 0.453,
+      "change_events_per_s": 0.089
+    },
+    "motion_ratio": 0.008,
+    "means": {
+      "edge_density": 0.094,
+      "entropy": 5.32,
+      "colorfulness": 25.5,
+      "lum": 58.9
+    }
+  },
+  "sections": [
+    {
+      "t": [0.0, 7.57],
+      "lufs": -36.0,
+      "full/min": 7.9,
+      "partial/min": 7.9,
+      "local/min": 0.0
+    },
+    {
+      "t": [7.57, 43.14],
+      "lufs": -4.4,
+      "full/min": 16.9,
+      "partial/min": 54.0,
+      "local/min": 0.0
+    },
+    {
+      "t": [43.14, 49.06],
+      "lufs": -6.8,
+      "full/min": 10.2,
+      "partial/min": 10.2,
+      "local/min": 10.2
+    },
+    {
+      "t": [49.06, 108.53],
+      "lufs": -5.4,
+      "full/min": 4.0,
+      "partial/min": 21.2,
+      "local/min": 0.0
+    },
+    {
+      "t": [108.53, 112.76],
+      "lufs": -5.6,
+      "full/min": 14.2,
+      "partial/min": 28.3,
+      "local/min": 0.0
+    },
+    {
+      "t": [112.76, 158.44],
+      "lufs": -13.9,
+      "full/min": 3.9,
+      "partial/min": 25.0,
+      "local/min": 0.0
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "note": "好き8曲とSymphony in Acidの9本を分析v2でまとめた統計。各作品の値は作品ディレクトリのanalysis-v2.json。",
+  "tracks": [
+    "6eDhCz2vzVc",
+    "jBGlPuMdkCM",
+    "eCSO4fL98Xk",
+    "CzJbz9qSsd0",
+    "MFs7FgQU2xM",
+    "UE1y01q6wzQ",
+    "qd3q0dYpprs",
+    "oqmkKOLlKQA",
+    "_n_iKR3Icio"
+  ],
+  "beat_alignment_ratio": {
+    "jBGlPuMdkCM": 4.1,
+    "MFs7FgQU2xM": 2.4,
+    "eCSO4fL98Xk": 1.4,
+    "others": 1.0
+  },
+  "band_stats": {
+    "sub": {
+      "mean": -6.74,
+      "sd": 3.14,
+      "min": -14.41,
+      "max": -2.59
+    },
+    "low": {
+      "mean": -4.59,
+      "sd": 0.73,
+      "min": -6.37,
+      "max": -3.85
+    },
+    "mid": {
+      "mean": -5.89,
+      "sd": 1.78,
+      "min": -9.72,
+      "max": -3.59
+    },
+    "high_mid": {
+      "mean": -11.63,
+      "sd": 2.27,
+      "min": -16.09,
+      "max": -7.37
+    },
+    "high": {
+      "mean": -15.26,
+      "sd": 2.56,
+      "min": -21.83,
+      "max": -13.03
+    }
+  }
+}

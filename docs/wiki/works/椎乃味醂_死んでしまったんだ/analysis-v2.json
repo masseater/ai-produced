@@ -1,0 +1,84 @@
+{
+  "id": "eCSO4fL98Xk",
+  "title": "死んでしまったんだ - 可不･結月ゆかり",
+  "fps": 24.0,
+  "res": "1920x1080",
+  "duration_s": 180.01,
+  "bpm": 202.6,
+  "bpm_detected": 99.4,
+  "key": "D minor",
+  "key_confidence": 0.806,
+  "lufs_integrated": -6.2,
+  "lra": 2.8,
+  "crest_db": 12.13,
+  "stereo_side_to_mid_db": -10.7,
+  "onsets_per_s": 5.02,
+  "spectral_centroid_hz": 2832.5,
+  "loudness_p90_minus_p10_db": 5.88,
+  "band_db": {
+    "sub": -4.76,
+    "low": -4.51,
+    "mid": -7.03,
+    "high_mid": -11.58,
+    "high": -13.48
+  },
+  "video": {
+    "full_switch_per_min": 13.7,
+    "partial_per_min": 5.7,
+    "local_per_min": 3.3,
+    "full_switches": 41,
+    "mean_shot_len_s": 4.286,
+    "median_shot_len_s": 1.583,
+    "one_frame_flash_ABA": 0,
+    "two_stage_ABC": 0,
+    "what_changes_frames": {
+      "color": 50,
+      "layout": 50,
+      "content": 44,
+      "luma": 56
+    },
+    "sync_full_rate_vs_random": {
+      "beat_pm0f": [0.171, 0.136],
+      "beat_pm1f": [0.488, 0.409],
+      "8th_pm0f": [0.341, 0.272],
+      "8th_pm1f": [0.854, 0.817],
+      "16th_pm0f": [0.561, 0.545],
+      "16th_pm1f": [0.976, 0.982],
+      "onset_pm1f": [0.512, 0.592]
+    },
+    "av_lag_frames": -4,
+    "bpm_check": {
+      "99.4": {
+        "onset_lift": 1.16,
+        "full_8th_pm0f": [0.122, 0.138]
+      },
+      "202.6": {
+        "onset_lift": 1.14,
+        "full_8th_pm0f": [0.39, 0.281],
+        "full_8th_pm1f": [0.902, 0.844]
+      }
+    },
+    "repetition": {
+      "clip_recur_092": 0.322,
+      "clip_recur_085": 0.636,
+      "clip_clusters_per_min": 11.0,
+      "ocr_text_coverage": 0.417,
+      "ocr_text_repeat_ratio": 0.333
+    },
+    "legibility_corr_loudness": {
+      "ocr_chars": 0.129,
+      "ocr_conf": 0.177,
+      "edge_density": 0.271,
+      "entropy": 0.222,
+      "colorfulness": 0.173,
+      "change_events_per_s": -0.003
+    },
+    "motion_ratio": 0.003,
+    "means": {
+      "edge_density": 0.0968,
+      "entropy": 5.12,
+      "colorfulness": 44.1,
+      "lum": 37.5
+    }
+  }
+}

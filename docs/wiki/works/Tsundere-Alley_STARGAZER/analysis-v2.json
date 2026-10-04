@@ -1,0 +1,45 @@
+{
+  "id": "oqmkKOLlKQA",
+  "title": "STARGAZER",
+  "fps": 25.0,
+  "res": "1080x1080",
+  "duration_s": 436.9,
+  "bpm": 143.6,
+  "key": "E major",
+  "key_confidence": 0.733,
+  "lufs_integrated": -9.8,
+  "lra": 10.5,
+  "crest_db": 13.53,
+  "stereo_side_to_mid_db": -10.42,
+  "onsets_per_s": 5.51,
+  "spectral_centroid_hz": 3091.9,
+  "loudness_p90_minus_p10_db": 14.79,
+  "band_db": {
+    "sub": -5.37,
+    "low": -3.85,
+    "mid": -7.02,
+    "high_mid": -13.07,
+    "high": -13.03
+  },
+  "video": {
+    "full_switch_per_min": 0.0,
+    "partial_per_min": 0.0,
+    "local_per_min": 0.0,
+    "full_switches": 0,
+    "repetition": {
+      "clip_recur_092": 0.977
+    },
+    "legibility_corr_loudness": {
+      "edge_density": -0.527,
+      "entropy": -0.033,
+      "colorfulness": 0.62
+    },
+    "motion_ratio": 0.0,
+    "means": {
+      "edge_density": 0.2306,
+      "entropy": 7.53,
+      "colorfulness": 51.8,
+      "lum": 130.5
+    }
+  }
+}
