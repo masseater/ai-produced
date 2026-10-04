@@ -16,6 +16,7 @@
 | [私だけの魔法。](works/yt-qd3q0dYpprs.md)         | アメリカ民謡研究会 | 曲     | taste-ref  | 2026-10-04 |
 | [STARGAZER](works/yt-oqmkKOLlKQA.md)              | Tsundere Alley     | 曲     | taste-ref  | 2026-10-04 |
 | [マゾチュウ JIZURA.Ver](works/nico-sm46868333.md) | 不明               | 文字PV | lyric-sync | 2026-10-04 |
+| [Symphony in Acid](works/yt-_n_iKR3Icio.md)       | Max Cooper         | MV     |            | 2026-10-04 |
 
 ## トピック
 
