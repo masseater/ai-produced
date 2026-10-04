@@ -1,0 +1,66 @@
+{
+  "name": "typescript-template",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "vp check && vp run jev-lint && eslint --max-warnings 0 . && syncpack lint && vp run textlint && vp run yomiyasu && vp run renovate && vp run -r steiger && vp run -r db:check && vp run -r fallow",
+    "textlint": "textlint \"**/*.md\"",
+    "yomiyasu": "node -e \"const { execFileSync, spawnSync } = require('node:child_process'); const { path } = JSON.parse(execFileSync('skills', ['ls', '--json'])).find(({ name }) => name === 'yomiyasu'); const statuses = JSON.parse(spawnSync('textlint', ['--format', 'json', '**/*.md']).stdout).map(({ filePath }) => spawnSync('python3', [require('node:path').join(path, 'scripts', 'yomiyasu_lint.py'), '--strict', filePath], { stdio: 'inherit' }).status); process.exitCode = statuses.every((status) => status === 0) ? 0 : 1\"",
+    "renovate": "renovate-config-validator --strict",
+    "fallow": "fallow --production --quiet --format compact && fallow dead-code --no-production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet",
+    "prepare": "vp config && skills experimental_install --force"
+  },
+  "devDependencies": {
+    "@effect/tsgo": "catalog:stack",
+    "@eslint-react/eslint-plugin": "catalog:",
+    "@eslint/config-helpers": "catalog:",
+    "@html-eslint/eslint-plugin-react": "catalog:",
+    "@shadcn/lint": "catalog:",
+    "@tanstack/eslint-plugin-query": "catalog:",
+    "@tanstack/eslint-plugin-router": "catalog:",
+    "@tanstack/eslint-plugin-start": "catalog:",
+    "@textlint-ja/textlint-rule-preset-ai-writing": "1.7.0",
+    "@types/node": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-baseline-js": "catalog:",
+    "eslint-plugin-drizzle": "catalog:",
+    "eslint-plugin-no-comments": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "fallow": "catalog:stack",
+    "jev-lint": "catalog:",
+    "renovate": "catalog:stack",
+    "skills": "1.7.0",
+    "syncpack": "catalog:",
+    "textlint": "catalog:stack",
+    "textlint-rule-preset-ja-technical-writing": "12.0.2",
+    "vite-plus": "catalog:stack"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.6.0",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "intent": {
+    "skills": [
+      "@tanstack/devtools-vite",
+      "@tanstack/react-start",
+      "drizzle-kit",
+      "@tanstack/devtools",
+      "@tanstack/devtools-event-client",
+      "@tanstack/match-sorter-utils",
+      "@tanstack/router-core",
+      "@tanstack/start-client-core",
+      "@tanstack/virtual-file-routes",
+      "@tanstack/router-plugin",
+      "@tanstack/start-server-core",
+      "fallow"
+    ]
+  }
+}

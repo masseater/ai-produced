@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "security:minimumReleaseAgeNpm"],
+  "automerge": true,
+  "platformAutomerge": false,
+  "packageRules": [
+    {
+      "matchPackageNames": ["effect", "@effect/**", "!@effect/tsgo", "alchemy", "@alchemy.run/**"],
+      "groupName": "effect and alchemy",
+      "automerge": false
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^skills-lock\\.json$/"],
+      "matchStrings": [
+        "\"source\": \"(?<depName>[^\"]+)\",\\s*\"ref\": \"(?<currentDigest>[0-9a-f]{40})\",\\s*\"sourceType\": \"github\""
+      ],
+      "datasourceTemplate": "git-refs",
+      "packageNameTemplate": "https://github.com/{{{depName}}}"
+    }
+  ]
+}
