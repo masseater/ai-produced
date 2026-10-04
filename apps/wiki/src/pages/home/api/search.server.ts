@@ -1,5 +1,14 @@
 import { env } from "cloudflare:workers";
-import { Array as Arr, Context, Effect, Layer, ManagedRuntime, Number as Num, Order } from "effect";
+import {
+  Array as Arr,
+  Context,
+  Effect,
+  Layer,
+  ManagedRuntime,
+  Number as Num,
+  Order,
+  Struct,
+} from "effect";
 
 import type { PageSummary } from "#/shared/content";
 import { wikiPages } from "#/shared/content/index.server";
@@ -9,10 +18,10 @@ const BATCH_SIZE = 50;
 const DOCUMENT_PREFIX = "title: ";
 const QUERY_PREFIX = "task: search result | query: ";
 const RESULT_LIMIT = 10;
-const EMPTY = 0;
 const SECTION_PATTERN = /^## /mu;
 
 type Passage = Readonly<{
+  id: string;
   section: PageSummary["section"];
   name: string;
   title: string;
@@ -25,8 +34,14 @@ const passagesOf = (page: PageSummary & Readonly<{ body: string }>): readonly Pa
   page.body
     .split(SECTION_PATTERN)
     .map((part) => part.trim())
-    .filter((part) => part.length > EMPTY)
-    .map((text) => ({ section: page.section, name: page.name, title: page.title, text }));
+    .filter((part) => part !== "")
+    .map((text, index) => ({
+      id: `${page.slug}#${index}`,
+      section: page.section,
+      name: page.name,
+      title: page.title,
+      text,
+    }));
 
 const passages: readonly Passage[] = wikiPages.flatMap((page) => passagesOf(page));
 
@@ -82,16 +97,7 @@ const searchPages = (query: string): Promise<readonly SearchHit[]> =>
     }).pipe(Effect.withSpan("wiki.search")),
   );
 
-const toSummary = (page: PageSummary): PageSummary => ({
-  slug: page.slug,
-  section: page.section,
-  name: page.name,
-  title: page.title,
-  artist: page.artist,
-  tags: page.tags,
-});
-
-const pageSummaries: readonly PageSummary[] = wikiPages.map((page) => toSummary(page));
+const pageSummaries: readonly PageSummary[] = wikiPages.map((page) => Struct.omit(page, ["body"]));
 
 export type { SearchHit };
 export { pageSummaries, searchPages };

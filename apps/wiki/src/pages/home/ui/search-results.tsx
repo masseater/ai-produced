@@ -17,16 +17,17 @@ const SearchResults = ({ query }: Readonly<{ query: string }>): ReactNode =>
       error: () => <p className="text-destructive text-sm">{FAILED}</p>,
       success: ({ data }) => (
         <ol className="flex flex-col gap-3">
-          {data.map((hit) => (
-            <li key={`${hit.section}/${hit.name}/${hit.text.slice(START, EXCERPT_LENGTH)}`}>
-              <WikiLink section={hit.section} name={hit.name}>
-                {hit.title}
-              </WikiLink>
-              <p className="text-muted-foreground text-sm">
-                {hit.text.slice(START, EXCERPT_LENGTH)}
-              </p>
-            </li>
-          ))}
+          {data.map((hit) => {
+            const excerpt = hit.text.slice(START, EXCERPT_LENGTH);
+            return (
+              <li key={hit.id}>
+                <WikiLink section={hit.section} name={hit.name}>
+                  {hit.title}
+                </WikiLink>
+                <p className="text-muted-foreground text-sm">{excerpt}</p>
+              </li>
+            );
+          })}
         </ol>
       ),
     }),
