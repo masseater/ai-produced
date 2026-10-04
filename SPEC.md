@@ -16,6 +16,7 @@ DAWはREAPERを使い、音源は必要になったものを都度追加する�
 歌声はOpenUtauかSynthesizer V Studio 2で打ち込み、調声する。
 映像はRemotionで作り、必要ならBlenderを使う。
 選定の経緯はdocs/tool-selection.mdにある。曲ごとの置き場所はdocs/songs.mdに従う。
+参照作品の分析結果はdocs/wiki/に溜める。
 
 ## テンプレートの要求
 
