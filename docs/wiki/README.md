@@ -17,7 +17,7 @@
 作者が複数なら「-」でつなぐ。
 
 frontmatterのurlには作品の正規のURLを1つ書く。
-新しいページを作る前に、同じurlのページがないかを`grep -r "url: URL" docs/wiki/works`で確かめる。
+新しいページを作る前に、作品の正規URLを変数urlに入れ、`grep -rF "url: $url" docs/wiki/works`で同じurlのページがないか確かめる。
 同じ作品を分析し直したときは、既存のページを書き換えて分析日を更新する。
 kindはsong、mv、otomad、lyric-videoのどれかにし、tagsで作品の束（taste-refなど）を表す。
 種類やタグで作品を探すときは、frontmatterをgrepする。
