@@ -24,7 +24,7 @@ tags: []
 
 ## 解析数値
 
-YouTubeの音声と1080pの映像をyt-dlpで取得し、ffmpeg（ebur128、scdet）、librosa、知覚ハッシュで解析した。値の元は[Max-Cooper_Symphony-in-Acid-v1.json](../data/Max-Cooper_Symphony-in-Acid-v1.json)である。
+YouTubeの音声と1080pの映像をyt-dlpで取得し、ffmpeg（ebur128、scdet）、librosa、知覚ハッシュで解析した。値の元は[analysis-v1.json](analysis-v1.json)である。
 帯域は好き8曲と違う方法（パワーの比率）で測ったため、8曲のdB値とは比べられない。
 
 | 指標                                          | 値                    |
@@ -72,8 +72,8 @@ librosaのBPM推定は95.7と161.5で揺れた。カット時刻が120 BPMの格
 ## 好みとの関係
 
 音と映像の同期は強く、音MAD的な「音の頭に合わせて切る」手法の参照になる。
-素材を固定してスタイルだけを拍ごとに替えるので、同じ素材を繰り返し見せる好み（[反復と快](../topics/repetition-aesthetics.md)）にも合う。
-音はインストのテクノで、合成音声のポップが中心の[好みプロファイル](../topics/taste-profile.md)からは外れる。
+素材を固定してスタイルだけを拍ごとに替えるので、同じ素材を繰り返し見せる好み（[反復と快](../../topics/repetition-aesthetics.md)）にも合う。
+音はインストのテクノで、合成音声のポップが中心の[好みプロファイル](../../topics/taste-profile.md)からは外れる。
 BPM 120は8曲の範囲（112〜215）の下端に近い。
 
 ## 参考にする点
