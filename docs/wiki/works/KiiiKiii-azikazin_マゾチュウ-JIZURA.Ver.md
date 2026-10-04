@@ -1,7 +1,7 @@
 ---
-id: nico-sm46868333
+url: https://www.nicovideo.jp/watch/sm46868333
 title: "[AI]KiiiKiii＆azikazinマゾチュウ_JIZURA.Ver"
-artist: 不明
+artist: "KiiiKiii＆azikazin"
 kind: lyric-video
 analyzed: 2026-10-04
 tags: [lyric-sync, jizura]
@@ -11,13 +11,14 @@ tags: [lyric-sync, jizura]
 
 ## 基本情報
 
-| 項目   | 内容                         |
-| ------ | ---------------------------- |
-| 投稿日 | 2026-10-01                   |
-| 長さ   | 3分40秒                      |
-| 種類   | 文字PV（リリックビデオ）     |
-| 制作   | JIZURA（説明文とタグで明言） |
-| 分析日 | 2026-10-04                   |
+| 項目   | 内容                                               |
+| ------ | -------------------------------------------------- |
+| 原曲   | KiiiKiii＆azikazin「マゾチュウ」をAIで作り直した版 |
+| 投稿日 | 2026-10-01                                         |
+| 長さ   | 3分40秒                                            |
+| 種類   | 文字PV（リリックビデオ）                           |
+| 制作   | JIZURA（説明文とタグで明言）                       |
+| 分析日 | 2026-10-04                                         |
 
 ## URL
 
