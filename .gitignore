@@ -41,3 +41,8 @@ dist-ssr
 .alchemy
 .fallow
 .jev-lint/baseline.json
+
+# REAPER
+*.RPP-bak
+*.rpp-bak
+*.reapeaks
