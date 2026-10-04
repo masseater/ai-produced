@@ -1,5 +1,5 @@
 ---
-id: yt-VIDEOID
+url: https://www.youtube.com/watch?v=VIDEOID
 title: "作品名"
 artist: "作者名"
 kind: song

@@ -1,5 +1,5 @@
 ---
-id: yt-CzJbz9qSsd0
+url: https://www.youtube.com/watch?v=CzJbz9qSsd0
 title: "Cheerleader"
 artist: "Porter Robinson"
 kind: song

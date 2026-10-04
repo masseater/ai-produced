@@ -1,5 +1,5 @@
 ---
-id: yt-_n_iKR3Icio
+url: https://www.youtube.com/watch?v=_n_iKR3Icio
 title: "Symphony in Acid"
 artist: "Max Cooper"
 kind: mv
@@ -24,7 +24,7 @@ tags: []
 
 ## 解析数値
 
-YouTubeの音声と1080pの映像をyt-dlpで取得し、ffmpeg（ebur128、scdet）、librosa、知覚ハッシュで解析した。値の元は[yt-\_n_iKR3Icio-v1.json](../data/yt-_n_iKR3Icio-v1.json)である。
+YouTubeの音声と1080pの映像をyt-dlpで取得し、ffmpeg（ebur128、scdet）、librosa、知覚ハッシュで解析した。値の元は[Max-Cooper_Symphony-in-Acid-v1.json](../data/Max-Cooper_Symphony-in-Acid-v1.json)である。
 帯域は好き8曲と違う方法（パワーの比率）で測ったため、8曲のdB値とは比べられない。
 
 | 指標                                          | 値                    |

@@ -1,5 +1,5 @@
 ---
-id: yt-UE1y01q6wzQ
+url: https://www.youtube.com/watch?v=UE1y01q6wzQ
 title: "Remember"
 artist: "yuigot"
 kind: song

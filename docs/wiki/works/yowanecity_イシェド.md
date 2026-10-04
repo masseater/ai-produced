@@ -1,5 +1,5 @@
 ---
-id: yt-jBGlPuMdkCM
+url: https://www.youtube.com/watch?v=jBGlPuMdkCM
 title: "イシェド"
 artist: "yowanecity"
 kind: song
