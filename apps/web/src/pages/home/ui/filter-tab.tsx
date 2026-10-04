@@ -1,10 +1,10 @@
 import { useAtom } from "@effect/atom-react";
+import { Button } from "@workspace/ui/components/button";
 import { useCallback } from "react";
 import type { ReactNode } from "react";
 
 import type { TodoFilter } from "#/pages/home/model/filter";
 import { todoFilterAtom } from "#/pages/home/model/filter";
-import { Button } from "#/shared/ui/button";
 
 const variantOf = (selected: boolean): "default" | "outline" => {
   if (selected) {

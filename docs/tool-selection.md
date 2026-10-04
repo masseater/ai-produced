@@ -46,3 +46,25 @@ RemotionはReactのコードで映像を作るため、そのままAIが扱え�
 - [turboegg1145/OpenUtau-MCP](https://github.com/turboegg1145/OpenUtau-MCP)
 - [boxboy523/OpenUtau-Headless](https://github.com/boxboy523/OpenUtau-Headless)
 - [OpenUtau Issue #1615](https://github.com/openutau/OpenUtau/issues/1615)
+
+## 導入済みの環境
+
+2026-10-04にmac-miniへ導入した。
+
+| ツール              | 版                         | 場所                        |
+| ------------------- | -------------------------- | --------------------------- |
+| REAPER              | 7.81                       | /Applications/REAPER.app    |
+| OpenUtau            | 0.1.565（Apple Silicon版） | /Applications/OpenUtau.app  |
+| Nishiren DiffSinger | v2.0                       | ~/Library/OpenUtau/Singers/ |
+
+Vitalは公式サイトのログインが必要なため、ユーザーが手で入れる。
+
+## 歌声ライブラリの規約
+
+Nishiren DiffSingerの作者はGardananaである。
+非商用の利用には許可が要らず、商用の利用には作者の個別許可が要る。
+公開する作品にはライブラリ名を表記する。
+元音声と生成音声を許可なく機械学習に使ってはならない。
+性的、暴力的、政治的、宗教的な内容には許可が要る。
+作者はいつでも公開作品の取り下げを求められる。
+再配布は未編集の完全な形に限られるため、ライブラリ本体はリポジトリに入れない。

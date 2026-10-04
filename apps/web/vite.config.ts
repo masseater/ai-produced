@@ -10,7 +10,11 @@ export default defineConfig({
   plugins: [
     devtools(),
     tailwindcss(),
-    tanstackStart({ srcDirectory: "src/app", rsc: { enabled: true } }),
+    tanstackStart({
+      srcDirectory: "src/app",
+      router: { generatedRouteTree: "generated/routeTree.gen.ts" },
+      rsc: { enabled: true },
+    }),
     rsc(),
     viteReact(),
   ],
