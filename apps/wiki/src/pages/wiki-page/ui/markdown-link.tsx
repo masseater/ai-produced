@@ -5,6 +5,7 @@ import { resolveLink } from "#/pages/wiki-page/model/links";
 import { WikiLink } from "#/shared/ui/wiki-link";
 
 const LINK_CLASS = "underline";
+const NEW_TAB_LABEL = "（新しいタブで開く）";
 
 const MarkdownLink = ({
   href,
@@ -21,6 +22,7 @@ const MarkdownLink = ({
       external: (link) => (
         <a href={link.href} className={LINK_CLASS} rel="noreferrer" target="_blank">
           {children}
+          <span className="sr-only">{NEW_TAB_LABEL}</span>
         </a>
       ),
     }),
