@@ -1,5 +1,15 @@
 import { env } from "cloudflare:workers";
-import { Array as Arr, Context, Effect, Layer, ManagedRuntime, Number as Num, Order } from "effect";
+import {
+  Array as Arr,
+  Context,
+  Duration,
+  Effect,
+  Layer,
+  ManagedRuntime,
+  Number as Num,
+  Order,
+  Struct,
+} from "effect";
 
 import type { PageSummary } from "#/shared/content";
 import { wikiPages } from "#/shared/content/index.server";
@@ -9,10 +19,10 @@ const BATCH_SIZE = 50;
 const DOCUMENT_PREFIX = "title: ";
 const QUERY_PREFIX = "task: search result | query: ";
 const RESULT_LIMIT = 10;
-const EMPTY = 0;
 const SECTION_PATTERN = /^## /mu;
 
 type Passage = Readonly<{
+  id: string;
   section: PageSummary["section"];
   name: string;
   title: string;
@@ -25,8 +35,14 @@ const passagesOf = (page: PageSummary & Readonly<{ body: string }>): readonly Pa
   page.body
     .split(SECTION_PATTERN)
     .map((part) => part.trim())
-    .filter((part) => part.length > EMPTY)
-    .map((text) => ({ section: page.section, name: page.name, title: page.title, text }));
+    .filter((part) => part !== "")
+    .map((text, index) => ({
+      id: `${page.slug}#${index}`,
+      section: page.section,
+      name: page.name,
+      title: page.title,
+      text,
+    }));
 
 const passages: readonly Passage[] = wikiPages.flatMap((page) => passagesOf(page));
 
@@ -40,15 +56,22 @@ const embed = (texts: readonly string[]): Effect.Effect<readonly Vector[]> =>
     Effect.map((outputs) => outputs.flat()),
   );
 
-class PassageIndex extends Context.Service<PassageIndex, { readonly vectors: readonly Vector[] }>()(
-  "wiki/pages/home/api/search.server/PassageIndex",
-) {}
+class PassageIndex extends Context.Service<
+  PassageIndex,
+  { readonly vectors: Effect.Effect<readonly Vector[]> }
+>()("wiki/pages/home/api/search.server/PassageIndex") {}
+
+const buildVectors = embed(
+  passages.map((passage) => `${DOCUMENT_PREFIX}${passage.title} | text: ${passage.text}`),
+);
 
 const passageIndexLive = Layer.effect(
   PassageIndex,
-  embed(
-    passages.map((passage) => `${DOCUMENT_PREFIX}${passage.title} | text: ${passage.text}`),
-  ).pipe(Effect.map((vectors) => PassageIndex.of({ vectors }))),
+  Effect.cachedInvalidateWithTTL(buildVectors, Duration.infinity).pipe(
+    Effect.map(([vectors, invalidate]) =>
+      PassageIndex.of({ vectors: vectors.pipe(Effect.onError(() => invalidate)) }),
+    ),
+  ),
 );
 
 const runtime = ManagedRuntime.make(passageIndexLive);
@@ -76,22 +99,14 @@ const rank = (queryVector: Vector, vectors: readonly Vector[]): readonly SearchH
 const searchPages = (query: string): Promise<readonly SearchHit[]> =>
   runtime.runPromise(
     Effect.gen(function* search() {
-      const { vectors } = yield* PassageIndex;
+      const index = yield* PassageIndex;
+      const vectors = yield* index.vectors;
       const [queryVector = []] = yield* embed([`${QUERY_PREFIX}${query}`]);
       return rank(queryVector, vectors);
     }).pipe(Effect.withSpan("wiki.search")),
   );
 
-const toSummary = (page: PageSummary): PageSummary => ({
-  slug: page.slug,
-  section: page.section,
-  name: page.name,
-  title: page.title,
-  artist: page.artist,
-  tags: page.tags,
-});
-
-const pageSummaries: readonly PageSummary[] = wikiPages.map((page) => toSummary(page));
+const pageSummaries: readonly PageSummary[] = wikiPages.map((page) => Struct.omit(page, ["body"]));
 
 export type { SearchHit };
 export { pageSummaries, searchPages };

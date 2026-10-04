@@ -10,7 +10,8 @@ type ResolvedLink =
   | Readonly<{ kind: "external"; href: string }>;
 
 const pageOf = (pathname: string): Option.Option<ResolvedLink> =>
-  Option.fromNullishOr(PAGE_PATTERN.exec(decodeURIComponent(pathname))).pipe(
+  Option.liftThrowable(decodeURIComponent)(pathname).pipe(
+    Option.flatMapNullishOr((decoded) => PAGE_PATTERN.exec(decoded)),
     Option.flatMapNullishOr((match) => match.groups),
     Option.flatMap((groups) =>
       Option.all({
