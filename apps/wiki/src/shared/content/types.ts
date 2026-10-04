@@ -9,6 +9,6 @@ type PageSummary = Readonly<{
   tags: readonly string[];
 }>;
 
-type WikiPage = PageSummary & Readonly<{ body: string }>;
+type WikiPage = PageSummary & Readonly<{ source: string; body: string }>;
 
 export type { PageSummary, Section, WikiPage };

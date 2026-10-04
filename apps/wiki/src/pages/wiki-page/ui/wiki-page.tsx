@@ -14,9 +14,9 @@ const REMARK_PLUGINS = [remarkGfm];
 const BACK_LABEL = "一覧に戻る";
 const ANCHOR = "a";
 
-const componentsFor = (slug: string): Components => ({
+const componentsFor = (source: string): Components => ({
   [ANCHOR]: ({ href = "", children }) => (
-    <MarkdownLink href={href} slug={slug}>
+    <MarkdownLink href={href} source={source}>
       {children}
     </MarkdownLink>
   ),
@@ -26,7 +26,7 @@ const WikiPage = (): ReactNode => {
   const { section, name } = useParams({ from: "/wiki/$section/$name" });
   const slug = `${section}/${name}`;
   const { data } = useSuspenseQuery(wikiPageQueries.api.page.get.queryOptions({ slug }));
-  const components = useMemo(() => componentsFor(slug), [slug]);
+  const components = useMemo(() => componentsFor(data.source), [data.source]);
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-4 p-8">
       <Link to="/" className="text-sm underline">

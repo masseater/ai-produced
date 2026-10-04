@@ -8,10 +8,10 @@ const LINK_CLASS = "underline";
 
 const MarkdownLink = ({
   href,
-  slug,
+  source,
   children,
-}: Readonly<{ href: string; slug: string; children: ReactNode }>): ReactNode =>
-  Match.value(resolveLink({ href, currentSlug: slug })).pipe(
+}: Readonly<{ href: string; source: string; children: ReactNode }>): ReactNode =>
+  Match.value(resolveLink({ href, currentPath: source })).pipe(
     Match.discriminatorsExhaustive("kind")({
       page: (link) => (
         <WikiLink section={link.section} name={link.name}>

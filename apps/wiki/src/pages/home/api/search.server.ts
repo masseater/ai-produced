@@ -6,6 +6,8 @@ import { wikiPages } from "#/shared/content/index.server";
 
 const MODEL = "@cf/google/embeddinggemma-300m";
 const BATCH_SIZE = 50;
+const DOCUMENT_PREFIX = "title: ";
+const QUERY_PREFIX = "task: search result | query: ";
 const RESULT_LIMIT = 10;
 const EMPTY = 0;
 const SECTION_PATTERN = /^## /mu;
@@ -44,9 +46,9 @@ class PassageIndex extends Context.Service<PassageIndex, { readonly vectors: rea
 
 const passageIndexLive = Layer.effect(
   PassageIndex,
-  embed(passages.map((passage) => `${passage.title}\n${passage.text}`)).pipe(
-    Effect.map((vectors) => PassageIndex.of({ vectors })),
-  ),
+  embed(
+    passages.map((passage) => `${DOCUMENT_PREFIX}${passage.title} | text: ${passage.text}`),
+  ).pipe(Effect.map((vectors) => PassageIndex.of({ vectors }))),
 );
 
 const runtime = ManagedRuntime.make(passageIndexLive);
@@ -75,7 +77,7 @@ const searchPages = (query: string): Promise<readonly SearchHit[]> =>
   runtime.runPromise(
     Effect.gen(function* search() {
       const { vectors } = yield* PassageIndex;
-      const [queryVector = []] = yield* embed([query]);
+      const [queryVector = []] = yield* embed([`${QUERY_PREFIX}${query}`]);
       return rank(queryVector, vectors);
     }).pipe(Effect.withSpan("wiki.search")),
   );

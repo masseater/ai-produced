@@ -24,7 +24,7 @@ tags: [taste-ref]
 
 ## 解析数値
 
-YouTubeの音声をyt-dlpで取得し、librosaとffmpegで解析した。値の元は[taste-refs-v1.json](../data/taste-refs-v1.json)である。
+YouTubeの音声をyt-dlpで取得し、librosaとffmpegで解析した。値の元は[taste-refs-v1.json](../../data/taste-refs-v1.json)である。
 
 | 指標                     | 値       |
 | ------------------------ | -------- |
@@ -53,7 +53,7 @@ YouTubeの音声をyt-dlpで取得し、librosaとffmpegで解析した。値の
 
 ## 好みとの関係
 
-ユーザーが好きな曲として挙げた8曲の1つである。8曲全体の傾向は[好みプロファイル](../topics/taste-profile.md)にまとめている。
+ユーザーが好きな曲として挙げた8曲の1つである。8曲全体の傾向は[好みプロファイル](../../topics/taste-profile.md)にまとめている。
 
 ## 参考にする点
 

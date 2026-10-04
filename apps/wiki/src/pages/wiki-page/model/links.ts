@@ -2,7 +2,7 @@ import { Option } from "effect";
 
 const ORIGIN = "https://wiki.invalid";
 const WIKI_ROOT = "/docs/wiki/";
-const PAGE_PATTERN = /^\/docs\/wiki\/(?<section>works|topics)\/(?<name>[^/]+)\.md$/u;
+const PAGE_PATTERN = /^\/docs\/wiki\/(?<section>works|topics)\/(?<name>[^/]+?)(?:\/index)?\.md$/u;
 const REPOSITORY_BLOB = "https://github.com/masseater/ai-produced/blob/main";
 
 type ResolvedLink =
@@ -23,9 +23,9 @@ const pageOf = (pathname: string): Option.Option<ResolvedLink> =>
 
 const resolveLink = ({
   href,
-  currentSlug,
-}: Readonly<{ href: string; currentSlug: string }>): ResolvedLink => {
-  const url = new URL(href, `${ORIGIN}${WIKI_ROOT}${currentSlug}.md`);
+  currentPath,
+}: Readonly<{ href: string; currentPath: string }>): ResolvedLink => {
+  const url = new URL(href, `${ORIGIN}${WIKI_ROOT}${currentPath}`);
   return Option.some(url).pipe(
     Option.filter((candidate) => candidate.origin === ORIGIN),
     Option.match({

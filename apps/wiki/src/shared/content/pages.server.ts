@@ -11,13 +11,14 @@ const Attributes = Schema.Struct({
 
 const decodeAttributes = Schema.decodeUnknownOption(Attributes);
 
-const sources = import.meta.glob<string>("../../../../../docs/wiki/{works,topics}/*.md", {
+const sources = import.meta.glob<string>("../../../../../docs/wiki/{works/*/index,topics/*}.md", {
   query: "?raw",
   import: "default",
   eager: true,
 });
 
-const SOURCE_PATTERN = /\/docs\/wiki\/(?<section>works|topics)\/(?<name>[^/]+)\.md$/u;
+const SOURCE_PATTERN =
+  /\/docs\/wiki\/(?<source>(?<section>works|topics)\/(?<name>[^/]+?)(?:\/index)?\.md)$/u;
 const HEADING_PATTERN = /^# (?<heading>.+)$/mu;
 
 const sourceGroup = (path: string, name: string): Option.Option<string> =>
@@ -38,12 +39,14 @@ const toPage = ([path, raw]: readonly [string, string]): Option.Option<WikiPage>
   Option.all({
     section: sourceGroup(path, "section").pipe(Option.filter(isSection)),
     name: sourceGroup(path, "name"),
+    source: sourceGroup(path, "source"),
   }).pipe(
-    Option.map(({ section, name }) => {
+    Option.map(({ section, name, source }) => {
       const { attributes, body } = frontMatter(raw);
       const decoded = decodeAttributes(attributes);
       return {
         slug: `${section}/${name}`,
+        source,
         section,
         name,
         title: decoded.pipe(
