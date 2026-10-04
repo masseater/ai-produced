@@ -2,6 +2,7 @@ import { env } from "cloudflare:workers";
 import {
   Array as Arr,
   Context,
+  Duration,
   Effect,
   Layer,
   ManagedRuntime,
@@ -55,15 +56,22 @@ const embed = (texts: readonly string[]): Effect.Effect<readonly Vector[]> =>
     Effect.map((outputs) => outputs.flat()),
   );
 
-class PassageIndex extends Context.Service<PassageIndex, { readonly vectors: readonly Vector[] }>()(
-  "wiki/pages/home/api/search.server/PassageIndex",
-) {}
+class PassageIndex extends Context.Service<
+  PassageIndex,
+  { readonly vectors: Effect.Effect<readonly Vector[]> }
+>()("wiki/pages/home/api/search.server/PassageIndex") {}
+
+const buildVectors = embed(
+  passages.map((passage) => `${DOCUMENT_PREFIX}${passage.title} | text: ${passage.text}`),
+);
 
 const passageIndexLive = Layer.effect(
   PassageIndex,
-  embed(
-    passages.map((passage) => `${DOCUMENT_PREFIX}${passage.title} | text: ${passage.text}`),
-  ).pipe(Effect.map((vectors) => PassageIndex.of({ vectors }))),
+  Effect.cachedInvalidateWithTTL(buildVectors, Duration.infinity).pipe(
+    Effect.map(([vectors, invalidate]) =>
+      PassageIndex.of({ vectors: vectors.pipe(Effect.onError(() => invalidate)) }),
+    ),
+  ),
 );
 
 const runtime = ManagedRuntime.make(passageIndexLive);
@@ -91,7 +99,8 @@ const rank = (queryVector: Vector, vectors: readonly Vector[]): readonly SearchH
 const searchPages = (query: string): Promise<readonly SearchHit[]> =>
   runtime.runPromise(
     Effect.gen(function* search() {
-      const { vectors } = yield* PassageIndex;
+      const index = yield* PassageIndex;
+      const vectors = yield* index.vectors;
       const [queryVector = []] = yield* embed([`${QUERY_PREFIX}${query}`]);
       return rank(queryVector, vectors);
     }).pipe(Effect.withSpan("wiki.search")),
