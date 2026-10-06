@@ -10,6 +10,7 @@ TPQ = 480
 BAR = TPQ * 4
 PHONEMIZER = "OpenUtau.Core.DiffSinger.DiffSingerJapanesePhonemizer"
 CLOSURE_LYRIC = "っ"
+DEFAULT_MODE = "Standard"
 SUNG_AS = {"を": "お"}
 PORTAMENTO = [{"x": -40, "y": 0, "shape": "io"}, {"x": 40, "y": 0, "shape": "io"}]
 NOTE_PC = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
@@ -40,8 +41,9 @@ def build_notes(rows, colors):
             sys.exit(f"overlapping notes at tick {start}")
         expressions = []
         if colors:
-            if row["mode"] in colors:
-                expressions.append({"index": 0, "abbr": "clr", "value": colors.index(row["mode"])})
+            color = "" if row["mode"] == DEFAULT_MODE and "" in colors else row["mode"]
+            if color in colors:
+                expressions.append({"index": 0, "abbr": "clr", "value": colors.index(color)})
             else:
                 missing.add(row["mode"])
         notes.append({

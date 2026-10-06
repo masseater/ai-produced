@@ -57,3 +57,8 @@ tools/openutau-render/obj
 
 # Rendered audio
 songs/*/03-vocal/render
+
+# REAPER mix output
+songs/*/04-reaper/samples
+songs/*/04-reaper/render
+songs/*/04-reaper/*-mix.rpp
