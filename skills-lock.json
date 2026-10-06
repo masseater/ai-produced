@@ -57,7 +57,7 @@
     },
     "modern-web-guidance": {
       "source": "GoogleChrome/modern-web-guidance",
-      "ref": "84ae7251ee919239d5ea85aef25897983f26601e",
+      "ref": "650eb83619134adb947b1ee8755e6511270bc444",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
       "computedHash": "7350ef15ed8febd35f1a15750e57418eac6656b7e86259e7796aa5e7972af60c"
@@ -92,7 +92,7 @@
     },
     "yomiyasu": {
       "source": "nanaism/yomiyasu",
-      "ref": "1890e67c497bf3b13df853719d7ca9af4ea37710",
+      "ref": "986da6ffc89316a90e509d007c1efe1fc59057e6",
       "sourceType": "github",
       "skillPath": "SKILL.md",
       "computedHash": "aaab4ea4b99c2442c536c9d6a66271b98a5f139714de6169faf9232746b2a99e"

@@ -46,3 +46,7 @@ dist-ssr
 *.RPP-bak
 *.rpp-bak
 *.reapeaks
+
+# Python
+.venv
+__pycache__
