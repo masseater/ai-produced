@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SatelliteResourceLanguages>none</SatelliteResourceLanguages>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <OpenUtauDir Condition="'$(OpenUtauDir)' == ''">$(HOME)/.cache/ai-produced/openutau</OpenUtauDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(OpenUtauDir)/OpenUtau.Core/OpenUtau.Core.csproj" />
+    <ProjectReference Include="$(OpenUtauDir)/OpenUtau.Plugin.Builtin/OpenUtau.Plugin.Builtin.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+    <None Include="$(OpenUtauDir)/runtimes/osx/native/**" CopyToOutputDirectory="PreserveNewest" LinkBase="." />
+  </ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+    <None Include="$(OpenUtauDir)/runtimes/linux-x64/native/**" CopyToOutputDirectory="PreserveNewest" LinkBase="." />
+  </ItemGroup>
+
+</Project>
