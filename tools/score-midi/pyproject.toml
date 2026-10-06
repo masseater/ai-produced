@@ -1,0 +1,9 @@
+[project]
+name = "score-midi"
+version = "0.0.0"
+description = "Build multitrack MIDI and a vocal syllable table from a score TOML and a lyrics TSV"
+requires-python = ">=3.11"
+dependencies = ["mido>=1.3"]
+
+[tool.uv]
+package = false
