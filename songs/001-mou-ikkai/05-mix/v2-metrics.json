@@ -1,136 +1,136 @@
 {
- "raw": {
-  "bpm": 160.0,
-  "lufs_integrated": -6.7,
-  "lra": 6.3,
-  "true_peak_dbtp": -1.2,
-  "crest_db": 10.36,
-  "stereo_side_to_mid_db": -8.19,
-  "onsets_per_s": 2.06,
-  "spectral_centroid_hz": 3408.8,
-  "loudness_p90_minus_p10_db": 6.84,
-  "rms_dbfs": -11.16,
-  "sub": -6.89,
-  "low": -6.56,
-  "mid": -5.45,
-  "high_mid": -6.38,
-  "high": -12.26
- },
- "encoded_opus160": {
-  "bpm": 160.0,
-  "lufs_integrated": -6.7,
-  "lra": 6.3,
-  "true_peak_dbtp": 0.8,
-  "crest_db": 11.54,
-  "stereo_side_to_mid_db": -8.23,
-  "onsets_per_s": 2.02,
-  "spectral_centroid_hz": 3411.1,
-  "loudness_p90_minus_p10_db": 6.86,
-  "rms_dbfs": -11.16,
-  "sub": -6.91,
-  "low": -6.56,
-  "mid": -5.44,
-  "high_mid": -6.35,
-  "high": -12.32
- },
- "band": [
-  {
-   "key": "bpm",
-   "value": 160.0,
-   "lo": 86.52,
-   "hi": 241.18,
-   "in_band": true
+  "raw": {
+    "bpm": 160.0,
+    "lufs_integrated": -6.7,
+    "lra": 6.3,
+    "true_peak_dbtp": -1.2,
+    "crest_db": 10.36,
+    "stereo_side_to_mid_db": -8.19,
+    "onsets_per_s": 2.06,
+    "spectral_centroid_hz": 3408.8,
+    "loudness_p90_minus_p10_db": 6.84,
+    "rms_dbfs": -11.16,
+    "sub": -6.89,
+    "low": -6.56,
+    "mid": -5.45,
+    "high_mid": -6.38,
+    "high": -12.26
   },
-  {
-   "key": "lufs_integrated",
-   "value": -6.7,
-   "lo": -11.12,
-   "hi": -3.17,
-   "in_band": true
+  "encoded_opus160": {
+    "bpm": 160.0,
+    "lufs_integrated": -6.7,
+    "lra": 6.3,
+    "true_peak_dbtp": 0.8,
+    "crest_db": 11.54,
+    "stereo_side_to_mid_db": -8.23,
+    "onsets_per_s": 2.02,
+    "spectral_centroid_hz": 3411.1,
+    "loudness_p90_minus_p10_db": 6.86,
+    "rms_dbfs": -11.16,
+    "sub": -6.91,
+    "low": -6.56,
+    "mid": -5.44,
+    "high_mid": -6.35,
+    "high": -12.32
   },
-  {
-   "key": "lra",
-   "value": 6.3,
-   "lo": 0.17,
-   "hi": 14.12,
-   "in_band": true
-  },
-  {
-   "key": "crest_db",
-   "value": 11.54,
-   "lo": 9.13,
-   "hi": 13.87,
-   "in_band": true
-  },
-  {
-   "key": "stereo_side_to_mid_db",
-   "value": -8.23,
-   "lo": -12.25,
-   "hi": -2.96,
-   "in_band": true
-  },
-  {
-   "key": "onsets_per_s",
-   "value": 2.02,
-   "lo": -0.22,
-   "hi": 8.79,
-   "in_band": true
-  },
-  {
-   "key": "spectral_centroid_hz",
-   "value": 3411.1,
-   "lo": 3342.0,
-   "hi": 4920.0,
-   "in_band": true
-  },
-  {
-   "key": "loudness_p90_minus_p10_db",
-   "value": 6.86,
-   "lo": 1.26,
-   "hi": 15.83,
-   "in_band": true
-  },
-  {
-   "key": "sub",
-   "value": -6.91,
-   "lo": -16.86,
-   "hi": -2.16,
-   "in_band": true
-  },
-  {
-   "key": "low",
-   "value": -6.56,
-   "lo": -7.0,
-   "hi": -3.22,
-   "in_band": true
-  },
-  {
-   "key": "mid",
-   "value": -5.44,
-   "lo": -7.9,
-   "hi": -2.73,
-   "in_band": true
-  },
-  {
-   "key": "high_mid",
-   "value": -6.35,
-   "lo": -14.5,
-   "hi": -5.95,
-   "in_band": true
-  },
-  {
-   "key": "high",
-   "value": -12.32,
-   "lo": -17.25,
-   "hi": -12.18,
-   "in_band": true
+  "band": [
+    {
+      "key": "bpm",
+      "value": 160.0,
+      "lo": 86.52,
+      "hi": 241.18,
+      "in_band": true
+    },
+    {
+      "key": "lufs_integrated",
+      "value": -6.7,
+      "lo": -11.12,
+      "hi": -3.17,
+      "in_band": true
+    },
+    {
+      "key": "lra",
+      "value": 6.3,
+      "lo": 0.17,
+      "hi": 14.12,
+      "in_band": true
+    },
+    {
+      "key": "crest_db",
+      "value": 11.54,
+      "lo": 9.13,
+      "hi": 13.87,
+      "in_band": true
+    },
+    {
+      "key": "stereo_side_to_mid_db",
+      "value": -8.23,
+      "lo": -12.25,
+      "hi": -2.96,
+      "in_band": true
+    },
+    {
+      "key": "onsets_per_s",
+      "value": 2.02,
+      "lo": -0.22,
+      "hi": 8.79,
+      "in_band": true
+    },
+    {
+      "key": "spectral_centroid_hz",
+      "value": 3411.1,
+      "lo": 3342.0,
+      "hi": 4920.0,
+      "in_band": true
+    },
+    {
+      "key": "loudness_p90_minus_p10_db",
+      "value": 6.86,
+      "lo": 1.26,
+      "hi": 15.83,
+      "in_band": true
+    },
+    {
+      "key": "sub",
+      "value": -6.91,
+      "lo": -16.86,
+      "hi": -2.16,
+      "in_band": true
+    },
+    {
+      "key": "low",
+      "value": -6.56,
+      "lo": -7.0,
+      "hi": -3.22,
+      "in_band": true
+    },
+    {
+      "key": "mid",
+      "value": -5.44,
+      "lo": -7.9,
+      "hi": -2.73,
+      "in_band": true
+    },
+    {
+      "key": "high_mid",
+      "value": -6.35,
+      "lo": -14.5,
+      "hi": -5.95,
+      "in_band": true
+    },
+    {
+      "key": "high",
+      "value": -12.32,
+      "lo": -17.25,
+      "hi": -12.18,
+      "in_band": true
+    }
+  ],
+  "out_of_band": [],
+  "verdict": "in_taste",
+  "gates": {
+    "true_peak_dbtp<=-1.0": true,
+    "no_clip": true,
+    "stereo_not_cancelled": true
   }
- ],
- "out_of_band": [],
- "verdict": "in_taste",
- "gates": {
-  "true_peak_dbtp<=-1.0": true,
-  "no_clip": true,
-  "stereo_not_cancelled": true
- }
 }
