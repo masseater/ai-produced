@@ -186,3 +186,4 @@ const generated = [
 ];
 
 export { allRulesOf, asErrors, generated, remotionRules, requiredStack, restrictedImports };
+export type { Rules };

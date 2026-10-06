@@ -15,12 +15,9 @@
     "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet"
   },
   "dependencies": {
-    "@remotion/cli": "catalog:stack",
     "@remotion/google-fonts": "catalog:stack",
     "@remotion/media": "catalog:stack",
-    "@remotion/tailwind-v4": "catalog:stack",
     "effect": "catalog:stack",
-    "react": "19.3.0",
     "react-dom": "19.3.0",
     "remotion": "catalog:stack",
     "tailwindcss": "catalog:stack"
@@ -28,8 +25,11 @@
   "devDependencies": {
     "@effect/tsgo": "catalog:stack",
     "@feature-sliced/steiger-plugin": "0.8.0",
+    "@remotion/cli": "catalog:stack",
+    "@remotion/tailwind-v4": "catalog:stack",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "react": "19.3.0",
     "steiger": "catalog:stack",
     "typescript": "catalog:stack"
   }
