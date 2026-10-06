@@ -1,0 +1,9 @@
+[project]
+name = "mora-check"
+version = "0.0.0"
+description = "Count morae, vowels and devoicing candidates per lyric line"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false

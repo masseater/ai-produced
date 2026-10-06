@@ -1,0 +1,205 @@
+bpm = 160
+key = "F#m"
+bars = 144
+lyrics = "../01-lyrics/v1.tsv"
+
+[rules]
+range = ["A2", "A5"]
+peak = "C#5"
+peak_exceptions = 1
+long_sixteenths = 6
+
+[motifs]
+HOOK = "2:E4 2:F#4 1:A4 1:cl 4:C#5 4:B4 r2"
+HALF = "2:F#4 2:F#4 1:G#4 1:cl 4:A4 4:G#4 r2"
+SPEECH = "2:F#4 2:F#4 1:G#4 1:cl 4:F#4 4:E4 r2"
+STUTTER = "2:E4 r2 2:E4 r2 2:E4 r6"
+TAIL = "1:A4 1:cl 4:C#5"
+
+[[sections]]
+name = "Intro"
+bars = 8
+chords = "F#m D E C#m F#m D E C#m"
+mode = "Soft"
+energy = 0.3
+parts = { pad = "none*4 sustain*4" }
+vocal = [
+  { at = 0, notes = "$SPEECH" },
+  { at = 2, notes = "$SPEECH" },
+  { at = 4, notes = "$HALF" },
+  { at = 6, notes = "$HOOK", mode = "Standard" },
+]
+
+[[sections]]
+name = "A1"
+bars = 16
+chords = "F#m D E C#m F#m D E C#m F#m D E C#m F#m D E C#m"
+energy = 0.5
+parts = { drums = "halftime_light*8 halftime*8", bass = "sustain*8 half*8", pad = "sustain", piano = "broken" }
+vocal = [
+  { at = 0, notes = "2:C#4 2:C#4 2:E4 2:F#4 2:F#4 2:E4 3:F#4 r1 2:A4 2:A4 2:F#4 2:E4 6:F#4 r2" },
+  { at = 2, notes = "2:C#4 2:E4 2:E4 2:F#4 2:G#4 2:F#4 3:E4 r1 2:G#4 2:F#4 2:F#4 6:E4 2:C#4 r2" },
+  { at = 4, notes = "2:C#4 2:C#4 2:E4 2:F#4 2:F#4 2:E4 3:F#4 r1 2:A4 2:A4 2:F#4 2:E4 6:F#4 r2" },
+  { at = 6, notes = "2:C#4 2:E4 2:E4 2:F#4 2:G#4 2:F#4 3:E4 r1 2:G#4 2:F#4 6:E4 2:F#4 2:E4 r2" },
+  { at = 8, notes = "2:C#4 2:C#4 2:E4 2:F#4 2:F#4 2:E4 3:F#4 r1 2:A4 2:A4 2:F#4 2:E4 6:F#4 r2" },
+  { at = 10, notes = "2:C#4 2:E4 2:E4 2:F#4 2:G#4 2:F#4 2:E4 r2 2:G#4 2:F#4 2:E4 2:F#4 6:E4 r2" },
+  { at = 12, notes = "2:C#4 2:C#4 2:E4 2:F#4 2:F#4 2:E4 3:F#4 r1 2:A4 2:A4 2:B4 6:A4 2:F#4 r2" },
+  { at = 14, notes = "2:C#4 2:E4 2:E4 1:F#4 1:cl 4:G#4 3:F#4 r1 2:E4 2:F#4 2:G#4 2:A4 6:G#4 r2" },
+]
+
+[[sections]]
+name = "B1"
+bars = 8
+chords = "D E F#m F#m D E C#sus4 C#"
+energy = 0.75
+silent = ["7:12-16"]
+parts = { drums = "build", bass = "build", pad = "sustain", piano = "broken" }
+vocal = [
+  { at = 0, notes = "2:E4 2:E4 2:F#4 2:F#4 2:A4 2:F#4 3:E4 r1 2:F#4 2:F#4 2:A4 2:A4 4:B4 2:A4 r2" },
+  { at = 2, notes = "2:F#4 2:A4 4:A4 2:B4 2:A4 2:F#4 2:E4 2:E4 4:F#4 2:F#4 2:E4 2:E4 r4" },
+  { at = 4, notes = "2:A4 2:A4 2:B4 4:A4 2:F#4 4:A4 2:B4 2:B4 4:B4 4:A4 r4" },
+  { at = 6, notes = "2:F#4 4:G#4 2:F#4 r2 2:G#4 2:B4 2:B4 2:G#4 2:B4 8:C#5 r4" },
+]
+
+[[sections]]
+name = "Chorus1"
+bars = 16
+chords = "D E C#m F#m D E C#m F#m D E C#m F#m D E C#m F#m"
+mode = "Power"
+energy = 0.9
+parts = { drums = "chorus", bass = "eighths", pad = "sustain", saw = "stabs" }
+vocal = [
+  { at = 0, notes = "$HOOK $HOOK" },
+  { at = 2, notes = "2:G#4 2:A4 2:B4 2:B4 2:A4 2:G#4 2:G#4 2:E4 4:F#4 2:A4 2:G#4 6:F#4 r2" },
+  { at = 4, notes = "$HOOK $HOOK" },
+  { at = 6, notes = "2:G#4 2:A4 2:B4 2:C#5 2:C#5 4:B4 2:A4 2:A4 2:B4 2:C#5 2:B4 6:A4 r2" },
+  { at = 8, notes = "2:F#4 2:F#4 2:A4 2:A4 2:B4 2:A4 3:A4 r1 2:G#4 2:G#4 2:B4 2:B4 2:C#5 2:B4 3:B4 r1" },
+  { at = 10, notes = "2:C#5 2:B4 2:A4 4:G#4 2:G#4 2:A4 2:B4 2:A4 2:G#4 2:F#4 2:A4 6:G#4 r2" },
+  { at = 12, notes = "$HOOK $HOOK" },
+  { at = 14, notes = "4:C#5 4:B4 2:A4 2:B4 2:C#5 4:B4 2:A4 10:A4 r2" },
+]
+
+[[sections]]
+name = "Drop1"
+bars = 8
+chords = "F#m D E C#m F#m D E C#m"
+mode = "Power"
+energy = 1.0
+parts = { drums = "four", bass = "offbeat", saw = "offstabs", lead = "hook" }
+vocal = [
+  { at = 0, notes = "$STUTTER $HOOK" },
+  { at = 2, notes = "r4 2:A4 r2 2:A4 r6 r4 $TAIL 4:B4 r2" },
+  { at = 4, notes = "$STUTTER $HOOK" },
+  { at = 6, notes = "$TAIL 2:B4 $TAIL 2:B4 $TAIL 6:B4 r4" },
+]
+
+[[sections]]
+name = "A2"
+bars = 8
+chords = "F#m D E C#m F#m D E C#m"
+energy = 0.55
+parts = { drums = "halftime", bass = "half", pad = "sustain", piano = "broken" }
+vocal = [
+  { at = 0, notes = "2:C#4 2:C#4 2:E4 2:F#4 2:F#4 2:E4 3:F#4 r1 2:A4 2:A4 2:F#4 2:E4 6:F#4 r2" },
+  { at = 2, notes = "2:C#4 2:E4 2:E4 2:F#4 2:G#4 2:F#4 2:E4 r2 2:G#4 2:F#4 2:F#4 6:E4 2:C#4 r2" },
+  { at = 4, notes = "2:C#4 2:C#4 2:E4 2:F#4 2:F#4 2:E4 3:F#4 r1 2:A4 2:A4 2:F#4 2:E4 6:F#4 r2" },
+  { at = 6, notes = "2:C#4 2:E4 2:E4 2:F#4 2:G#4 2:F#4 3:E4 r1 2:G#4 3:F#4 1:cl 6:E4 2:E4 r2" },
+]
+
+[[sections]]
+name = "B2"
+bars = 8
+chords = "D E F#m F#m D E C#sus4 C#"
+energy = 0.75
+silent = ["7:12-16"]
+parts = { drums = "build", bass = "build", pad = "sustain", piano = "broken" }
+vocal = [
+  { at = 0, notes = "2:E4 2:E4 2:F#4 2:F#4 2:A4 2:F#4 3:E4 r1 2:F#4 2:F#4 2:A4 2:A4 4:B4 r4" },
+  { at = 2, notes = "2:F#4 2:A4 4:A4 2:B4 2:A4 2:F#4 2:E4 2:E4 4:F#4 2:F#4 2:E4 2:E4 r4" },
+  { at = 4, notes = "2:A4 2:A4 2:B4 4:A4 2:F#4 2:F#4 2:A4 2:B4 2:B4 4:B4 4:A4 r4" },
+  { at = 6, notes = "2:F#4 4:G#4 2:F#4 r2 2:G#4 2:B4 2:B4 2:G#4 2:B4 8:C#5 r4" },
+]
+
+[[sections]]
+name = "Chorus2"
+bars = 16
+chords = "D E C#m F#m D E C#m F#m D E C#m F#m D E C#m F#m"
+mode = "Power"
+energy = 0.9
+parts = { drums = "chorus", bass = "eighths", pad = "sustain", saw = "stabs", arp = "arp" }
+vocal = [
+  { at = 0, notes = "$HOOK $HOOK" },
+  { at = 2, notes = "2:G#4 2:A4 2:B4 2:B4 2:A4 2:G#4 2:G#4 2:E4 4:F#4 2:A4 2:G#4 6:F#4 r2" },
+  { at = 4, notes = "$HOOK $HOOK" },
+  { at = 6, notes = "2:G#4 2:A4 2:B4 2:C#5 2:C#5 4:B4 2:A4 2:A4 2:B4 2:C#5 2:B4 6:A4 r2" },
+  { at = 8, notes = "2:F#4 2:F#4 2:A4 2:A4 2:B4 2:A4 3:A4 r1 2:G#4 2:G#4 2:B4 2:B4 2:C#5 2:B4 3:B4 r1" },
+  { at = 10, notes = "2:C#5 2:B4 2:A4 4:G#4 2:G#4 2:A4 2:B4 2:A4 2:G#4 2:F#4 2:A4 6:G#4 r2" },
+  { at = 12, notes = "$HOOK $HOOK" },
+  { at = 14, notes = "4:C#5 4:B4 2:A4 2:B4 2:C#5 4:B4 2:A4 10:A4 r2" },
+]
+
+[[sections]]
+name = "Bridge"
+bars = 16
+chords = "Bm Bm C#m C#m D D E E Bm Bm C#m C#m D D E E"
+mode = "Soft"
+energy = 0.3
+parts = { drums = "none*12 heartbeat*4", pad = "sustain" }
+vocal = [
+  { at = 0, notes = "4:F#4 2:F#4 2:E4 6:D4 r2 2:D4 3:E4 1:cl 6:D4 2:B3 r2" },
+  { at = 2, notes = "4:E4 2:E4 6:C#4 r4 2:C#4 2:E4 6:E4 2:C#4 2:B3 r2" },
+  { at = 4, notes = "2:A3 2:A3 2:B3 6:D4 r4 2:D4 2:E4 2:F#4 2:E4 r2 2:D4 2:D4 r2" },
+  { at = 6, notes = "4:B3 4:D4 8:E4 12:E4 r4" },
+  { at = 8, notes = "2:D4 2:D4 4:F#4 4:E4 2:D4 r2 8:D4 4:C#4 r4", mode = "Emotional" },
+  { at = 10, notes = "2:E4 2:E4 1:E4 3:F#4 4:E4 2:C#4 2:E4 1:cl 3:E4 2:C#4 2:E4 4:E4 2:C#4 r2", mode = "Emotional" },
+  { at = 12, notes = "2:D4 4:E4 2:F#4 2:F#4 2:E4 4:D4 4:D4 2:E4 4:F#4 4:E4 r2", mode = "Emotional" },
+  { at = 14, notes = "2:E4 6:F#4 2:E4 4:F#4 2:E4 2:E4 8:E4 2:E4 r4", mode = "Emotional" },
+]
+
+[[sections]]
+name = "Break"
+bars = 8
+chords = "F#m D E C#m D E C# NC"
+mode = "Power"
+energy = 0.95
+silent = ["7:0-16"]
+parts = { drums = "accel", bass = "sustain*2 build*5 none", pad = "sustain*6 none*2", lead = "none*6 hook none" }
+vocal = [
+  { at = 0, notes = "4:E4 4:E4 4:E4 r4 $HOOK" },
+  { at = 2, notes = "r8 2:E4 2:E4 2:E4 r2 $HOOK" },
+  { at = 4, notes = "$HOOK $HOOK" },
+]
+
+[[sections]]
+name = "LastChorus"
+bars = 24
+chords = "D E C#m F#m D E C#m F#m D E C#m F#m D E C#m F#m D E F#m F#m D E F#m F#m"
+mode = "Power"
+energy = 1.0
+parts = { drums = "last*23 hit", bass = "eighths*23 stop", pad = "sustain*23 none", saw = "stabs*23 hit", arp = "arp*23 none", lead = "double" }
+vocal = [
+  { at = 0, notes = "$HOOK $HOOK" },
+  { at = 2, notes = "2:G#4 2:A4 2:B4 2:B4 2:A4 2:G#4 2:G#4 2:E4 4:F#4 2:A4 2:G#4 6:F#4 r2" },
+  { at = 4, notes = "$HOOK $HOOK" },
+  { at = 6, notes = "2:G#4 2:A4 2:B4 2:C#5 2:C#5 4:B4 2:A4 2:A4 2:B4 2:C#5 2:B4 6:A4 r2" },
+  { at = 8, notes = "2:F#4 2:F#4 2:A4 2:A4 2:B4 2:A4 3:A4 r1 2:G#4 2:G#4 2:B4 2:B4 2:C#5 2:B4 3:B4 r1" },
+  { at = 10, notes = "2:C#5 2:B4 2:A4 4:G#4 2:G#4 2:A4 2:B4 2:A4 2:G#4 2:F#4 2:A4 6:G#4 r2" },
+  { at = 12, notes = "$HOOK $HOOK" },
+  { at = 14, notes = "4:C#5 4:B4 2:A4 2:B4 4:C#5 3:D5 1:cl 10:C#5 r2" },
+  { at = 16, notes = "$HOOK $HOOK" },
+  { at = 18, notes = "$HOOK $HOOK" },
+  { at = 20, notes = "$HOOK" },
+]
+
+[[sections]]
+name = "Outro"
+bars = 8
+chords = "F#m D E C#m F#m D E C#m"
+mode = "Soft"
+energy = 0.3
+parts = { drums = "outro", bass = "sustain*4 none*4", pad = "sustain", piano = "quarters" }
+vocal = [
+  { at = 0, notes = "$HALF", mode = "Standard" },
+  { at = 2, notes = "$SPEECH" },
+  { at = 4, notes = "2:F#4 2:F#4 8:E4 r4" },
+]

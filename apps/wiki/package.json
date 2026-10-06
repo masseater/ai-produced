@@ -18,7 +18,7 @@
     "@effect/atom-react": "catalog:stack",
     "@tailwindcss/typography": "catalog:",
     "@tanstack/react-query": "catalog:stack",
-    "@tanstack/react-router": "1.170.40",
+    "@tanstack/react-router": "1.170.41",
     "@tanstack/react-start": "catalog:stack",
     "@workspace/start": "workspace:*",
     "@workspace/ui": "workspace:*",

@@ -46,3 +46,14 @@ dist-ssr
 *.RPP-bak
 *.rpp-bak
 *.reapeaks
+
+# Python
+.venv
+__pycache__
+
+# .NET
+tools/openutau-render/bin
+tools/openutau-render/obj
+
+# Rendered audio
+songs/*/03-vocal/render

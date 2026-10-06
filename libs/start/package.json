@@ -16,7 +16,7 @@
   "dependencies": {
     "@elysiajs/eden": "catalog:stack",
     "@tanstack/react-query": "catalog:stack",
-    "@tanstack/react-router": "1.170.40",
+    "@tanstack/react-router": "1.170.41",
     "@tanstack/react-router-ssr-query": "1.167.3",
     "eden-tanstack-react-query": "catalog:stack",
     "effect": "catalog:stack",

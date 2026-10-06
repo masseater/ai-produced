@@ -57,14 +57,14 @@
     },
     "modern-web-guidance": {
       "source": "GoogleChrome/modern-web-guidance",
-      "ref": "84ae7251ee919239d5ea85aef25897983f26601e",
+      "ref": "650eb83619134adb947b1ee8755e6511270bc444",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
-      "computedHash": "7350ef15ed8febd35f1a15750e57418eac6656b7e86259e7796aa5e7972af60c"
+      "computedHash": "4f7b5229ea29d234c4897211d2d3de2ef070cc458256703125db3a30807a9874"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",
-      "ref": "295a1f114a138f23b5dfee0e0c6812394dfeb90c",
+      "ref": "0e3abd65a97707f4a9cc3ed07bf5006e1cb67b13",
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
       "computedHash": "f615de216e085a84e31593ad0fa9062232adc40cd87b7c7ab2b8e49abf6500be"
@@ -92,10 +92,10 @@
     },
     "yomiyasu": {
       "source": "nanaism/yomiyasu",
-      "ref": "1890e67c497bf3b13df853719d7ca9af4ea37710",
+      "ref": "986da6ffc89316a90e509d007c1efe1fc59057e6",
       "sourceType": "github",
       "skillPath": "SKILL.md",
-      "computedHash": "aaab4ea4b99c2442c536c9d6a66271b98a5f139714de6169faf9232746b2a99e"
+      "computedHash": "0b8ca56f301dc56184291b19dc2ec92d561b46776abb3c5bb7c1bc0266623421"
     }
   }
 }

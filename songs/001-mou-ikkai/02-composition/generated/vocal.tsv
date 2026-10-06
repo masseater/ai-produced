@@ -1,0 +1,719 @@
+section	line	text	mora	vowel	kind	bar	beat	tick	ticks	note	midi	mode
+Intro	1	もう一回（語り）	も	o	note	1	1.0	0	240	F#4	66	Soft
+Intro	1	もう一回（語り）	う	u	note	1	1.5	240	240	F#4	66	Soft
+Intro	1	もう一回（語り）	い	i	note	1	2.0	480	120	G#4	68	Soft
+Intro	1	もう一回（語り）	っ	Q	closure	1	2.25	600	120			Soft
+Intro	1	もう一回（語り）	か	a	note	1	2.5	720	480	F#4	66	Soft
+Intro	1	もう一回（語り）	い	i	note	1	3.5	1200	480	E4	64	Soft
+Intro	2	もう一回（語り）	も	o	note	3	1.0	3840	240	F#4	66	Soft
+Intro	2	もう一回（語り）	う	u	note	3	1.5	4080	240	F#4	66	Soft
+Intro	2	もう一回（語り）	い	i	note	3	2.0	4320	120	G#4	68	Soft
+Intro	2	もう一回（語り）	っ	Q	closure	3	2.25	4440	120			Soft
+Intro	2	もう一回（語り）	か	a	note	3	2.5	4560	480	F#4	66	Soft
+Intro	2	もう一回（語り）	い	i	note	3	3.5	5040	480	E4	64	Soft
+Intro	3	もう一回（語り→歌）	も	o	note	5	1.0	7680	240	F#4	66	Soft
+Intro	3	もう一回（語り→歌）	う	u	note	5	1.5	7920	240	F#4	66	Soft
+Intro	3	もう一回（語り→歌）	い	i	note	5	2.0	8160	120	G#4	68	Soft
+Intro	3	もう一回（語り→歌）	っ	Q	closure	5	2.25	8280	120			Soft
+Intro	3	もう一回（語り→歌）	か	a	note	5	2.5	8400	480	A4	69	Soft
+Intro	3	もう一回（語り→歌）	い	i	note	5	3.5	8880	480	G#4	68	Soft
+Intro	4	もう一回（歌）	も	o	note	7	1.0	11520	240	E4	64	Standard
+Intro	4	もう一回（歌）	う	u	note	7	1.5	11760	240	F#4	66	Standard
+Intro	4	もう一回（歌）	い	i	note	7	2.0	12000	120	A4	69	Standard
+Intro	4	もう一回（歌）	っ	Q	closure	7	2.25	12120	120			Standard
+Intro	4	もう一回（歌）	か	a	note	7	2.5	12240	480	C#5	73	Standard
+Intro	4	もう一回（歌）	い	i	note	7	3.5	12720	480	B4	71	Standard
+A1	1	三秒だけの 君の声	さ	a	note	9	1.0	15360	240	C#4	61	Standard
+A1	1	三秒だけの 君の声	ん	N	note	9	1.5	15600	240	C#4	61	Standard
+A1	1	三秒だけの 君の声	びょ	o	note	9	2.0	15840	240	E4	64	Standard
+A1	1	三秒だけの 君の声	う	u	note	9	2.5	16080	240	F#4	66	Standard
+A1	1	三秒だけの 君の声	だ	a	note	9	3.0	16320	240	F#4	66	Standard
+A1	1	三秒だけの 君の声	け	e	note	9	3.5	16560	240	E4	64	Standard
+A1	1	三秒だけの 君の声	の	o	note	9	4.0	16800	360	F#4	66	Standard
+A1	1	三秒だけの 君の声	き	i	note	10	1.0	17280	240	A4	69	Standard
+A1	1	三秒だけの 君の声	み	i	note	10	1.5	17520	240	A4	69	Standard
+A1	1	三秒だけの 君の声	の	o	note	10	2.0	17760	240	F#4	66	Standard
+A1	1	三秒だけの 君の声	こ	o	note	10	2.5	18000	240	E4	64	Standard
+A1	1	三秒だけの 君の声	え	e	note	10	3.0	18240	720	F#4	66	Standard
+A1	2	擦り切れるまで 巻き戻す	す	u	note	11	1.0	19200	240	C#4	61	Standard
+A1	2	擦り切れるまで 巻き戻す	り	i	note	11	1.5	19440	240	E4	64	Standard
+A1	2	擦り切れるまで 巻き戻す	き	i	note	11	2.0	19680	240	E4	64	Standard
+A1	2	擦り切れるまで 巻き戻す	れ	e	note	11	2.5	19920	240	F#4	66	Standard
+A1	2	擦り切れるまで 巻き戻す	る	u	note	11	3.0	20160	240	G#4	68	Standard
+A1	2	擦り切れるまで 巻き戻す	ま	a	note	11	3.5	20400	240	F#4	66	Standard
+A1	2	擦り切れるまで 巻き戻す	で	e	note	11	4.0	20640	360	E4	64	Standard
+A1	2	擦り切れるまで 巻き戻す	ま	a	note	12	1.0	21120	240	G#4	68	Standard
+A1	2	擦り切れるまで 巻き戻す	き	i	note	12	1.5	21360	240	F#4	66	Standard
+A1	2	擦り切れるまで 巻き戻す	も	o	note	12	2.0	21600	240	F#4	66	Standard
+A1	2	擦り切れるまで 巻き戻す	ど	o	note	12	2.5	21840	720	E4	64	Standard
+A1	2	擦り切れるまで 巻き戻す	す	u	note	12	4.0	22560	240	C#4	61	Standard
+A1	3	同じところで 笑うから	お	o	note	13	1.0	23040	240	C#4	61	Standard
+A1	3	同じところで 笑うから	な	a	note	13	1.5	23280	240	C#4	61	Standard
+A1	3	同じところで 笑うから	じ	i	note	13	2.0	23520	240	E4	64	Standard
+A1	3	同じところで 笑うから	と	o	note	13	2.5	23760	240	F#4	66	Standard
+A1	3	同じところで 笑うから	こ	o	note	13	3.0	24000	240	F#4	66	Standard
+A1	3	同じところで 笑うから	ろ	o	note	13	3.5	24240	240	E4	64	Standard
+A1	3	同じところで 笑うから	で	e	note	13	4.0	24480	360	F#4	66	Standard
+A1	3	同じところで 笑うから	わ	a	note	14	1.0	24960	240	A4	69	Standard
+A1	3	同じところで 笑うから	ら	a	note	14	1.5	25200	240	A4	69	Standard
+A1	3	同じところで 笑うから	う	u	note	14	2.0	25440	240	F#4	66	Standard
+A1	3	同じところで 笑うから	か	a	note	14	2.5	25680	240	E4	64	Standard
+A1	3	同じところで 笑うから	ら	a	note	14	3.0	25920	720	F#4	66	Standard
+A1	4	同じところで 息をする	お	o	note	15	1.0	26880	240	C#4	61	Standard
+A1	4	同じところで 息をする	な	a	note	15	1.5	27120	240	E4	64	Standard
+A1	4	同じところで 息をする	じ	i	note	15	2.0	27360	240	E4	64	Standard
+A1	4	同じところで 息をする	と	o	note	15	2.5	27600	240	F#4	66	Standard
+A1	4	同じところで 息をする	こ	o	note	15	3.0	27840	240	G#4	68	Standard
+A1	4	同じところで 息をする	ろ	o	note	15	3.5	28080	240	F#4	66	Standard
+A1	4	同じところで 息をする	で	e	note	15	4.0	28320	360	E4	64	Standard
+A1	4	同じところで 息をする	い	i	note	16	1.0	28800	240	G#4	68	Standard
+A1	4	同じところで 息をする	き	i	note	16	1.5	29040	240	F#4	66	Standard
+A1	4	同じところで 息をする	を	o	note	16	2.0	29280	720	E4	64	Standard
+A1	4	同じところで 息をする	す	u	note	16	3.5	30000	240	F#4	66	Standard
+A1	4	同じところで 息をする	る	u	note	16	4.0	30240	240	E4	64	Standard
+A1	5	窓の外では 日が落ちて	ま	a	note	17	1.0	30720	240	C#4	61	Standard
+A1	5	窓の外では 日が落ちて	ど	o	note	17	1.5	30960	240	C#4	61	Standard
+A1	5	窓の外では 日が落ちて	の	o	note	17	2.0	31200	240	E4	64	Standard
+A1	5	窓の外では 日が落ちて	そ	o	note	17	2.5	31440	240	F#4	66	Standard
+A1	5	窓の外では 日が落ちて	と	o	note	17	3.0	31680	240	F#4	66	Standard
+A1	5	窓の外では 日が落ちて	で	e	note	17	3.5	31920	240	E4	64	Standard
+A1	5	窓の外では 日が落ちて	は	a	note	17	4.0	32160	360	F#4	66	Standard
+A1	5	窓の外では 日が落ちて	ひ	i	note	18	1.0	32640	240	A4	69	Standard
+A1	5	窓の外では 日が落ちて	が	a	note	18	1.5	32880	240	A4	69	Standard
+A1	5	窓の外では 日が落ちて	お	o	note	18	2.0	33120	240	F#4	66	Standard
+A1	5	窓の外では 日が落ちて	ち	i	note	18	2.5	33360	240	E4	64	Standard
+A1	5	窓の外では 日が落ちて	て	e	note	18	3.0	33600	720	F#4	66	Standard
+A1	6	予定がひとつ 増えてても	よ	o	note	19	1.0	34560	240	C#4	61	Standard
+A1	6	予定がひとつ 増えてても	て	e	note	19	1.5	34800	240	E4	64	Standard
+A1	6	予定がひとつ 増えてても	い	i	note	19	2.0	35040	240	E4	64	Standard
+A1	6	予定がひとつ 増えてても	が	a	note	19	2.5	35280	240	F#4	66	Standard
+A1	6	予定がひとつ 増えてても	ひ	i	note	19	3.0	35520	240	G#4	68	Standard
+A1	6	予定がひとつ 増えてても	と	o	note	19	3.5	35760	240	F#4	66	Standard
+A1	6	予定がひとつ 増えてても	つ	u	note	19	4.0	36000	240	E4	64	Standard
+A1	6	予定がひとつ 増えてても	ふ	u	note	20	1.0	36480	240	G#4	68	Standard
+A1	6	予定がひとつ 増えてても	え	e	note	20	1.5	36720	240	F#4	66	Standard
+A1	6	予定がひとつ 増えてても	て	e	note	20	2.0	36960	240	E4	64	Standard
+A1	6	予定がひとつ 増えてても	て	e	note	20	2.5	37200	240	F#4	66	Standard
+A1	6	予定がひとつ 増えてても	も	o	note	20	3.0	37440	720	E4	64	Standard
+A1	7	僕の部屋だけ 回らない	ぼ	o	note	21	1.0	38400	240	C#4	61	Standard
+A1	7	僕の部屋だけ 回らない	く	u	note	21	1.5	38640	240	C#4	61	Standard
+A1	7	僕の部屋だけ 回らない	の	o	note	21	2.0	38880	240	E4	64	Standard
+A1	7	僕の部屋だけ 回らない	へ	e	note	21	2.5	39120	240	F#4	66	Standard
+A1	7	僕の部屋だけ 回らない	や	a	note	21	3.0	39360	240	F#4	66	Standard
+A1	7	僕の部屋だけ 回らない	だ	a	note	21	3.5	39600	240	E4	64	Standard
+A1	7	僕の部屋だけ 回らない	け	e	note	21	4.0	39840	360	F#4	66	Standard
+A1	7	僕の部屋だけ 回らない	ま	a	note	22	1.0	40320	240	A4	69	Standard
+A1	7	僕の部屋だけ 回らない	わ	a	note	22	1.5	40560	240	A4	69	Standard
+A1	7	僕の部屋だけ 回らない	ら	a	note	22	2.0	40800	240	B4	71	Standard
+A1	7	僕の部屋だけ 回らない	な	a	note	22	2.5	41040	720	A4	69	Standard
+A1	7	僕の部屋だけ 回らない	い	i	note	22	4.0	41760	240	F#4	66	Standard
+A1	8	指は知ってる 戻る場所	ゆ	u	note	23	1.0	42240	240	C#4	61	Standard
+A1	8	指は知ってる 戻る場所	び	i	note	23	1.5	42480	240	E4	64	Standard
+A1	8	指は知ってる 戻る場所	は	a	note	23	2.0	42720	240	E4	64	Standard
+A1	8	指は知ってる 戻る場所	し	i	note	23	2.5	42960	120	F#4	66	Standard
+A1	8	指は知ってる 戻る場所	っ	Q	closure	23	2.75	43080	120			Standard
+A1	8	指は知ってる 戻る場所	て	e	note	23	3.0	43200	480	G#4	68	Standard
+A1	8	指は知ってる 戻る場所	る	u	note	23	4.0	43680	360	F#4	66	Standard
+A1	8	指は知ってる 戻る場所	も	o	note	24	1.0	44160	240	E4	64	Standard
+A1	8	指は知ってる 戻る場所	ど	o	note	24	1.5	44400	240	F#4	66	Standard
+A1	8	指は知ってる 戻る場所	る	u	note	24	2.0	44640	240	G#4	68	Standard
+A1	8	指は知ってる 戻る場所	ば	a	note	24	2.5	44880	240	A4	69	Standard
+A1	8	指は知ってる 戻る場所	しょ	o	note	24	3.0	45120	720	G#4	68	Standard
+B1	1	何回目かは もう知らない	な	a	note	25	1.0	46080	240	E4	64	Standard
+B1	1	何回目かは もう知らない	ん	N	note	25	1.5	46320	240	E4	64	Standard
+B1	1	何回目かは もう知らない	か	a	note	25	2.0	46560	240	F#4	66	Standard
+B1	1	何回目かは もう知らない	い	i	note	25	2.5	46800	240	F#4	66	Standard
+B1	1	何回目かは もう知らない	め	e	note	25	3.0	47040	240	A4	69	Standard
+B1	1	何回目かは もう知らない	か	a	note	25	3.5	47280	240	F#4	66	Standard
+B1	1	何回目かは もう知らない	は	a	note	25	4.0	47520	360	E4	64	Standard
+B1	1	何回目かは もう知らない	も	o	note	26	1.0	48000	240	F#4	66	Standard
+B1	1	何回目かは もう知らない	う	u	note	26	1.5	48240	240	F#4	66	Standard
+B1	1	何回目かは もう知らない	し	i	note	26	2.0	48480	240	A4	69	Standard
+B1	1	何回目かは もう知らない	ら	a	note	26	2.5	48720	240	A4	69	Standard
+B1	1	何回目かは もう知らない	な	a	note	26	3.0	48960	480	B4	71	Standard
+B1	1	何回目かは もう知らない	い	i	note	26	4.0	49440	240	A4	69	Standard
+B1	2	数えるたびに ずれていく	か	a	note	27	1.0	49920	240	F#4	66	Standard
+B1	2	数えるたびに ずれていく	ぞ	o	note	27	1.5	50160	240	A4	69	Standard
+B1	2	数えるたびに ずれていく	え	e	note	27	2.0	50400	480	A4	69	Standard
+B1	2	数えるたびに ずれていく	る	u	note	27	3.0	50880	240	B4	71	Standard
+B1	2	数えるたびに ずれていく	た	a	note	27	3.5	51120	240	A4	69	Standard
+B1	2	数えるたびに ずれていく	び	i	note	27	4.0	51360	240	F#4	66	Standard
+B1	2	数えるたびに ずれていく	に	i	note	27	4.5	51600	240	E4	64	Standard
+B1	2	数えるたびに ずれていく	ず	u	note	28	1.0	51840	240	E4	64	Standard
+B1	2	数えるたびに ずれていく	れ	e	note	28	1.5	52080	480	F#4	66	Standard
+B1	2	数えるたびに ずれていく	て	e	note	28	2.5	52560	240	F#4	66	Standard
+B1	2	数えるたびに ずれていく	い	i	note	28	3.0	52800	240	E4	64	Standard
+B1	2	数えるたびに ずれていく	く	u	note	28	3.5	53040	240	E4	64	Standard
+B1	3	同じはずの 言葉が	お	o	note	29	1.0	53760	240	A4	69	Standard
+B1	3	同じはずの 言葉が	な	a	note	29	1.5	54000	240	A4	69	Standard
+B1	3	同じはずの 言葉が	じ	i	note	29	2.0	54240	240	B4	71	Standard
+B1	3	同じはずの 言葉が	は	a	note	29	2.5	54480	480	A4	69	Standard
+B1	3	同じはずの 言葉が	ず	u	note	29	3.5	54960	240	F#4	66	Standard
+B1	3	同じはずの 言葉が	の	o	note	29	4.0	55200	480	A4	69	Standard
+B1	3	同じはずの 言葉が	こ	o	note	30	1.0	55680	240	B4	71	Standard
+B1	3	同じはずの 言葉が	と	o	note	30	1.5	55920	240	B4	71	Standard
+B1	3	同じはずの 言葉が	ば	a	note	30	2.0	56160	480	B4	71	Standard
+B1	3	同じはずの 言葉が	が	a	note	30	3.0	56640	480	A4	69	Standard
+B1	4	歌に 聞こえてきた	う	u	note	31	1.0	57600	240	F#4	66	Standard
+B1	4	歌に 聞こえてきた	た	a	note	31	1.5	57840	480	G#4	68	Standard
+B1	4	歌に 聞こえてきた	に	i	note	31	2.5	58320	240	F#4	66	Standard
+B1	4	歌に 聞こえてきた	き	i	note	31	3.5	58800	240	G#4	68	Standard
+B1	4	歌に 聞こえてきた	こ	o	note	31	4.0	59040	240	B4	71	Standard
+B1	4	歌に 聞こえてきた	え	e	note	31	4.5	59280	240	B4	71	Standard
+B1	4	歌に 聞こえてきた	て	e	note	32	1.0	59520	240	G#4	68	Standard
+B1	4	歌に 聞こえてきた	き	i	note	32	1.5	59760	240	B4	71	Standard
+B1	4	歌に 聞こえてきた	た	a	note	32	2.0	60000	960	C#5	73	Standard
+Chorus1	1	もう一回 もう一回	も	o	note	33	1.0	61440	240	E4	64	Power
+Chorus1	1	もう一回 もう一回	う	u	note	33	1.5	61680	240	F#4	66	Power
+Chorus1	1	もう一回 もう一回	い	i	note	33	2.0	61920	120	A4	69	Power
+Chorus1	1	もう一回 もう一回	っ	Q	closure	33	2.25	62040	120			Power
+Chorus1	1	もう一回 もう一回	か	a	note	33	2.5	62160	480	C#5	73	Power
+Chorus1	1	もう一回 もう一回	い	i	note	33	3.5	62640	480	B4	71	Power
+Chorus1	1	もう一回 もう一回	も	o	note	34	1.0	63360	240	E4	64	Power
+Chorus1	1	もう一回 もう一回	う	u	note	34	1.5	63600	240	F#4	66	Power
+Chorus1	1	もう一回 もう一回	い	i	note	34	2.0	63840	120	A4	69	Power
+Chorus1	1	もう一回 もう一回	っ	Q	closure	34	2.25	63960	120			Power
+Chorus1	1	もう一回 もう一回	か	a	note	34	2.5	64080	480	C#5	73	Power
+Chorus1	1	もう一回 もう一回	い	i	note	34	3.5	64560	480	B4	71	Power
+Chorus1	2	同じ一秒を 鳴らして	お	o	note	35	1.0	65280	240	G#4	68	Power
+Chorus1	2	同じ一秒を 鳴らして	な	a	note	35	1.5	65520	240	A4	69	Power
+Chorus1	2	同じ一秒を 鳴らして	じ	i	note	35	2.0	65760	240	B4	71	Power
+Chorus1	2	同じ一秒を 鳴らして	い	i	note	35	2.5	66000	240	B4	71	Power
+Chorus1	2	同じ一秒を 鳴らして	ち	i	note	35	3.0	66240	240	A4	69	Power
+Chorus1	2	同じ一秒を 鳴らして	びょ	o	note	35	3.5	66480	240	G#4	68	Power
+Chorus1	2	同じ一秒を 鳴らして	う	u	note	35	4.0	66720	240	G#4	68	Power
+Chorus1	2	同じ一秒を 鳴らして	を	o	note	35	4.5	66960	240	E4	64	Power
+Chorus1	2	同じ一秒を 鳴らして	な	a	note	36	1.0	67200	480	F#4	66	Power
+Chorus1	2	同じ一秒を 鳴らして	ら	a	note	36	2.0	67680	240	A4	69	Power
+Chorus1	2	同じ一秒を 鳴らして	し	i	note	36	2.5	67920	240	G#4	68	Power
+Chorus1	2	同じ一秒を 鳴らして	て	e	note	36	3.0	68160	720	F#4	66	Power
+Chorus1	3	もう一回 もう一回	も	o	note	37	1.0	69120	240	E4	64	Power
+Chorus1	3	もう一回 もう一回	う	u	note	37	1.5	69360	240	F#4	66	Power
+Chorus1	3	もう一回 もう一回	い	i	note	37	2.0	69600	120	A4	69	Power
+Chorus1	3	もう一回 もう一回	っ	Q	closure	37	2.25	69720	120			Power
+Chorus1	3	もう一回 もう一回	か	a	note	37	2.5	69840	480	C#5	73	Power
+Chorus1	3	もう一回 もう一回	い	i	note	37	3.5	70320	480	B4	71	Power
+Chorus1	3	もう一回 もう一回	も	o	note	38	1.0	71040	240	E4	64	Power
+Chorus1	3	もう一回 もう一回	う	u	note	38	1.5	71280	240	F#4	66	Power
+Chorus1	3	もう一回 もう一回	い	i	note	38	2.0	71520	120	A4	69	Power
+Chorus1	3	もう一回 もう一回	っ	Q	closure	38	2.25	71640	120			Power
+Chorus1	3	もう一回 もう一回	か	a	note	38	2.5	71760	480	C#5	73	Power
+Chorus1	3	もう一回 もう一回	い	i	note	38	3.5	72240	480	B4	71	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	す	u	note	39	1.0	72960	240	G#4	68	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	り	i	note	39	1.5	73200	240	A4	69	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	へ	e	note	39	2.0	73440	240	B4	71	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	る	u	note	39	2.5	73680	240	C#5	73	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	ほ	o	note	39	3.0	73920	240	C#5	73	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	ど	o	note	39	3.5	74160	480	B4	71	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	に	i	note	39	4.5	74640	240	A4	69	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	あ	a	note	40	1.0	74880	240	A4	69	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	ざ	a	note	40	1.5	75120	240	B4	71	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	や	a	note	40	2.0	75360	240	C#5	73	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	か	a	note	40	2.5	75600	240	B4	71	Power
+Chorus1	4	擦り減るほどに 鮮やかだ	だ	a	note	40	3.0	75840	720	A4	69	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	く	u	note	41	1.0	76800	240	F#4	66	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	り	i	note	41	1.5	77040	240	F#4	66	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	か	a	note	41	2.0	77280	240	A4	69	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	え	e	note	41	2.5	77520	240	A4	69	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	す	u	note	41	3.0	77760	240	B4	71	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	だ	a	note	41	3.5	78000	240	A4	69	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	け	e	note	41	4.0	78240	360	A4	69	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	く	u	note	42	1.0	78720	240	G#4	68	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	り	i	note	42	1.5	78960	240	G#4	68	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	か	a	note	42	2.0	79200	240	B4	71	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	え	e	note	42	2.5	79440	240	B4	71	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	す	u	note	42	3.0	79680	240	C#5	73	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	だ	a	note	42	3.5	79920	240	B4	71	Power
+Chorus1	5	繰り返すだけ 繰り返すだけ	け	e	note	42	4.0	80160	360	B4	71	Power
+Chorus1	6	別の何かに 変わるまで	べ	e	note	43	1.0	80640	240	C#5	73	Power
+Chorus1	6	別の何かに 変わるまで	つ	u	note	43	1.5	80880	240	B4	71	Power
+Chorus1	6	別の何かに 変わるまで	の	o	note	43	2.0	81120	240	A4	69	Power
+Chorus1	6	別の何かに 変わるまで	な	a	note	43	2.5	81360	480	G#4	68	Power
+Chorus1	6	別の何かに 変わるまで	に	i	note	43	3.5	81840	240	G#4	68	Power
+Chorus1	6	別の何かに 変わるまで	か	a	note	43	4.0	82080	240	A4	69	Power
+Chorus1	6	別の何かに 変わるまで	に	i	note	43	4.5	82320	240	B4	71	Power
+Chorus1	6	別の何かに 変わるまで	か	a	note	44	1.0	82560	240	A4	69	Power
+Chorus1	6	別の何かに 変わるまで	わ	a	note	44	1.5	82800	240	G#4	68	Power
+Chorus1	6	別の何かに 変わるまで	る	u	note	44	2.0	83040	240	F#4	66	Power
+Chorus1	6	別の何かに 変わるまで	ま	a	note	44	2.5	83280	240	A4	69	Power
+Chorus1	6	別の何かに 変わるまで	で	e	note	44	3.0	83520	720	G#4	68	Power
+Chorus1	7	もう一回 もう一回	も	o	note	45	1.0	84480	240	E4	64	Power
+Chorus1	7	もう一回 もう一回	う	u	note	45	1.5	84720	240	F#4	66	Power
+Chorus1	7	もう一回 もう一回	い	i	note	45	2.0	84960	120	A4	69	Power
+Chorus1	7	もう一回 もう一回	っ	Q	closure	45	2.25	85080	120			Power
+Chorus1	7	もう一回 もう一回	か	a	note	45	2.5	85200	480	C#5	73	Power
+Chorus1	7	もう一回 もう一回	い	i	note	45	3.5	85680	480	B4	71	Power
+Chorus1	7	もう一回 もう一回	も	o	note	46	1.0	86400	240	E4	64	Power
+Chorus1	7	もう一回 もう一回	う	u	note	46	1.5	86640	240	F#4	66	Power
+Chorus1	7	もう一回 もう一回	い	i	note	46	2.0	86880	120	A4	69	Power
+Chorus1	7	もう一回 もう一回	っ	Q	closure	46	2.25	87000	120			Power
+Chorus1	7	もう一回 もう一回	か	a	note	46	2.5	87120	480	C#5	73	Power
+Chorus1	7	もう一回 もう一回	い	i	note	46	3.5	87600	480	B4	71	Power
+Chorus1	8	まだ 終わらないで	ま	a	note	47	1.0	88320	480	C#5	73	Power
+Chorus1	8	まだ 終わらないで	だ	a	note	47	2.0	88800	480	B4	71	Power
+Chorus1	8	まだ 終わらないで	お	o	note	47	3.0	89280	240	A4	69	Power
+Chorus1	8	まだ 終わらないで	わ	a	note	47	3.5	89520	240	B4	71	Power
+Chorus1	8	まだ 終わらないで	ら	a	note	47	4.0	89760	240	C#5	73	Power
+Chorus1	8	まだ 終わらないで	な	a	note	47	4.5	90000	480	B4	71	Power
+Chorus1	8	まだ 終わらないで	い	i	note	48	1.5	90480	240	A4	69	Power
+Chorus1	8	まだ 終わらないで	で	e	note	48	2.0	90720	1200	A4	69	Power
+Drop1	1	も・も・も・もう一回（刻み）	も	o	note	49	1.0	92160	240	E4	64	Power
+Drop1	1	も・も・も・もう一回（刻み）	も	o	note	49	2.0	92640	240	E4	64	Power
+Drop1	1	も・も・も・もう一回（刻み）	も	o	note	49	3.0	93120	240	E4	64	Power
+Drop1	1	も・も・も・もう一回（刻み）	も	o	note	50	1.0	94080	240	E4	64	Power
+Drop1	1	も・も・も・もう一回（刻み）	う	u	note	50	1.5	94320	240	F#4	66	Power
+Drop1	1	も・も・も・もう一回（刻み）	い	i	note	50	2.0	94560	120	A4	69	Power
+Drop1	1	も・も・も・もう一回（刻み）	っ	Q	closure	50	2.25	94680	120			Power
+Drop1	1	も・も・も・もう一回（刻み）	か	a	note	50	2.5	94800	480	C#5	73	Power
+Drop1	1	も・も・も・もう一回（刻み）	い	i	note	50	3.5	95280	480	B4	71	Power
+Drop1	2	い・い・一回（刻み）	い	i	note	51	2.0	96480	240	A4	69	Power
+Drop1	2	い・い・一回（刻み）	い	i	note	51	3.0	96960	240	A4	69	Power
+Drop1	2	い・い・一回（刻み）	い	i	note	52	2.0	98400	120	A4	69	Power
+Drop1	2	い・い・一回（刻み）	っ	Q	closure	52	2.25	98520	120			Power
+Drop1	2	い・い・一回（刻み）	か	a	note	52	2.5	98640	480	C#5	73	Power
+Drop1	2	い・い・一回（刻み）	い	i	note	52	3.5	99120	480	B4	71	Power
+Drop1	3	も・も・も・もう一回（刻み）	も	o	note	53	1.0	99840	240	E4	64	Power
+Drop1	3	も・も・も・もう一回（刻み）	も	o	note	53	2.0	100320	240	E4	64	Power
+Drop1	3	も・も・も・もう一回（刻み）	も	o	note	53	3.0	100800	240	E4	64	Power
+Drop1	3	も・も・も・もう一回（刻み）	も	o	note	54	1.0	101760	240	E4	64	Power
+Drop1	3	も・も・も・もう一回（刻み）	う	u	note	54	1.5	102000	240	F#4	66	Power
+Drop1	3	も・も・も・もう一回（刻み）	い	i	note	54	2.0	102240	120	A4	69	Power
+Drop1	3	も・も・も・もう一回（刻み）	っ	Q	closure	54	2.25	102360	120			Power
+Drop1	3	も・も・も・もう一回（刻み）	か	a	note	54	2.5	102480	480	C#5	73	Power
+Drop1	3	も・も・も・もう一回（刻み）	い	i	note	54	3.5	102960	480	B4	71	Power
+Drop1	4	一回 一回 一回	い	i	note	55	1.0	103680	120	A4	69	Power
+Drop1	4	一回 一回 一回	っ	Q	closure	55	1.25	103800	120			Power
+Drop1	4	一回 一回 一回	か	a	note	55	1.5	103920	480	C#5	73	Power
+Drop1	4	一回 一回 一回	い	i	note	55	2.5	104400	240	B4	71	Power
+Drop1	4	一回 一回 一回	い	i	note	55	3.0	104640	120	A4	69	Power
+Drop1	4	一回 一回 一回	っ	Q	closure	55	3.25	104760	120			Power
+Drop1	4	一回 一回 一回	か	a	note	55	3.5	104880	480	C#5	73	Power
+Drop1	4	一回 一回 一回	い	i	note	55	4.5	105360	240	B4	71	Power
+Drop1	4	一回 一回 一回	い	i	note	56	1.0	105600	120	A4	69	Power
+Drop1	4	一回 一回 一回	っ	Q	closure	56	1.25	105720	120			Power
+Drop1	4	一回 一回 一回	か	a	note	56	1.5	105840	480	C#5	73	Power
+Drop1	4	一回 一回 一回	い	i	note	56	2.5	106320	720	B4	71	Power
+A2	1	君の言葉は「またね」だけ	き	i	note	57	1.0	107520	240	C#4	61	Standard
+A2	1	君の言葉は「またね」だけ	み	i	note	57	1.5	107760	240	C#4	61	Standard
+A2	1	君の言葉は「またね」だけ	の	o	note	57	2.0	108000	240	E4	64	Standard
+A2	1	君の言葉は「またね」だけ	こ	o	note	57	2.5	108240	240	F#4	66	Standard
+A2	1	君の言葉は「またね」だけ	と	o	note	57	3.0	108480	240	F#4	66	Standard
+A2	1	君の言葉は「またね」だけ	ば	a	note	57	3.5	108720	240	E4	64	Standard
+A2	1	君の言葉は「またね」だけ	は	a	note	57	4.0	108960	360	F#4	66	Standard
+A2	1	君の言葉は「またね」だけ	ま	a	note	58	1.0	109440	240	A4	69	Standard
+A2	1	君の言葉は「またね」だけ	た	a	note	58	1.5	109680	240	A4	69	Standard
+A2	1	君の言葉は「またね」だけ	ね	e	note	58	2.0	109920	240	F#4	66	Standard
+A2	1	君の言葉は「またね」だけ	だ	a	note	58	2.5	110160	240	E4	64	Standard
+A2	1	君の言葉は「またね」だけ	け	e	note	58	3.0	110400	720	F#4	66	Standard
+A2	2	先は録音されてない	さ	a	note	59	1.0	111360	240	C#4	61	Standard
+A2	2	先は録音されてない	き	i	note	59	1.5	111600	240	E4	64	Standard
+A2	2	先は録音されてない	は	a	note	59	2.0	111840	240	E4	64	Standard
+A2	2	先は録音されてない	ろ	o	note	59	2.5	112080	240	F#4	66	Standard
+A2	2	先は録音されてない	く	u	note	59	3.0	112320	240	G#4	68	Standard
+A2	2	先は録音されてない	お	o	note	59	3.5	112560	240	F#4	66	Standard
+A2	2	先は録音されてない	ん	N	note	59	4.0	112800	240	E4	64	Standard
+A2	2	先は録音されてない	さ	a	note	60	1.0	113280	240	G#4	68	Standard
+A2	2	先は録音されてない	れ	e	note	60	1.5	113520	240	F#4	66	Standard
+A2	2	先は録音されてない	て	e	note	60	2.0	113760	240	F#4	66	Standard
+A2	2	先は録音されてない	な	a	note	60	2.5	114000	720	E4	64	Standard
+A2	2	先は録音されてない	い	i	note	60	4.0	114720	240	C#4	61	Standard
+A2	3	だから「またね」の手前まで	だ	a	note	61	1.0	115200	240	C#4	61	Standard
+A2	3	だから「またね」の手前まで	か	a	note	61	1.5	115440	240	C#4	61	Standard
+A2	3	だから「またね」の手前まで	ら	a	note	61	2.0	115680	240	E4	64	Standard
+A2	3	だから「またね」の手前まで	ま	a	note	61	2.5	115920	240	F#4	66	Standard
+A2	3	だから「またね」の手前まで	た	a	note	61	3.0	116160	240	F#4	66	Standard
+A2	3	だから「またね」の手前まで	ね	e	note	61	3.5	116400	240	E4	64	Standard
+A2	3	だから「またね」の手前まで	の	o	note	61	4.0	116640	360	F#4	66	Standard
+A2	3	だから「またね」の手前まで	て	e	note	62	1.0	117120	240	A4	69	Standard
+A2	3	だから「またね」の手前まで	ま	a	note	62	1.5	117360	240	A4	69	Standard
+A2	3	だから「またね」の手前まで	え	e	note	62	2.0	117600	240	F#4	66	Standard
+A2	3	だから「またね」の手前まで	ま	a	note	62	2.5	117840	240	E4	64	Standard
+A2	3	だから「またね」の手前まで	で	e	note	62	3.0	118080	720	F#4	66	Standard
+A2	4	何度でもまた 戻ってく	な	a	note	63	1.0	119040	240	C#4	61	Standard
+A2	4	何度でもまた 戻ってく	ん	N	note	63	1.5	119280	240	E4	64	Standard
+A2	4	何度でもまた 戻ってく	ど	o	note	63	2.0	119520	240	E4	64	Standard
+A2	4	何度でもまた 戻ってく	で	e	note	63	2.5	119760	240	F#4	66	Standard
+A2	4	何度でもまた 戻ってく	も	o	note	63	3.0	120000	240	G#4	68	Standard
+A2	4	何度でもまた 戻ってく	ま	a	note	63	3.5	120240	240	F#4	66	Standard
+A2	4	何度でもまた 戻ってく	た	a	note	63	4.0	120480	360	E4	64	Standard
+A2	4	何度でもまた 戻ってく	も	o	note	64	1.0	120960	240	G#4	68	Standard
+A2	4	何度でもまた 戻ってく	ど	o	note	64	1.5	121200	360	F#4	66	Standard
+A2	4	何度でもまた 戻ってく	っ	Q	closure	64	2.25	121560	120			Standard
+A2	4	何度でもまた 戻ってく	て	e	note	64	2.5	121680	720	E4	64	Standard
+A2	4	何度でもまた 戻ってく	く	u	note	64	4.0	122400	240	E4	64	Standard
+B2	1	何回目かは 忘れても	な	a	note	65	1.0	122880	240	E4	64	Standard
+B2	1	何回目かは 忘れても	ん	N	note	65	1.5	123120	240	E4	64	Standard
+B2	1	何回目かは 忘れても	か	a	note	65	2.0	123360	240	F#4	66	Standard
+B2	1	何回目かは 忘れても	い	i	note	65	2.5	123600	240	F#4	66	Standard
+B2	1	何回目かは 忘れても	め	e	note	65	3.0	123840	240	A4	69	Standard
+B2	1	何回目かは 忘れても	か	a	note	65	3.5	124080	240	F#4	66	Standard
+B2	1	何回目かは 忘れても	は	a	note	65	4.0	124320	360	E4	64	Standard
+B2	1	何回目かは 忘れても	わ	a	note	66	1.0	124800	240	F#4	66	Standard
+B2	1	何回目かは 忘れても	す	u	note	66	1.5	125040	240	F#4	66	Standard
+B2	1	何回目かは 忘れても	れ	e	note	66	2.0	125280	240	A4	69	Standard
+B2	1	何回目かは 忘れても	て	e	note	66	2.5	125520	240	A4	69	Standard
+B2	1	何回目かは 忘れても	も	o	note	66	3.0	125760	480	B4	71	Standard
+B2	2	数えるたびに ずれていく	か	a	note	67	1.0	126720	240	F#4	66	Standard
+B2	2	数えるたびに ずれていく	ぞ	o	note	67	1.5	126960	240	A4	69	Standard
+B2	2	数えるたびに ずれていく	え	e	note	67	2.0	127200	480	A4	69	Standard
+B2	2	数えるたびに ずれていく	る	u	note	67	3.0	127680	240	B4	71	Standard
+B2	2	数えるたびに ずれていく	た	a	note	67	3.5	127920	240	A4	69	Standard
+B2	2	数えるたびに ずれていく	び	i	note	67	4.0	128160	240	F#4	66	Standard
+B2	2	数えるたびに ずれていく	に	i	note	67	4.5	128400	240	E4	64	Standard
+B2	2	数えるたびに ずれていく	ず	u	note	68	1.0	128640	240	E4	64	Standard
+B2	2	数えるたびに ずれていく	れ	e	note	68	1.5	128880	480	F#4	66	Standard
+B2	2	数えるたびに ずれていく	て	e	note	68	2.5	129360	240	F#4	66	Standard
+B2	2	数えるたびに ずれていく	い	i	note	68	3.0	129600	240	E4	64	Standard
+B2	2	数えるたびに ずれていく	く	u	note	68	3.5	129840	240	E4	64	Standard
+B2	3	ノイズ混じりの「またね」が	の	o	note	69	1.0	130560	240	A4	69	Standard
+B2	3	ノイズ混じりの「またね」が	い	i	note	69	1.5	130800	240	A4	69	Standard
+B2	3	ノイズ混じりの「またね」が	ず	u	note	69	2.0	131040	240	B4	71	Standard
+B2	3	ノイズ混じりの「またね」が	ま	a	note	69	2.5	131280	480	A4	69	Standard
+B2	3	ノイズ混じりの「またね」が	じ	i	note	69	3.5	131760	240	F#4	66	Standard
+B2	3	ノイズ混じりの「またね」が	り	i	note	69	4.0	132000	240	F#4	66	Standard
+B2	3	ノイズ混じりの「またね」が	の	o	note	69	4.5	132240	240	A4	69	Standard
+B2	3	ノイズ混じりの「またね」が	ま	a	note	70	1.0	132480	240	B4	71	Standard
+B2	3	ノイズ混じりの「またね」が	た	a	note	70	1.5	132720	240	B4	71	Standard
+B2	3	ノイズ混じりの「またね」が	ね	e	note	70	2.0	132960	480	B4	71	Standard
+B2	3	ノイズ混じりの「またね」が	が	a	note	70	3.0	133440	480	A4	69	Standard
+B2	4	歌に 聞こえてきた	う	u	note	71	1.0	134400	240	F#4	66	Standard
+B2	4	歌に 聞こえてきた	た	a	note	71	1.5	134640	480	G#4	68	Standard
+B2	4	歌に 聞こえてきた	に	i	note	71	2.5	135120	240	F#4	66	Standard
+B2	4	歌に 聞こえてきた	き	i	note	71	3.5	135600	240	G#4	68	Standard
+B2	4	歌に 聞こえてきた	こ	o	note	71	4.0	135840	240	B4	71	Standard
+B2	4	歌に 聞こえてきた	え	e	note	71	4.5	136080	240	B4	71	Standard
+B2	4	歌に 聞こえてきた	て	e	note	72	1.0	136320	240	G#4	68	Standard
+B2	4	歌に 聞こえてきた	き	i	note	72	1.5	136560	240	B4	71	Standard
+B2	4	歌に 聞こえてきた	た	a	note	72	2.0	136800	960	C#5	73	Standard
+Chorus2	1	もう一回 もう一回	も	o	note	73	1.0	138240	240	E4	64	Power
+Chorus2	1	もう一回 もう一回	う	u	note	73	1.5	138480	240	F#4	66	Power
+Chorus2	1	もう一回 もう一回	い	i	note	73	2.0	138720	120	A4	69	Power
+Chorus2	1	もう一回 もう一回	っ	Q	closure	73	2.25	138840	120			Power
+Chorus2	1	もう一回 もう一回	か	a	note	73	2.5	138960	480	C#5	73	Power
+Chorus2	1	もう一回 もう一回	い	i	note	73	3.5	139440	480	B4	71	Power
+Chorus2	1	もう一回 もう一回	も	o	note	74	1.0	140160	240	E4	64	Power
+Chorus2	1	もう一回 もう一回	う	u	note	74	1.5	140400	240	F#4	66	Power
+Chorus2	1	もう一回 もう一回	い	i	note	74	2.0	140640	120	A4	69	Power
+Chorus2	1	もう一回 もう一回	っ	Q	closure	74	2.25	140760	120			Power
+Chorus2	1	もう一回 もう一回	か	a	note	74	2.5	140880	480	C#5	73	Power
+Chorus2	1	もう一回 もう一回	い	i	note	74	3.5	141360	480	B4	71	Power
+Chorus2	2	同じ一秒を 鳴らして	お	o	note	75	1.0	142080	240	G#4	68	Power
+Chorus2	2	同じ一秒を 鳴らして	な	a	note	75	1.5	142320	240	A4	69	Power
+Chorus2	2	同じ一秒を 鳴らして	じ	i	note	75	2.0	142560	240	B4	71	Power
+Chorus2	2	同じ一秒を 鳴らして	い	i	note	75	2.5	142800	240	B4	71	Power
+Chorus2	2	同じ一秒を 鳴らして	ち	i	note	75	3.0	143040	240	A4	69	Power
+Chorus2	2	同じ一秒を 鳴らして	びょ	o	note	75	3.5	143280	240	G#4	68	Power
+Chorus2	2	同じ一秒を 鳴らして	う	u	note	75	4.0	143520	240	G#4	68	Power
+Chorus2	2	同じ一秒を 鳴らして	を	o	note	75	4.5	143760	240	E4	64	Power
+Chorus2	2	同じ一秒を 鳴らして	な	a	note	76	1.0	144000	480	F#4	66	Power
+Chorus2	2	同じ一秒を 鳴らして	ら	a	note	76	2.0	144480	240	A4	69	Power
+Chorus2	2	同じ一秒を 鳴らして	し	i	note	76	2.5	144720	240	G#4	68	Power
+Chorus2	2	同じ一秒を 鳴らして	て	e	note	76	3.0	144960	720	F#4	66	Power
+Chorus2	3	もう一回 もう一回	も	o	note	77	1.0	145920	240	E4	64	Power
+Chorus2	3	もう一回 もう一回	う	u	note	77	1.5	146160	240	F#4	66	Power
+Chorus2	3	もう一回 もう一回	い	i	note	77	2.0	146400	120	A4	69	Power
+Chorus2	3	もう一回 もう一回	っ	Q	closure	77	2.25	146520	120			Power
+Chorus2	3	もう一回 もう一回	か	a	note	77	2.5	146640	480	C#5	73	Power
+Chorus2	3	もう一回 もう一回	い	i	note	77	3.5	147120	480	B4	71	Power
+Chorus2	3	もう一回 もう一回	も	o	note	78	1.0	147840	240	E4	64	Power
+Chorus2	3	もう一回 もう一回	う	u	note	78	1.5	148080	240	F#4	66	Power
+Chorus2	3	もう一回 もう一回	い	i	note	78	2.0	148320	120	A4	69	Power
+Chorus2	3	もう一回 もう一回	っ	Q	closure	78	2.25	148440	120			Power
+Chorus2	3	もう一回 もう一回	か	a	note	78	2.5	148560	480	C#5	73	Power
+Chorus2	3	もう一回 もう一回	い	i	note	78	3.5	149040	480	B4	71	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	す	u	note	79	1.0	149760	240	G#4	68	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	り	i	note	79	1.5	150000	240	A4	69	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	へ	e	note	79	2.0	150240	240	B4	71	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	る	u	note	79	2.5	150480	240	C#5	73	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	ほ	o	note	79	3.0	150720	240	C#5	73	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	ど	o	note	79	3.5	150960	480	B4	71	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	に	i	note	79	4.5	151440	240	A4	69	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	あ	a	note	80	1.0	151680	240	A4	69	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	ざ	a	note	80	1.5	151920	240	B4	71	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	や	a	note	80	2.0	152160	240	C#5	73	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	か	a	note	80	2.5	152400	240	B4	71	Power
+Chorus2	4	擦り減るほどに 鮮やかだ	だ	a	note	80	3.0	152640	720	A4	69	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	く	u	note	81	1.0	153600	240	F#4	66	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	り	i	note	81	1.5	153840	240	F#4	66	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	か	a	note	81	2.0	154080	240	A4	69	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	え	e	note	81	2.5	154320	240	A4	69	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	す	u	note	81	3.0	154560	240	B4	71	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	だ	a	note	81	3.5	154800	240	A4	69	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	け	e	note	81	4.0	155040	360	A4	69	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	く	u	note	82	1.0	155520	240	G#4	68	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	り	i	note	82	1.5	155760	240	G#4	68	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	か	a	note	82	2.0	156000	240	B4	71	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	え	e	note	82	2.5	156240	240	B4	71	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	す	u	note	82	3.0	156480	240	C#5	73	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	だ	a	note	82	3.5	156720	240	B4	71	Power
+Chorus2	5	繰り返すだけ 繰り返すだけ	け	e	note	82	4.0	156960	360	B4	71	Power
+Chorus2	6	別の何かに 変わるまで	べ	e	note	83	1.0	157440	240	C#5	73	Power
+Chorus2	6	別の何かに 変わるまで	つ	u	note	83	1.5	157680	240	B4	71	Power
+Chorus2	6	別の何かに 変わるまで	の	o	note	83	2.0	157920	240	A4	69	Power
+Chorus2	6	別の何かに 変わるまで	な	a	note	83	2.5	158160	480	G#4	68	Power
+Chorus2	6	別の何かに 変わるまで	に	i	note	83	3.5	158640	240	G#4	68	Power
+Chorus2	6	別の何かに 変わるまで	か	a	note	83	4.0	158880	240	A4	69	Power
+Chorus2	6	別の何かに 変わるまで	に	i	note	83	4.5	159120	240	B4	71	Power
+Chorus2	6	別の何かに 変わるまで	か	a	note	84	1.0	159360	240	A4	69	Power
+Chorus2	6	別の何かに 変わるまで	わ	a	note	84	1.5	159600	240	G#4	68	Power
+Chorus2	6	別の何かに 変わるまで	る	u	note	84	2.0	159840	240	F#4	66	Power
+Chorus2	6	別の何かに 変わるまで	ま	a	note	84	2.5	160080	240	A4	69	Power
+Chorus2	6	別の何かに 変わるまで	で	e	note	84	3.0	160320	720	G#4	68	Power
+Chorus2	7	もう一回 もう一回	も	o	note	85	1.0	161280	240	E4	64	Power
+Chorus2	7	もう一回 もう一回	う	u	note	85	1.5	161520	240	F#4	66	Power
+Chorus2	7	もう一回 もう一回	い	i	note	85	2.0	161760	120	A4	69	Power
+Chorus2	7	もう一回 もう一回	っ	Q	closure	85	2.25	161880	120			Power
+Chorus2	7	もう一回 もう一回	か	a	note	85	2.5	162000	480	C#5	73	Power
+Chorus2	7	もう一回 もう一回	い	i	note	85	3.5	162480	480	B4	71	Power
+Chorus2	7	もう一回 もう一回	も	o	note	86	1.0	163200	240	E4	64	Power
+Chorus2	7	もう一回 もう一回	う	u	note	86	1.5	163440	240	F#4	66	Power
+Chorus2	7	もう一回 もう一回	い	i	note	86	2.0	163680	120	A4	69	Power
+Chorus2	7	もう一回 もう一回	っ	Q	closure	86	2.25	163800	120			Power
+Chorus2	7	もう一回 もう一回	か	a	note	86	2.5	163920	480	C#5	73	Power
+Chorus2	7	もう一回 もう一回	い	i	note	86	3.5	164400	480	B4	71	Power
+Chorus2	8	まだ 止まらないで	ま	a	note	87	1.0	165120	480	C#5	73	Power
+Chorus2	8	まだ 止まらないで	だ	a	note	87	2.0	165600	480	B4	71	Power
+Chorus2	8	まだ 止まらないで	と	o	note	87	3.0	166080	240	A4	69	Power
+Chorus2	8	まだ 止まらないで	ま	a	note	87	3.5	166320	240	B4	71	Power
+Chorus2	8	まだ 止まらないで	ら	a	note	87	4.0	166560	240	C#5	73	Power
+Chorus2	8	まだ 止まらないで	な	a	note	87	4.5	166800	480	B4	71	Power
+Chorus2	8	まだ 止まらないで	い	i	note	88	1.5	167280	240	A4	69	Power
+Chorus2	8	まだ 止まらないで	で	e	note	88	2.0	167520	1200	A4	69	Power
+Bridge	1	本当は 分かってる	ほ	o	note	89	1.0	168960	480	F#4	66	Soft
+Bridge	1	本当は 分かってる	ん	N	note	89	2.0	169440	240	F#4	66	Soft
+Bridge	1	本当は 分かってる	と	o	note	89	2.5	169680	240	E4	64	Soft
+Bridge	1	本当は 分かってる	は	a	note	89	3.0	169920	720	D4	62	Soft
+Bridge	1	本当は 分かってる	わ	a	note	90	1.0	170880	240	D4	62	Soft
+Bridge	1	本当は 分かってる	か	a	note	90	1.5	171120	360	E4	64	Soft
+Bridge	1	本当は 分かってる	っ	Q	closure	90	2.25	171480	120			Soft
+Bridge	1	本当は 分かってる	て	e	note	90	2.5	171600	720	D4	62	Soft
+Bridge	1	本当は 分かってる	る	u	note	90	4.0	172320	240	B3	59	Soft
+Bridge	2	これは 君じゃない	こ	o	note	91	1.0	172800	480	E4	64	Soft
+Bridge	2	これは 君じゃない	れ	e	note	91	2.0	173280	240	E4	64	Soft
+Bridge	2	これは 君じゃない	は	a	note	91	2.5	173520	720	C#4	61	Soft
+Bridge	2	これは 君じゃない	き	i	note	92	1.0	174720	240	C#4	61	Soft
+Bridge	2	これは 君じゃない	み	i	note	92	1.5	174960	240	E4	64	Soft
+Bridge	2	これは 君じゃない	じゃ	a	note	92	2.0	175200	720	E4	64	Soft
+Bridge	2	これは 君じゃない	な	a	note	92	3.5	175920	240	C#4	61	Soft
+Bridge	2	これは 君じゃない	い	i	note	92	4.0	176160	240	B3	59	Soft
+Bridge	3	空気が 震えた 跡	く	u	note	93	1.0	176640	240	A3	57	Soft
+Bridge	3	空気が 震えた 跡	う	u	note	93	1.5	176880	240	A3	57	Soft
+Bridge	3	空気が 震えた 跡	き	i	note	93	2.0	177120	240	B3	59	Soft
+Bridge	3	空気が 震えた 跡	が	a	note	93	2.5	177360	720	D4	62	Soft
+Bridge	3	空気が 震えた 跡	ふ	u	note	94	1.0	178560	240	D4	62	Soft
+Bridge	3	空気が 震えた 跡	る	u	note	94	1.5	178800	240	E4	64	Soft
+Bridge	3	空気が 震えた 跡	え	e	note	94	2.0	179040	240	F#4	66	Soft
+Bridge	3	空気が 震えた 跡	た	a	note	94	2.5	179280	240	E4	64	Soft
+Bridge	3	空気が 震えた 跡	あ	a	note	94	3.5	179760	240	D4	62	Soft
+Bridge	3	空気が 震えた 跡	と	o	note	94	4.0	180000	240	D4	62	Soft
+Bridge	4	それでも	そ	o	note	95	1.0	180480	480	B3	59	Soft
+Bridge	4	それでも	れ	e	note	95	2.0	180960	480	D4	62	Soft
+Bridge	4	それでも	で	e	note	95	3.0	181440	960	E4	64	Soft
+Bridge	4	それでも	も	o	note	96	1.0	182400	1440	E4	64	Soft
+Bridge	5	繰り返すたび	く	u	note	97	1.0	184320	240	D4	62	Emotional
+Bridge	5	繰り返すたび	り	i	note	97	1.5	184560	240	D4	62	Emotional
+Bridge	5	繰り返すたび	か	a	note	97	2.0	184800	480	F#4	66	Emotional
+Bridge	5	繰り返すたび	え	e	note	97	3.0	185280	480	E4	64	Emotional
+Bridge	5	繰り返すたび	す	u	note	97	4.0	185760	240	D4	62	Emotional
+Bridge	5	繰り返すたび	た	a	note	98	1.0	186240	960	D4	62	Emotional
+Bridge	5	繰り返すたび	び	i	note	98	3.0	187200	480	C#4	61	Emotional
+Bridge	6	少しだけ 違って 聞こえる	す	u	note	99	1.0	188160	240	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	こ	o	note	99	1.5	188400	240	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	し	i	note	99	2.0	188640	120	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	だ	a	note	99	2.25	188760	360	F#4	66	Emotional
+Bridge	6	少しだけ 違って 聞こえる	け	e	note	99	3.0	189120	480	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	ち	i	note	99	4.0	189600	240	C#4	61	Emotional
+Bridge	6	少しだけ 違って 聞こえる	が	a	note	99	4.5	189840	240	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	っ	Q	closure	100	1.0	190080	120			Emotional
+Bridge	6	少しだけ 違って 聞こえる	て	e	note	100	1.25	190200	360	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	き	i	note	100	2.0	190560	240	C#4	61	Emotional
+Bridge	6	少しだけ 違って 聞こえる	こ	o	note	100	2.5	190800	240	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	え	e	note	100	3.0	191040	480	E4	64	Emotional
+Bridge	6	少しだけ 違って 聞こえる	る	u	note	100	4.0	191520	240	C#4	61	Emotional
+Bridge	7	その少しを 集めて	そ	o	note	101	1.0	192000	240	D4	62	Emotional
+Bridge	7	その少しを 集めて	の	o	note	101	1.5	192240	480	E4	64	Emotional
+Bridge	7	その少しを 集めて	す	u	note	101	2.5	192720	240	F#4	66	Emotional
+Bridge	7	その少しを 集めて	こ	o	note	101	3.0	192960	240	F#4	66	Emotional
+Bridge	7	その少しを 集めて	し	i	note	101	3.5	193200	240	E4	64	Emotional
+Bridge	7	その少しを 集めて	を	o	note	101	4.0	193440	480	D4	62	Emotional
+Bridge	7	その少しを 集めて	あ	a	note	102	1.0	193920	480	D4	62	Emotional
+Bridge	7	その少しを 集めて	つ	u	note	102	2.0	194400	240	E4	64	Emotional
+Bridge	7	その少しを 集めて	め	e	note	102	2.5	194640	480	F#4	66	Emotional
+Bridge	7	その少しを 集めて	て	e	note	102	3.5	195120	480	E4	64	Emotional
+Bridge	8	今 歌に してる	い	i	note	103	1.0	195840	240	E4	64	Emotional
+Bridge	8	今 歌に してる	ま	a	note	103	1.5	196080	720	F#4	66	Emotional
+Bridge	8	今 歌に してる	う	u	note	103	3.0	196800	240	E4	64	Emotional
+Bridge	8	今 歌に してる	た	a	note	103	3.5	197040	480	F#4	66	Emotional
+Bridge	8	今 歌に してる	に	i	note	103	4.5	197520	240	E4	64	Emotional
+Bridge	8	今 歌に してる	し	i	note	104	1.0	197760	240	E4	64	Emotional
+Bridge	8	今 歌に してる	て	e	note	104	1.5	198000	960	E4	64	Emotional
+Bridge	8	今 歌に してる	る	u	note	104	3.5	198960	240	E4	64	Emotional
+Break	1	も・も・も・もう一回（刻み、加速）	も	o	note	105	1.0	199680	480	E4	64	Power
+Break	1	も・も・も・もう一回（刻み、加速）	も	o	note	105	2.0	200160	480	E4	64	Power
+Break	1	も・も・も・もう一回（刻み、加速）	も	o	note	105	3.0	200640	480	E4	64	Power
+Break	1	も・も・も・もう一回（刻み、加速）	も	o	note	106	1.0	201600	240	E4	64	Power
+Break	1	も・も・も・もう一回（刻み、加速）	う	u	note	106	1.5	201840	240	F#4	66	Power
+Break	1	も・も・も・もう一回（刻み、加速）	い	i	note	106	2.0	202080	120	A4	69	Power
+Break	1	も・も・も・もう一回（刻み、加速）	っ	Q	closure	106	2.25	202200	120			Power
+Break	1	も・も・も・もう一回（刻み、加速）	か	a	note	106	2.5	202320	480	C#5	73	Power
+Break	1	も・も・も・もう一回（刻み、加速）	い	i	note	106	3.5	202800	480	B4	71	Power
+Break	2	も・も・も・もう一回（刻み、加速）	も	o	note	107	3.0	204480	240	E4	64	Power
+Break	2	も・も・も・もう一回（刻み、加速）	も	o	note	107	3.5	204720	240	E4	64	Power
+Break	2	も・も・も・もう一回（刻み、加速）	も	o	note	107	4.0	204960	240	E4	64	Power
+Break	2	も・も・も・もう一回（刻み、加速）	も	o	note	108	1.0	205440	240	E4	64	Power
+Break	2	も・も・も・もう一回（刻み、加速）	う	u	note	108	1.5	205680	240	F#4	66	Power
+Break	2	も・も・も・もう一回（刻み、加速）	い	i	note	108	2.0	205920	120	A4	69	Power
+Break	2	も・も・も・もう一回（刻み、加速）	っ	Q	closure	108	2.25	206040	120			Power
+Break	2	も・も・も・もう一回（刻み、加速）	か	a	note	108	2.5	206160	480	C#5	73	Power
+Break	2	も・も・も・もう一回（刻み、加速）	い	i	note	108	3.5	206640	480	B4	71	Power
+Break	3	もう一回 もう一回	も	o	note	109	1.0	207360	240	E4	64	Power
+Break	3	もう一回 もう一回	う	u	note	109	1.5	207600	240	F#4	66	Power
+Break	3	もう一回 もう一回	い	i	note	109	2.0	207840	120	A4	69	Power
+Break	3	もう一回 もう一回	っ	Q	closure	109	2.25	207960	120			Power
+Break	3	もう一回 もう一回	か	a	note	109	2.5	208080	480	C#5	73	Power
+Break	3	もう一回 もう一回	い	i	note	109	3.5	208560	480	B4	71	Power
+Break	3	もう一回 もう一回	も	o	note	110	1.0	209280	240	E4	64	Power
+Break	3	もう一回 もう一回	う	u	note	110	1.5	209520	240	F#4	66	Power
+Break	3	もう一回 もう一回	い	i	note	110	2.0	209760	120	A4	69	Power
+Break	3	もう一回 もう一回	っ	Q	closure	110	2.25	209880	120			Power
+Break	3	もう一回 もう一回	か	a	note	110	2.5	210000	480	C#5	73	Power
+Break	3	もう一回 もう一回	い	i	note	110	3.5	210480	480	B4	71	Power
+LastChorus	1	もう一回 もう一回	も	o	note	113	1.0	215040	240	E4	64	Power
+LastChorus	1	もう一回 もう一回	う	u	note	113	1.5	215280	240	F#4	66	Power
+LastChorus	1	もう一回 もう一回	い	i	note	113	2.0	215520	120	A4	69	Power
+LastChorus	1	もう一回 もう一回	っ	Q	closure	113	2.25	215640	120			Power
+LastChorus	1	もう一回 もう一回	か	a	note	113	2.5	215760	480	C#5	73	Power
+LastChorus	1	もう一回 もう一回	い	i	note	113	3.5	216240	480	B4	71	Power
+LastChorus	1	もう一回 もう一回	も	o	note	114	1.0	216960	240	E4	64	Power
+LastChorus	1	もう一回 もう一回	う	u	note	114	1.5	217200	240	F#4	66	Power
+LastChorus	1	もう一回 もう一回	い	i	note	114	2.0	217440	120	A4	69	Power
+LastChorus	1	もう一回 もう一回	っ	Q	closure	114	2.25	217560	120			Power
+LastChorus	1	もう一回 もう一回	か	a	note	114	2.5	217680	480	C#5	73	Power
+LastChorus	1	もう一回 もう一回	い	i	note	114	3.5	218160	480	B4	71	Power
+LastChorus	2	同じ一秒を 鳴らして	お	o	note	115	1.0	218880	240	G#4	68	Power
+LastChorus	2	同じ一秒を 鳴らして	な	a	note	115	1.5	219120	240	A4	69	Power
+LastChorus	2	同じ一秒を 鳴らして	じ	i	note	115	2.0	219360	240	B4	71	Power
+LastChorus	2	同じ一秒を 鳴らして	い	i	note	115	2.5	219600	240	B4	71	Power
+LastChorus	2	同じ一秒を 鳴らして	ち	i	note	115	3.0	219840	240	A4	69	Power
+LastChorus	2	同じ一秒を 鳴らして	びょ	o	note	115	3.5	220080	240	G#4	68	Power
+LastChorus	2	同じ一秒を 鳴らして	う	u	note	115	4.0	220320	240	G#4	68	Power
+LastChorus	2	同じ一秒を 鳴らして	を	o	note	115	4.5	220560	240	E4	64	Power
+LastChorus	2	同じ一秒を 鳴らして	な	a	note	116	1.0	220800	480	F#4	66	Power
+LastChorus	2	同じ一秒を 鳴らして	ら	a	note	116	2.0	221280	240	A4	69	Power
+LastChorus	2	同じ一秒を 鳴らして	し	i	note	116	2.5	221520	240	G#4	68	Power
+LastChorus	2	同じ一秒を 鳴らして	て	e	note	116	3.0	221760	720	F#4	66	Power
+LastChorus	3	もう一回 もう一回	も	o	note	117	1.0	222720	240	E4	64	Power
+LastChorus	3	もう一回 もう一回	う	u	note	117	1.5	222960	240	F#4	66	Power
+LastChorus	3	もう一回 もう一回	い	i	note	117	2.0	223200	120	A4	69	Power
+LastChorus	3	もう一回 もう一回	っ	Q	closure	117	2.25	223320	120			Power
+LastChorus	3	もう一回 もう一回	か	a	note	117	2.5	223440	480	C#5	73	Power
+LastChorus	3	もう一回 もう一回	い	i	note	117	3.5	223920	480	B4	71	Power
+LastChorus	3	もう一回 もう一回	も	o	note	118	1.0	224640	240	E4	64	Power
+LastChorus	3	もう一回 もう一回	う	u	note	118	1.5	224880	240	F#4	66	Power
+LastChorus	3	もう一回 もう一回	い	i	note	118	2.0	225120	120	A4	69	Power
+LastChorus	3	もう一回 もう一回	っ	Q	closure	118	2.25	225240	120			Power
+LastChorus	3	もう一回 もう一回	か	a	note	118	2.5	225360	480	C#5	73	Power
+LastChorus	3	もう一回 もう一回	い	i	note	118	3.5	225840	480	B4	71	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	す	u	note	119	1.0	226560	240	G#4	68	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	り	i	note	119	1.5	226800	240	A4	69	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	へ	e	note	119	2.0	227040	240	B4	71	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	る	u	note	119	2.5	227280	240	C#5	73	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	ほ	o	note	119	3.0	227520	240	C#5	73	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	ど	o	note	119	3.5	227760	480	B4	71	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	に	i	note	119	4.5	228240	240	A4	69	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	あ	a	note	120	1.0	228480	240	A4	69	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	ざ	a	note	120	1.5	228720	240	B4	71	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	や	a	note	120	2.0	228960	240	C#5	73	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	か	a	note	120	2.5	229200	240	B4	71	Power
+LastChorus	4	擦り減るほどに 鮮やかだ	だ	a	note	120	3.0	229440	720	A4	69	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	く	u	note	121	1.0	230400	240	F#4	66	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	り	i	note	121	1.5	230640	240	F#4	66	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	か	a	note	121	2.0	230880	240	A4	69	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	え	e	note	121	2.5	231120	240	A4	69	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	す	u	note	121	3.0	231360	240	B4	71	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	だ	a	note	121	3.5	231600	240	A4	69	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	け	e	note	121	4.0	231840	360	A4	69	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	く	u	note	122	1.0	232320	240	G#4	68	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	り	i	note	122	1.5	232560	240	G#4	68	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	か	a	note	122	2.0	232800	240	B4	71	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	え	e	note	122	2.5	233040	240	B4	71	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	す	u	note	122	3.0	233280	240	C#5	73	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	だ	a	note	122	3.5	233520	240	B4	71	Power
+LastChorus	5	繰り返すだけ 繰り返すだけ	け	e	note	122	4.0	233760	360	B4	71	Power
+LastChorus	6	別の何かに 変わるまで	べ	e	note	123	1.0	234240	240	C#5	73	Power
+LastChorus	6	別の何かに 変わるまで	つ	u	note	123	1.5	234480	240	B4	71	Power
+LastChorus	6	別の何かに 変わるまで	の	o	note	123	2.0	234720	240	A4	69	Power
+LastChorus	6	別の何かに 変わるまで	な	a	note	123	2.5	234960	480	G#4	68	Power
+LastChorus	6	別の何かに 変わるまで	に	i	note	123	3.5	235440	240	G#4	68	Power
+LastChorus	6	別の何かに 変わるまで	か	a	note	123	4.0	235680	240	A4	69	Power
+LastChorus	6	別の何かに 変わるまで	に	i	note	123	4.5	235920	240	B4	71	Power
+LastChorus	6	別の何かに 変わるまで	か	a	note	124	1.0	236160	240	A4	69	Power
+LastChorus	6	別の何かに 変わるまで	わ	a	note	124	1.5	236400	240	G#4	68	Power
+LastChorus	6	別の何かに 変わるまで	る	u	note	124	2.0	236640	240	F#4	66	Power
+LastChorus	6	別の何かに 変わるまで	ま	a	note	124	2.5	236880	240	A4	69	Power
+LastChorus	6	別の何かに 変わるまで	で	e	note	124	3.0	237120	720	G#4	68	Power
+LastChorus	7	もう一回 もう一回	も	o	note	125	1.0	238080	240	E4	64	Power
+LastChorus	7	もう一回 もう一回	う	u	note	125	1.5	238320	240	F#4	66	Power
+LastChorus	7	もう一回 もう一回	い	i	note	125	2.0	238560	120	A4	69	Power
+LastChorus	7	もう一回 もう一回	っ	Q	closure	125	2.25	238680	120			Power
+LastChorus	7	もう一回 もう一回	か	a	note	125	2.5	238800	480	C#5	73	Power
+LastChorus	7	もう一回 もう一回	い	i	note	125	3.5	239280	480	B4	71	Power
+LastChorus	7	もう一回 もう一回	も	o	note	126	1.0	240000	240	E4	64	Power
+LastChorus	7	もう一回 もう一回	う	u	note	126	1.5	240240	240	F#4	66	Power
+LastChorus	7	もう一回 もう一回	い	i	note	126	2.0	240480	120	A4	69	Power
+LastChorus	7	もう一回 もう一回	っ	Q	closure	126	2.25	240600	120			Power
+LastChorus	7	もう一回 もう一回	か	a	note	126	2.5	240720	480	C#5	73	Power
+LastChorus	7	もう一回 もう一回	い	i	note	126	3.5	241200	480	B4	71	Power
+LastChorus	8	ほら 歌に なった	ほ	o	note	127	1.0	241920	480	C#5	73	Power
+LastChorus	8	ほら 歌に なった	ら	a	note	127	2.0	242400	480	B4	71	Power
+LastChorus	8	ほら 歌に なった	う	u	note	127	3.0	242880	240	A4	69	Power
+LastChorus	8	ほら 歌に なった	た	a	note	127	3.5	243120	240	B4	71	Power
+LastChorus	8	ほら 歌に なった	に	i	note	127	4.0	243360	480	C#5	73	Power
+LastChorus	8	ほら 歌に なった	な	a	note	128	1.0	243840	360	D5	74	Power
+LastChorus	8	ほら 歌に なった	っ	Q	closure	128	1.75	244200	120			Power
+LastChorus	8	ほら 歌に なった	た	a	note	128	2.0	244320	1200	C#5	73	Power
+LastChorus	9	もう一回 もう一回	も	o	note	129	1.0	245760	240	E4	64	Power
+LastChorus	9	もう一回 もう一回	う	u	note	129	1.5	246000	240	F#4	66	Power
+LastChorus	9	もう一回 もう一回	い	i	note	129	2.0	246240	120	A4	69	Power
+LastChorus	9	もう一回 もう一回	っ	Q	closure	129	2.25	246360	120			Power
+LastChorus	9	もう一回 もう一回	か	a	note	129	2.5	246480	480	C#5	73	Power
+LastChorus	9	もう一回 もう一回	い	i	note	129	3.5	246960	480	B4	71	Power
+LastChorus	9	もう一回 もう一回	も	o	note	130	1.0	247680	240	E4	64	Power
+LastChorus	9	もう一回 もう一回	う	u	note	130	1.5	247920	240	F#4	66	Power
+LastChorus	9	もう一回 もう一回	い	i	note	130	2.0	248160	120	A4	69	Power
+LastChorus	9	もう一回 もう一回	っ	Q	closure	130	2.25	248280	120			Power
+LastChorus	9	もう一回 もう一回	か	a	note	130	2.5	248400	480	C#5	73	Power
+LastChorus	9	もう一回 もう一回	い	i	note	130	3.5	248880	480	B4	71	Power
+LastChorus	10	もう一回 もう一回	も	o	note	131	1.0	249600	240	E4	64	Power
+LastChorus	10	もう一回 もう一回	う	u	note	131	1.5	249840	240	F#4	66	Power
+LastChorus	10	もう一回 もう一回	い	i	note	131	2.0	250080	120	A4	69	Power
+LastChorus	10	もう一回 もう一回	っ	Q	closure	131	2.25	250200	120			Power
+LastChorus	10	もう一回 もう一回	か	a	note	131	2.5	250320	480	C#5	73	Power
+LastChorus	10	もう一回 もう一回	い	i	note	131	3.5	250800	480	B4	71	Power
+LastChorus	10	もう一回 もう一回	も	o	note	132	1.0	251520	240	E4	64	Power
+LastChorus	10	もう一回 もう一回	う	u	note	132	1.5	251760	240	F#4	66	Power
+LastChorus	10	もう一回 もう一回	い	i	note	132	2.0	252000	120	A4	69	Power
+LastChorus	10	もう一回 もう一回	っ	Q	closure	132	2.25	252120	120			Power
+LastChorus	10	もう一回 もう一回	か	a	note	132	2.5	252240	480	C#5	73	Power
+LastChorus	10	もう一回 もう一回	い	i	note	132	3.5	252720	480	B4	71	Power
+LastChorus	11	もう一回	も	o	note	133	1.0	253440	240	E4	64	Power
+LastChorus	11	もう一回	う	u	note	133	1.5	253680	240	F#4	66	Power
+LastChorus	11	もう一回	い	i	note	133	2.0	253920	120	A4	69	Power
+LastChorus	11	もう一回	っ	Q	closure	133	2.25	254040	120			Power
+LastChorus	11	もう一回	か	a	note	133	2.5	254160	480	C#5	73	Power
+LastChorus	11	もう一回	い	i	note	133	3.5	254640	480	B4	71	Power
+Outro	1	もう一回（歌→語り）	も	o	note	137	1.0	261120	240	F#4	66	Standard
+Outro	1	もう一回（歌→語り）	う	u	note	137	1.5	261360	240	F#4	66	Standard
+Outro	1	もう一回（歌→語り）	い	i	note	137	2.0	261600	120	G#4	68	Standard
+Outro	1	もう一回（歌→語り）	っ	Q	closure	137	2.25	261720	120			Standard
+Outro	1	もう一回（歌→語り）	か	a	note	137	2.5	261840	480	A4	69	Standard
+Outro	1	もう一回（歌→語り）	い	i	note	137	3.5	262320	480	G#4	68	Standard
+Outro	2	もう一回（語り）	も	o	note	139	1.0	264960	240	F#4	66	Soft
+Outro	2	もう一回（語り）	う	u	note	139	1.5	265200	240	F#4	66	Soft
+Outro	2	もう一回（語り）	い	i	note	139	2.0	265440	120	G#4	68	Soft
+Outro	2	もう一回（語り）	っ	Q	closure	139	2.25	265560	120			Soft
+Outro	2	もう一回（語り）	か	a	note	139	2.5	265680	480	F#4	66	Soft
+Outro	2	もう一回（語り）	い	i	note	139	3.5	266160	480	E4	64	Soft
+Outro	3	またね（語り、1回だけ）	ま	a	note	141	1.0	268800	240	F#4	66	Soft
+Outro	3	またね（語り、1回だけ）	た	a	note	141	1.5	269040	240	F#4	66	Soft
+Outro	3	またね（語り、1回だけ）	ね	e	note	141	2.0	269280	960	E4	64	Soft
