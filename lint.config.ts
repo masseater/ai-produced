@@ -1,3 +1,18 @@
+import remotion from "@remotion/eslint-plugin";
+
+type Rules = Readonly<Record<string, "error">>;
+
+const asErrors = (names: readonly string[]): Rules =>
+  Object.fromEntries(names.map((name) => [name, "error"] as const));
+
+const allRulesOf = ({
+  prefix,
+  plugin,
+}: Readonly<{ prefix: string; plugin: Readonly<{ rules: object }> }>): Rules =>
+  asErrors(Object.keys(plugin.rules).map((rule) => `${prefix}/${rule}`));
+
+const remotionRules = allRulesOf({ prefix: "@remotion", plugin: remotion });
+
 const REACT_STATE_HOOKS: readonly string[] = [
   "useState",
   "useReducer",
@@ -170,4 +185,5 @@ const generated = [
   "skills-lock.json",
 ];
 
-export { generated, requiredStack, restrictedImports };
+export { allRulesOf, asErrors, generated, remotionRules, requiredStack, restrictedImports };
+export type { Rules };

@@ -1,0 +1,7124 @@
+{
+ "bpm": 160,
+ "beatsPerBar": 4,
+ "bars": 144,
+ "hooks": 35,
+ "sections": [
+  {
+   "name": "Intro",
+   "startBar": 0,
+   "bars": 8
+  },
+  {
+   "name": "A1",
+   "startBar": 8,
+   "bars": 16
+  },
+  {
+   "name": "B1",
+   "startBar": 24,
+   "bars": 8
+  },
+  {
+   "name": "Chorus1",
+   "startBar": 32,
+   "bars": 16
+  },
+  {
+   "name": "Drop1",
+   "startBar": 48,
+   "bars": 8
+  },
+  {
+   "name": "A2",
+   "startBar": 56,
+   "bars": 8
+  },
+  {
+   "name": "B2",
+   "startBar": 64,
+   "bars": 8
+  },
+  {
+   "name": "Chorus2",
+   "startBar": 72,
+   "bars": 16
+  },
+  {
+   "name": "Bridge",
+   "startBar": 88,
+   "bars": 16
+  },
+  {
+   "name": "Break",
+   "startBar": 104,
+   "bars": 8
+  },
+  {
+   "name": "LastChorus",
+   "startBar": 112,
+   "bars": 24
+  },
+  {
+   "name": "Outro",
+   "startBar": 136,
+   "bars": 8
+  }
+ ],
+ "lines": [
+  {
+   "section": "Intro",
+   "index": 1,
+   "text": "もう一回",
+   "note": "語り",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 0,
+     "length": 2,
+     "hook": 1
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2,
+     "length": 2,
+     "hook": 1
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 4,
+     "length": 1,
+     "hook": 1
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 5,
+     "length": 1,
+     "hook": 1
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 6,
+     "length": 4,
+     "hook": 1
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 10,
+     "length": 4,
+     "hook": 1
+    }
+   ]
+  },
+  {
+   "section": "Intro",
+   "index": 2,
+   "text": "もう一回",
+   "note": "語り",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 32,
+     "length": 2,
+     "hook": 2
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 34,
+     "length": 2,
+     "hook": 2
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 36,
+     "length": 1,
+     "hook": 2
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 37,
+     "length": 1,
+     "hook": 2
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 38,
+     "length": 4,
+     "hook": 2
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 42,
+     "length": 4,
+     "hook": 2
+    }
+   ]
+  },
+  {
+   "section": "Intro",
+   "index": 3,
+   "text": "もう一回",
+   "note": "語り→歌",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 64,
+     "length": 2,
+     "hook": 3
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 66,
+     "length": 2,
+     "hook": 3
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 68,
+     "length": 1,
+     "hook": 3
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 69,
+     "length": 1,
+     "hook": 3
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 70,
+     "length": 4,
+     "hook": 3
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 74,
+     "length": 4,
+     "hook": 3
+    }
+   ]
+  },
+  {
+   "section": "Intro",
+   "index": 4,
+   "text": "もう一回",
+   "note": "歌",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 96,
+     "length": 2,
+     "hook": 4
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 98,
+     "length": 2,
+     "hook": 4
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 100,
+     "length": 1,
+     "hook": 4
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 101,
+     "length": 1,
+     "hook": 4
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 102,
+     "length": 4,
+     "hook": 4
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 106,
+     "length": 4,
+     "hook": 4
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 1,
+   "text": "三秒だけの 君の声",
+   "note": "",
+   "words": [
+    {
+     "text": "三秒だけの",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "君の声",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "さ",
+     "kind": "note",
+     "start": 128,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ん",
+     "kind": "note",
+     "start": 130,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "びょ",
+     "kind": "note",
+     "start": 132,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 134,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 136,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 138,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 140,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 144,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "み",
+     "kind": "note",
+     "start": 146,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 148,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 150,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 152,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 2,
+   "text": "擦り切れるまで 巻き戻す",
+   "note": "",
+   "words": [
+    {
+     "text": "擦り切れるまで",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "巻き戻す",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 160,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 162,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 164,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "れ",
+     "kind": "note",
+     "start": 166,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 168,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 170,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 172,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 176,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 178,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 180,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 182,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 188,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 3,
+   "text": "同じところで 笑うから",
+   "note": "",
+   "words": [
+    {
+     "text": "同じところで",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "笑うから",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 192,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 194,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "じ",
+     "kind": "note",
+     "start": 196,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 198,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 200,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ろ",
+     "kind": "note",
+     "start": 202,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 204,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 208,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 210,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 212,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 214,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 216,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 4,
+   "text": "同じところで 息をする",
+   "note": "",
+   "words": [
+    {
+     "text": "同じところで",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "息をする",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 224,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 226,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "じ",
+     "kind": "note",
+     "start": 228,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 230,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 232,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ろ",
+     "kind": "note",
+     "start": 234,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 236,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 240,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 242,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "を",
+     "kind": "note",
+     "start": 244,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 250,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 252,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 5,
+   "text": "窓の外では 日が落ちて",
+   "note": "",
+   "words": [
+    {
+     "text": "窓の外では",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "日が落ちて",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 256,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 258,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 260,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "そ",
+     "kind": "note",
+     "start": 262,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 264,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 266,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 268,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "ひ",
+     "kind": "note",
+     "start": 272,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "が",
+     "kind": "note",
+     "start": 274,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 276,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ち",
+     "kind": "note",
+     "start": 278,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 280,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 6,
+   "text": "予定がひとつ 増えてても",
+   "note": "",
+   "words": [
+    {
+     "text": "予定がひとつ",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "増えてても",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "よ",
+     "kind": "note",
+     "start": 288,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 290,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 292,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "が",
+     "kind": "note",
+     "start": 294,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ひ",
+     "kind": "note",
+     "start": 296,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 298,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "つ",
+     "kind": "note",
+     "start": 300,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ふ",
+     "kind": "note",
+     "start": 304,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 306,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 308,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 310,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 312,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 7,
+   "text": "僕の部屋だけ 回らない",
+   "note": "",
+   "words": [
+    {
+     "text": "僕の部屋だけ",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "回らない",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ぼ",
+     "kind": "note",
+     "start": 320,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 322,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 324,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "へ",
+     "kind": "note",
+     "start": 326,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "や",
+     "kind": "note",
+     "start": 328,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 330,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 332,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 336,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 338,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 340,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 342,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 348,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A1",
+   "index": 8,
+   "text": "指は知ってる 戻る場所",
+   "note": "",
+   "words": [
+    {
+     "text": "指は知ってる",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "戻る場所",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ゆ",
+     "kind": "note",
+     "start": 352,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "び",
+     "kind": "note",
+     "start": 354,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 356,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 358,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 359,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 360,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 364,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 368,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 370,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 372,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ば",
+     "kind": "note",
+     "start": 374,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "しょ",
+     "kind": "note",
+     "start": 376,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B1",
+   "index": 1,
+   "text": "何回目かは もう知らない",
+   "note": "",
+   "words": [
+    {
+     "text": "何回目かは",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "もう知らない",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 384,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ん",
+     "kind": "note",
+     "start": 386,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 388,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 390,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "め",
+     "kind": "note",
+     "start": 392,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 394,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 396,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 400,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 402,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 404,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 406,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 408,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 412,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B1",
+   "index": 2,
+   "text": "数えるたびに ずれていく",
+   "note": "",
+   "words": [
+    {
+     "text": "数えるたびに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "ずれていく",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 416,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ぞ",
+     "kind": "note",
+     "start": 418,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 420,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 424,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 426,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "び",
+     "kind": "note",
+     "start": 428,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 430,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ず",
+     "kind": "note",
+     "start": 432,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "れ",
+     "kind": "note",
+     "start": 434,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 438,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 440,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 442,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B1",
+   "index": 3,
+   "text": "同じはずの 言葉が",
+   "note": "",
+   "words": [
+    {
+     "text": "同じはずの",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "言葉が",
+     "morae": [
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 448,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 450,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "じ",
+     "kind": "note",
+     "start": 452,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 454,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "ず",
+     "kind": "note",
+     "start": 458,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 460,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 464,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 466,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ば",
+     "kind": "note",
+     "start": 468,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "が",
+     "kind": "note",
+     "start": 472,
+     "length": 4,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B1",
+   "index": 4,
+   "text": "歌に 聞こえてきた",
+   "note": "",
+   "words": [
+    {
+     "text": "歌に",
+     "morae": [
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "text": "聞こえてきた",
+     "morae": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 480,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 482,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 486,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 490,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 492,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 494,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 496,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 498,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 500,
+     "length": 8,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 1,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 512,
+     "length": 2,
+     "hook": 5
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 514,
+     "length": 2,
+     "hook": 5
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 516,
+     "length": 1,
+     "hook": 5
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 517,
+     "length": 1,
+     "hook": 5
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 518,
+     "length": 4,
+     "hook": 5
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 522,
+     "length": 4,
+     "hook": 5
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 528,
+     "length": 2,
+     "hook": 6
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 530,
+     "length": 2,
+     "hook": 6
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 532,
+     "length": 1,
+     "hook": 6
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 533,
+     "length": 1,
+     "hook": 6
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 534,
+     "length": 4,
+     "hook": 6
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 538,
+     "length": 4,
+     "hook": 6
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 2,
+   "text": "同じ一秒を 鳴らして",
+   "note": "",
+   "words": [
+    {
+     "text": "同じ一秒を",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "text": "鳴らして",
+     "morae": [
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 544,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 546,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "じ",
+     "kind": "note",
+     "start": 548,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 550,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ち",
+     "kind": "note",
+     "start": 552,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "びょ",
+     "kind": "note",
+     "start": 554,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 556,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "を",
+     "kind": "note",
+     "start": 558,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 560,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 564,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 566,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 568,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 3,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 576,
+     "length": 2,
+     "hook": 7
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 578,
+     "length": 2,
+     "hook": 7
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 580,
+     "length": 1,
+     "hook": 7
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 581,
+     "length": 1,
+     "hook": 7
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 582,
+     "length": 4,
+     "hook": 7
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 586,
+     "length": 4,
+     "hook": 7
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 592,
+     "length": 2,
+     "hook": 8
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 594,
+     "length": 2,
+     "hook": 8
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 596,
+     "length": 1,
+     "hook": 8
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 597,
+     "length": 1,
+     "hook": 8
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 598,
+     "length": 4,
+     "hook": 8
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 602,
+     "length": 4,
+     "hook": 8
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 4,
+   "text": "擦り減るほどに 鮮やかだ",
+   "note": "",
+   "words": [
+    {
+     "text": "擦り減るほどに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "鮮やかだ",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 608,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 610,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "へ",
+     "kind": "note",
+     "start": 612,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 614,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ほ",
+     "kind": "note",
+     "start": 616,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 618,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 622,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "あ",
+     "kind": "note",
+     "start": 624,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ざ",
+     "kind": "note",
+     "start": 626,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "や",
+     "kind": "note",
+     "start": 628,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 630,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 632,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 5,
+   "text": "繰り返すだけ 繰り返すだけ",
+   "note": "",
+   "words": [
+    {
+     "text": "繰り返すだけ",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "繰り返すだけ",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 640,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 642,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 644,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 646,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 648,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 650,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 652,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 656,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 658,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 660,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 662,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 664,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 666,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 668,
+     "length": 3,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 6,
+   "text": "別の何かに 変わるまで",
+   "note": "",
+   "words": [
+    {
+     "text": "別の何かに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "変わるまで",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "べ",
+     "kind": "note",
+     "start": 672,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "つ",
+     "kind": "note",
+     "start": 674,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 676,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 678,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 682,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 684,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 686,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 688,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 690,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 692,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 694,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 696,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 7,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 704,
+     "length": 2,
+     "hook": 9
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 706,
+     "length": 2,
+     "hook": 9
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 708,
+     "length": 1,
+     "hook": 9
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 709,
+     "length": 1,
+     "hook": 9
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 710,
+     "length": 4,
+     "hook": 9
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 714,
+     "length": 4,
+     "hook": 9
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 720,
+     "length": 2,
+     "hook": 10
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 722,
+     "length": 2,
+     "hook": 10
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 724,
+     "length": 1,
+     "hook": 10
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 725,
+     "length": 1,
+     "hook": 10
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 726,
+     "length": 4,
+     "hook": 10
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 730,
+     "length": 4,
+     "hook": 10
+    }
+   ]
+  },
+  {
+   "section": "Chorus1",
+   "index": 8,
+   "text": "まだ 終わらないで",
+   "note": "",
+   "words": [
+    {
+     "text": "まだ",
+     "morae": [
+      0,
+      1
+     ]
+    },
+    {
+     "text": "終わらないで",
+     "morae": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 736,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 740,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 744,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 746,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 748,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 750,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 754,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 756,
+     "length": 10,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Drop1",
+   "index": 1,
+   "text": "も・も・も・もう一回",
+   "note": "刻み",
+   "words": [
+    {
+     "text": "も・も・も・もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 768,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 772,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 776,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 784,
+     "length": 2,
+     "hook": 11
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 786,
+     "length": 2,
+     "hook": 11
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 788,
+     "length": 1,
+     "hook": 11
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 789,
+     "length": 1,
+     "hook": 11
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 790,
+     "length": 4,
+     "hook": 11
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 794,
+     "length": 4,
+     "hook": 11
+    }
+   ]
+  },
+  {
+   "section": "Drop1",
+   "index": 2,
+   "text": "い・い・一回",
+   "note": "刻み",
+   "words": [
+    {
+     "text": "い・い・一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 804,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 808,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 820,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 821,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 822,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 826,
+     "length": 4,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Drop1",
+   "index": 3,
+   "text": "も・も・も・もう一回",
+   "note": "刻み",
+   "words": [
+    {
+     "text": "も・も・も・もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 832,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 836,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 840,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 848,
+     "length": 2,
+     "hook": 12
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 850,
+     "length": 2,
+     "hook": 12
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 852,
+     "length": 1,
+     "hook": 12
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 853,
+     "length": 1,
+     "hook": 12
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 854,
+     "length": 4,
+     "hook": 12
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 858,
+     "length": 4,
+     "hook": 12
+    }
+   ]
+  },
+  {
+   "section": "Drop1",
+   "index": 4,
+   "text": "一回 一回 一回",
+   "note": "",
+   "words": [
+    {
+     "text": "一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "text": "一回",
+     "morae": [
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "text": "一回",
+     "morae": [
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 864,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 865,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 866,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 870,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 872,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 873,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 874,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 878,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 880,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 881,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 882,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 886,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A2",
+   "index": 1,
+   "text": "君の言葉は「またね」だけ",
+   "note": "",
+   "words": [
+    {
+     "text": "君の言葉は「またね」だけ",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 896,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "み",
+     "kind": "note",
+     "start": 898,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 900,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 902,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 904,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ば",
+     "kind": "note",
+     "start": 906,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 908,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 912,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 914,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ね",
+     "kind": "note",
+     "start": 916,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 918,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 920,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A2",
+   "index": 2,
+   "text": "先は録音されてない",
+   "note": "",
+   "words": [
+    {
+     "text": "先は録音されてない",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "さ",
+     "kind": "note",
+     "start": 928,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 930,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 932,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ろ",
+     "kind": "note",
+     "start": 934,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 936,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 938,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ん",
+     "kind": "note",
+     "start": 940,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "さ",
+     "kind": "note",
+     "start": 944,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "れ",
+     "kind": "note",
+     "start": 946,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 948,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 950,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 956,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A2",
+   "index": 3,
+   "text": "だから「またね」の手前まで",
+   "note": "",
+   "words": [
+    {
+     "text": "だから「またね」の手前まで",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 960,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 962,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 964,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 966,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 968,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ね",
+     "kind": "note",
+     "start": 970,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 972,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 976,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 978,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 980,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 982,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 984,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "A2",
+   "index": 4,
+   "text": "何度でもまた 戻ってく",
+   "note": "",
+   "words": [
+    {
+     "text": "何度でもまた",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "戻ってく",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 992,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ん",
+     "kind": "note",
+     "start": 994,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 996,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 998,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1000,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1002,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1004,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1008,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 1010,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1013,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1014,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1020,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B2",
+   "index": 1,
+   "text": "何回目かは 忘れても",
+   "note": "",
+   "words": [
+    {
+     "text": "何回目かは",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "忘れても",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1024,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ん",
+     "kind": "note",
+     "start": 1026,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1028,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1030,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "め",
+     "kind": "note",
+     "start": 1032,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1034,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 1036,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 1040,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1042,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "れ",
+     "kind": "note",
+     "start": 1044,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1046,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1048,
+     "length": 4,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B2",
+   "index": 2,
+   "text": "数えるたびに ずれていく",
+   "note": "",
+   "words": [
+    {
+     "text": "数えるたびに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "ずれていく",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1056,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ぞ",
+     "kind": "note",
+     "start": 1058,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1060,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1064,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1066,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "び",
+     "kind": "note",
+     "start": 1068,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1070,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ず",
+     "kind": "note",
+     "start": 1072,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "れ",
+     "kind": "note",
+     "start": 1074,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1078,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1080,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1082,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B2",
+   "index": 3,
+   "text": "ノイズ混じりの「またね」が",
+   "note": "",
+   "words": [
+    {
+     "text": "ノイズ混じりの「またね」が",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 1088,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1090,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ず",
+     "kind": "note",
+     "start": 1092,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1094,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "じ",
+     "kind": "note",
+     "start": 1098,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1100,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 1102,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1104,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1106,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ね",
+     "kind": "note",
+     "start": 1108,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "が",
+     "kind": "note",
+     "start": 1112,
+     "length": 4,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "B2",
+   "index": 4,
+   "text": "歌に 聞こえてきた",
+   "note": "",
+   "words": [
+    {
+     "text": "歌に",
+     "morae": [
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "text": "聞こえてきた",
+     "morae": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1120,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1122,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1126,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 1130,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 1132,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1134,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1136,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 1138,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1140,
+     "length": 8,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 1,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1152,
+     "length": 2,
+     "hook": 13
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1154,
+     "length": 2,
+     "hook": 13
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1156,
+     "length": 1,
+     "hook": 13
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1157,
+     "length": 1,
+     "hook": 13
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1158,
+     "length": 4,
+     "hook": 13
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1162,
+     "length": 4,
+     "hook": 13
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1168,
+     "length": 2,
+     "hook": 14
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1170,
+     "length": 2,
+     "hook": 14
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1172,
+     "length": 1,
+     "hook": 14
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1173,
+     "length": 1,
+     "hook": 14
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1174,
+     "length": 4,
+     "hook": 14
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1178,
+     "length": 4,
+     "hook": 14
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 2,
+   "text": "同じ一秒を 鳴らして",
+   "note": "",
+   "words": [
+    {
+     "text": "同じ一秒を",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "text": "鳴らして",
+     "morae": [
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 1184,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1186,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "じ",
+     "kind": "note",
+     "start": 1188,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1190,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ち",
+     "kind": "note",
+     "start": 1192,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "びょ",
+     "kind": "note",
+     "start": 1194,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1196,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "を",
+     "kind": "note",
+     "start": 1198,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1200,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 1204,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 1206,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1208,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 3,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1216,
+     "length": 2,
+     "hook": 15
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1218,
+     "length": 2,
+     "hook": 15
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1220,
+     "length": 1,
+     "hook": 15
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1221,
+     "length": 1,
+     "hook": 15
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1222,
+     "length": 4,
+     "hook": 15
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1226,
+     "length": 4,
+     "hook": 15
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1232,
+     "length": 2,
+     "hook": 16
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1234,
+     "length": 2,
+     "hook": 16
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1236,
+     "length": 1,
+     "hook": 16
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1237,
+     "length": 1,
+     "hook": 16
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1238,
+     "length": 4,
+     "hook": 16
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1242,
+     "length": 4,
+     "hook": 16
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 4,
+   "text": "擦り減るほどに 鮮やかだ",
+   "note": "",
+   "words": [
+    {
+     "text": "擦り減るほどに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "鮮やかだ",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1248,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1250,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "へ",
+     "kind": "note",
+     "start": 1252,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1254,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ほ",
+     "kind": "note",
+     "start": 1256,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 1258,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1262,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "あ",
+     "kind": "note",
+     "start": 1264,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ざ",
+     "kind": "note",
+     "start": 1266,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "や",
+     "kind": "note",
+     "start": 1268,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1270,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1272,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 5,
+   "text": "繰り返すだけ 繰り返すだけ",
+   "note": "",
+   "words": [
+    {
+     "text": "繰り返すだけ",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "繰り返すだけ",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1280,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1282,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1284,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1286,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1288,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1290,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 1292,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1296,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1298,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1300,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1302,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1304,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1306,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 1308,
+     "length": 3,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 6,
+   "text": "別の何かに 変わるまで",
+   "note": "",
+   "words": [
+    {
+     "text": "別の何かに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "変わるまで",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "べ",
+     "kind": "note",
+     "start": 1312,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "つ",
+     "kind": "note",
+     "start": 1314,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 1316,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1318,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1322,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1324,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1326,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1328,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 1330,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1332,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1334,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 1336,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 7,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1344,
+     "length": 2,
+     "hook": 17
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1346,
+     "length": 2,
+     "hook": 17
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1348,
+     "length": 1,
+     "hook": 17
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1349,
+     "length": 1,
+     "hook": 17
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1350,
+     "length": 4,
+     "hook": 17
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1354,
+     "length": 4,
+     "hook": 17
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1360,
+     "length": 2,
+     "hook": 18
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1362,
+     "length": 2,
+     "hook": 18
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1364,
+     "length": 1,
+     "hook": 18
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1365,
+     "length": 1,
+     "hook": 18
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1366,
+     "length": 4,
+     "hook": 18
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1370,
+     "length": 4,
+     "hook": 18
+    }
+   ]
+  },
+  {
+   "section": "Chorus2",
+   "index": 8,
+   "text": "まだ 止まらないで",
+   "note": "",
+   "words": [
+    {
+     "text": "まだ",
+     "morae": [
+      0,
+      1
+     ]
+    },
+    {
+     "text": "止まらないで",
+     "morae": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1376,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1380,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 1384,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1386,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 1388,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1390,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1394,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 1396,
+     "length": 10,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 1,
+   "text": "本当は 分かってる",
+   "note": "",
+   "words": [
+    {
+     "text": "本当は",
+     "morae": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "text": "分かってる",
+     "morae": [
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ほ",
+     "kind": "note",
+     "start": 1408,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "ん",
+     "kind": "note",
+     "start": 1412,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 1414,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 1416,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 1424,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1426,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1429,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1430,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1436,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 2,
+   "text": "これは 君じゃない",
+   "note": "",
+   "words": [
+    {
+     "text": "これは",
+     "morae": [
+      0,
+      1,
+      2
+     ]
+    },
+    {
+     "text": "君じゃない",
+     "morae": [
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 1440,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "れ",
+     "kind": "note",
+     "start": 1444,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "は",
+     "kind": "note",
+     "start": 1446,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 1456,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "み",
+     "kind": "note",
+     "start": 1458,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "じゃ",
+     "kind": "note",
+     "start": 1460,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1466,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1468,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 3,
+   "text": "空気が 震えた 跡",
+   "note": "",
+   "words": [
+    {
+     "text": "空気が",
+     "morae": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "text": "震えた",
+     "morae": [
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "text": "跡",
+     "morae": [
+      8,
+      9
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1472,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1474,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 1476,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "が",
+     "kind": "note",
+     "start": 1478,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "ふ",
+     "kind": "note",
+     "start": 1488,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1490,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1492,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1494,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "あ",
+     "kind": "note",
+     "start": 1498,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "と",
+     "kind": "note",
+     "start": 1500,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 4,
+   "text": "それでも",
+   "note": "",
+   "words": [
+    {
+     "text": "それでも",
+     "morae": [
+      0,
+      1,
+      2,
+      3
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "そ",
+     "kind": "note",
+     "start": 1504,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "れ",
+     "kind": "note",
+     "start": 1508,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 1512,
+     "length": 8,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1520,
+     "length": 12,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 5,
+   "text": "繰り返すたび",
+   "note": "",
+   "words": [
+    {
+     "text": "繰り返すたび",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1536,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1538,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1540,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1544,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1548,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1552,
+     "length": 8,
+     "hook": 0
+    },
+    {
+     "text": "び",
+     "kind": "note",
+     "start": 1560,
+     "length": 4,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 6,
+   "text": "少しだけ 違って 聞こえる",
+   "note": "",
+   "words": [
+    {
+     "text": "少しだけ",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "text": "違って",
+     "morae": [
+      5,
+      6,
+      7,
+      8
+     ]
+    },
+    {
+     "text": "聞こえる",
+     "morae": [
+      9,
+      10,
+      11,
+      12
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1568,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 1570,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 1572,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1573,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 1576,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "ち",
+     "kind": "note",
+     "start": 1580,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "が",
+     "kind": "note",
+     "start": 1582,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1584,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1585,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "き",
+     "kind": "note",
+     "start": 1588,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 1590,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1592,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1596,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 7,
+   "text": "その少しを 集めて",
+   "note": "",
+   "words": [
+    {
+     "text": "その少しを",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "集めて",
+     "morae": [
+      6,
+      7,
+      8,
+      9
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "そ",
+     "kind": "note",
+     "start": 1600,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 1602,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1606,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "こ",
+     "kind": "note",
+     "start": 1608,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 1610,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "を",
+     "kind": "note",
+     "start": 1612,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "あ",
+     "kind": "note",
+     "start": 1616,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "つ",
+     "kind": "note",
+     "start": 1620,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "め",
+     "kind": "note",
+     "start": 1622,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1626,
+     "length": 4,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Bridge",
+   "index": 8,
+   "text": "今 歌に してる",
+   "note": "",
+   "words": [
+    {
+     "text": "今",
+     "morae": [
+      0,
+      1
+     ]
+    },
+    {
+     "text": "歌に",
+     "morae": [
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "text": "してる",
+     "morae": [
+      5,
+      6,
+      7
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1632,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1634,
+     "length": 6,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1640,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 1642,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1646,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 1648,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1650,
+     "length": 8,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1658,
+     "length": 2,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "Break",
+   "index": 1,
+   "text": "も・も・も・もう一回",
+   "note": "刻み、加速",
+   "words": [
+    {
+     "text": "も・も・も・もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1664,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1668,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1672,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1680,
+     "length": 2,
+     "hook": 19
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1682,
+     "length": 2,
+     "hook": 19
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1684,
+     "length": 1,
+     "hook": 19
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1685,
+     "length": 1,
+     "hook": 19
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1686,
+     "length": 4,
+     "hook": 19
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1690,
+     "length": 4,
+     "hook": 19
+    }
+   ]
+  },
+  {
+   "section": "Break",
+   "index": 2,
+   "text": "も・も・も・もう一回",
+   "note": "刻み、加速",
+   "words": [
+    {
+     "text": "も・も・も・もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1704,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1706,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1708,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1712,
+     "length": 2,
+     "hook": 20
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1714,
+     "length": 2,
+     "hook": 20
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1716,
+     "length": 1,
+     "hook": 20
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1717,
+     "length": 1,
+     "hook": 20
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1718,
+     "length": 4,
+     "hook": 20
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1722,
+     "length": 4,
+     "hook": 20
+    }
+   ]
+  },
+  {
+   "section": "Break",
+   "index": 3,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1728,
+     "length": 2,
+     "hook": 21
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1730,
+     "length": 2,
+     "hook": 21
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1732,
+     "length": 1,
+     "hook": 21
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1733,
+     "length": 1,
+     "hook": 21
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1734,
+     "length": 4,
+     "hook": 21
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1738,
+     "length": 4,
+     "hook": 21
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1744,
+     "length": 2,
+     "hook": 22
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1746,
+     "length": 2,
+     "hook": 22
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1748,
+     "length": 1,
+     "hook": 22
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1749,
+     "length": 1,
+     "hook": 22
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1750,
+     "length": 4,
+     "hook": 22
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1754,
+     "length": 4,
+     "hook": 22
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 1,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1792,
+     "length": 2,
+     "hook": 23
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1794,
+     "length": 2,
+     "hook": 23
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1796,
+     "length": 1,
+     "hook": 23
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1797,
+     "length": 1,
+     "hook": 23
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1798,
+     "length": 4,
+     "hook": 23
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1802,
+     "length": 4,
+     "hook": 23
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1808,
+     "length": 2,
+     "hook": 24
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1810,
+     "length": 2,
+     "hook": 24
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1812,
+     "length": 1,
+     "hook": 24
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1813,
+     "length": 1,
+     "hook": 24
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1814,
+     "length": 4,
+     "hook": 24
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1818,
+     "length": 4,
+     "hook": 24
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 2,
+   "text": "同じ一秒を 鳴らして",
+   "note": "",
+   "words": [
+    {
+     "text": "同じ一秒を",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    },
+    {
+     "text": "鳴らして",
+     "morae": [
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "お",
+     "kind": "note",
+     "start": 1824,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1826,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "じ",
+     "kind": "note",
+     "start": 1828,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1830,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ち",
+     "kind": "note",
+     "start": 1832,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "びょ",
+     "kind": "note",
+     "start": 1834,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1836,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "を",
+     "kind": "note",
+     "start": 1838,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1840,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 1844,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "し",
+     "kind": "note",
+     "start": 1846,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "て",
+     "kind": "note",
+     "start": 1848,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 3,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1856,
+     "length": 2,
+     "hook": 25
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1858,
+     "length": 2,
+     "hook": 25
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1860,
+     "length": 1,
+     "hook": 25
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1861,
+     "length": 1,
+     "hook": 25
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1862,
+     "length": 4,
+     "hook": 25
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1866,
+     "length": 4,
+     "hook": 25
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1872,
+     "length": 2,
+     "hook": 26
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1874,
+     "length": 2,
+     "hook": 26
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1876,
+     "length": 1,
+     "hook": 26
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1877,
+     "length": 1,
+     "hook": 26
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1878,
+     "length": 4,
+     "hook": 26
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1882,
+     "length": 4,
+     "hook": 26
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 4,
+   "text": "擦り減るほどに 鮮やかだ",
+   "note": "",
+   "words": [
+    {
+     "text": "擦り減るほどに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "鮮やかだ",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1888,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1890,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "へ",
+     "kind": "note",
+     "start": 1892,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1894,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ほ",
+     "kind": "note",
+     "start": 1896,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ど",
+     "kind": "note",
+     "start": 1898,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1902,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "あ",
+     "kind": "note",
+     "start": 1904,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ざ",
+     "kind": "note",
+     "start": 1906,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "や",
+     "kind": "note",
+     "start": 1908,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1910,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1912,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 5,
+   "text": "繰り返すだけ 繰り返すだけ",
+   "note": "",
+   "words": [
+    {
+     "text": "繰り返すだけ",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "繰り返すだけ",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1920,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1922,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1924,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1926,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1928,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1930,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 1932,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "く",
+     "kind": "note",
+     "start": 1936,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "り",
+     "kind": "note",
+     "start": 1938,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1940,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "え",
+     "kind": "note",
+     "start": 1942,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "す",
+     "kind": "note",
+     "start": 1944,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "だ",
+     "kind": "note",
+     "start": 1946,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "け",
+     "kind": "note",
+     "start": 1948,
+     "length": 3,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 6,
+   "text": "別の何かに 変わるまで",
+   "note": "",
+   "words": [
+    {
+     "text": "別の何かに",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ]
+    },
+    {
+     "text": "変わるまで",
+     "morae": [
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "べ",
+     "kind": "note",
+     "start": 1952,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "つ",
+     "kind": "note",
+     "start": 1954,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "の",
+     "kind": "note",
+     "start": 1956,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 1958,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1962,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1964,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 1966,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1968,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "わ",
+     "kind": "note",
+     "start": 1970,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "る",
+     "kind": "note",
+     "start": 1972,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 1974,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "で",
+     "kind": "note",
+     "start": 1976,
+     "length": 6,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 7,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 1984,
+     "length": 2,
+     "hook": 27
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 1986,
+     "length": 2,
+     "hook": 27
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1988,
+     "length": 1,
+     "hook": 27
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 1989,
+     "length": 1,
+     "hook": 27
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 1990,
+     "length": 4,
+     "hook": 27
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 1994,
+     "length": 4,
+     "hook": 27
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2000,
+     "length": 2,
+     "hook": 28
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2002,
+     "length": 2,
+     "hook": 28
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2004,
+     "length": 1,
+     "hook": 28
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2005,
+     "length": 1,
+     "hook": 28
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2006,
+     "length": 4,
+     "hook": 28
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2010,
+     "length": 4,
+     "hook": 28
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 8,
+   "text": "ほら 歌に なった",
+   "note": "",
+   "words": [
+    {
+     "text": "ほら",
+     "morae": [
+      0,
+      1
+     ]
+    },
+    {
+     "text": "歌に",
+     "morae": [
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "text": "なった",
+     "morae": [
+      5,
+      6,
+      7
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ほ",
+     "kind": "note",
+     "start": 2016,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "ら",
+     "kind": "note",
+     "start": 2020,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2024,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 2026,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "に",
+     "kind": "note",
+     "start": 2028,
+     "length": 4,
+     "hook": 0
+    },
+    {
+     "text": "な",
+     "kind": "note",
+     "start": 2032,
+     "length": 3,
+     "hook": 0
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2035,
+     "length": 1,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 2036,
+     "length": 10,
+     "hook": 0
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 9,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2048,
+     "length": 2,
+     "hook": 29
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2050,
+     "length": 2,
+     "hook": 29
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2052,
+     "length": 1,
+     "hook": 29
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2053,
+     "length": 1,
+     "hook": 29
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2054,
+     "length": 4,
+     "hook": 29
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2058,
+     "length": 4,
+     "hook": 29
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2064,
+     "length": 2,
+     "hook": 30
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2066,
+     "length": 2,
+     "hook": 30
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2068,
+     "length": 1,
+     "hook": 30
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2069,
+     "length": 1,
+     "hook": 30
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2070,
+     "length": 4,
+     "hook": 30
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2074,
+     "length": 4,
+     "hook": 30
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 10,
+   "text": "もう一回 もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    },
+    {
+     "text": "もう一回",
+     "morae": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2080,
+     "length": 2,
+     "hook": 31
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2082,
+     "length": 2,
+     "hook": 31
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2084,
+     "length": 1,
+     "hook": 31
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2085,
+     "length": 1,
+     "hook": 31
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2086,
+     "length": 4,
+     "hook": 31
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2090,
+     "length": 4,
+     "hook": 31
+    },
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2096,
+     "length": 2,
+     "hook": 32
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2098,
+     "length": 2,
+     "hook": 32
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2100,
+     "length": 1,
+     "hook": 32
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2101,
+     "length": 1,
+     "hook": 32
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2102,
+     "length": 4,
+     "hook": 32
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2106,
+     "length": 4,
+     "hook": 32
+    }
+   ]
+  },
+  {
+   "section": "LastChorus",
+   "index": 11,
+   "text": "もう一回",
+   "note": "",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2112,
+     "length": 2,
+     "hook": 33
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2114,
+     "length": 2,
+     "hook": 33
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2116,
+     "length": 1,
+     "hook": 33
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2117,
+     "length": 1,
+     "hook": 33
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2118,
+     "length": 4,
+     "hook": 33
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2122,
+     "length": 4,
+     "hook": 33
+    }
+   ]
+  },
+  {
+   "section": "Outro",
+   "index": 1,
+   "text": "もう一回",
+   "note": "歌→語り",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2176,
+     "length": 2,
+     "hook": 34
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2178,
+     "length": 2,
+     "hook": 34
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2180,
+     "length": 1,
+     "hook": 34
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2181,
+     "length": 1,
+     "hook": 34
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2182,
+     "length": 4,
+     "hook": 34
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2186,
+     "length": 4,
+     "hook": 34
+    }
+   ]
+  },
+  {
+   "section": "Outro",
+   "index": 2,
+   "text": "もう一回",
+   "note": "語り",
+   "words": [
+    {
+     "text": "もう一回",
+     "morae": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "も",
+     "kind": "note",
+     "start": 2208,
+     "length": 2,
+     "hook": 35
+    },
+    {
+     "text": "う",
+     "kind": "note",
+     "start": 2210,
+     "length": 2,
+     "hook": 35
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2212,
+     "length": 1,
+     "hook": 35
+    },
+    {
+     "text": "っ",
+     "kind": "closure",
+     "start": 2213,
+     "length": 1,
+     "hook": 35
+    },
+    {
+     "text": "か",
+     "kind": "note",
+     "start": 2214,
+     "length": 4,
+     "hook": 35
+    },
+    {
+     "text": "い",
+     "kind": "note",
+     "start": 2218,
+     "length": 4,
+     "hook": 35
+    }
+   ]
+  },
+  {
+   "section": "Outro",
+   "index": 3,
+   "text": "またね",
+   "note": "語り、1回だけ",
+   "words": [
+    {
+     "text": "またね",
+     "morae": [
+      0,
+      1,
+      2
+     ]
+    }
+   ],
+   "morae": [
+    {
+     "text": "ま",
+     "kind": "note",
+     "start": 2240,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "た",
+     "kind": "note",
+     "start": 2242,
+     "length": 2,
+     "hook": 0
+    },
+    {
+     "text": "ね",
+     "kind": "note",
+     "start": 2244,
+     "length": 8,
+     "hook": 0
+    }
+   ]
+  }
+ ]
+}

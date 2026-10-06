@@ -1,0 +1,36 @@
+{
+  "name": "video",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "studio": "remotion studio src/app/index.ts --public-dir ../../songs/001-mou-ikkai/04-reaper/render",
+    "render": "remotion render src/app/index.ts MouIkkai --public-dir ../../songs/001-mou-ikkai/04-reaper/render",
+    "timing": "uv run --project ../../tools/lyric-timing ../../tools/lyric-timing/lyric_timing.py ../../songs/001-mou-ikkai/02-composition/score.toml ../../songs/001-mou-ikkai/02-composition/generated/vocal.tsv src/shared/song/generated/mou-ikkai.json",
+    "typecheck": "tsc --noEmit",
+    "steiger": "steiger ./src",
+    "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet"
+  },
+  "dependencies": {
+    "@remotion/google-fonts": "catalog:stack",
+    "@remotion/media": "catalog:stack",
+    "effect": "catalog:stack",
+    "react-dom": "19.3.0",
+    "remotion": "catalog:stack",
+    "tailwindcss": "catalog:stack"
+  },
+  "devDependencies": {
+    "@effect/tsgo": "catalog:stack",
+    "@feature-sliced/steiger-plugin": "0.8.0",
+    "@remotion/cli": "catalog:stack",
+    "@remotion/tailwind-v4": "catalog:stack",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "react": "19.3.0",
+    "steiger": "catalog:stack",
+    "typescript": "catalog:stack"
+  }
+}
