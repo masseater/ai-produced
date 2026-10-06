@@ -57,3 +57,4 @@ tools/openutau-render/obj
 
 # Rendered audio
 songs/*/03-vocal/render
+songs/*/04-reaper/render

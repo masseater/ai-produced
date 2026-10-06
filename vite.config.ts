@@ -8,15 +8,13 @@ import baselineJs from "eslint-plugin-baseline-js";
 import reactHooks from "eslint-plugin-react-hooks";
 import { defineConfig } from "vite-plus";
 
-import { generated, restrictedImports } from "./lint.config.ts";
-
-type Rules = Readonly<Record<string, "error">>;
-
-const asErrors = (names: readonly string[]): Rules =>
-  Object.fromEntries(names.map((name) => [name, "error"] as const));
-
-const allRulesOf = (prefix: string, plugin: Readonly<{ rules: object }>): Rules =>
-  asErrors(Object.keys(plugin.rules).map((rule) => `${prefix}/${rule}`));
+import {
+  allRulesOf,
+  asErrors,
+  generated,
+  remotionRules,
+  restrictedImports,
+} from "./lint.config.ts";
 
 const reactHooksRules = asErrors(
   Object.keys(reactHooks.configs["recommended-latest"].rules).map((name) =>
@@ -80,16 +78,17 @@ export default defineConfig({
       { name: "no-comments", specifier: "eslint-plugin-no-comments" },
       { name: "baseline-js", specifier: "eslint-plugin-baseline-js" },
       { name: "@html-eslint/react", specifier: "@html-eslint/eslint-plugin-react" },
+      { name: "@remotion", specifier: "@remotion/eslint-plugin" },
     ],
     rules: {
       "vite-plus/prefer-vite-plus-imports": "error",
       "no-comments/disallowComments": "error",
-      ...allRulesOf("tanstack-query", tanstackQuery),
-      ...allRulesOf("tanstack-router", tanstackRouter),
+      ...allRulesOf({ prefix: "tanstack-query", plugin: tanstackQuery }),
+      ...allRulesOf({ prefix: "tanstack-router", plugin: tanstackRouter }),
       "drizzle/enforce-delete-with-where": "error",
       "drizzle/enforce-update-with-where": "error",
-      ...allRulesOf("shadcn", shadcn),
-      ...allRulesOf("baseline-js", baselineJs),
+      ...allRulesOf({ prefix: "shadcn", plugin: shadcn }),
+      ...allRulesOf({ prefix: "baseline-js", plugin: baselineJs }),
       ...baselineJs.configs.recommended().rules,
       ...asErrors(Object.keys(htmlReact.configs.all.rules ?? {})),
       ...reactHooksRules,
@@ -149,6 +148,14 @@ export default defineConfig({
       {
         files: ["**/*.config.ts", "**/alchemy.run.ts"],
         rules: { "import/no-default-export": "off" },
+      },
+      {
+        files: ["apps/video/**"],
+        rules: remotionRules,
+      },
+      {
+        files: ["apps/video/src/app/root.tsx"],
+        rules: { "import/no-unassigned-import": ["error", { allow: ["**/*.css"] }] },
       },
       {
         files: ["**/shared/ui/**", "libs/ui/src/components/**"],

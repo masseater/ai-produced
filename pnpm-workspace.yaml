@@ -31,12 +31,17 @@ catalog:
   react-markdown: 10.1.0
   remark-gfm: 4.0.1
   "@tailwindcss/typography": 0.5.20
+  "@remotion/eslint-plugin": 4.0.533
 catalogs:
   stack:
     "@effect/atom-react": 4.0.0-rc.117
     "@effect/tsgo": 0.46.1
     "@elysiajs/eden": 1.4.9
     "@openfeature/server-sdk": 1.23.0
+    "@remotion/cli": 4.0.533
+    "@remotion/google-fonts": 4.0.533
+    "@remotion/media": 4.0.533
+    "@remotion/tailwind-v4": 4.0.533
     "@tanstack/react-query": 5.104.1
     "@tanstack/react-start": 1.168.60
     alchemy: 2.0.0-beta.79
@@ -48,6 +53,7 @@ catalogs:
     elysia: 1.4.30
     fallow: 3.30.0
     radix-ui: 1.6.7
+    remotion: 4.0.533
     renovate: 44.116.1
     steiger: 0.7.0
     tailwindcss: 4.3.3
@@ -81,3 +87,37 @@ packageExtensions:
       "@steiger/toolkit": 0.2.3
 patchedDependencies:
   "@tanstack/eslint-plugin-start@0.1.0": patches/@tanstack__eslint-plugin-start@0.1.0.patch
+minimumReleaseAgeExclude:
+  - "@remotion/bundler@4.0.533"
+  - "@remotion/captions@4.0.533"
+  - "@remotion/cli@4.0.533"
+  - "@remotion/codemods@4.0.533"
+  - "@remotion/compositor-darwin-arm64@4.0.533"
+  - "@remotion/compositor-darwin-x64@4.0.533"
+  - "@remotion/compositor-linux-arm64-gnu@4.0.533"
+  - "@remotion/compositor-linux-arm64-musl@4.0.533"
+  - "@remotion/compositor-linux-x64-gnu@4.0.533"
+  - "@remotion/compositor-linux-x64-musl@4.0.533"
+  - "@remotion/compositor-win32-x64-msvc@4.0.533"
+  - "@remotion/elevenlabs@4.0.533"
+  - "@remotion/google-fonts@4.0.533"
+  - "@remotion/licensing@4.0.533"
+  - "@remotion/media-parser@4.0.533"
+  - "@remotion/media-utils@4.0.533"
+  - "@remotion/media@4.0.533"
+  - "@remotion/openai-whisper@4.0.533"
+  - "@remotion/paths@4.0.533"
+  - "@remotion/player@4.0.533"
+  - "@remotion/renderer@4.0.533"
+  - "@remotion/sdk@4.0.533"
+  - "@remotion/streaming@4.0.533"
+  - "@remotion/studio-protocol@4.0.533"
+  - "@remotion/studio-server@4.0.533"
+  - "@remotion/studio-shared@4.0.533"
+  - "@remotion/studio@4.0.533"
+  - "@remotion/timeline-utils@4.0.533"
+  - "@remotion/web-renderer@4.0.533"
+  - "@remotion/zod-types@4.0.533"
+  - remotion@4.0.533
+  - "@remotion/tailwind-v4@4.0.533"
+  - "@remotion/eslint-plugin@4.0.533"

@@ -62,6 +62,12 @@
       "skillPath": "skills/modern-web-guidance/SKILL.md",
       "computedHash": "4f7b5229ea29d234c4897211d2d3de2ef070cc458256703125db3a30807a9874"
     },
+    "remotion-best-practices": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-best-practices/SKILL.md",
+      "computedHash": "ff61c0736030e8e2efc3993445f88e4b3c3ff2cbeedf2f9106ab4217d7fe297d"
+    },
     "shadcn": {
       "source": "shadcn-ui/ui",
       "ref": "0e3abd65a97707f4a9cc3ed07bf5006e1cb67b13",

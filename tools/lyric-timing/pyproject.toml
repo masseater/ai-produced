@@ -1,0 +1,9 @@
+[project]
+name = "lyric-timing"
+version = "0.0.0"
+description = "Build a sixteenth-note lyric timing JSON from a score TOML and a vocal syllable table"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans JP", sans-serif;
+  --color-void: #0b0b0b;
+  --text-chop: 640px;
+  --text-card: 250px;
+  --text-tile: 84px;
+  --text-line-xl: 170px;
+  --text-line-lg: 136px;
+  --text-line-md: 108px;
+  --text-line-sm: 84px;
+}
