@@ -24,13 +24,18 @@ tom tom-low 90
 tom tom-mid 130
 tom tom-high 180
 
-pkill -x REAPER || true
+if pgrep -x REAPER >/dev/null; then
+  echo "REAPER is already running; close it before mixing" >&2
+  exit 1
+fi
 rm -f "$mix" "$out/mix-done.txt" "$out/mou-ikkai-mix.wav"
 "$reaper" -nosplash -ignoreerrors -new >/dev/null 2>&1 &
+reaper_pid=$!
+trap 'kill "$reaper_pid" 2>/dev/null || true' EXIT
 sleep 10
 "$reaper" -nonewinst "$here/mix.lua" >/dev/null
 for _ in $(seq 600); do [ -f "$out/mix-done.txt" ] && break; sleep 1; done
-pkill -x REAPER || true
+kill "$reaper_pid" 2>/dev/null || true
 grep -qx ok "$out/mix-done.txt" || { cat "$out/mix-done.txt" >&2 2>/dev/null || echo "mix.lua did not finish" >&2; exit 1; }
 wav="$out/mou-ikkai-mix.wav"
 {
