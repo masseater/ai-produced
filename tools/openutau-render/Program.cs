@@ -37,6 +37,7 @@ public static class Program {
         using var loop = new MainLoop();
         var errors = new ErrorCollector();
         loop.Run(() => {
+            Directory.CreateDirectory(PathManager.Inst.CachePath);
             ToolsManager.Inst.Initialize();
             SingerManager.Inst.Initialize();
             DocManager.Inst.Initialize(loop.Thread, loop);

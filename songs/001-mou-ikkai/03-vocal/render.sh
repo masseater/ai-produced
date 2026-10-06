@@ -32,7 +32,7 @@ singer_line="$(awk -F'\t' -v name="$SINGER_PATTERN" -v type="$SINGER_TYPE" 'tolo
 [ -n "$singer_line" ] || { echo "no $SINGER_TYPE singer matching $SINGER_PATTERN" >&2; exit 1; }
 singer_id="$(cut -f1 <<<"$singer_line")"
 colors="${COLORS-$(cut -f4 <<<"$singer_line")}"
-phonemizer="${PHONEMIZER:-$(cut -f5 <<<"$singer_line")}"
+phonemizer="${PHONEMIZER:-}"
 echo "singer=$singer_id colors=$colors phonemizer=${phonemizer:-default}"
 
 (cd "$repo/tools/ustx-from-vocal" && uv run ustx_from_vocal.py \
@@ -45,5 +45,8 @@ echo "singer=$singer_id colors=$colors phonemizer=${phonemizer:-default}"
 
 render render "$out/mou-ikkai.ustx" ${PITCH:+--pitch} --save "$out/mou-ikkai.ustx" --phonemes "$out/phonemes.tsv" --out "$out"
 
-awk -F'\t' 'NR > 1 && $3 == "っ" { total++; if ($5 == "cl") cl++ } END { printf "closures: %d, sung as cl: %d\n", total, cl; exit total != cl }' "$out/phonemes.tsv"
+closures="$(cut -f3 "$out/phonemes.tsv" | grep -cx 'っ' || true)"
+sung_cl="$(cut -f3,5 "$out/phonemes.tsv" | grep -cx $'っ\tcl' || true)"
+echo "closures: $closures, sung as cl: $sung_cl"
+[ "$closures" = "$sung_cl" ]
 ffmpeg -hide_banner -nostats -i "$out/mou-ikkai_Vocal.wav" -af ebur128=framelog=quiet -f null - 2>&1 | sed -n '/Summary/,$p' | tee "$out/loudness.txt"
