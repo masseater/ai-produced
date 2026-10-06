@@ -8,7 +8,8 @@ PRはセルフレビューし、CIが緑でコンフリクトがないことを�
 ## リポジトリ配置
 
 Nxにならって置き場所を分ける。
-配布・実行するアプリ（Web、Remotion、自作MCPなど）を apps/、再利用する開発・分析ツールを tools/、apps間の共通コードを libs/ に置く。
+配布・実行するアプリ（Web、Remotion、自作MCPなど）を apps/、再利用する開発・分析ツールを tools/ に置く。
+apps間の共通コードは、複数のappsが実際に使い始めた時点で libs/ に切り出す。
 
 <!-- intent-skills:start -->
 ## Skill Loading
