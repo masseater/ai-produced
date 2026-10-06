@@ -10,6 +10,7 @@ const FIELD = "text";
 const LABEL = "wikiを検索";
 const PLACEHOLDER = "例: 低域が厚くて音圧が高い曲";
 const SUBMIT = "検索";
+const MAX_LENGTH = 200;
 
 const textOf = (formData: Readonly<FormData>): string =>
   Option.fromNullishOr(formData.get(FIELD)).pipe(
@@ -33,6 +34,7 @@ const SearchForm = (): ReactNode => {
           name={FIELD}
           type="search"
           aria-label={LABEL}
+          maxLength={MAX_LENGTH}
           placeholder={PLACEHOLDER}
           className="bg-background h-9 flex-1 rounded-md border px-3 text-sm"
         />
