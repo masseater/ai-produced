@@ -39,6 +39,7 @@ echo "singer=$singer_id colors=$colors phonemizer=${phonemizer:-default}"
   "$song/02-composition/generated/vocal.tsv" \
   --score "$song/02-composition/score.toml" \
   --out "$out/mou-ikkai.ustx" \
+  --tuning "$song/03-vocal/tuning.toml" \
   --singer "$singer_id" \
   ${colors:+--colors "$colors"} \
   ${phonemizer:+--phonemizer "$phonemizer"})

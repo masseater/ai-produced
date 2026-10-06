@@ -1,4 +1,6 @@
 local here = ({reaper.get_action_context()})[2]:match("^(.*)/[^/]*$")
+package.path = here .. "/?.lua;" .. package.path
+local surge = require("surge")
 
 local function number_of(text)
   if text:find("inf") then
@@ -44,30 +46,46 @@ local function track_named(name)
   error("no track " .. name)
 end
 
-local function volume(track, db, pan)
-  reaper.SetMediaTrackInfo_Value(track, "D_VOL", 10 ^ (db / 20))
-  reaper.SetMediaTrackInfo_Value(track, "D_PAN", pan or 0)
+local function read_table(path)
+  local values = {}
+  local file = io.open(path)
+  if not file then return values end
+  for line in file:lines() do
+    local key, value = line:match("^([^\t]+)\t([^\t]+)$")
+    if key then values[key] = value end
+  end
+  file:close()
+  return values
 end
 
-local function synth(name, db, pan, params)
-  local track = track_named(name)
-  add(track, "ReaSynth (Cockos)", params)
-  volume(track, db, pan)
-  return track
-end
+local patches = {
+  Bass = "patches_factory/Basses/Bass 1",
+  Pad = "patches_factory/Pads/Super",
+  Saw = "patches_factory/Polysynths/Hugeness",
+  Arp = "patches_factory/Plucks/Sync Pluck",
+  Piano = "patches_factory/Keys/DX EP",
+  Lead = "patches_factory/Leads/Classic Lead 2",
+}
 
-local function mix()
-  reaper.Main_openProject("noprompt:" .. here .. "/mou-ikkai.rpp")
+local high_pass = {Pad = 120, Saw = 180, Arp = 250, Piano = 250, Lead = 200}
+
+local widen = {Pad = 4, Saw = 4, Arp = 4}
+
+local function build(gains)
   local vocal = track_named("Vocal")
-  add(vocal, "ReaEQ (Cockos)", {{"Freq-High Pass 5", 120}, {"Freq-Band 3", 3000}, {"Gain-Band 3", 2}})
-  add(vocal, "ReaComp (Cockos)", {{"Threshold", -20}, {"Ratio", 4}, {"Attack", 5}, {"Release", 80}})
-  add(vocal, "ReaVerbate (Cockos)", {{"Wet", -18}, {"Room size", 40}})
-  volume(vocal, 6)
+  add(vocal, "ReaEQ (Cockos)", {
+    {"Freq-Low Shelf", 250}, {"Gain-Low Shelf", -2},
+    {"Freq-Band 3", 3200}, {"Gain-Band 3", 2.5},
+    {"Freq-High Shelf 4", 9000}, {"Gain-High Shelf 4", 4},
+    {"Freq-High Pass 5", 110},
+  })
+  add(vocal, "ReaComp (Cockos)", {{"Threshold", -22}, {"Ratio", 4}, {"Attack", 3}, {"Release", 60}})
+  add(vocal, "ReaVerbate (Cockos)", {{"Wet", -12}, {"Room size", 55}, {"Width", 1}})
 
   local drums = track_named("Drums")
   local kit = {
-    {36, "kick", 0}, {37, "stick", -10}, {38, "snare", -3}, {39, "clap", -6}, {42, "hat-closed", -8},
-    {45, "tom-low", -6}, {46, "hat-open", -10}, {47, "tom-mid", -6}, {49, "crash", -12}, {50, "tom-high", -6},
+    {36, "kick", 0}, {37, "stick", -10}, {38, "snare", -3}, {39, "clap", -6}, {42, "hat-closed", 0},
+    {45, "tom-low", -6}, {46, "hat-open", -2}, {47, "tom-mid", -6}, {49, "crash", -7}, {50, "tom-high", -6},
   }
   for _, piece in ipairs(kit) do
     local fx = reaper.TrackFX_AddByName(drums, "ReaSamplOmatic5000 (Cockos)", false, -1)
@@ -79,34 +97,63 @@ local function mix()
     set(drums, fx, "Volume", piece[3])
   end
   add(drums, "ReaComp (Cockos)", {{"Threshold", -12}, {"Ratio", 3}, {"Attack", 10}, {"Release", 60}})
-  volume(drums, 0)
+  add(drums, "JS:sstillwell/eventhorizon2", {{"Threshold", -6}, {"Ceiling", -6}})
 
-  local bass = synth("Bass", -4, 0, {{"Saw mix", 0.6}, {"Square mix", 0.4}, {"Attack", 2}, {"Decay", 300}, {"Sustain", -6}, {"Release", 30}})
-  add(bass, "ReaEQ (Cockos)", {{"Freq-High Shelf 4", 2000}, {"Gain-High Shelf 4", -9}, {"Freq-High Pass 5", 35}})
-  add(bass, "ReaComp (Cockos)", {{"Threshold", -15}, {"Ratio", 4}, {"Attack", 5}, {"Release", 100}})
-  local pad = synth("Pad", -16, 0, {{"Saw mix", 0.5}, {"Triangle mix", 0.5}, {"Attack", 250}, {"Release", 400}, {"Global detune", 8}})
-  local saw = synth("Saw", -14, -0.7, {{"Saw mix", 1}, {"Attack", 3}, {"Decay", 400}, {"Sustain", -8}, {"Release", 80}, {"Global detune", 10}})
-  synth("Arp", -18, 0.7, {{"Square mix", 0.8}, {"Pulse Width", 0.3}, {"Attack", 1}, {"Decay", 120}, {"Sustain", -30}, {"Release", 40}})
-  synth("Piano", -14, -0.45, {{"Triangle mix", 0.6}, {"Extra sine mix", 0.3}, {"Attack", 1}, {"Decay", 700}, {"Sustain", -40}, {"Release", 200}})
-  local lead = synth("Lead", -14, 0.2, {{"Saw mix", 0.7}, {"Square mix", 0.3}, {"Attack", 5}, {"Release", 100}, {"Global detune", 6}})
-  add(lead, "ReaVerbate (Cockos)", {{"Wet", -14}, {"Room size", 60}})
+  for name, patch in pairs(patches) do
+    local track = track_named(name)
+    surge.load(track, patch)
+    if high_pass[name] then add(track, "ReaEQ (Cockos)", {{"Freq-High Pass 5", high_pass[name]}}) end
+    if widen[name] then add(track, "JS:sstillwell/stereowidth", {{"Width Boost (dB)", widen[name]}}) end
+  end
+  add(track_named("Bass"), "ReaEQ (Cockos)", {{"Freq-Band 2", 130}, {"Gain-Band 2", 3}, {"Freq-High Pass 5", 35}})
+  add(track_named("Bass"), "ReaComp (Cockos)", {{"Threshold", -15}, {"Ratio", 4}, {"Attack", 5}, {"Release", 100}})
 
-  add(saw, "ReaVerbate (Cockos)", {{"Wet", -10}, {"Room size", 70}, {"Width", 1}})
-  add(pad, "ReaVerbate (Cockos)", {{"Wet", -6}, {"Room size", 80}, {"Width", 1}})
+  for i = 0, reaper.CountTracks(0) - 1 do
+    local track = reaper.GetTrack(0, i)
+    local _, name = reaper.GetTrackName(track)
+    reaper.SetMediaTrackInfo_Value(track, "D_VOL", 10 ^ ((tonumber(gains[name]) or 0) / 20))
+  end
+end
 
+local function master_chain(settings)
   local master = reaper.GetMasterTrack(0)
-  add(master, "ReaEQ (Cockos)", {{"Freq-Band 3", 3500}, {"Gain-Band 3", 3}, {"Freq-High Shelf 4", 4000}, {"Gain-High Shelf 4", 5}, {"Freq-High Pass 5", 25}})
-  add(master, "ReaComp (Cockos)", {{"Threshold", -14}, {"Ratio", 2}, {"Attack", 20}, {"Release", 150}})
-  add(master, "ReaLimit (Cockos)", {{"Threshold", -7}, {"Ceiling", -1.5}})
+  add(master, "ReaEQ (Cockos)", {
+    {"Freq-Low Shelf", 60}, {"Gain-Low Shelf", tonumber(settings.low_shelf or 0)},
+    {"Freq-Band 2", 700}, {"Gain-Band 2", -6}, {"BW-Band 2", 2.5},
+    {"Freq-Band 3", 3500}, {"Gain-Band 3", 8}, {"BW-Band 3", 2.5},
+    {"Freq-High Shelf 4", 8000}, {"Gain-High Shelf 4", tonumber(settings.high_shelf or 0)},
+    {"Freq-High Pass 5", 25},
+  })
+  add(master, "ReaComp (Cockos)", {{"Threshold", -12}, {"Ratio", 2}, {"Attack", 20}, {"Release", 150}})
+  add(master, "JS:sstillwell/eventhorizon2", {{"Threshold", tonumber(settings.threshold)}, {"Ceiling", -1.5}})
+  local limiter = add(master, "ReaLimit (Cockos)", {{"Threshold", -1.6}, {"Ceiling", -1.6}, {"Release", 20}})
+  reaper.TrackFX_SetNamedConfigParm(master, limiter, "instance_oversample_shift", "3")
+end
 
+local function render(pattern, settings_flag)
   reaper.GetSetProjectInfo_String(0, "RENDER_FILE", here .. "/render", true)
-  reaper.GetSetProjectInfo_String(0, "RENDER_PATTERN", "mou-ikkai-mix", true)
+  reaper.GetSetProjectInfo_String(0, "RENDER_PATTERN", pattern, true)
   reaper.GetSetProjectInfo_String(0, "RENDER_FORMAT", "ZXZhdxgAAA==", true)
   reaper.GetSetProjectInfo(0, "RENDER_BOUNDSFLAG", 1, true)
   reaper.GetSetProjectInfo(0, "RENDER_SRATE", 48000, true)
   reaper.GetSetProjectInfo(0, "RENDER_CHANNELS", 2, true)
-  reaper.Main_SaveProjectEx(0, here .. "/mou-ikkai-mix.rpp", 0)
+  reaper.GetSetProjectInfo(0, "RENDER_SETTINGS", settings_flag, true)
   reaper.Main_OnCommand(42230, 0)
+end
+
+local function mix()
+  local settings = read_table(here .. "/render/pass.tsv")
+  reaper.Main_openProject("noprompt:" .. here .. "/mou-ikkai.rpp")
+  if settings.pass == "stems" then
+    build({})
+    reaper.Main_OnCommand(40296, 0)
+    render("stems/$track", 3)
+    return
+  end
+  build(read_table(here .. "/render/gains.tsv"))
+  master_chain(settings)
+  reaper.Main_SaveProjectEx(0, here .. "/mou-ikkai-mix.rpp", 0)
+  render("mou-ikkai-mix", 0)
 end
 
 local ok, err = pcall(mix)

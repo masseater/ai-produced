@@ -1,0 +1,73 @@
+track	section	patch
+Bass	Chorus1	patches_factory/Basses/Bass 1
+Bass	Chorus1	patches_factory/Basses/Bass 3
+Bass	Chorus1	patches_factory/Basses/Deep End
+Bass	Chorus1	patches_factory/Basses/Rubber Bass
+Bass	Chorus1	patches_factory/Basses/Sub 1
+Bass	Chorus1	patches_factory/Basses/Fingered
+Bass	Chorus1	patches_factory/Basses/Lord Sawtooth
+Bass	Chorus1	patches_factory/Basses/Square Bass
+Bass	Chorus1	patches_factory/Basses/Behemoth
+Bass	Chorus1	patches_factory/Basses/Digibass
+Bass	Chorus1	patches_factory/Basses/Rumble
+Bass	Chorus1	patches_factory/Basses/Smoothie
+Bass	Chorus1	patches_factory/Basses/Plain
+Bass	Chorus1	patches_factory/Basses/Stable
+Bass	Chorus1	patches_factory/Basses/FM Bass 1
+Pad	Chorus1	patches_factory/Pads/Pad 1
+Pad	Chorus1	patches_factory/Pads/Pad 3
+Pad	Chorus1	patches_factory/Pads/Pad 5
+Pad	Chorus1	patches_factory/Pads/Super
+Pad	Chorus1	patches_factory/Pads/Bright
+Pad	Chorus1	patches_factory/Pads/Sparkly
+Pad	Chorus1	patches_factory/Pads/Verb Pad
+Pad	Chorus1	patches_factory/Pads/Winter Warmer
+Pad	Chorus1	patches_factory/Pads/MKS-70 Warm Pad
+Pad	Chorus1	patches_factory/Pads/Sawteeth
+Pad	Chorus1	patches_factory/Pads/Louder
+Pad	Chorus1	patches_factory/Pads/Ghost Pad
+Saw	Chorus1	patches_factory/Polysynths/Japanese Unison
+Saw	Chorus1	patches_factory/Polysynths/Hugeness
+Saw	Chorus1	patches_factory/Polysynths/Anthemish 1
+Saw	Chorus1	patches_factory/Polysynths/Anthemish 2
+Saw	Chorus1	patches_factory/Polysynths/Anthemish 3
+Saw	Chorus1	patches_factory/Polysynths/Megasynth 1
+Saw	Chorus1	patches_factory/Polysynths/Megasynth 2
+Saw	Chorus1	patches_factory/Polysynths/Super Jupiter
+Saw	Chorus1	patches_factory/Polysynths/Uni Saw FB
+Saw	Chorus1	patches_factory/Polysynths/Zizzly Saw
+Saw	Chorus1	patches_factory/Polysynths/Smooth Stabs
+Saw	Chorus1	patches_factory/Polysynths/Tarnce
+Saw	Chorus1	patches_factory/Polysynths/Uni 1
+Saw	Chorus1	patches_factory/Polysynths/Fat Curtis
+Saw	Chorus1	patches_factory/Polysynths/Larger
+Arp	Chorus2	patches_factory/Plucks/Nice Pluck 1
+Arp	Chorus2	patches_factory/Plucks/Nice Pluck 2
+Arp	Chorus2	patches_factory/Plucks/Nice Pluck 3
+Arp	Chorus2	patches_factory/Plucks/Nice Pluck 4
+Arp	Chorus2	patches_factory/Plucks/Saw Pluck
+Arp	Chorus2	patches_factory/Plucks/Trancy
+Arp	Chorus2	patches_factory/Plucks/Sync Pluck
+Arp	Chorus2	patches_factory/Plucks/Snap
+Arp	Chorus2	patches_factory/Plucks/Light 1
+Arp	Chorus2	patches_factory/Plucks/Bell 1
+Arp	Chorus2	patches_factory/Plucks/Square Pop
+Arp	Chorus2	patches_factory/Plucks/Delay Pops 1
+Piano	A1	patches_factory/Keys/EP 1
+Piano	A1	patches_factory/Keys/EP 2
+Piano	A1	patches_factory/Keys/DX EP
+Piano	A1	patches_factory/Keys/Soft Suitcase
+Piano	A1	patches_factory/Plucks/Piano Remains 1
+Piano	A1	patches_factory/Plucks/Piano Remains 2
+Lead	LastChorus	patches_factory/Leads/Classic Lead 1
+Lead	LastChorus	patches_factory/Leads/Classic Lead 2
+Lead	LastChorus	patches_factory/Leads/Saw Octaves
+Lead	LastChorus	patches_factory/Leads/Sync Lead
+Lead	LastChorus	patches_factory/Leads/Moogy Saw
+Lead	LastChorus	patches_factory/Leads/Very Chorus
+Lead	LastChorus	patches_factory/Leads/Turbo
+Lead	LastChorus	patches_factory/Leads/Square
+Lead	LastChorus	patches_factory/Leads/Light
+Lead	LastChorus	patches_factory/Leads/Triple
+Lead	LastChorus	patches_factory/Leads/Sharpish
+Lead	LastChorus	patches_factory/Leads/Kurasu
