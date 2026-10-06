@@ -26,7 +26,7 @@ const fillOf = (until: number, played: number): string => {
 type TapeProps = Readonly<{ elapsed: number }>;
 
 const Tape = ({ elapsed }: TapeProps): ReactNode => {
-  const played = Math.min(Math.max(elapsed, START), LOOP_FRAMES);
+  const played = Math.max(elapsed, START) % LOOP_FRAMES;
   return (
     <>
       <div className="absolute bottom-36 left-30 font-sans text-4xl font-normal text-(--fg) tabular-nums">
