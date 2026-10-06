@@ -1,0 +1,79 @@
+[vibrato]
+min_ticks = 720
+length = 55
+period = 170
+depth = 22
+fade_in = 35
+fade_out = 15
+
+[breath]
+min_rest = 360
+ticks = 180
+gap = 30
+sections = ["A1", "B1", "Chorus1", "A2", "B2", "Chorus2", "Bridge", "LastChorus"]
+
+[section.Intro]
+portamento = 120
+vibrato = false
+brec = 45
+tenc = -35
+voic = 85
+dyn = -20
+
+[section.A1]
+brec = 15
+tenc = -10
+
+[section.B1]
+tenc = 15
+
+[section.Chorus1]
+brec = -15
+tenc = 40
+dyn = 10
+
+[section.Drop1]
+vibrato = false
+staccato = 0.55
+brec = -25
+tenc = 50
+velc = 140
+dyn = 15
+
+[section.A2]
+brec = 15
+tenc = -10
+
+[section.B2]
+tenc = 20
+
+[section.Chorus2]
+brec = -15
+tenc = 45
+dyn = 10
+
+[section.Bridge]
+portamento = 80
+brec = 35
+tenc = -15
+
+[section.Break]
+vibrato = false
+staccato = 0.55
+brec = -25
+tenc = 55
+velc = 140
+dyn = 15
+
+[section.LastChorus]
+brec = -20
+tenc = 55
+dyn = 15
+
+[section.Outro]
+portamento = 120
+vibrato = false
+brec = 45
+tenc = -35
+voic = 85
+dyn = -20
