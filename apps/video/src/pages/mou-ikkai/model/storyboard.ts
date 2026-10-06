@@ -67,6 +67,7 @@ const BUILD_BEATS_FROM_BAR = 4;
 const BREAK_SIXTEENTHS_FROM_BAR = 4;
 const EXTENSION_FROM_BAR = 16;
 const NEVER = Number.POSITIVE_INFINITY;
+const CLOSURE = "closure";
 
 const still: Omit<Plan, "treatment" | "palettes"> = {
   layouts: ["center"],
@@ -201,7 +202,9 @@ const gridCuts = (plan: Plan, end: number): readonly number[] =>
   });
 
 const voiceCuts = (span: Span): readonly number[] =>
-  span.lines.flatMap((line) => line.morae.map((mora) => mora.start - span.origin));
+  span.lines.flatMap((line) =>
+    line.morae.filter((mora) => mora.kind !== CLOSURE).map((mora) => mora.start - span.origin),
+  );
 
 const optional = (enabled: boolean, cuts: readonly number[]): readonly number[] => {
   if (enabled) {

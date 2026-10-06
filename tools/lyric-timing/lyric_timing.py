@@ -40,11 +40,27 @@ def read_lyrics(path):
     return lines
 
 
+def kana_tail(chunk):
+    tail = re.search(r"[ぁ-ゖー]+$", chunk)
+    return tail.group(0) if tail else ""
+
+
+def group_readings(chunks, readings):
+    grouped = []
+    rest = list(readings)
+    for chunk in chunks:
+        taken = ""
+        while rest and not (taken and taken.endswith(kana_tail(chunk))):
+            taken += rest.pop(0)
+        grouped.append(taken)
+    return grouped if not rest and all(grouped) else None
+
+
 def words_of(text, reading, sung):
     chunks = text.split()
-    readings = reading.split()
-    counts = [len(morae(r)) for r in readings]
-    if len(chunks) != len(readings) or sum(counts) != len(sung):
+    grouped = group_readings(chunks, reading.split())
+    counts = [len(morae(r)) for r in grouped] if grouped else []
+    if not grouped or sum(counts) != len(sung):
         return [{"text": text, "morae": list(range(len(sung)))}]
     out = []
     start = 0
