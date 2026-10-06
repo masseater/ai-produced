@@ -1,0 +1,93 @@
+{
+  "id": "_n_iKR3Icio",
+  "title": "Max Cooper - Symphony in Acid",
+  "fps": 30.0,
+  "res": "1920x1080",
+  "duration_s": 336.04,
+  "bpm": 120.0,
+  "bpm_detected": 95.7,
+  "key": "G# minor",
+  "key_confidence": 0.717,
+  "lufs_integrated": -9.8,
+  "lra": 9.4,
+  "crest_db": 12.41,
+  "stereo_side_to_mid_db": -9.8,
+  "onsets_per_s": 5.63,
+  "spectral_centroid_hz": 2057.1,
+  "loudness_p90_minus_p10_db": 23.28,
+  "band_db": {
+    "sub": -2.59,
+    "low": -5.07,
+    "mid": -9.72,
+    "high_mid": -16.09,
+    "high": -21.83
+  },
+  "video": {
+    "full_switch_per_min": 157.1,
+    "partial_per_min": 341.4,
+    "local_per_min": 56.8,
+    "full_switches": 880,
+    "mean_shot_len_s": 0.381,
+    "median_shot_len_s": 0.233,
+    "shot_hold_frames_hist": {
+      "1f": 101,
+      "2f": 55,
+      "3f": 100,
+      "4f": 99,
+      "5f": 23,
+      ">=6f": 503
+    },
+    "one_frame_flash_ABA": 0,
+    "two_stage_ABC": 101,
+    "incl_partial_flash_ABA": 27,
+    "incl_partial_two_stage_ABC": 1609,
+    "what_changes_frames": {
+      "color": 1059,
+      "layout": 311,
+      "content": 1261,
+      "luma": 2624
+    },
+    "sync_full_rate_vs_random": {
+      "beat_pm0f": [0.05, 0.049],
+      "beat_pm1f": [0.182, 0.146],
+      "8th_pm0f": [0.1, 0.098],
+      "8th_pm1f": [0.361, 0.293],
+      "16th_pm1f": [0.647, 0.585],
+      "onset_pm1f": [0.848, 0.56]
+    },
+    "av_lag_frames": 1,
+    "bpm_check": {
+      "95.7": {
+        "onset_lift": 1.27
+      },
+      "120.0": {
+        "onset_lift": 2.54,
+        "full_8th_pm1f": [0.481, 0.4],
+        "full_beat_pm1f": [0.347, 0.2]
+      }
+    },
+    "repetition": {
+      "clip_recur_092": 0.083,
+      "clip_recur_085": 0.316,
+      "clip_clusters_per_min": 67.1,
+      "ocr_text_coverage": 0.92,
+      "ocr_text_repeat_ratio": 0.647
+    },
+    "legibility_corr_loudness": {
+      "ocr_chars": 0.265,
+      "ocr_conf": 0.41,
+      "edge_density": 0.458,
+      "entropy": 0.501,
+      "colorfulness": 0.302,
+      "change_events_per_s": 0.475
+    },
+    "motion_ratio": 0.093,
+    "means": {
+      "edge_density": 0.1494,
+      "entropy": 3.64,
+      "colorfulness": 51.9,
+      "lum": 116.8
+    },
+    "note": "141.83-198.21秒が最密（全面278.7/分、1F状態54）。110-117秒の巨大文字スクロールは移動98%"
+  }
+}

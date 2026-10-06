@@ -1,0 +1,198 @@
+{
+  "id": "6eDhCz2vzVc",
+  "title": "r-906 - まにまに 2025 Edit (feat. 初音ミク)",
+  "fps": 29.97,
+  "res": "1920x1080",
+  "duration_s": 277.22,
+  "bpm": 117.5,
+  "bpm_detected": 117.5,
+  "bpm_candidates": [58.7, 117.5, 234.9],
+  "key": "F major",
+  "key_confidence": 0.79,
+  "lufs_integrated": -4.6,
+  "lra": 5.4,
+  "crest_db": 10.43,
+  "stereo_side_to_mid_db": -4.51,
+  "onsets_per_s": 3.87,
+  "spectral_centroid_hz": 3148.5,
+  "loudness_p90_minus_p10_db": 10.96,
+  "band_db": {
+    "sub": -6.32,
+    "low": -4.11,
+    "mid": -5.97,
+    "high_mid": -10.83,
+    "high": -13.62
+  },
+  "video": {
+    "full_switch_per_min": 16.9,
+    "partial_per_min": 22.5,
+    "local_per_min": 10.0,
+    "full_switches": 78,
+    "mean_shot_len_s": 3.509,
+    "median_shot_len_s": 0.2,
+    "shot_hold_frames_hist": {
+      "1f": 26,
+      "2f": 0,
+      "3f": 0,
+      "4f": 0,
+      "5f": 0,
+      ">=6f": 53
+    },
+    "one_frame_flash_ABA": 0,
+    "two_stage_ABC": 26,
+    "incl_partial_flash_ABA": 0,
+    "incl_partial_two_stage_ABC": 130,
+    "what_changes_frames": {
+      "color": 177,
+      "layout": 26,
+      "content": 121,
+      "luma": 182
+    },
+    "sync_full_rate_vs_random": {
+      "beat_pm0f": [0.09, 0.063],
+      "beat_pm1f": [0.218, 0.189],
+      "8th_pm0f": [0.141, 0.126],
+      "8th_pm1f": [0.41, 0.377],
+      "16th_pm0f": [0.269, 0.251],
+      "16th_pm1f": [0.821, 0.754],
+      "onset_pm1f": [0.449, 0.386]
+    },
+    "sync_partial_8th_pm1f": [0.356, 0.377],
+    "sync_local_16th_pm1f": [0.739, 0.754],
+    "av_lag_frames": 3,
+    "bpm_check": {
+      "117.5": {
+        "onset_lift": 1.14,
+        "full_8th_pm0f": [0.141, 0.131],
+        "full_8th_pm1f": [0.397, 0.392],
+        "full_beat_pm1f": [0.218, 0.196]
+      },
+      "172.3": {
+        "onset_lift": 1.16,
+        "full_8th_pm0f": [0.192, 0.192],
+        "full_8th_pm1f": [0.59, 0.575],
+        "full_beat_pm1f": [0.321, 0.287]
+      }
+    },
+    "bpm_from_full_switches": [
+      [63.6, 9.42],
+      [69.4, 6.64],
+      [92.5, 6.36]
+    ],
+    "repetition": {
+      "clip_recur_092": 0.953,
+      "clip_recur_085": 0.955,
+      "clip_clusters_per_min": 1.5,
+      "ocr_text_coverage": 0.841,
+      "ocr_text_repeat_ratio": 0.867
+    },
+    "legibility_corr_loudness": {
+      "ocr_chars": 0.137,
+      "ocr_conf": 0.125,
+      "edge_density": 0.182,
+      "entropy": 0.117,
+      "colorfulness": 0.065,
+      "change_events_per_s": 0.037
+    },
+    "motion_ratio": 0.0,
+    "means": {
+      "edge_density": 0.107,
+      "entropy": 6.39,
+      "colorfulness": 51.6,
+      "lum": 177.8
+    }
+  },
+  "sections": [
+    {
+      "t": [0.0, 27.49],
+      "lufs": -13.9,
+      "full/min": 13.1,
+      "partial/min": 17.5,
+      "local/min": 6.6,
+      "1f_states": 2
+    },
+    {
+      "t": [27.49, 33.16],
+      "lufs": -3.8,
+      "full/min": 31.7,
+      "partial/min": 42.3,
+      "local/min": 10.6,
+      "1f_states": 1
+    },
+    {
+      "t": [33.16, 52.13],
+      "lufs": -7.2,
+      "full/min": 9.5,
+      "partial/min": 12.6,
+      "local/min": 3.2,
+      "1f_states": 1
+    },
+    {
+      "t": [52.13, 63.67],
+      "lufs": -6.2,
+      "full/min": 26.0,
+      "partial/min": 41.6,
+      "local/min": 10.4,
+      "1f_states": 2
+    },
+    {
+      "t": [63.67, 107.3],
+      "lufs": -4.3,
+      "full/min": 17.9,
+      "partial/min": 22.0,
+      "local/min": 12.4,
+      "1f_states": 4
+    },
+    {
+      "t": [107.3, 129.03],
+      "lufs": -4.5,
+      "full/min": 16.5,
+      "partial/min": 22.1,
+      "local/min": 8.3,
+      "1f_states": 2
+    },
+    {
+      "t": [129.03, 151.79],
+      "lufs": -7.8,
+      "full/min": 15.8,
+      "partial/min": 21.1,
+      "local/min": 10.5,
+      "1f_states": 2
+    },
+    {
+      "t": [151.79, 196.09],
+      "lufs": -4.3,
+      "full/min": 16.3,
+      "partial/min": 21.7,
+      "local/min": 6.8,
+      "1f_states": 4
+    },
+    {
+      "t": [196.09, 198.67],
+      "lufs": -7.9,
+      "full/min": 69.2,
+      "partial/min": 92.2,
+      "local/min": 23.1,
+      "1f_states": 1
+    },
+    {
+      "t": [198.67, 265.24],
+      "lufs": -3.6,
+      "full/min": 16.2,
+      "partial/min": 21.6,
+      "local/min": 13.5,
+      "1f_states": 6
+    },
+    {
+      "t": [265.24, 277.22],
+      "lufs": -19.9,
+      "full/min": 15.0,
+      "partial/min": 20.0,
+      "local/min": 10.0,
+      "1f_states": 1
+    }
+  ],
+  "bpm_v1_check": {
+    "bpm": "undetermined (117.5 lift 1.14 / 172.3 lift 1.16)"
+  }
+}

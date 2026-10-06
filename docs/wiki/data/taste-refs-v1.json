@@ -1,0 +1,241 @@
+{
+  "source": "YouTube音声(yt-dlp)をlibrosa/ffmpegで解析(2026-10-04)。true peakはデコード時のオーバーシュートで無効のため除外。BPMは倍/半分の誤検出あり得る",
+  "tracks": [
+    {
+      "id": "6eDhCz2vzVc",
+      "title": "まにまに 2025 Edit",
+      "duration_s": 277.2,
+      "bpm": 172.3,
+      "key": "F major",
+      "key_confidence": 0.801,
+      "lufs_integrated": -4.6,
+      "lra": 5.4,
+      "crest_db": 10.1,
+      "stereo_side_to_mid_db": -4.51,
+      "onsets_per_s": 4.29,
+      "spectral_centroid_hz": 4657.0,
+      "loudness_p90_minus_p10_db": 9.58,
+      "sub": -6.32,
+      "low": -4.12,
+      "mid": -5.97,
+      "high_mid": -10.83,
+      "high": -13.62
+    },
+    {
+      "id": "CzJbz9qSsd0",
+      "title": "Cheerleader",
+      "duration_s": 253.1,
+      "bpm": 147.7,
+      "key": "D# major",
+      "key_confidence": 0.841,
+      "lufs_integrated": -5.7,
+      "lra": 11.8,
+      "crest_db": 10.49,
+      "stereo_side_to_mid_db": -7.33,
+      "onsets_per_s": 1.28,
+      "spectral_centroid_hz": 4233.0,
+      "loudness_p90_minus_p10_db": 12.88,
+      "sub": -7.97,
+      "low": -4.44,
+      "mid": -4.65,
+      "high_mid": -10.23,
+      "high": -13.73
+    },
+    {
+      "id": "MFs7FgQU2xM",
+      "title": "スライ村",
+      "duration_s": 194.0,
+      "bpm": 120.2,
+      "key": "A minor",
+      "key_confidence": 0.773,
+      "lufs_integrated": -6.3,
+      "lra": 8.9,
+      "crest_db": 10.71,
+      "stereo_side_to_mid_db": -8.98,
+      "onsets_per_s": 4.36,
+      "spectral_centroid_hz": 3752.0,
+      "loudness_p90_minus_p10_db": 10.85,
+      "sub": -14.41,
+      "low": -4.03,
+      "mid": -3.59,
+      "high_mid": -10.33,
+      "high": -14.33
+    },
+    {
+      "id": "UE1y01q6wzQ",
+      "title": "Remember",
+      "duration_s": 233.0,
+      "bpm": 112.3,
+      "key": "G major",
+      "key_confidence": 0.744,
+      "lufs_integrated": -7.6,
+      "lra": 2.5,
+      "crest_db": 11.43,
+      "stereo_side_to_mid_db": -5.45,
+      "onsets_per_s": 3.94,
+      "spectral_centroid_hz": 3605.0,
+      "loudness_p90_minus_p10_db": 3.69,
+      "sub": -7.44,
+      "low": -4.12,
+      "mid": -4.5,
+      "high_mid": -12.59,
+      "high": -16.41
+    },
+    {
+      "id": "eCSO4fL98Xk",
+      "title": "死んでしまったんだ",
+      "duration_s": 180.0,
+      "bpm": 202.6,
+      "key": "D minor",
+      "key_confidence": 0.805,
+      "lufs_integrated": -6.2,
+      "lra": 2.8,
+      "crest_db": 11.69,
+      "stereo_side_to_mid_db": -10.7,
+      "onsets_per_s": 7.29,
+      "spectral_centroid_hz": 4048.0,
+      "loudness_p90_minus_p10_db": 3.99,
+      "sub": -4.77,
+      "low": -4.52,
+      "mid": -7.04,
+      "high_mid": -11.6,
+      "high": -13.5,
+      "bpm_detected": 101.3,
+      "bpm_note": "ユーザー確認により倍テンポに補正(2026-10-04)"
+    },
+    {
+      "id": "jBGlPuMdkCM",
+      "title": "イシェド",
+      "duration_s": 158.4,
+      "bpm": 161.5,
+      "key": "F minor",
+      "key_confidence": 0.431,
+      "lufs_integrated": -4.5,
+      "lra": 6.7,
+      "crest_db": 9.92,
+      "stereo_side_to_mid_db": -8.03,
+      "onsets_per_s": 3.45,
+      "spectral_centroid_hz": 3828.0,
+      "loudness_p90_minus_p10_db": 10.96,
+      "sub": -7.23,
+      "low": -6.37,
+      "mid": -4.37,
+      "high_mid": -7.37,
+      "high": -15.05
+    },
+    {
+      "id": "oqmkKOLlKQA",
+      "title": "STARGAZER",
+      "duration_s": 436.9,
+      "bpm": 143.6,
+      "key": "E major",
+      "key_confidence": 0.737,
+      "lufs_integrated": -9.8,
+      "lra": 10.5,
+      "crest_db": 13.08,
+      "stereo_side_to_mid_db": -10.42,
+      "onsets_per_s": 6.73,
+      "spectral_centroid_hz": 4582.0,
+      "loudness_p90_minus_p10_db": 13.4,
+      "sub": -5.37,
+      "low": -3.85,
+      "mid": -7.02,
+      "high_mid": -13.07,
+      "high": -13.03
+    },
+    {
+      "id": "qd3q0dYpprs",
+      "title": "私だけの魔法。",
+      "duration_s": 119.8,
+      "bpm": 215.4,
+      "key": "F# minor",
+      "key_confidence": 0.552,
+      "lufs_integrated": -8.3,
+      "lra": 4.3,
+      "crest_db": 11.38,
+      "stereo_side_to_mid_db": -7.83,
+      "onsets_per_s": 4.6,
+      "spectral_centroid_hz": 3863.0,
+      "loudness_p90_minus_p10_db": 8.04,
+      "sub": -4.61,
+      "low": -4.82,
+      "mid": -6.14,
+      "high_mid": -12.63,
+      "high": -15.85,
+      "bpm_detected": 107.7,
+      "bpm_note": "ユーザー確認により倍テンポに補正(2026-10-04)"
+    }
+  ],
+  "band": {
+    "duration_s": {
+      "min": 119.8,
+      "median": 213.5,
+      "max": 436.9
+    },
+    "bpm": {
+      "min": 112.3,
+      "median": 154.6,
+      "max": 215.4
+    },
+    "lufs_integrated": {
+      "min": -9.8,
+      "median": -6.25,
+      "max": -4.5
+    },
+    "lra": {
+      "min": 2.5,
+      "median": 6.05,
+      "max": 11.8
+    },
+    "crest_db": {
+      "min": 9.92,
+      "median": 11.05,
+      "max": 13.08
+    },
+    "stereo_side_to_mid_db": {
+      "min": -10.7,
+      "median": -7.93,
+      "max": -4.51
+    },
+    "onsets_per_s": {
+      "min": 1.28,
+      "median": 4.33,
+      "max": 7.29
+    },
+    "spectral_centroid_hz": {
+      "min": 3605.0,
+      "median": 3955.5,
+      "max": 4657.0
+    },
+    "loudness_p90_minus_p10_db": {
+      "min": 3.69,
+      "median": 10.21,
+      "max": 13.4
+    },
+    "sub": {
+      "min": -14.41,
+      "median": -6.78,
+      "max": -4.61
+    },
+    "low": {
+      "min": -6.37,
+      "median": -4.28,
+      "max": -3.85
+    },
+    "mid": {
+      "min": -7.04,
+      "median": -5.31,
+      "max": -3.59
+    },
+    "high_mid": {
+      "min": -13.07,
+      "median": -11.21,
+      "max": -7.37
+    },
+    "high": {
+      "min": -16.41,
+      "median": -14.03,
+      "max": -13.03
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "MFs7FgQU2xM",
+  "title": "スライ村 / ついなちゃん",
+  "fps": 30.0,
+  "res": "1440x1080",
+  "duration_s": 194.01,
+  "bpm": 120.2,
+  "bpm_detected": 117.5,
+  "key": "C major",
+  "key_confidence": 0.757,
+  "lufs_integrated": -6.3,
+  "lra": 8.9,
+  "crest_db": 11.76,
+  "stereo_side_to_mid_db": -8.98,
+  "onsets_per_s": 3.22,
+  "spectral_centroid_hz": 2734.3,
+  "loudness_p90_minus_p10_db": 11.98,
+  "band_db": {
+    "sub": -14.41,
+    "low": -4.02,
+    "mid": -3.59,
+    "high_mid": -10.32,
+    "high": -14.32
+  },
+  "video": {
+    "full_switch_per_min": 33.1,
+    "partial_per_min": 146.0,
+    "local_per_min": 37.4,
+    "full_switches": 107,
+    "mean_shot_len_s": 1.796,
+    "median_shot_len_s": 0.4,
+    "shot_hold_frames_hist": {
+      "1f": 13,
+      "2f": 8,
+      "3f": 3,
+      "4f": 7,
+      "5f": 1,
+      ">=6f": 76
+    },
+    "one_frame_flash_ABA": 0,
+    "two_stage_ABC": 13,
+    "incl_partial_two_stage_ABC": 396,
+    "what_changes_frames": {
+      "color": 115,
+      "layout": 123,
+      "content": 191,
+      "luma": 577
+    },
+    "sync_full_rate_vs_random_at_117.5": {
+      "beat_pm0f": [0.028, 0.064],
+      "beat_pm1f": [0.206, 0.193],
+      "8th_pm0f": [0.047, 0.128],
+      "8th_pm1f": [0.308, 0.385],
+      "onset_pm1f": [0.206, 0.321]
+    },
+    "av_lag_frames": 2,
+    "repetition": {
+      "clip_recur_092": 0.041,
+      "clip_recur_085": 0.124,
+      "clip_clusters_per_min": 42.4,
+      "ocr_text_coverage": 0.515,
+      "ocr_text_repeat_ratio": 0.55
+    },
+    "legibility_corr_loudness": {
+      "ocr_chars": -0.464,
+      "ocr_conf": -0.232,
+      "edge_density": 0.327,
+      "entropy": 0.387,
+      "colorfulness": 0.363,
+      "change_events_per_s": 0.182
+    },
+    "motion_ratio": 0.123,
+    "means": {
+      "edge_density": 0.0936,
+      "entropy": 3.54,
+      "colorfulness": 66.1,
+      "lum": 60.1
+    },
+    "note": "47.72-88.44秒が最密（全面72.2/分、部分396.2/分）"
+  },
+  "bpm_v1_check": {
+    "bpm": 120.2,
+    "onset_lift": 1.66,
+    "lift_detected_117.5": 1.26,
+    "full_beat_pm0f": [0.159, 0.067],
+    "full_beat_pm1f": [0.299, 0.201],
+    "full_8th_pm0f": [0.206, 0.134]
+  }
+}

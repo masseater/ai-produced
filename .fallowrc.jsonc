@@ -81,7 +81,7 @@
         "src/app/server/index.{ts,tsx}",
         "src/app/routes/**/*.{ts,tsx}",
       ],
-      "alwaysUsed": ["src/app/routeTree.gen.ts"],
+      "alwaysUsed": ["src/app/generated/routeTree.gen.ts"],
     },
     {
       "name": "alchemy",

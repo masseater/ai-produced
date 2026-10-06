@@ -1,0 +1,62 @@
+{
+  "id": "UE1y01q6wzQ",
+  "title": "Remember – yuigot / 月見ヤチヨ",
+  "fps": 24.0,
+  "res": "1920x1080",
+  "duration_s": 233.05,
+  "bpm": 112.3,
+  "key": "G major",
+  "key_confidence": 0.745,
+  "lufs_integrated": -7.6,
+  "lra": 2.5,
+  "crest_db": 11.94,
+  "stereo_side_to_mid_db": -5.45,
+  "onsets_per_s": 3.22,
+  "spectral_centroid_hz": 2645.9,
+  "loudness_p90_minus_p10_db": 5.4,
+  "band_db": {
+    "sub": -7.44,
+    "low": -4.12,
+    "mid": -4.5,
+    "high_mid": -12.59,
+    "high": -16.41
+  },
+  "video": {
+    "full_switch_per_min": 13.4,
+    "partial_per_min": 16.7,
+    "local_per_min": 7.7,
+    "full_switches": 52,
+    "mean_shot_len_s": 4.397,
+    "median_shot_len_s": 4.25,
+    "one_frame_flash_ABA": 0,
+    "two_stage_ABC": 0,
+    "sync_full_rate_vs_random": {
+      "beat_pm0f": [0.058, 0.077],
+      "beat_pm1f": [0.25, 0.23],
+      "8th_pm0f": [0.154, 0.153],
+      "8th_pm1f": [0.519, 0.46],
+      "onset_pm1f": [0.519, 0.401]
+    },
+    "av_lag_frames": -1,
+    "repetition": {
+      "clip_recur_092": 0.171,
+      "clip_recur_085": 0.37,
+      "clip_clusters_per_min": 21.1,
+      "ocr_text_coverage": 0.914,
+      "ocr_text_repeat_ratio": 0.906
+    },
+    "legibility_corr_loudness": {
+      "ocr_conf": 0.376,
+      "edge_density": 0.195,
+      "entropy": 0.2,
+      "colorfulness": -0.066
+    },
+    "motion_ratio": 0.031,
+    "means": {
+      "edge_density": 0.0526,
+      "entropy": 5.29,
+      "colorfulness": 66.4,
+      "lum": 134.9
+    }
+  }
+}

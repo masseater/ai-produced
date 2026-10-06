@@ -1,7 +1,7 @@
+import { createRouter } from "@workspace/start/api-router";
 import { Effect } from "effect";
 
 import { todo } from "#/pages/home/model/todo.table";
-import { createRouter } from "#/shared/api/index.server";
 import { db } from "#/shared/db/index.server";
 import { FeatureFlags } from "#/shared/flags/index.server";
 
