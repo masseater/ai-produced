@@ -60,7 +60,7 @@
       "ref": "650eb83619134adb947b1ee8755e6511270bc444",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
-      "computedHash": "7350ef15ed8febd35f1a15750e57418eac6656b7e86259e7796aa5e7972af60c"
+      "computedHash": "4f7b5229ea29d234c4897211d2d3de2ef070cc458256703125db3a30807a9874"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",
@@ -95,7 +95,7 @@
       "ref": "986da6ffc89316a90e509d007c1efe1fc59057e6",
       "sourceType": "github",
       "skillPath": "SKILL.md",
-      "computedHash": "aaab4ea4b99c2442c536c9d6a66271b98a5f139714de6169faf9232746b2a99e"
+      "computedHash": "0b8ca56f301dc56184291b19dc2ec92d561b46776abb3c5bb7c1bc0266623421"
     }
   }
 }

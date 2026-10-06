@@ -1,0 +1,29 @@
+{
+  "name": "@workspace/start",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./api-client": "./src/api-client.ts",
+    "./api-router": "./src/api-router.server.ts",
+    "./api-route": "./src/api-route.ts",
+    "./router": "./src/router.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet"
+  },
+  "dependencies": {
+    "@elysiajs/eden": "catalog:stack",
+    "@tanstack/react-query": "catalog:stack",
+    "@tanstack/react-router": "1.170.41",
+    "@tanstack/react-router-ssr-query": "1.167.3",
+    "eden-tanstack-react-query": "catalog:stack",
+    "effect": "catalog:stack",
+    "elysia": "catalog:stack"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "catalog:",
+    "typescript": "catalog:stack"
+  }
+}

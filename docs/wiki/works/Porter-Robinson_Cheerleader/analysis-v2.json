@@ -1,0 +1,92 @@
+{
+  "id": "CzJbz9qSsd0",
+  "title": "Porter Robinson - Cheerleader (Official Music Video)",
+  "fps": 25.0,
+  "res": "1574x1080",
+  "duration_s": 253.09,
+  "bpm": 147.7,
+  "bpm_detected": 143.6,
+  "key": "D# major",
+  "key_confidence": 0.797,
+  "lufs_integrated": -5.7,
+  "lra": 11.8,
+  "crest_db": 10.86,
+  "stereo_side_to_mid_db": -7.33,
+  "onsets_per_s": 0.92,
+  "spectral_centroid_hz": 3225.1,
+  "loudness_p90_minus_p10_db": 13.99,
+  "band_db": {
+    "sub": -7.97,
+    "low": -4.44,
+    "mid": -4.65,
+    "high_mid": -10.23,
+    "high": -13.73
+  },
+  "video": {
+    "full_switch_per_min": 77.1,
+    "partial_per_min": 442.2,
+    "local_per_min": 65.0,
+    "full_switches": 325,
+    "mean_shot_len_s": 0.776,
+    "median_shot_len_s": 0.32,
+    "shot_hold_frames_hist": {
+      "1f": 104,
+      "2f": 21,
+      "3f": 9,
+      "4f": 11,
+      "5f": 8,
+      ">=6f": 173
+    },
+    "one_frame_flash_ABA": 7,
+    "two_stage_ABC": 97,
+    "incl_partial_flash_ABA": 16,
+    "incl_partial_two_stage_ABC": 1856,
+    "what_changes_frames": {
+      "color": 538,
+      "layout": 484,
+      "content": 775,
+      "luma": 2137
+    },
+    "sync_full_rate_vs_random_at_143.6": {
+      "beat_pm0f": [0.049, 0.085],
+      "beat_pm1f": [0.194, 0.254],
+      "8th_pm0f": [0.117, 0.169],
+      "8th_pm1f": [0.391, 0.508],
+      "16th_pm0f": [0.209, 0.338],
+      "16th_pm1f": [0.634, 0.861],
+      "onset_pm1f": [0.092, 0.11]
+    },
+    "av_lag_frames": 1,
+    "repetition": {
+      "clip_recur_092": 0.011,
+      "clip_recur_085": 0.057,
+      "clip_clusters_per_min": 87.0,
+      "ocr_text_coverage": 0.071,
+      "ocr_text_repeat_ratio": 0.056
+    },
+    "legibility_corr_loudness": {
+      "ocr_chars": 0.02,
+      "ocr_conf": -0.092,
+      "edge_density": 0.282,
+      "entropy": 0.4,
+      "colorfulness": 0.317,
+      "change_events_per_s": 0.361
+    },
+    "motion_ratio": 0.224,
+    "means": {
+      "edge_density": 0.1106,
+      "entropy": 6.88,
+      "colorfulness": 47.1,
+      "lum": 97.2
+    },
+    "note": "全面切替の2〜3割はカメラ移動・紙吹雪の誤検出の可能性。終盤201.55-253.09秒が最密（全面153.6/分、1F状態73）"
+  },
+  "bpm_v1_check": {
+    "bpm": 147.7,
+    "onset_lift": 1.64,
+    "lift_detected_143.6": 1.22,
+    "full_beat_pm0f": [0.108, 0.098],
+    "full_8th_pm0f": [0.209, 0.197],
+    "full_8th_pm1f": [0.585, 0.59]
+  }
+}

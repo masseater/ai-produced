@@ -137,7 +137,7 @@ export default defineConfig({
         "error",
         {
           capIsNewExceptions: ["Stack"],
-          capIsNewExceptionPattern: "^(Config|Context|Data|Schema|D1|Website)\\.",
+          capIsNewExceptionPattern: "^(Config|Context|Data|Schema|D1|Website|Workers)\\.",
         },
       ],
       "typescript/no-empty-interface": ["error", { allowSingleExtends: true }],
@@ -151,7 +151,7 @@ export default defineConfig({
         rules: { "import/no-default-export": "off" },
       },
       {
-        files: ["**/shared/ui/**"],
+        files: ["**/shared/ui/**", "libs/ui/src/components/**"],
         rules: { "shadcn/no-restyle": "off", "react/jsx-props-no-spreading": "off" },
       },
     ],
