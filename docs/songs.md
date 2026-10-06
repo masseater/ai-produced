@@ -15,4 +15,4 @@
 | renders/        | 書き出した音声（Git LFS）                |
 | log.md          | 工程ごとの判断とやり直しの記録           |
 
-自作のMCPサーバーもRemotionのプロジェクト（apps/video/）も、アプリはすべてapps/に置く。
+自作のMCPサーバーとRemotionのプロジェクト（apps/video/）はapps/に置く。
