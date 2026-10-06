@@ -9,6 +9,7 @@ import yaml
 TPQ = 480
 BAR = TPQ * 4
 PHONEMIZER = "OpenUtau.Core.DiffSinger.DiffSingerJapanesePhonemizer"
+CLOSURE_LYRIC = "っ"
 SUNG_AS = {"を": "お"}
 PORTAMENTO = [{"x": -40, "y": 0, "shape": "io"}, {"x": 40, "y": 0, "shape": "io"}]
 NOTE_PC = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
@@ -32,7 +33,7 @@ def build_notes(rows, colors):
         if row["kind"] == "closure":
             if not notes or notes[-1]["position"] + notes[-1]["duration"] != start:
                 sys.exit(f"closure without a preceding note at tick {start}")
-            tone, lyric = notes[-1]["tone"], "っ"
+            tone, lyric = notes[-1]["tone"], CLOSURE_LYRIC
         else:
             tone, lyric = int(row["midi"]), SUNG_AS.get(row["mora"], row["mora"])
         if notes and notes[-1]["position"] + notes[-1]["duration"] > start:
@@ -118,7 +119,7 @@ def main():
     project = build_project(args.out.stem, score, notes, args.singer, colors, args.phonemizer)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(yaml.safe_dump(project, allow_unicode=True, sort_keys=False, width=1000), encoding="utf-8")
-    closures = sum(1 for note in notes if note["lyric"] == "っ")
+    closures = sum(1 for note in notes if note["lyric"] == CLOSURE_LYRIC)
     print(f"{args.out}: {len(notes)} notes ({closures} closures), {project['voice_parts'][0]['duration'] // BAR} bars")
 
 

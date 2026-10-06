@@ -38,27 +38,25 @@ def midi_events(track, length_ticks):
     return events
 
 
-def midi_track(name, track, ppq, length_ticks, length_seconds):
-    source = rpp.Element("SOURCE", ["MIDI"], [["HASDATA", "1", str(ppq), "QN"], *midi_events(track, length_ticks)])
+def track_element(name, item_name, source, length_seconds):
     item = rpp.Element("ITEM", [], [
         ["POSITION", "0"],
         ["LENGTH", f"{length_seconds:.6f}"],
-        ["NAME", name],
+        ["NAME", item_name],
         ["GUID", guid(f"item/{name}")],
         source,
     ])
     return rpp.Element("TRACK", [guid(f"track/{name}")], [["NAME", name], ["TRACKID", guid(f"track/{name}")], item])
 
 
+def midi_track(name, track, ppq, length_ticks, length_seconds):
+    source = rpp.Element("SOURCE", ["MIDI"], [["HASDATA", "1", str(ppq), "QN"], *midi_events(track, length_ticks)])
+    return track_element(name, name, source, length_seconds)
+
+
 def audio_track(name, path, length_seconds):
-    item = rpp.Element("ITEM", [], [
-        ["POSITION", "0"],
-        ["LENGTH", f"{length_seconds:.6f}"],
-        ["NAME", Path(path).name],
-        ["GUID", guid(f"item/{name}")],
-        rpp.Element("SOURCE", ["WAVE"], [["FILE", path]]),
-    ])
-    return rpp.Element("TRACK", [guid(f"track/{name}")], [["NAME", name], ["TRACKID", guid(f"track/{name}")], item])
+    source = rpp.Element("SOURCE", ["WAVE"], [["FILE", path]])
+    return track_element(name, Path(path).name, source, length_seconds)
 
 
 def main():
