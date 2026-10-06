@@ -3,7 +3,7 @@
   "production": true,
   "typeAware": { "enabled": true, "require": "complete" },
   "failOnParseError": true,
-  "ignorePatterns": [".claude/**", "tools/tempo-octave/**"],
+  "ignorePatterns": [".claude/**", "tools/tempo-octave/**", "tools/mora-check/**"],
   "audit": { "gate": "all" },
   "security": {
     "categories": {
