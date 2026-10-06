@@ -1,8 +1,0 @@
-{
-  "name": "tempo-octave",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "uv run tempo_octave.py"
-  }
-}
