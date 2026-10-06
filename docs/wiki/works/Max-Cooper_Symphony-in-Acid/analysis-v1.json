@@ -1,0 +1,165 @@
+{
+  "id": "_n_iKR3Icio",
+  "url": "https://www.youtube.com/watch?v=_n_iKR3Icio",
+  "title": "Max Cooper - Symphony in Acid (Official video by Ksawery Komputery)",
+  "channel": "Max Cooper",
+  "upload_date": "20220512",
+  "duration_sec": 336,
+  "source_max_resolution": "3840x2160",
+  "fps": 30,
+  "analyzed_video": {
+    "resolution": "1920x1080",
+    "codec": "av1",
+    "fps": 30.0,
+    "frames": 10081
+  },
+  "audio": {
+    "integrated_lufs": -9.8,
+    "true_peak_dbtp": 1.0,
+    "lra_lu": 9.4,
+    "band_energy_ratio": {
+      "low_20_250": 0.8614,
+      "mid_250_4k": 0.1198,
+      "high_4k_20k": 0.0179
+    },
+    "dynamics": {
+      "plr_db": 10.8,
+      "crest_db": 12.16,
+      "short_term_p95_minus_p10_lu": 15.1
+    },
+    "bpm": 95.7,
+    "bpm_confidence": "low",
+    "bpm_alt_candidates_autocorr": [92.3, 152.0, 112.3, 117.5],
+    "bpm_note": "beat_track 95.7 (default) or 161.5 (start_bpm>=128); cut times favour a 120 BPM grid (1.87x random), so the true tempo is likely 120",
+    "key": "G# minor",
+    "key_confidence": 0.717,
+    "key_runner_up": "G# major",
+    "structure_boundaries_sec": [
+      0.0, 14.07, 29.84, 110.06, 117.21, 128.34, 134.75, 142.08, 198.21, 205.82, 302.58, 336.04
+    ],
+    "sections": [
+      { "start": 0.0, "end": 14.07, "rms_db": -61.0, "cuts_per_min_th20": 4.3 },
+      {
+        "start": 14.07,
+        "end": 29.84,
+        "rms_db": -20.5,
+        "cuts_per_min_th20": 0.0
+      },
+      {
+        "start": 29.84,
+        "end": 110.06,
+        "rms_db": -11.7,
+        "cuts_per_min_th20": 102.5
+      },
+      {
+        "start": 110.06,
+        "end": 117.21,
+        "rms_db": -25.7,
+        "cuts_per_min_th20": 8.4
+      },
+      {
+        "start": 117.21,
+        "end": 128.34,
+        "rms_db": -22.7,
+        "cuts_per_min_th20": 32.3
+      },
+      {
+        "start": 128.34,
+        "end": 134.75,
+        "rms_db": -15.1,
+        "cuts_per_min_th20": 149.8
+      },
+      {
+        "start": 134.75,
+        "end": 142.08,
+        "rms_db": -20.0,
+        "cuts_per_min_th20": 65.5
+      },
+      {
+        "start": 142.08,
+        "end": 198.21,
+        "rms_db": -10.1,
+        "cuts_per_min_th20": 118.7
+      },
+      {
+        "start": 198.21,
+        "end": 205.82,
+        "rms_db": -14.4,
+        "cuts_per_min_th20": 47.3
+      },
+      {
+        "start": 205.82,
+        "end": 302.58,
+        "rms_db": -10.3,
+        "cuts_per_min_th20": 65.1
+      },
+      {
+        "start": 302.58,
+        "end": 336.04,
+        "rms_db": -34.2,
+        "cuts_per_min_th20": 0.0
+      }
+    ],
+    "n_beats": 481,
+    "n_onsets": 1892
+  },
+  "video": {
+    "shot_detection": "ffmpeg scdet per-frame score, cuts within 2 frames merged; th20 = primary",
+    "scdet_th10": {
+      "cut_count": 749,
+      "mean_shot_len_sec": 0.448,
+      "median_shot_len_sec": 0.267,
+      "cuts_per_min": 133.7,
+      "beat_sync_pm50ms": { "rate": 0.227, "random_baseline": 0.145 },
+      "onset_sync_pm50ms": { "rate": 0.865, "random_baseline": 0.562 },
+      "reappearance_ratio": 0.029,
+      "nonadjacent_reappearance_ratio": 0.016
+    },
+    "scdet_th20": {
+      "cut_count": 391,
+      "mean_shot_len_sec": 0.857,
+      "median_shot_len_sec": 0.4,
+      "shot_len_p10_p90_sec": [0.133, 1.467],
+      "cuts_per_min": 69.8,
+      "beat_sync": {
+        "pm1frame": { "rate": 0.125, "random_baseline": 0.097 },
+        "pm50ms": { "rate": 0.235, "random_baseline": 0.143 }
+      },
+      "onset_sync": {
+        "pm1frame": { "rate": 0.604, "random_baseline": 0.375 },
+        "pm50ms": { "rate": 0.9, "random_baseline": 0.562 }
+      },
+      "tempo_grid_sync_pm50ms": {
+        "95.7bpm": { "rate": 0.187, "baseline": 0.159 },
+        "120bpm": { "rate": 0.373, "baseline": 0.2 },
+        "150bpm": { "rate": 0.381, "baseline": 0.25 },
+        "240bpm": { "rate": 0.506, "baseline": 0.4 }
+      },
+      "repetition": {
+        "clusters": 383,
+        "clusters_with_repeats": 9,
+        "largest_cluster_size": 2,
+        "reappearance_ratio": 0.023,
+        "nonadjacent_reappearance_ratio": 0.013
+      }
+    },
+    "scdet_th30": {
+      "cut_count": 186,
+      "mean_shot_len_sec": 1.797,
+      "median_shot_len_sec": 0.6,
+      "cuts_per_min": 33.2,
+      "beat_sync_pm50ms": { "rate": 0.226, "random_baseline": 0.144 },
+      "onset_sync_pm50ms": { "rate": 0.919, "random_baseline": 0.557 },
+      "reappearance_ratio": 0.011,
+      "nonadjacent_reappearance_ratio": 0.0
+    }
+  },
+  "method_notes": {
+    "loudness": "ffmpeg ebur128 peak=true on decoded YouTube opus",
+    "band_ratio": "STFT power share, mono 44.1k (not comparable to the dB bands in taste-refs-v1.json)",
+    "key": "Krumhansl-Schmuckler on mean chroma_cqt",
+    "structure": "librosa agglomerative on beat-synced MFCC+chroma, k=dur/30s",
+    "sync": "nearest beat/onset distance; baseline = same count of uniform random cuts x200; A/V offset assumed 0",
+    "repetition": "pHash 64bit of shot mid-frame (128x72 gray), single-link, hamming<=8"
+  }
+}
