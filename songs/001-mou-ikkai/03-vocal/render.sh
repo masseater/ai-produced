@@ -46,8 +46,8 @@ echo "singer=$singer_id colors=$colors phonemizer=${phonemizer:-default}"
 
 render render "$out/mou-ikkai.ustx" ${PITCH:+--pitch} --save "$out/mou-ikkai.ustx" --phonemes "$out/phonemes.tsv" --out "$out"
 
-closures="$(cut -f3 "$out/phonemes.tsv" | grep -cx 'っ' || true)"
+closures="$(cut -f6 "$song/02-composition/generated/vocal.tsv" | grep -cx closure || true)"
 sung_cl="$(cut -f3,5 "$out/phonemes.tsv" | grep -cx $'っ\tcl' || true)"
 echo "closures: $closures, sung as cl: $sung_cl"
-[ "$closures" = "$sung_cl" ]
+[ "$closures" -gt 0 ] && [ "$closures" = "$sung_cl" ]
 ffmpeg -hide_banner -nostats -i "$out/mou-ikkai_Vocal.wav" -af ebur128=framelog=quiet -f null - 2>&1 | sed -n '/Summary/,$p' | tee "$out/loudness.txt"
