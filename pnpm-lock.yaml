@@ -295,8 +295,8 @@ catalogs:
       specifier: 4.0.533
       version: 4.0.533
     renovate:
-      specifier: 44.132.2
-      version: 44.132.2
+      specifier: 44.132.5
+      version: 44.132.5
     steiger:
       specifier: 0.7.0
       version: 0.7.0
@@ -390,7 +390,7 @@ importers:
         version: 0.7.0
       renovate:
         specifier: catalog:stack
-        version: 44.132.2(supports-color@10.2.2)(typanion@3.14.0)
+        version: 44.132.5(supports-color@10.2.2)(typanion@3.14.0)
       skills:
         specifier: 1.7.0
         version: 1.7.0
@@ -9525,8 +9525,8 @@ packages:
   rc9@3.1.0:
     resolution: {integrity: sha512-ufjkNVzbRHKcCOmTahZkmVsyc3W+MSk3jY03m+a7tGHkIsdVMG9l10/3HvFbWkkKzY5VFp3pkRsIo/UYgmFL7Q==}
 
-  re2@1.26.1:
-    resolution: {integrity: sha512-oi79a4h6EO3PAwNsDMWgeCcsRGQEUa52DIgOiFTZGDEZocEXG9h+oXy0qZqndo47huUeJuVWSoOJIEhOupqOcg==}
+  re2@1.27.0:
+    resolution: {integrity: sha512-z5Vascmj7lQbU3YdfYJUDkBGGTnoAObcVW/CSbpI3WbVb1vZQsSzSWcGkfKU0JKrrGfPZwPr8EVHwYXKQKLVXw==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
   react-dom@19.3.0:
@@ -9686,8 +9686,8 @@ packages:
   remove-accents@0.5.0:
     resolution: {integrity: sha512-8g3/Otx1eJaVD12e31UbJj1YzdtVvzH85HV7t+9MJYk/u3XmkOUJ5Ys9wQrf9PCPK8+xn4ymzqYCiZl6QWKn+A==}
 
-  renovate@44.132.2:
-    resolution: {integrity: sha512-RD5+d1UPhvTj55u6wbZUY/Fhb2LRkYfo9ZqymjH8XeiKub37aNdDNJPgksnOjsyHPMzLMh6DeMTrEBRnQzBgvA==}
+  renovate@44.132.5:
+    resolution: {integrity: sha512-3bCOC/3fz5ILyaRyOQU5WYmxRMlJsDyRe1piozt14lBeQL0phqD3ixXpH9GtWjBE0zxp7jbzMvWReflHhg7f5A==}
     engines: {node: ^24.11.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -20409,7 +20409,7 @@ snapshots:
       defu: 6.1.7
       destr: 2.0.5
 
-  re2@1.26.1:
+  re2@1.27.0:
     dependencies:
       install-artifact-from-github: 1.8.1
       nan: 2.29.0
@@ -20650,7 +20650,7 @@ snapshots:
 
   remove-accents@0.5.0: {}
 
-  renovate@44.132.2(supports-color@10.2.2)(typanion@3.14.0):
+  renovate@44.132.5(supports-color@10.2.2)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1139.0
       '@aws-sdk/client-ec2': 3.1139.0
@@ -20777,7 +20777,7 @@ snapshots:
       zod: 4.6.5
     optionalDependencies:
       openpgp: 6.3.2
-      re2: 1.26.1
+      re2: 1.27.0
     transitivePeerDependencies:
       - '@node-rs/xxhash'
       - '@openpgp/web-stream-tools'
