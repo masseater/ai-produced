@@ -19,4 +19,4 @@ jobs:
           require-lockfile: true
       - run: pnpm exec vp run verify
         env:
-          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
