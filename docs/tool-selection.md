@@ -22,11 +22,19 @@ REAPERはReaScriptからほぼ全操作ができ、既存のMCPも多い。
 | FL Studio | joanj94/fl-studio-mcp、calvinw/fl-studio-mcp           | Macでのプラグイン読み込み、オートメーション作成 |
 | REAPER    | shiehn/total-reaper-mcp、TwelveTake-Studios/reaper-mcp | 目立った欠落はない                              |
 
+REAPERの操作は、既存のMCPを使わずに公式のReaScript APIを直接呼ぶ。
+2026-10-10にtotal-reaper-mcpのREADMEを確認した。このMCPもReaScriptを呼ぶLuaのブリッジで、REAPERの起動設定にブリッジを常駐させ、MCPクライアントからの対話で使う作りである。
+エフェクトのつまみをdBやHzの表示値で指定する方法はREADMEに書かれていない。
+制作では、シェルから決まった手順で何度でも同じ結果を書き出すことと、表示値でつまみを合わせることが要る。
+そこで公式の起動オプション（-nonewinst）でLuaスクリプトをREAPERに渡し、表示値はTrackFX_FormatParamValueNormalizedで探して合わせる。
+
 ## 歌声
 
 候補はOpenUtauとSynthesizer V Studio 2である。
 OpenUtauのプロジェクト（.ustx）はYAMLなので、ノート、歌詞、ピッチ、表情曲線まで全部をファイルとして書ける。
-公式には画面なしで書き出す機能がない。そこでOpenUtau本体のライブラリを参照するtools/openutau-renderを作り、画面の「Export Wav」と同じ処理で書き出す。
+公式には画面なしで書き出す機能がない。
+既存のOpenUtau-HeadlessはOpenUtau全体のフォークで、コマンドは書き出しと歌手一覧だけである。ピッチの自動生成や音素の書き出しはできず、スターも付いていない。
+そこでOpenUtau本体の固定したコミットを参照するtools/openutau-renderを作り、画面の「Export Wav」と同じ処理で書き出す。
 Synthesizer Vはtatat/svs-mcpでノート、歌詞、音素を入力できる。
 歌手の選択にはスクリプトAPIがなく、スクリプトから書き出せるかも未確認である。
 まずOpenUtauで全工程を通し、歌声の質が足りなければSynthesizer Vに切り替える。
