@@ -48,7 +48,7 @@ release. Add a tool name to select part of the graph. For example, run
 ## レビューとCI
 
 - PRのレビューは行わない。PRは作ったらすぐマージする。
-- PR単位のCIは走らせない。`pull_request` トリガーのワークフローを追加しない。
+- PR単位のCIは走らせない。`pull_request` トリガーのワークフローを追加しない。PRはレビューせずすぐマージするので、PRでCIを走らせてもマージ前の判断に使われず、コストに見合わない。代わりにpush時のフックが手元で `vp run verify` を実行する。
 - CIはmainへのpushで必ず走らせる。ワークフローは `.github/workflows/verify.yml` である。
 - デプロイやリリースのジョブは、同じワークフローで `needs: verify` を指定し、mainの必須CIが通ってから実行する。
 - マージ前の確認は手元の `vp run verify` で行う。
