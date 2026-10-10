@@ -39,7 +39,7 @@ catalog:
   react-markdown: 10.1.0
   remark-gfm: 4.0.1
   "@tailwindcss/typography": 0.5.20
-  "@remotion/eslint-plugin": 4.0.533
+  "@remotion/eslint-plugin": 4.0.534
 catalogs:
   stack:
     "@effect/atom-react": 4.0.0
