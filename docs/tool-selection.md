@@ -120,6 +120,8 @@ OpenUtau-MCPの.ustx生成は歌詞、長さ、音高だけを読み、ピッチ
 声色（clr）、ポルタメント、ビブラートの量、息継ぎの音符、DiffSingerの曲線（brec、tenc、voic、velc、dyn）は書けない。
 OpenUtau本体のMIDI読み込みも同様に、ノートと歌詞以外を持ち込めない。
 .ustxはYAMLなので、生成はpyyamlで書く今の形を続ける。
+OpenUtau.Coreの公式シリアライザ（Ustx.Load/Save）も検討した。songs/001-mou-ikkai/03-vocal/render.shは、pyyamlで書いた.ustxをtools/openutau-renderの--saveで読み込み、Ustx.Saveで保存し直している。
+形式の誤りは読み込みの時点で止まり、最終的な.ustxは公式の形で残る。生成までC#へ移すと、調声の設定を変えるたびにMacでOpenUtau本体ごとビルドが要るため、生成はPythonのままにする。
 
 mix-metricsは、ラウドネス、ラウドネスレンジ、トゥルーピークをffmpegのebur128フィルターで測る。
 pyloudnormも統合ラウドネスとラウドネスレンジは測れるが、READMEにトゥルーピークの記載がない。ebur128なら3つを1回で測れる。
