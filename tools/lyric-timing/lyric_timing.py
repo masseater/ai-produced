@@ -5,21 +5,16 @@ import re
 import tomllib
 from pathlib import Path
 
+import jamorasep
+
 PPQ = 480
 SIXTEENTH = PPQ // 4
 HOOK = ["も", "う", "い", "っ", "か", "い"]
-SMALL = set("ゃゅょぁぃぅぇぉゎ")
 NOTE = re.compile(r"（[^）]*）")
 
 
 def morae(reading):
-    out = []
-    for c in reading:
-        if c in SMALL and out:
-            out[-1] += c
-        else:
-            out.append(c)
-    return out
+    return jamorasep.parse(reading)
 
 
 def read_lyrics(path):
