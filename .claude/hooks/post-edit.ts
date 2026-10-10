@@ -10,7 +10,7 @@ import {
   runHook,
   writeJson,
 } from "./env.ts";
-import type { CommandResult } from "./env.ts";
+import type { CommandResult } from "./platform.ts";
 
 const WORKSPACE_SCOPES: ReadonlySet<string> = new Set(["apps", "libs", "infra", "tools"]);
 const SOURCE_EXTENSIONS: ReadonlySet<string> = new Set([".ts", ".tsx"]);
