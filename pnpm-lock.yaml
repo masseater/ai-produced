@@ -295,8 +295,8 @@ catalogs:
       specifier: 4.0.533
       version: 4.0.533
     renovate:
-      specifier: 44.132.5
-      version: 44.132.5
+      specifier: 44.140.0
+      version: 44.140.0
     steiger:
       specifier: 0.7.0
       version: 0.7.0
@@ -390,7 +390,7 @@ importers:
         version: 0.7.0
       renovate:
         specifier: catalog:stack
-        version: 44.132.5(supports-color@10.2.2)(typanion@3.14.0)
+        version: 44.140.0(supports-color@10.2.2)(typanion@3.14.0)
       skills:
         specifier: 1.7.0
         version: 1.7.0
@@ -1302,6 +1302,15 @@ packages:
 
   '@cloudflare/workers-types@5.20261003.1':
     resolution: {integrity: sha512-Uii0J5qUd/R6lIDK/u0Sw8dEi7oI3ljXw7EDybuPntoXg2Yy5Y9H9UeNQ5R87oQ/Q4jq6uEJmYOOFQ3Z7C94lA==}
+
+  '@containerbase/base@14.27.0':
+    resolution: {integrity: sha512-1Bdns8C6IpwHG1IPQsO6tupYYZjIuqQ5vcvyehqKOEbHsiFEINRi797UtZ+jHkrs5r3u7hF/VKfQlmPFtGkv8Q==}
+    engines: {node: '>=24.10.0'}
+    peerDependencies:
+      zod: ^4.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
 
   '@corvu/utils@0.4.2':
     resolution: {integrity: sha512-Ox2kYyxy7NoXdKWdHeDEjZxClwzO4SKM8plAaVwmAJPxHMqA0rLOoAsa+hBDwRLpctf+ZRnAd/ykguuJidnaTA==}
@@ -4180,6 +4189,15 @@ packages:
 
   '@remotion/zod-types@4.0.533':
     resolution: {integrity: sha512-4n5NGIMzpg7Wt0fprl09124KJjRJ+Yucsz77D5DlLjo0zjTH6NwL5GLA398ncEDshDi4ZCukoOlmUZaiyHs9eA==}
+
+  '@renovatebot/base-image@13.114.0':
+    resolution: {integrity: sha512-QHYnw2cHsUAO9RalxH42xbAvAUhbG9wjI6ky3tQI97C21bVE0u7x27xHYsZHc2TLroaq+meAWgBvjmtG1chzYA==}
+    engines: {node: '>=24.10.0'}
+    peerDependencies:
+      zod: ^4.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
 
   '@renovatebot/detect-tools@4.0.21':
     resolution: {integrity: sha512-1+yfO/pivwJu1m8180pfxHSVlx9ByZVDUa9xcvRLBraAFTn+ziDeOBoKVqpr4lElYwZ6kBNfE945dCVewz6edQ==}
@@ -9716,8 +9734,8 @@ packages:
   remove-accents@0.5.0:
     resolution: {integrity: sha512-8g3/Otx1eJaVD12e31UbJj1YzdtVvzH85HV7t+9MJYk/u3XmkOUJ5Ys9wQrf9PCPK8+xn4ymzqYCiZl6QWKn+A==}
 
-  renovate@44.132.5:
-    resolution: {integrity: sha512-3bCOC/3fz5ILyaRyOQU5WYmxRMlJsDyRe1piozt14lBeQL0phqD3ixXpH9GtWjBE0zxp7jbzMvWReflHhg7f5A==}
+  renovate@44.140.0:
+    resolution: {integrity: sha512-F83MX+BMQKpbdkfrITHSOCRUnfmRzuTJ4KkAnQnIVme+yzOOxU0lhUcr5dtx0l3sSKXmR9yHN8d52ga0dJ94AQ==}
     engines: {node: ^24.11.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -11899,6 +11917,10 @@ snapshots:
     optional: true
 
   '@cloudflare/workers-types@5.20261003.1': {}
+
+  '@containerbase/base@14.27.0(zod@4.6.5)':
+    optionalDependencies:
+      zod: 4.6.5
 
   '@corvu/utils@0.4.2(solid-js@1.9.15)':
     dependencies:
@@ -14598,6 +14620,12 @@ snapshots:
     transitivePeerDependencies:
       - react
       - react-dom
+
+  '@renovatebot/base-image@13.114.0(zod@4.6.5)':
+    dependencies:
+      '@containerbase/base': 14.27.0(zod@4.6.5)
+    optionalDependencies:
+      zod: 4.6.5
 
   '@renovatebot/detect-tools@4.0.21':
     dependencies:
@@ -20720,7 +20748,7 @@ snapshots:
 
   remove-accents@0.5.0: {}
 
-  renovate@44.132.5(supports-color@10.2.2)(typanion@3.14.0):
+  renovate@44.140.0(supports-color@10.2.2)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1139.0
       '@aws-sdk/client-ec2': 3.1139.0
@@ -20753,6 +20781,7 @@ snapshots:
       '@pnpm/parse-overrides': 1001.0.4
       '@qnighy/marshal': 0.1.3
       '@redis/client': 6.2.1(@opentelemetry/api@1.9.1)
+      '@renovatebot/base-image': 13.114.0(zod@4.6.5)
       '@renovatebot/detect-tools': 4.0.21
       '@renovatebot/good-enough-parser': 2.0.1
       '@renovatebot/osv-offline': 3.0.12(supports-color@10.2.2)
