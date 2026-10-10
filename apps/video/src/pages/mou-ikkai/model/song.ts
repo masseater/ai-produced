@@ -1,4 +1,4 @@
-import data from "#/shared/song/generated/mou-ikkai.json";
+import data from "#/pages/mou-ikkai/generated/mou-ikkai.json";
 
 type Mora = Readonly<{
   text: string;

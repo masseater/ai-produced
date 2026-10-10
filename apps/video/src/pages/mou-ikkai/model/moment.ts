@@ -1,7 +1,7 @@
 import { Array as Arr, Option } from "effect";
 
-import { DURATION_IN_FRAMES, frameOf, song } from "#/shared/song";
-import type { Line } from "#/shared/song";
+import { DURATION_IN_FRAMES, frameOf, song } from "#/pages/mou-ikkai/model/song";
+import type { Line } from "#/pages/mou-ikkai/model/song";
 
 type Moment = Readonly<{
   line: Line;
