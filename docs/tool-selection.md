@@ -68,7 +68,19 @@ Oramaはベクトル検索を持ち、埋め込みを生成するプラグイン
 このプラグインのモデルは差し替えられず、多言語の埋め込みを使うには自分で作ったベクトルを渡すことになる。
 自分で渡す場合でも、Workers AIの呼び出しと節ごとの分割は自作のまま残る。
 Oramaが置き換えるのはコサイン類似度と並べ替えの十数行だけで、依存を足すほどの得がないため採用しなかった。
-ページ数が数百を超えてWorker内で全ベクトルを持つのが重くなったら、VectorizeかOramaへの移行を改めて検討する。
+
+CloudflareでWorkersからベクトル検索をする公式の手段はVectorizeである。
+2026-10-10にVectorizeの公式ドキュメントとAlchemy 2.0.0-beta.81の実装を確認した。
+Alchemyはインデックスを作ってWorkerに結び付けられる。
+ただしベクトルの投入はWorkerの実行時にupsertを呼ぶ作りで、デプロイ時にwiki本文を入れる手段はない。
+Vectorizeのinsert、upsert、deleteByIdsは非同期で、反映には通常数秒かかるとされ、上限の保証はない。
+採用すると、本文の変化を検出して埋め込み直す処理、消えたページのベクトルを消す処理、反映待ちの処理を自作することになる。
+その量は、今の実装で自作しているコサイン類似度と並べ替えの十数行より多い。
+2026-10-10時点のwikiは25ページ、約150節で、768次元のベクトルをWorkerのメモリに持っても問題にならない。
+Workers上の小規模な意味検索で、全件のコサイン計算とVectorizeのどちらを選ぶべきかを論じた記事やissueも探したが、見つからなかった。
+見つかったのはVectorizeの使い方の解説だけで、メタデータでの絞り込みが要るならVectorizeを選ぶという判断材料が得られた。
+今のwikiは検索結果を属性で絞り込まないため、この点でも採用の理由にならない。
+ページ数が数百を超えてWorker内で全ベクトルを持つのが重くなるか、属性での絞り込みが要るようになったら、Vectorizeへの移行を改めて検討する。
 
 ## 参照
 
@@ -84,6 +96,8 @@ Oramaが置き換えるのはコサイン類似度と並べ替えの十数行だ
 - [VitePress Search](https://vitepress.dev/reference/default-theme-search)
 - [Pagefind Multilingual search](https://pagefind.app/docs/multilingual/)
 - [Orama Plugin Embeddings](https://docs.orama.com/open-source/plugins/plugin-embeddings)
+- [Vectorize Limits](https://developers.cloudflare.com/vectorize/platform/limits/)
+- [Vectorize Client API](https://developers.cloudflare.com/vectorize/reference/client-api/)
 
 ## 導入済みの環境
 
