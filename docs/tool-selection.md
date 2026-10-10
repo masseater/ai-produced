@@ -34,7 +34,9 @@ Surge XTの音色は、songs/001-mou-ikkai/04-reaper/surge.luaが.fxpの中身�
 2026-10-10に代わりの手段を調べた。REAPERのTrackFX_SetPresetは、VST3ではファイルとして.vstpresetしか受け付けず、Surge XTの音色ファイルは独自の.fxpである。
 Surge XT 1.3のOSCには/patch/loadがある。ただし受信は楽器ごとの設定で有効にし、ポートも割り当てる必要がある。読み込みは非同期の予約で、書き出しの前に読み込みが済んだかを確かめる手段もない（推測）。
 ReaPackにも、Surge XTの.fxpをトラックへ読み込むスクリプトは見つからなかった。
-REAPERのAPIにbase64の関数が無いため、エンコードだけはLuaで書いている。
+読み込む中身は、.fxpの先頭60バイトを除いた残りである。60バイトは、Surge XTが.fxpを保存するときに書くfxChunkSetCustomの大きさである（src/common/SurgeSynthesizerIO.cpp）。内訳は4バイトの値7つ、28バイトの音色名、4バイトの中身の長さである。
+vst_chunkに渡す枠（中身の長さ、1、中身、8バイトの0）は、2026-10-06にREAPERが書き出したSurge XTの状態と同じ形に合わせたもので、REAPERの仕様書には書かれていない。
+REAPERのAPIにbase64の関数が無いため、エンコードはLuaで書いている。2026-10-10に探すと、iskolbin/lbase64（パブリックドメイン、純Lua、1ファイル）とmacOS標準のbase64コマンドが代わりになりうる。置き換えはまだ行っていない。
 
 ## 歌声
 
@@ -42,6 +44,7 @@ REAPERのAPIにbase64の関数が無いため、エンコードだけはLuaで�
 OpenUtauのプロジェクト（.ustx）はYAMLなので、ノート、歌詞、ピッチ、表情曲線まで全部をファイルとして書ける。
 公式には画面なしで書き出す機能がない。
 既存のOpenUtau-HeadlessはOpenUtau全体のフォークで、コマンドは書き出しと歌手一覧だけである。ピッチの自動生成や音素の書き出しはできない。
+制作ではこの2つを使う。songs/001-mou-ikkai/03-vocal/render.shは毎回--phonemesで音素を書き出して「っ」の扱いなどを検査し、PITCHを指定したときは--pitchでピッチを自動生成してから書き出す。
 turboegg1145/OpenUtau-MCPは.ustxの生成と表情曲線を扱うが、音声のプレビューは独自の合成で、OpenUtau本体の書き出しは使わない。
 OpenUtau Issue #1615は画面なしの書き出しを求める要望である。報告者はOpenUtau.CoreのPlaybackManager.RenderToFilesを呼んだが、画面側のスレッドを前提とする処理で詰まった。返答のないまま「not planned」で閉じられた。
 そこでOpenUtau本体の固定したコミットを参照するtools/openutau-renderを作った。Issueと同じRenderToFilesを、自前の処理ループを画面スレッドの代わりに渡して呼び、画面の「Export Wav」と同じ処理で書き出す。
