@@ -52,7 +52,7 @@ catalogs:
     effect: 4.0.0-rc.117
     elysia: 1.4.30
     fallow: 3.31.0
-    radix-ui: 1.6.7
+    radix-ui: 1.7.0
     remotion: 4.0.533
     renovate: 44.132.5
     steiger: 0.7.0
