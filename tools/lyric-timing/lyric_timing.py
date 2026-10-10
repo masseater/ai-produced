@@ -13,10 +13,6 @@ HOOK = ["も", "う", "い", "っ", "か", "い"]
 NOTE = re.compile(r"（[^）]*）")
 
 
-def morae(reading):
-    return jamorasep.parse(reading)
-
-
 def read_lyrics(path):
     lines = {}
     section = None
@@ -54,7 +50,7 @@ def group_readings(chunks, readings):
 def words_of(text, reading, sung):
     chunks = text.split()
     grouped = group_readings(chunks, reading.split())
-    counts = [len(morae(r)) for r in grouped] if grouped else []
+    counts = [len(jamorasep.parse(r)) for r in grouped] if grouped else []
     if not grouped or sum(counts) != len(sung):
         return [{"text": text, "morae": list(range(len(sung)))}]
     out = []
