@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "security:minimumReleaseAgeNpm"],
+  "extends": ["config:recommended", "security:minimumReleaseAgeNpm", ":semanticCommits"],
   "automerge": true,
+  "ignoreTests": true,
   "platformAutomerge": false,
   "packageRules": [
     {
@@ -19,6 +20,12 @@
       ],
       "datasourceTemplate": "git-refs",
       "packageNameTemplate": "https://github.com/{{{depName}}}"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^package\\.json$/"],
+      "matchStrings": ["uvx (?:--from )?(?<depName>[a-z0-9-]+)@(?<currentValue>[0-9.]+)"],
+      "datasourceTemplate": "pypi"
     }
   ]
 }

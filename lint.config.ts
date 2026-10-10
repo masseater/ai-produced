@@ -183,6 +183,7 @@ const generated = [
   ".intent/**",
   "AGENTS.md",
   "skills-lock.json",
+  "CHANGELOG.md",
 ];
 
 export { allRulesOf, asErrors, generated, remotionRules, requiredStack, restrictedImports };
