@@ -30,6 +30,12 @@ REAPERの操作は、既存のMCPを使わずに公式のReaScript APIを直接�
 制作では、シェルから決まった手順で何度でも同じ結果を書き出すことと、表示値でつまみを合わせることが要る。
 そこで公式の起動オプション（-nonewinst）でLuaスクリプトをREAPERに渡し、表示値はTrackFX_FormatParamValueNormalizedで探して合わせる。
 
+Surge XTの音色は、songs/001-mou-ikkai/04-reaper/surge.luaが.fxpの中身をREAPER公式APIのvst_chunkに渡して読み込む。
+2026-10-10に代わりの手段を調べた。REAPERのTrackFX_SetPresetは、VST3ではファイルとして.vstpresetしか受け付けず、Surge XTの音色ファイルは独自の.fxpである。
+Surge XT 1.3のOSCには/patch/loadがある。ただし受信は楽器ごとの設定で有効にし、ポートも割り当てる必要がある。読み込みは非同期の予約で、書き出しの前に読み込みが済んだかを確かめる手段もない（推測）。
+ReaPackにも、Surge XTの.fxpをトラックへ読み込むスクリプトは見つからなかった。
+REAPERのAPIにbase64の関数が無いため、エンコードだけはLuaで書いている。
+
 ## 歌声
 
 候補はOpenUtauとSynthesizer V Studio 2である。
@@ -126,6 +132,7 @@ OpenUtau.Coreの公式シリアライザ（Ustx.Load/Save）も検討した。so
 mix-metricsは、ラウドネス、ラウドネスレンジ、トゥルーピークをffmpegのebur128フィルターで測る。
 pyloudnormも統合ラウドネスとラウドネスレンジは測れるが、READMEにトゥルーピークの記載がない。ebur128なら3つを1回で測れる。
 周波数帯の比率、スペクトル重心、オンセット数、歌のピッチはlibrosaで求め、ツールでは比率の計算だけを書いている。
+帯域の比率はessentiaのEnergyBandRatioでも求められるが、参照曲の分析と同じSTFTと帯の区切りで比べる必要があるため、librosaのSTFTから計算する形を続ける。essentiaはAGPLで、Macへの導入も別に要る。
 
 ## 導入済みの環境
 
