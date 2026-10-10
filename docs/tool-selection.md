@@ -35,7 +35,7 @@ REAPERの操作は、既存のMCPを使わずに公式のReaScript APIを直接�
 候補はOpenUtauとSynthesizer V Studio 2である。
 OpenUtauのプロジェクト（.ustx）はYAMLなので、ノート、歌詞、ピッチ、表情曲線まで全部をファイルとして書ける。
 公式には画面なしで書き出す機能がない。
-既存のOpenUtau-HeadlessはOpenUtau全体のフォークで、コマンドは書き出しと歌手一覧だけである。ピッチの自動生成や音素の書き出しはできず、スターも付いていない。
+既存のOpenUtau-HeadlessはOpenUtau全体のフォークで、コマンドは書き出しと歌手一覧だけである。ピッチの自動生成や音素の書き出しはできない。
 turboegg1145/OpenUtau-MCPは.ustxの生成と表情曲線を扱うが、音声のプレビューは独自の合成で、OpenUtau本体の書き出しは使わない。
 OpenUtau Issue #1615は画面なしの書き出しを求める要望である。報告者はOpenUtau.CoreのPlaybackManager.RenderToFilesを呼んだが、画面側のスレッドを前提とする処理で詰まった。返答のないまま「not planned」で閉じられた。
 そこでOpenUtau本体の固定したコミットを参照するtools/openutau-renderを作った。Issueと同じRenderToFilesを、自前の処理ループを画面スレッドの代わりに渡して呼び、画面の「Export Wav」と同じ処理で書き出す。
@@ -98,6 +98,32 @@ Workers上の小規模な意味検索で、全件のコサイン計算とVectori
 - [Orama Plugin Embeddings](https://docs.orama.com/open-source/plugins/plugin-embeddings)
 - [Vectorize Limits](https://developers.cloudflare.com/vectorize/platform/limits/)
 - [Vectorize Client API](https://developers.cloudflare.com/vectorize/reference/client-api/)
+- [jamorasep](https://pypi.org/project/jamorasep/)
+- [pyloudnorm](https://github.com/csteinmetz1/pyloudnorm)
+
+## 自作の補助ツール
+
+2026-10-10に、tools/にある自作ツールのうち次の4つについて既存の代わりを調べた。
+
+かなをモーラに分ける処理は、PyPIで見つけたjamorasepに置き換えた。
+mora-checkとlyric-timingは拗音をつなぐ処理と母音の表を手書きしていた。
+jamorasepは拗音、長音、促音、撥音をそれぞれ1モーラに分け、母音もsimple-ipaの形式で返す。
+置き換えの前後で、1曲目の歌詞の検査表と歌詞タイミングのJSONは1バイトも変わらなかった。
+無声化しやすい音の判定は手書きのまま残す。pyopenjtalkは話し言葉の無声化を返すが、歌では音の長さで無声化が変わり、判定の前提が合わない。
+
+lyric-timingの残りは、score.tomlとvocal.tsvを動画用のJSONへ変える処理である。
+歌詞と時刻を扱う既存の形式はLRCなどの行単位のもので、モーラごとの16分音符の位置とフックの印は表せない。
+変換元と変換先はどちらもこのリポジトリ独自の形式なので、変換の部分は自作のままにする。
+
+ustx-from-vocalはturboegg1145/OpenUtau-MCPと比べた。
+OpenUtau-MCPの.ustx生成は歌詞、長さ、音高だけを読み、ピッチ点とビブラートは固定値、表情曲線は空で書き出す。
+声色（clr）、ポルタメント、ビブラートの量、息継ぎの音符、DiffSingerの曲線（brec、tenc、voic、velc、dyn）は書けない。
+OpenUtau本体のMIDI読み込みも同様に、ノートと歌詞以外を持ち込めない。
+.ustxはYAMLなので、生成はpyyamlで書く今の形を続ける。
+
+mix-metricsは、ラウドネス、ラウドネスレンジ、トゥルーピークをffmpegのebur128フィルターで測る。
+pyloudnormも統合ラウドネスとラウドネスレンジは測れるが、READMEにトゥルーピークの記載がない。ebur128なら3つを1回で測れる。
+周波数帯の比率、スペクトル重心、オンセット数、歌のピッチはlibrosaで求め、ツールでは比率の計算だけを書いている。
 
 ## 導入済みの環境
 

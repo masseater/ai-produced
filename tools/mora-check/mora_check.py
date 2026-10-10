@@ -1,20 +1,15 @@
-import sys,re
-SMALL=set("ゃゅょぁぃぅぇぉゎ")
-V={}
-for s,v in [("あかさたなはまやらわがざだばぱぁゃゎ","a"),("いきしちにひみりぎじぢびぴぃ","i"),("うくすつぬふむゆるぐずづぶぷぅゅ","u"),("えけせてねへめれげぜでべぺぇ","e"),("おこそとのほもよろをごぞどぼぽぉょ","o")]:
-    for c in s: V[c]=v
+import re
+import sys
+
+import jamorasep
+
 VL=set("かきくけこさしすせそたちつてとはひふへほぱぴぷぺぽ")
+TAIL={"Q":"Q","N":"N",":":"-"}
 def moras(t):
-    t=re.sub(r"\s","",t); out=[]
-    for c in t:
-        if c in SMALL and out: out[-1]+=c
-        else: out.append(c)
-    return out
+    return jamorasep.parse(re.sub(r"\s","",t))
 def vow(m):
-    if m=="っ": return "Q"
-    if m=="ん": return "N"
-    if m=="ー": return "-"
-    return V.get(m[-1],"?")
+    ipa=jamorasep.parse(m,output_format="simple-ipa")[0]
+    return TAIL.get(ipa,ipa[-1] if ipa[-1] in "aiueo" else "?")
 def cons_voiceless(m): return m=="っ" or m[0] in VL
 rows=[];sec=None
 for line in open(sys.argv[1],encoding="utf-8"):
