@@ -36,7 +36,7 @@ Surge XT 1.3のOSCには/patch/loadがある。ただし受信は楽器ごとの
 ReaPackにも、Surge XTの.fxpをトラックへ読み込むスクリプトは見つからなかった。
 読み込む中身は、.fxpの先頭60バイトを除いた残りである。60バイトは、Surge XTが.fxpを保存するときに書くfxChunkSetCustomの大きさである（src/common/SurgeSynthesizerIO.cpp）。内訳は4バイトの値7つ、28バイトの音色名、4バイトの中身の長さである。
 vst_chunkに渡す枠（中身の長さ、1、中身、8バイトの0）は、2026-10-06にREAPERが書き出したSurge XTの状態と同じ形に合わせたもので、REAPERの仕様書には書かれていない。
-REAPERのAPIにbase64の関数が無いため、エンコードはLuaで書いている。2026-10-10に探すと、iskolbin/lbase64（パブリックドメイン、純Lua、1ファイル）とmacOS標準のbase64コマンドが代わりになりうる。置き換えはまだ行っていない。
+REAPERのAPIにはbase64の関数が無い。2026-10-10に、手書きしていたエンコーダーをmacOS標準のbase64コマンドの呼び出しに置き換えた。純Luaのiskolbin/lbase64（パブリックドメイン）も候補だったが、リポジトリへ取り込む必要がない標準コマンドを選んだ。
 
 ## 歌声
 
@@ -136,8 +136,10 @@ pyloudnormも統合ラウドネスとラウドネスレンジは測れるが、R
 周波数帯の比率、スペクトル重心、オンセット数、歌のピッチはlibrosaで求め、ツールでは比率の計算だけを書いている。
 帯域の比率はessentiaのEnergyBandRatioでも求められるが、参照曲の分析と同じSTFTと帯の区切りで比べる必要があるため、librosaのSTFTから計算する形を続ける。essentiaはAGPLで、Macへの導入も別に要る。
 
-tools/のmidi-rpp（MIDIからREAPERのプロジェクトの骨組みを作る）とtempo-octave（キックとスネアの位置から倍テンポかを判定する）は、既存の代わりをまだ調べていない。
-lyric-timingについて上に書いた「LRCなどは行単位」も、モーラ単位の時刻を持つ形式を検索して確かめたものではない。
+tools/のmidi-rppとtempo-octaveは、追加時のコミットに既存の手段と比べた結果がある。midi-rppはREAPERプロジェクトの直列化に既存のrppライブラリを使い、MIDIソースを扱えないreathonは採らなかった。MIDIのイベント行の組み立てだけを自作している。
+REAPER公式のInsertMediaでMIDIファイルを読み込めば、このイベント行の組み立ては不要になりうる。ただしテンポとセクションのマーカーを同時に入れられるかはMacで試していない。
+tempo-octaveは、librosa、madmom、essentiaの拍追跡がテンポの候補を出すだけで、倍と半分のどちらが正しいかをドラムの役割から決める手段を持たないため自作した。
+lyric-timingについて上に書いた「LRCなどは行単位」は、モーラ単位の時刻を持つ形式を検索して確かめたものではない。
 
 ## 導入済みの環境
 
