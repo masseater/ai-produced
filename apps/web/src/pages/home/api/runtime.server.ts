@@ -5,11 +5,11 @@ import { OtlpExporter } from "effect/observability";
 import { featureFlagsLive } from "#/shared/flags/index.server";
 import { telemetryLive } from "#/shared/telemetry/index.server";
 
-const runtime = ManagedRuntime.make(
-  Layer.mergeAll(featureFlagsLive, telemetryLive, OtlpExporter.layerFlusher),
-);
+const servicesLive = Layer.mergeAll(featureFlagsLive, telemetryLive);
 
-type Services = ManagedRuntime.ManagedRuntime.Services<typeof runtime>;
+const runtime = ManagedRuntime.make(Layer.mergeAll(servicesLive, OtlpExporter.layerFlusher));
+
+type Services = Layer.Success<typeof servicesLive>;
 
 const flushTelemetry = Effect.gen(function* flushTelemetry() {
   const flusher = yield* OtlpExporter.Flusher;

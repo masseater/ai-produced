@@ -1,10 +1,9 @@
-import { useAtomSet } from "@effect/atom-react";
 import { Button } from "@workspace/ui/components/button";
 import { Option } from "effect";
 import { useCallback } from "react";
 import type { ReactNode } from "react";
 
-import { NO_QUERY, searchQueryAtom } from "#/pages/home/model/query";
+import { NO_QUERY, useSetSearchQuery } from "#/pages/home/model/query";
 
 const FIELD = "text";
 const LABEL = "wikiを検索";
@@ -20,7 +19,7 @@ const textOf = (formData: Readonly<FormData>): string =>
   );
 
 const SearchForm = (): ReactNode => {
-  const setQuery = useAtomSet(searchQueryAtom);
+  const setQuery = useSetSearchQuery();
   const submit = useCallback(
     (formData: Readonly<FormData>) => {
       setQuery(textOf(formData));
