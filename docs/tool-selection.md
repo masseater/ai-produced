@@ -36,7 +36,7 @@ Surge XT 1.3のOSCには/patch/loadがある。ただし受信は楽器ごとの
 ReaPackにも、Surge XTの.fxpをトラックへ読み込むスクリプトは見つからなかった。
 読み込む中身は、.fxpの先頭60バイトを除いた残りである。60バイトは、Surge XTが.fxpを保存するときに書くfxChunkSetCustomの大きさである（src/common/SurgeSynthesizerIO.cpp）。内訳は4バイトの値7つ、28バイトの音色名、4バイトの中身の長さである。
 vst_chunkに渡す枠（中身の長さ、1、中身、8バイトの0）は、2026-10-06にREAPERが書き出したSurge XTの状態と同じ形に合わせたもので、REAPERの仕様書には書かれていない。
-REAPERのAPIにはbase64の関数が無い。2026-10-10に、手書きしていたエンコーダーをmacOS標準のbase64コマンドの呼び出しに置き換えた。純Luaのiskolbin/lbase64（パブリックドメイン）も候補だったが、リポジトリへ取り込む必要がない標準コマンドを選んだ。
+REAPERのAPIにはbase64の関数が無いため、純Luaのiskolbin/lbase64（パブリックドメインとMITの選択制、コミットc261320）を同じフォルダに置いて使う。
 
 ## 歌声
 
