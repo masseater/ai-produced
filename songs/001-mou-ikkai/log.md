@@ -78,7 +78,7 @@ C#5〜D5の出しやすさは、歌声ライブラリで試し書き出しして
 
 ### 自作ツールの調査の追記
 
-tools/score-midi を作る前の調査は、music21、pretty_midi、utaupy を見ただけで不十分だった。マージ後にPyPIとWebを追加で探し、結果をここに残す。
+tools/score-midi を作る前の調査は、music21、pretty_midi、utaupy を見ただけで不十分だった。探してから作るという CLAUDE.md の順序に反し、自作を決めたあとでPyPIとWebを追加で探した。結果をここに残す。
 
 - utaupy: UTAUのUSTや歌声データベースのラベルを読み書きする。作曲の段階でモーラと音符を対応させる検査は持たない
 - putao: UTAU風の歌をPythonで組み立てて音声にする。音源は独自のwav束で、OpenUtauのUSTXやMIDIは出さない
@@ -205,7 +205,7 @@ REAPERは書き出し先に同名ファイルがあると確認画面で止ま�
 DropとBreakはSymphonyの最密区間（毎分279回）を上回る。ただし変わるのは1字の位置と色だけなので、変化過多には当たらないと判断した。
 
 歌詞のタイミングは音声から推定せず、楽譜から作った vocal.tsv を変換した。plans/lyric-sync-analysis.md の比較で、事後推定よりも楽譜の値が正確と分かっているためである。
-変換は tools/lyric-timing で行う。既存の変換ツールは見つからなかった。
+変換は tools/lyric-timing で行う。既存のツールと比べた結果は docs/tool-selection.md にある。
 
 音源は、Macの songs/001-mou-ikkai/04-reaper/render/mou-ikkai-mix.wav を使った。共有フォルダの仮ミックスとはハッシュが違い、Mac側が新しい。
 

@@ -1,10 +1,9 @@
-import { useAtom } from "@effect/atom-react";
 import { Button } from "@workspace/ui/components/button";
 import { useCallback } from "react";
 import type { ReactNode } from "react";
 
 import type { TodoFilter } from "#/pages/home/model/filter";
-import { todoFilterAtom } from "#/pages/home/model/filter";
+import { useSelectTodoFilter, useTodoFilter } from "#/pages/home/model/filter";
 
 const variantOf = (selected: boolean): "default" | "outline" => {
   if (selected) {
@@ -14,7 +13,8 @@ const variantOf = (selected: boolean): "default" | "outline" => {
 };
 
 const FilterTab = ({ filter }: Readonly<{ filter: TodoFilter }>): ReactNode => {
-  const [current, setCurrent] = useAtom(todoFilterAtom);
+  const current = useTodoFilter();
+  const setCurrent = useSelectTodoFilter();
   const select = useCallback(() => {
     setCurrent(filter);
   }, [filter, setCurrent]);

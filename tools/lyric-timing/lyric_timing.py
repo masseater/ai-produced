@@ -5,21 +5,12 @@ import re
 import tomllib
 from pathlib import Path
 
+import jamorasep
+
 PPQ = 480
 SIXTEENTH = PPQ // 4
 HOOK = ["も", "う", "い", "っ", "か", "い"]
-SMALL = set("ゃゅょぁぃぅぇぉゎ")
 NOTE = re.compile(r"（[^）]*）")
-
-
-def morae(reading):
-    out = []
-    for c in reading:
-        if c in SMALL and out:
-            out[-1] += c
-        else:
-            out.append(c)
-    return out
 
 
 def read_lyrics(path):
@@ -59,7 +50,7 @@ def group_readings(chunks, readings):
 def words_of(text, reading, sung):
     chunks = text.split()
     grouped = group_readings(chunks, reading.split())
-    counts = [len(morae(r)) for r in grouped] if grouped else []
+    counts = [len(jamorasep.parse(r)) for r in grouped] if grouped else []
     if not grouped or sum(counts) != len(sung):
         return [{"text": text, "morae": list(range(len(sung)))}]
     out = []
