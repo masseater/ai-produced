@@ -49,6 +49,27 @@ Synthesizer Vはtatat/svs-mcpでノート、歌詞、音素を入力できる。
 RemotionはReactのコードで映像を作るため、そのままAIが扱える。
 3Dの演出にはBlenderのPython APIを使う。
 
+## 分析wikiの閲覧と検索
+
+apps/wikiは、docs/wiki/のMarkdownを読んで日本語の自然文で意味検索するアプリである。
+要件は、ページを足すだけで一覧と検索に入ること、手書きの索引を持たないこと、Cloudflare Workers上でAlchemyからデプロイできることである。
+2026-10-04の作成時に検討の記録が残っていたのは、Cloudflare AI SearchとVectorizeの2つだけだった。
+2026-10-10に、静的wiki生成器と検索ライブラリも公式ドキュメントで確認した。
+
+Starlightの既定の検索はPagefindで、ほかにAlgolia DocSearchとTypesense DocSearchのプラグインがある。
+VitePressの既定の検索はMiniSearchによるあいまいな全文検索で、ほかにAlgolia DocSearchとPagefind、Typesense、Cloudflare AI Searchのプラグインがある。
+Pagefindは日本語の分かち書きに対応するが、語の一致で探す全文検索であり、意味検索の機能はない。
+MiniSearchとAlgolia DocSearchの既定のモードも、語で探す検索である。
+Algolia DocSearchとTypesenseは外部の検索サービスに索引を同期する作りで、Workersだけでは完結しない。
+VitePressのCloudflare AI Searchプラグインは、作成時にR2への本文同期の手段がないため見送ったAI Searchを使う。
+したがって、どちらの生成器を選んでも日本語の意味検索は別に用意する必要があり、置き換えても自作の部分は減らない。
+
+Oramaはベクトル検索を持ち、埋め込みを生成するプラグインはTensorFlow.jsのUniversal Sentence Encoderを使う。
+このプラグインのモデルは差し替えられず、多言語の埋め込みを使うには自分で作ったベクトルを渡すことになる。
+自分で渡す場合でも、Workers AIの呼び出しと節ごとの分割は自作のまま残る。
+Oramaが置き換えるのはコサイン類似度と並べ替えの十数行だけで、依存を足すほどの得がないため採用しなかった。
+ページ数が数百を超えてWorker内で全ベクトルを持つのが重くなったら、VectorizeかOramaへの移行を改めて検討する。
+
 ## 参照
 
 - [joanj94/fl-studio-mcp](https://github.com/joanj94/fl-studio-mcp)
@@ -59,6 +80,10 @@ RemotionはReactのコードで映像を作るため、そのままAIが扱え�
 - [turboegg1145/OpenUtau-MCP](https://github.com/turboegg1145/OpenUtau-MCP)
 - [boxboy523/OpenUtau-Headless](https://github.com/boxboy523/OpenUtau-Headless)
 - [OpenUtau Issue #1615](https://github.com/openutau/OpenUtau/issues/1615)
+- [Starlight Site search](https://starlight.astro.build/guides/site-search/)
+- [VitePress Search](https://vitepress.dev/reference/default-theme-search)
+- [Pagefind Multilingual search](https://pagefind.app/docs/multilingual/)
+- [Orama Plugin Embeddings](https://docs.orama.com/open-source/plugins/plugin-embeddings)
 
 ## 導入済みの環境
 
