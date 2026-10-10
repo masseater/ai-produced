@@ -4,8 +4,7 @@ import { Composition } from "remotion";
 
 import "#/app/styles.css";
 import type { MouIkkaiProps } from "#/pages/mou-ikkai";
-import { MouIkkai } from "#/pages/mou-ikkai";
-import { DURATION_IN_FRAMES, FPS } from "#/shared/song";
+import { DURATION_IN_FRAMES, FPS, MouIkkai } from "#/pages/mou-ikkai";
 
 const WIDTH = 1920;
 const HEIGHT = 1080;

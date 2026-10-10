@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { FPS, frameOf, SIXTEENTHS_PER_BAR } from "#/shared/song";
+import { FPS, frameOf, SIXTEENTHS_PER_BAR } from "#/pages/mou-ikkai/model/song";
 
 const LOOP_BARS = 2;
 const LOOP_FRAMES = frameOf(SIXTEENTHS_PER_BAR * LOOP_BARS);

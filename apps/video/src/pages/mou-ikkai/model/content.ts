@@ -1,8 +1,8 @@
 import { Array as Arr, Option } from "effect";
 
 import type { Moment } from "#/pages/mou-ikkai/model/moment";
+import type { Line } from "#/pages/mou-ikkai/model/song";
 import type { LyricsShot } from "#/pages/mou-ikkai/model/storyboard";
-import type { Line } from "#/shared/song";
 
 type Content = "hook" | "chop" | "line";
 

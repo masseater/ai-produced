@@ -6,8 +6,8 @@ import {
   SIXTEENTHS_PER_BAR,
   SIXTEENTHS_PER_BEAT,
   song,
-} from "#/shared/song";
-import type { Line, Section } from "#/shared/song";
+} from "#/pages/mou-ikkai/model/song";
+import type { Line, Section } from "#/pages/mou-ikkai/model/song";
 
 type Treatment = "loop" | "verse" | "build" | "chorus" | "chop" | "bridge";
 type PaletteName = "ink" | "paper" | "rec" | "signal" | "ash";

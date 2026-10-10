@@ -1,9 +1,9 @@
 import { Array as Arr, Option } from "effect";
 import type { ReactNode } from "react";
 
+import type { Line, Word } from "#/pages/mou-ikkai/model/song";
 import type { Size, Tone } from "#/pages/mou-ikkai/ui/glyphs";
 import { Glyphs } from "#/pages/mou-ikkai/ui/glyphs";
-import type { Line, Word } from "#/shared/song";
 
 const NO_CHARS = 0;
 
