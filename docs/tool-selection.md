@@ -15,7 +15,7 @@ AIは音を直接聴けないため、書き出した音声を解析して判断
 ユーザーはFL Studioを持っているが、REAPERを選んだ。
 FL StudioのMac向けMCPでは、プラグインの読み込みとオートメーションの作成ができない。ピアノロールへの反映にもキー送信が要る。
 REAPERはReaScriptからほぼ全操作ができ、既存のMCPも多い。
-代わりにFL Studio付属のプラグインはREAPERから扱えないため、音源はVitalなど単体のプラグインを都度追加する。
+代わりにFL Studio付属のプラグインはREAPERから扱えないため、音源は単体のプラグインを都度追加する。
 
 | ツール    | 主な既存MCP                                            | 画面操作なしでできないこと                      |
 | --------- | ------------------------------------------------------ | ----------------------------------------------- |
@@ -26,7 +26,7 @@ REAPERはReaScriptからほぼ全操作ができ、既存のMCPも多い。
 
 候補はOpenUtauとSynthesizer V Studio 2である。
 OpenUtauのプロジェクト（.ustx）はYAMLなので、ノート、歌詞、ピッチ、表情曲線まで全部をファイルとして書ける。
-公式には画面なしで書き出す機能がないため、コミュニティ製のOpenUtau-Headlessを試すか、MCPを自作する。
+公式には画面なしで書き出す機能がない。そこでOpenUtau本体のライブラリを参照するtools/openutau-renderを作り、画面の「Export Wav」と同じ処理で書き出す。
 Synthesizer Vはtatat/svs-mcpでノート、歌詞、音素を入力できる。
 歌手の選択にはスクリプトAPIがなく、スクリプトから書き出せるかも未確認である。
 まずOpenUtauで全工程を通し、歌声の質が足りなければSynthesizer Vに切り替える。
@@ -57,7 +57,8 @@ RemotionはReactのコードで映像を作るため、そのままAIが扱え�
 | OpenUtau            | 0.1.565（Apple Silicon版） | /Applications/OpenUtau.app  |
 | Nishiren DiffSinger | v2.0                       | ~/Library/OpenUtau/Singers/ |
 
-Vitalは公式サイトのログインが必要なため、ユーザーが手で入れる。
+シンセはSurge XT 1.3.4を使う。Vitalは配布元へのログインが要るため見送った。
+REAPERの操作と書き出しは、起動中のREAPERにLuaスクリプトを渡して行う。手順はsongs/001-mou-ikkai/04-reaper/にある。
 
 ## 歌声ライブラリの規約
 
