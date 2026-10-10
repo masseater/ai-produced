@@ -20,7 +20,7 @@
       "ref": "a18ffe2a99448ebff262fc87915b0fd14bab9b70",
       "sourceType": "github",
       "skillPath": "skills/cloudflare/SKILL.md",
-      "computedHash": "6f0a70840cad114f020e5950874f255b22e669f07036cf4f81d8f733ae0233a0"
+      "computedHash": "a64e89b484f773624771fce462ebd48eed7feeeb068ce640ab70cea2987af4ef"
     },
     "effect-ts": {
       "source": "Effect-TS/skills",
@@ -43,37 +43,38 @@
       "skillPath": "better-auth/emailAndPassword/SKILL.md",
       "computedHash": "863886759f729081e265941f4f72c503835d55a1f34f6d63cebe6571159fff4a"
     },
-    "fallow": {
-      "source": "fallow",
-      "sourceType": "node_modules",
-      "computedHash": "e2bbf585ac8a72312a0ad0abea7761f7fca500a61cef545262be215aead3d54d"
-    },
     "feature-sliced-design": {
       "source": "feature-sliced/skills",
       "ref": "538e1002f89a2f168ec849ea469493799cb0b6e1",
       "sourceType": "github",
       "skillPath": "feature-sliced-design/SKILL.md",
-      "computedHash": "ee5a0a74e2c5715c9b4573fbc2c64a72db5c6bd51415ad0734dab47ced77edcd"
+      "computedHash": "98d09ea1a9acac34fc5720c610c4ee7c7780dd30b2f287d733961f8e7e9d980b"
+    },
+    "measure-dont-guess": {
+      "source": "./docs/skills/measure-dont-guess",
+      "sourceType": "local",
+      "computedHash": "a767533422bf3a57ba70a83287002020d8f95f5f6e6f325ff27cba8a7721d42d"
     },
     "modern-web-guidance": {
       "source": "GoogleChrome/modern-web-guidance",
       "ref": "a97286845f2baba38988f9e5fe2b2a1351021e50",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
-      "computedHash": "4f7b5229ea29d234c4897211d2d3de2ef070cc458256703125db3a30807a9874"
-    },
-    "remotion-best-practices": {
-      "source": "remotion-dev/skills",
-      "sourceType": "github",
-      "skillPath": "skills/remotion-best-practices/SKILL.md",
-      "computedHash": "ff61c0736030e8e2efc3993445f88e4b3c3ff2cbeedf2f9106ab4217d7fe297d"
+      "computedHash": "dbd30d9c331c8957e065270150ffe44b4ba11ad5259cc9144240f63c45b05f1c"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",
-      "ref": "2d3f1cd436b18ea12f24130de4df781355925b08",
+      "ref": "c003e96852fa9534aee40b2cb85a96d8bd38732d",
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
       "computedHash": "f615de216e085a84e31593ad0fa9062232adc40cd87b7c7ab2b8e49abf6500be"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
+      "sourceType": "github",
+      "skillPath": "skills/systematic-debugging/SKILL.md",
+      "computedHash": "276fb0aadb002ab930cc2a56de89e16995a2e3e70b33587652bf0a5fb123148d"
     },
     "typescript-discriminated-unions": {
       "source": "mkosir/typescript-style-guide",
@@ -89,6 +90,13 @@
       "skillPath": "skills/typescript-variables/SKILL.md",
       "computedHash": "a4f4459aa4c0dd16f8fd43401b76c4e9cb68265a73060d7f184ddb438f911afd"
     },
+    "verification-before-completion": {
+      "source": "obra/superpowers",
+      "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
+      "sourceType": "github",
+      "skillPath": "skills/verification-before-completion/SKILL.md",
+      "computedHash": "b529822bdac4b197b180fe12225cff86b930b65910435103c10622df7f041651"
+    },
     "workers-best-practices": {
       "source": "cloudflare/skills",
       "ref": "a18ffe2a99448ebff262fc87915b0fd14bab9b70",
@@ -98,10 +106,10 @@
     },
     "yomiyasu": {
       "source": "nanaism/yomiyasu",
-      "ref": "c2ffae670994fec96daef92e0bc219f5c1923113",
+      "ref": "373356eb874af5184962c88e925ea7eb58450318",
       "sourceType": "github",
-      "skillPath": "SKILL.md",
-      "computedHash": "0b8ca56f301dc56184291b19dc2ec92d561b46776abb3c5bb7c1bc0266623421"
+      "skillPath": "skills/yomiyasu/SKILL.md",
+      "computedHash": "a3d50b77af3cd0c9c2fdd796ed7a21f0f13d5da91709a5067d168a4a183638a4"
     }
   }
 }

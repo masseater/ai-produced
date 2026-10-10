@@ -1,7 +1,7 @@
-import { make } from "effect/unstable/reactivity/Atom";
+import { Atom } from "effect/reactivity";
 
 const NO_QUERY = "";
 
-const searchQueryAtom = make(NO_QUERY);
+const searchQueryAtom = Atom.make(NO_QUERY);
 
 export { NO_QUERY, searchQueryAtom };

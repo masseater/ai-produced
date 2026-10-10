@@ -77,7 +77,7 @@ plans/evaluation-criteria.md 8章、analysis/taste-band-v1.json。好みを実�
 | 帯域 high（6kHz–）         | -17.3〜-12.2 | -14前後（高域は控えめ）               |
 | 音量の起伏 p90-p10（参考） | 1.3〜15.8    | 10以上（Bridge→LastChorusで差を作る） |
 
-ゲート: 書き出しWAVでトゥルーピーク ≦ -1.0 dBTP、クリップなし。
+合格条件: 書き出しWAVでトゥルーピーク ≦ -1.0 dBTP、クリップなし。
 
 ## 6. リファレンス曲と参照する点
 
@@ -100,5 +100,5 @@ plans/evaluation-criteria.md 8章、analysis/taste-band-v1.json。好みを実�
 ## 8. 次工程（作曲・打ち込み）への入力
 
 入力はこの構成表（小節数・BPM・キー）と 01-lyrics/v1.tsv の読み・音数。
-作曲成果物は MusicXML/MIDI。ゲート: 音域 A2–A5 内、各行の間に息継ぎの休符。
+作曲成果物は MusicXML/MIDI。合格条件: 音域 A2–A5 内、各行の間に息継ぎの休符。
 確定したメロディで歌詞の音数が合わない行は、作詞に戻して 01-lyrics/v2.tsv を作る（log.mdに理由）。
