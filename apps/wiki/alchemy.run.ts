@@ -12,7 +12,7 @@ type WikiEnv = InferEnv<typeof wiki>;
 
 export type { WikiEnv };
 export default Stack(
-  "wiki",
+  "ai-produced-wiki",
   { providers: providers(), state: state() },
   Effect.gen(function* stack() {
     const { url } = yield* wiki;
