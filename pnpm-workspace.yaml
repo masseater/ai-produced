@@ -50,7 +50,7 @@ catalogs:
     "@tanstack/react-start": 1.168.60
     alchemy: 2.0.0-beta.81
     better-auth: 1.7.7
-    drizzle-kit: 1.0.0-rc.5-5935859
+    drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-5935859
     "@remotion/cli": 4.0.534
     "@remotion/google-fonts": 4.0.534
