@@ -9,13 +9,17 @@ from place import compare, place
 BINS = 48
 
 
+def rms_db(x):
+    return 20 * np.log10(np.sqrt(np.mean(x**2)) + 1e-12)
+
+
 def bar_gain(song, y, ref, limit=12, silent=-70):
     step = int(song.bar * SR)
     n = int(np.ceil(len(y) / step))
     gains = []
     for i in range(n):
-        a = 20 * np.log10(np.sqrt(np.mean(y[i * step:(i + 1) * step].mean(1) ** 2)) + 1e-12)
-        r = 20 * np.log10(np.sqrt(np.mean(ref[i * step:(i + 1) * step].mean(1) ** 2)) + 1e-12)
+        a = rms_db(y[i * step:(i + 1) * step].mean(1))
+        r = rms_db(ref[i * step:(i + 1) * step].mean(1))
         gains.append(-120.0 if r < silent else float(np.clip(r - a, -limit, limit)) if a > silent else 0.0)
     lin = np.repeat(10 ** (np.array(gains) / 20), step)[:len(y)]
     f = int(0.005 * SR)
@@ -40,8 +44,7 @@ def beat_profile(song, m, beats):
 def beat_gain(song, y, ref, lo=-24, hi=6):
     rm = ref.mean(1)
     step = song.beat * SR
-    level = np.array([np.sqrt(np.mean(rm[int(i * step):int((i + 1) * step)] ** 2)) for i in range(int(len(rm) / step))])
-    level = 20 * np.log10(level + 1e-12)
+    level = np.array([rms_db(rm[int(i * step):int((i + 1) * step)]) for i in range(int(len(rm) / step))])
     beats = np.where(level > level.max() - 30)[0]
     g = np.clip(beat_profile(song, rm, beats) - beat_profile(song, y.mean(1), beats), lo, hi)
     g = np.convolve(np.concatenate([g[-1:], g, g[:1]]), [0.25, 0.5, 0.25], "valid")
