@@ -92,7 +92,7 @@ release. Add a tool name to select part of the graph. For example, run
 wav、mp3、flacなどの音声は、`.gitattributes` の設定でGit LFSに保存する。
 このリポジトリはpublicである。
 既存の曲や動画そのもの（原曲など他人の音源や映像）は、リポジトリに入れてはならない。
-分析用に取得した音源や動画はリポジトリの外か、`.gitignore` で除外した `reference/` か `downloads/` に置く。
+分析用に取得した音源や動画は次の reference リポジトリに置く。作業中の一時的な複製だけは、`.gitignore` で除外した `reference/` か `downloads/` に置いてよい。
 
 ### 参照素材の置き場
 
@@ -103,9 +103,8 @@ wav、mp3、flacなどの音声は、`.gitattributes` の設定でGit LFSに保�
 - 作業を始めるスレッドは、クラウドでも Mac mini 常駐でも、両リポジトリを clone または pull する。クローン先は `ai-produced` と並べた `../ai-produced-reference` とする。
 - 採譜や素材の取得の前に、reference 側に同じ曲の素材がないか確かめる。あれば作り直さずに使う。
 - この public リポジトリに入れるのは、コード、設定、分析ノート（数値や手法の記述）だけである。
-- 作者が利用を許可している素材も、その利用条件に従う。再配布を許していなければ reference 側に置く。
+- 作者が利用や再配布を許可している素材も、条件を確かめずに reference 側へ置く。
 - reference リポジトリは私的使用の範囲で扱い、公開や他人との共有をしない。
-- reference リポジトリが作られるまでは、これまでどおり `.gitignore` で除外した `reference/` か `downloads/` に置く。
 - 置き場を選んだ経緯は docs/tool-selection.md にある。
 ## ベース
 - このリポジトリのベースは https://github.com/masseater/typescript-template である。テンプレート由来の構成・方針はテンプレートに従う。
