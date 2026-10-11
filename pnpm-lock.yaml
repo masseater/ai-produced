@@ -280,8 +280,8 @@ catalogs:
       specifier: 4.0.534
       version: 4.0.534
     '@remotion/media':
-      specifier: 4.0.533
-      version: 4.0.533
+      specifier: 4.0.534
+      version: 4.0.534
     '@remotion/tailwind-v4':
       specifier: 4.0.533
       version: 4.0.533
@@ -463,7 +463,7 @@ importers:
         version: 4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@remotion/media':
         specifier: catalog:stack
-        version: 4.0.533(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       effect:
         specifier: 4.0.0
         version: 4.0.0

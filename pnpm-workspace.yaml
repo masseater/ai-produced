@@ -52,7 +52,7 @@ catalogs:
     better-auth: 1.7.7
     "@remotion/cli": 4.0.534
     "@remotion/google-fonts": 4.0.534
-    "@remotion/media": 4.0.533
+    "@remotion/media": 4.0.534
     "@remotion/tailwind-v4": 4.0.533
     drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-ab785fc
