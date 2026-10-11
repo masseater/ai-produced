@@ -92,7 +92,7 @@
     "stem-repro": {
       "source": "./docs/skills/stem-repro",
       "sourceType": "local",
-      "computedHash": "a7c56eb68c495531cb68f2ee5bf65198659fae0db121d438b5433bd0f27a8cf0"
+      "computedHash": "333853ac015654b5435c738031ed3d5bed6c6749a0422e892a20dd5e4249255f"
     },
     "systematic-debugging": {
       "source": "obra/superpowers",
