@@ -73,8 +73,9 @@ release. Add a tool name to select part of the graph. For example, run
 3. Mac mini側はそのブランチをpullして作業し、書き出した音声や更新した.RPPを同じブランチにpushする。
 4. クラウド側がpullして続きを進める。
 
-## 音声ファイル
+## 音声と動画
 
 wav、mp3、flacなどの音声は、`.gitattributes` の設定でGit LFSに保存する。
-既存の曲（原曲など他人の音源）は、そのままリポジトリに入れてはならない。
-分析用に取得した音源はリポジトリの外に置く。
+このリポジトリはpublicである。
+既存の曲や動画そのもの（原曲など他人の音源や映像）は、リポジトリに入れてはならない。
+分析用に取得した音源や動画はリポジトリの外か、`.gitignore` で除外した `reference/` か `downloads/` に置く。

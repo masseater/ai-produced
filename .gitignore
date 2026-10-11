@@ -65,3 +65,7 @@ songs/*/04-reaper/*-mix.rpp
 # Playwright CLI
 .playwright/
 .playwright-cli/
+
+# Downloaded reference songs and videos (public repo)
+reference/
+downloads/
