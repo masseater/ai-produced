@@ -58,3 +58,23 @@ release. Add a tool name to select part of the graph. For example, run
 - 推測するな、計測しろ。仮説を立てたら、実装や修正の前に計測で事実を確かめ、その結果だけで判断する。
 - 機能開発に取り掛かる前に、AIが自分でデバッグできる仕組みを必ず作る。再現手段、ログやスパン、その出力を読む経路の3つである。
 - 実践の手順は `measure-dont-guess` スキル（`docs/skills/measure-dont-guess/SKILL.md`）にある。不具合の調査は `systematic-debugging`、完了の確認は `verification-before-completion` スキルに従う。
+
+## クラウドとMac miniの分担
+
+作業はクラウド側のスレッドと、Mac miniに常駐するスレッドで分ける。
+
+- クラウド側は分析、設計、MIDI、.RPPの生成、スクリプトを担う。
+- Mac mini側は、REAPERとMac上のプラグインを使う作業を担う。
+
+受け渡しはGitHubのブランチで行い、スレッド間でファイルの中身を渡さない。
+
+1. クラウド側が作業ブランチにpushする。
+2. 常駐スレッドには、ブランチ名とやることだけを短く伝える。必要なら対象の.RPP、レンダリング設定、出力先も書く。
+3. Mac mini側はそのブランチをpullして作業し、書き出した音声や更新した.RPPを同じブランチにpushする。
+4. クラウド側がpullして続きを進める。
+
+## 音声ファイル
+
+wav、mp3、flacなどの音声は、`.gitattributes` の設定でGit LFSに保存する。
+既存の曲（原曲など他人の音源）は、そのままリポジトリに入れてはならない。
+分析用に取得した音源はリポジトリの外に置く。
