@@ -3,9 +3,9 @@ import json
 import numpy as np
 import scipy.optimize as so
 
-from audio import SR
 from features import chroma, dist3
 from midi_notes import events
+from note_shape import note_profile
 from surge import Surge
 
 PARAMS = [
@@ -15,16 +15,8 @@ PARAMS = [
 SHIFT_MS = 12
 
 
-def note_env(m, ons, hop=220, bins=80):
-    acc = np.zeros(bins)
-    k = 0
-    for i in ons:
-        seg = m[i:i + hop * bins]
-        if len(seg) == hop * bins:
-            acc += (seg.reshape(bins, hop) ** 2).mean(1)
-            k += 1
-    p = 10 * np.log10(acc / max(k, 1) + 1e-20)
-    return np.maximum(p - p.max(), -50)
+def note_env(m, ons):
+    return np.maximum(note_profile(m, ons, 220, 80), -50)
 
 
 def fit(song, part, patch, maxiter, popsize):
@@ -32,7 +24,7 @@ def fit(song, part, patch, maxiter, popsize):
     t0, t1 = b0 * song.bar, b1 * song.bar
     lst = song.notes_in(song.part_notes(part), b0, b1)
     ref = song.bars(song.stem(part), b0, b1).mean(1)
-    ons = [int((n[0] - t0) * SR) for n in lst]
+    ons = [n[0] - t0 for n in lst]
     ne_ref, cref = note_env(ref, ons), chroma(ref)
     synth = Surge()
     synth.load(patch)

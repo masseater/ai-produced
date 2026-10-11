@@ -115,12 +115,8 @@ def candidates(song, raw, ref, lst, shift):
         y0 = placed if pre is None else place(raw * gate(lst, shift, pre, len(raw))[:, None], ref)[0]
         for env in [False, True]:
             y1, moves = (note_envelope(y0, ref, ons) if env else (y0, None))
-            for post in ["", "bars", "bars+beat"]:
-                z = y1
-                if post:
-                    z = bar_gain(song, z, ref)[0]
-                if "beat" in post:
-                    z = beat_gain(song, z, ref)[0]
+            barred = bar_gain(song, y1, ref)[0]
+            for post, z in [("", y1), ("bars", barred), ("bars+beat", beat_gain(song, barred, ref)[0])]:
                 if env or post:
                     z = place(z, ref, 1)[0]
                 how = "+".join(x for x in ["place", f"gate{pre}" if pre else "", "noteenv" if env else "", post] if x)
