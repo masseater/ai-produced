@@ -3,7 +3,7 @@ import json
 import numpy as np
 import scipy.signal as sg
 
-from audio import SR, load, lufs, stats
+from audio import SR, load, stats
 from features import env
 from match_eq import curve
 
@@ -13,10 +13,10 @@ def true_peak_db(x):
 
 
 def align(a, b, max_lag=SR // 10):
-    c = sg.correlate(b.mean(1)[:SR * 30], a.mean(1)[:SR * 30], mode="full", method="fft")
-    mid = len(a.mean(1)[:SR * 30]) - 1
-    lag = int(np.argmax(c[mid - max_lag:mid + max_lag + 1]) - max_lag)
-    return lag
+    ma, mb = a.mean(1)[:SR * 30], b.mean(1)[:SR * 30]
+    c = sg.correlate(mb, ma, mode="full", method="fft")
+    mid = len(ma) - 1
+    return int(np.argmax(c[mid - max_lag:mid + max_lag + 1]) - max_lag)
 
 
 def transfer(src, dst, hop=441, step=3):
@@ -52,11 +52,12 @@ def measure(src, dst):
         src = src[-lag:]
     n = min(len(src), len(dst))
     src, dst = src[:n], dst[:n]
+    s, d = stats(src), stats(dst)
     return dict(
         lag_samples=lag,
-        src=dict(stats(src), true_peak_db=true_peak_db(src)),
-        dst=dict(stats(dst), true_peak_db=true_peak_db(dst)),
-        loudness_gain_db=None if lufs(src) is None or lufs(dst) is None else round(lufs(dst) - lufs(src), 1),
+        src=dict(s, true_peak_db=true_peak_db(src)),
+        dst=dict(d, true_peak_db=true_peak_db(dst)),
+        loudness_gain_db=None if s["lufs"] is None or d["lufs"] is None else round(d["lufs"] - s["lufs"], 1),
         eq_tilt_db=[round(float(v), 1) for v in curve(src, dst)],
         level_transfer=transfer(src, dst),
         peaks=peak_reduction(src, dst),

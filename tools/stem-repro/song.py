@@ -32,8 +32,7 @@ class Song:
         return load(self.stem_path(name), n)
 
     def section(self, x, name):
-        b0, b1 = self.sections[name]
-        return x[int(b0 * self.bar * SR):int(b1 * self.bar * SR)]
+        return self.bars(x, *self.sections[name])
 
     def bars(self, x, b0, b1):
         return x[int(b0 * self.bar * SR):int(b1 * self.bar * SR)]

@@ -5,7 +5,7 @@ import numpy as np
 import scipy.signal as sg
 import soundfile as sf
 
-from audio import SR, load, lr_db, lufs, side_mid_db, stats
+from audio import SR, load, lr_db, lufs, mid_side, side_mid_db, stats
 from features import dist
 from match_eq import apply, curve
 
@@ -16,7 +16,7 @@ def compare(cand, ref):
 
 
 def widen(y, target):
-    m, s = (y[:, 0] + y[:, 1]) / 2, (y[:, 0] - y[:, 1]) / 2
+    m, s = mid_side(y)
     cur = side_mid_db(y)
     if cur < target - 3:
         hp = sg.sosfilt(sg.butter(2, 200 / (SR / 2), "high", output="sos"), m)
