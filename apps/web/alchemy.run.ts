@@ -28,7 +28,7 @@ type WebEnv = InferEnv<typeof web>;
 
 export type { WebEnv };
 export default Stack(
-  "typescript-template",
+  "ai-produced",
   { providers: providers(), state: state() },
   Effect.gen(function* stack() {
     const { url } = yield* web;
