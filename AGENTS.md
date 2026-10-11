@@ -1,10 +1,3 @@
-## レビューとマージ
-
-成果物（曲・映像など）はユーザーが確認する場合もある。
-一方、コードのレビューは基本的に行わない。
-PRはセルフレビューし、CIが緑でコンフリクトがないことを確かめたら、ユーザーを待たずにセルフマージしてよい。
-本番デプロイや外部公開はこの対象外で、ユーザーの指示を待つ。
-
 <!-- intent-skills:start -->
 ## Skill Loading
 
@@ -54,7 +47,7 @@ release. Add a tool name to select part of the graph. For example, run
 ## レビューとCI
 
 - PRのレビューは行わない。PRは作ったらすぐマージする。
-- PR単位のCIは走らせない。`pull_request` トリガーのワークフローを追加しない。PRはレビューせずすぐマージするので、PRでCIを走らせてもマージ前の判断に使われず、コストに見合わない。代わりにpush時のフックが手元で `vp run verify` を実行する。
+- PR単位のCIは走らせない。`pull_request` トリガーのワークフローを追加しない。
 - CIはmainへのpushで必ず走らせる。ワークフローは `.github/workflows/verify.yml` である。
 - デプロイやリリースのジョブは、同じワークフローで `needs: verify` を指定し、mainの必須CIが通ってから実行する。
 - マージ前の確認は手元の `vp run verify` で行う。
@@ -73,38 +66,11 @@ release. Add a tool name to select part of the graph. For example, run
 - 計測は本番環境で行えるようにする。できないときは、あらゆる手段で本番同等を保証したステージング環境を作って行う。手元やテスト環境だけの計測は判断の根拠にしない。
 - 実践の手順は `measure-dont-guess` スキル（`docs/skills/measure-dont-guess/SKILL.md`）にある。不具合の調査は `systematic-debugging`、完了の確認は `verification-before-completion` スキルに従う。
 
-## クラウドとMac miniの分担
+## 成果物と素材
 
-作業はクラウド側のスレッドと、Mac miniに常駐するスレッドで分ける。
+- 本番デプロイと外部公開は、ユーザーの指示を待つ。
+- このリポジトリはpublicである。他人の曲や映像に由来する素材は入れず、`reference-materials` スキルに従う。
+- REAPERやMac上のプラグインが要る作業は、`mac-mini-handoff` スキルに従ってMac mini常駐のスレッドへ渡す。
 
-- クラウド側は分析、設計、MIDI、.RPPの生成、スクリプトを担う。
-- Mac mini側は、REAPERとMac上のプラグインを使う作業を担う。
-
-受け渡しはGitHubのブランチで行い、スレッド間でファイルの中身を渡さない。
-
-1. クラウド側が作業ブランチにpushする。
-2. 常駐スレッドには、ブランチ名とやることだけを短く伝える。必要なら対象の.RPP、レンダリング設定、出力先も書く。
-3. Mac mini側はそのブランチをpullして作業し、書き出した音声や更新した.RPPを同じブランチにpushする。
-4. クラウド側がpullして続きを進める。
-
-## 音声と動画
-
-wav、mp3、flacなどの音声は、`.gitattributes` の設定でGit LFSに保存する。
-このリポジトリはpublicである。
-既存の曲や動画そのもの（原曲など他人の音源や映像）は、リポジトリに入れてはならない。
-分析用に取得した音源や動画は次の reference リポジトリに置く。作業中の一時的な複製だけは、`.gitignore` で除外した `reference/` か `downloads/` に置いてよい。
-
-### 参照素材の置き場
-
-他人の曲に由来する素材は、private リポジトリ https://github.com/masseater/ai-produced-reference に Git LFS で置く。
-対象は原曲の音源と動画、ステム、採譜 MIDI（自動採譜を含む）、それらから作った音声などの中間データである。
-
-- 配置は `<曲のスラッグ>/{audio,stems,midi,analysis}/` とする。
-- 作業を始めるスレッドは、クラウドでも Mac mini 常駐でも、両リポジトリを clone または pull する。クローン先は `ai-produced` と並べた `../ai-produced-reference` とする。
-- 採譜や素材の取得の前に、reference 側に同じ曲の素材がないか確かめる。あれば作り直さずに使う。
-- この public リポジトリに入れるのは、コード、設定、分析ノート（数値や手法の記述）だけである。
-- 作者が利用や再配布を許可している素材も、条件を確かめずに reference 側へ置く。
-- reference リポジトリは私的使用の範囲で扱い、公開や他人との共有をしない。
-- 置き場を選んだ経緯は docs/tool-selection.md にある。
 ## ベース
 - このリポジトリのベースは https://github.com/masseater/typescript-template である。テンプレート由来の構成・方針はテンプレートに従う。

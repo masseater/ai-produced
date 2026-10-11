@@ -3,72 +3,7 @@
 公開されたステムとMIDIがある曲を、パートごとに自分で作り直して原曲と計測で比べる手法である。
 作り直した音と原曲の差を数値で詰めていくと、その差を埋めるのに要った操作（EQ量、包絡、ステレオ幅、バスとマスターの処理）が原曲の音作りの計測値になる。
 1曲目の結果は[ただ選択があった](../works/フロクロ_ただ選択があった/index.md)にある。
-スクリプトは`tools/stem-repro`にまとめた。
-
-## 素材の扱い
-
-原曲の音源、ステム、MIDI、ステムから採譜したMIDI、それらから作った書き出しはリポジトリに入れない。
-リポジトリに残すのはスクリプト、手順、統計値のJSONだけである。
-素材はAGENTS.mdの決まりどおり private リポジトリ ai-produced-reference に置き、曲ごとの設定ファイル`song.json`も素材と同じ場所に置く。
-
-## 環境
-
-画面を使わずにクラウドで完結させるため、次の構成にした。
-
-| 用途         | 使ったもの                                                                  |
-| ------------ | --------------------------------------------------------------------------- |
-| シンセ       | Surge XT 1.3.4のLinux版debを展開し、VST3を`/opt/surge`に置いた              |
-| 音色         | debに入っている`/usr/share/surge-xt/patches_*`の3008音色                    |
-| プラグイン   | Spotifyのpedalboardで、画面なしでVST3を鳴らした                             |
-| ピアノ       | FluidSynthとSalamander Grand PianoのSF2（CC-BY 3.0）                        |
-| 採譜         | basic-pitch。Python 3.11とnumpy 2未満が要るため、uvで別の環境を作って動かす |
-| 計測と最適化 | librosa、scipy、pyloudnorm                                                  |
-
-VST3とパッチの場所は環境変数`SURGE_VST3`と`SURGE_PATCHES`で変えられる。
-
-## 曲の設定
-
-`song.json`には、テンポ、ステムのパス、プリマスターとマスターのパス、セクション、MIDIのあるパートを書く。
-パスは`song.json`からの相対パスである。
-
-```json
-{
-  "bpm": 140,
-  "stems": "stem/sentaku_{name}.wav",
-  "premaster": "ただ選択があった_off_noMst.wav",
-  "master": "ただ選択があった_off_mst.wav",
-  "stem_names": ["drums_kick", "drums_top", "bass", "arp1"],
-  "sections": { "intro": [0, 8], "B": [16, 40], "break": [40, 48] },
-  "parts": {
-    "bass": { "midi": "song.mid", "track": 4, "search_bars": [8, 10], "rescore_bars": [8, 12] },
-    "arp2": { "midi": "transcribed/arp2.mid", "search_bars": [40, 42], "rescore_bars": [40, 44] }
-  }
-}
-```
-
-コマンドはすべて`tools/stem-repro`で`uv run python cli.py <song.json> <コマンド>`として動かす。
-結果はJSONで標準出力に出る。
-
-## 手順
-
-上から順に進める。コマンド欄は`cli.py <song.json>`に続けて書く引数である。
-
-| 順  | コマンド                                              | やること                                                                                                       |
-| --- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 1   | `stems`                                               | ステムごとのラウドネス、ピーク、クレスト、ステレオ幅、小節ごとの鳴っている区間、帯域の配分を出す               |
-| 2   | `interstem --section B --kick drums_kick --bass bass` | ステム同士の関係を出す。中身は次の節に書く                                                                     |
-| 3   | `mastering --bus`                                     | ステムの単純和からプリマスター、プリマスターからマスターへの変化を出す                                         |
-| 4   | `transcribe.py`（下記）                               | MIDIの無いパートをbasic-pitchで採譜する                                                                        |
-| 5   | `filter-notes --stem arp2 --midi <採譜MIDI>`          | ノート頭でそのピッチの音がステムのCQTに無いノートを捨て、ベロシティを音量から付け直す                          |
-| 6   | `search --out <作業先>`                               | Surgeの全音色を各パートの2小節で採点し、パートごとの上位50を4小節で採点し直す                                  |
-| 7   | `optimize --part bass --patch <fxp>`                  | 音量とフィルターの包絡8個を差分進化で動かし、スペクトル・包絡・音程の差の和を下げる                            |
-| 8   | `kick-fit --stem drums_kick --section B`              | 正弦波のピッチ包絡と音量包絡と歪みの10個のパラメータを原曲のキックに合わせる                                   |
-| 9   | `resynth --stem drums_top --out <wav>`                | 音色で作れないパートを、短時間スペクトルの大きさだけ残して位相を乱数にして作り直す。所見には使わない           |
-| 10  | `place --stem bass --raw <wav> --out <wav>`           | マッチEQ、ステレオ幅、左右の偏り、ラウドネスを原曲のステムに合わせ、前後の差と当てた量を出す                   |
-| 11  | `shape --stem piano --raw <wav> --out <wav>`          | 小節ごとの音量と、1拍の中の音量の形を原曲に合わせてから`place`をかける。当てた量が原曲の音量操作の計測値である |
-
-採譜は`uv run --python 3.11 --with "basic-pitch[onnx]" --with "numpy<2" python transcribe.py <出力先> <BPM> <ステム...>`で動かす。
-最後に、`place`と`shape`が当てた量と、6〜8で残った差を記録する。これが「原曲の音作りとの差」である。
+動かし方は`stem-repro`スキル（`docs/skills/stem-repro/SKILL.md`）にある。
 
 ## 指標
 
@@ -93,8 +28,6 @@ VST3とパッチの場所は環境変数`SURGE_VST3`と`SURGE_PATCHES`で変え�
 | low_kick_vs_bass        | 150 Hz以下の包絡についての、キックとベースの相関と、キックが持つエネルギーの割合             |
 | stereo                  | パートごとのステレオ幅と左右の偏り                                                           |
 | section_balance_rel_mix | セクションごとの、ステムの和に対する各ステムのラウドネス                                     |
-
-`--repro <ディレクトリ>`を付けると、作り直したステムでも同じ値を出して並べる。
 
 ## 気をつけること
 

@@ -1,6 +1,16 @@
 {
   "version": 1,
   "skills": {
+    "analysis-wiki": {
+      "source": "./docs/skills/analysis-wiki",
+      "sourceType": "local",
+      "computedHash": "370184d0d9900d49785e8c1f1ad7e26d813102ff5ed1a73b195c6f4d260ddb4b"
+    },
+    "audio-to-midi": {
+      "source": "./docs/skills/audio-to-midi",
+      "sourceType": "local",
+      "computedHash": "c9b034c59893e7ef4176987e805059acd541bfd6a33a4a8247bf6fe2691a5dcc"
+    },
     "better-auth-best-practices": {
       "source": "better-auth/skills",
       "ref": "20c9e88a5c007461a703f1c213572b073196113e",
@@ -50,6 +60,11 @@
       "skillPath": "feature-sliced-design/SKILL.md",
       "computedHash": "98d09ea1a9acac34fc5720c610c4ee7c7780dd30b2f287d733961f8e7e9d980b"
     },
+    "mac-mini-handoff": {
+      "source": "./docs/skills/mac-mini-handoff",
+      "sourceType": "local",
+      "computedHash": "bfe5b575e2b7a41a8e7156ee3faa233639061d0911c7e4d412f0becd932113f9"
+    },
     "measure-dont-guess": {
       "source": "./docs/skills/measure-dont-guess",
       "sourceType": "local",
@@ -62,12 +77,22 @@
       "skillPath": "skills/modern-web-guidance/SKILL.md",
       "computedHash": "dbd30d9c331c8957e065270150ffe44b4ba11ad5259cc9144240f63c45b05f1c"
     },
+    "reference-materials": {
+      "source": "./docs/skills/reference-materials",
+      "sourceType": "local",
+      "computedHash": "0c6e406da9ae32331de429e47b25e08453bf74d8dc9e17c97f42d7d272dce8c1"
+    },
     "shadcn": {
       "source": "shadcn-ui/ui",
       "ref": "2d3f1cd436b18ea12f24130de4df781355925b08",
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
       "computedHash": "da388f632cd83783c02967446e21941c9ee8291ccb43ba74c23f7d4e9b7c298c"
+    },
+    "stem-repro": {
+      "source": "./docs/skills/stem-repro",
+      "sourceType": "local",
+      "computedHash": "a7c56eb68c495531cb68f2ee5bf65198659fae0db121d438b5433bd0f27a8cf0"
     },
     "systematic-debugging": {
       "source": "obra/superpowers",
