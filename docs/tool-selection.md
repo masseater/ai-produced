@@ -175,6 +175,8 @@ lyric-timingについて上に書いた「LRCなどは行単位」は、モー�
 | Transkun                       | 0.844     | 0.690   | 0.570     |
 | Kongらのピアノ採譜             | 0.855     | 未計測  | 未計測    |
 | YourMT3+（YPTF.MoE+Multi）     | 0.883     | 0.205   | 0.239     |
+| MuScriptor 0.3 small           | 0.870     | 0.992   | 0.043     |
+| MuScriptor 0.3 medium          | 0.873     | 0.988   | 未計測    |
 
 ピアノはYourMT3+が最も良かった。ピアノの適合率が0.8前後に留まるのは、MIDIに無い音がステムに入っているためとみられる。Transkunの誤検出327個のうち236個をBasic Pitchも独立に検出している。
 arp1（シンセのプラック）はBasic Pitchだけが拾えた。TranskunとYourMT3+は、短い音の連打の半分以上を取りこぼした。
@@ -182,9 +184,14 @@ arp1（シンセのプラック）はBasic Pitchだけが拾えた。Transkunと
 YourMT3+にオフボーカルのミックスを丸ごと渡すと、ピアノのF1は0.701だった。ステムの無い曲でも、Basic Pitchにステムを渡した場合と同程度に採れる。
 Basic Pitchのpredict()は最短音長の既定値が約128msで、CLIの既定値58msと違う。140BPMの16分音符（107ms）を落とすため、tools/audio-to-midiはCLIの既定値を使う。
 
-tools/audio-to-midiは、ピアノやミックスをYourMT3+、シンセやベースをBasic Pitchで採り、score.pyで正解のMIDIと比べる。
+MuScriptorは無音の区間にも音を出す。small のarp1では830音のうち264音がデジタル無音の区間にあった。発音から80msの音量が−60dBFS以下の音を消すと、arp1のF1は0.786から0.992になった。表の値はこの処理の後である。
+MuScriptorのベースは、採った音の8割が正解の1オクターブ下だった。ステムに重なる1オクターブ下の層を基音として拾っている。
+smallはCPUで126秒の曲を約100秒で採る。mediumはその約2倍かかり、smallより良くならなかった。
+
+tools/audio-to-midiは、既定でMuScriptorのsmallを使い、無音の音を消す処理を足す。ピアノはYourMT3+も同程度に採れる。score.pyで正解のMIDIと比べる。
+MuScriptorは依存するtorchとnumpyの版がYourMT3+と両立しないため、uvxで別の環境に入れて呼ぶ。重みの取得には、Hugging Faceでモデルのライセンスに同意したアカウントのトークンが要る。
 YourMT3+の推論コードはHugging Faceのmimbres/YourMT3（Apache-2.0）を固定したリビジョンで取得する。
-同日に話題だったMuScriptor（KyutaiとMirelo、重みはCC BY-NC 4.0）は、重みの取得にHugging Faceのログインが要るため、まだ比べていない。
+MuScriptorの重みはCC BY-NC 4.0で、非商用の分析に限って使う。
 
 ## 導入済みの環境
 

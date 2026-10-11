@@ -1,11 +1,14 @@
 import argparse
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 from collections import Counter
 from pathlib import Path
 
+MUSCRIPTOR = "muscriptor==0.3.0"
+SILENCE_DB = -60
 YOURMT3_SPACE = "mimbres/YourMT3"
 YOURMT3_REVISION = "5e66c1ea173a8186e0d20432b841d3180cc015b5"
 YOURMT3_CHECKPOINT = "mc13_256_g4_all_v7_mt3f_sqr_rms_moe_wf4_n8k2_silu_rope_rp_b36_nops"
@@ -45,6 +48,37 @@ def basic_pitch(inputs, out_dir, args):
             minimum_note_length=args.minimum_note_length,
         )
         out = out_dir / f"{wav.stem}.mid"
+        midi.write(str(out))
+        print(out)
+
+
+def muscriptor(inputs, out_dir, args):
+    import librosa
+    import numpy as np
+    import pretty_midi
+
+    for wav in inputs:
+        out = out_dir / f"{wav.stem}.mid"
+        subprocess.run(
+            [
+                "uvx", "--torch-backend", "auto", "--from", MUSCRIPTOR,
+                "muscriptor", "transcribe", str(wav),
+                "-o", str(out),
+                "-m", args.model,
+                "--detect-tempo", "false",
+            ],
+            check=True,
+        )
+        audio, sr = librosa.load(wav, sr=None, mono=True)
+        window = int(0.08 * sr)
+
+        def sounding(note):
+            chunk = audio[int(note.start * sr) : int(note.start * sr) + window]
+            return chunk.size and 10 * np.log10(np.mean(chunk**2) + 1e-12) > SILENCE_DB
+
+        midi = pretty_midi.PrettyMIDI(str(out))
+        for inst in midi.instruments:
+            inst.notes = [n for n in inst.notes if sounding(n)]
         midi.write(str(out))
         print(out)
 
@@ -115,7 +149,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("inputs", nargs="+", type=Path)
     parser.add_argument("-o", "--out-dir", type=Path, default=Path.cwd())
-    parser.add_argument("-e", "--engine", choices=["basic-pitch", "yourmt3"], default="basic-pitch")
+    parser.add_argument("-e", "--engine", choices=["muscriptor", "basic-pitch", "yourmt3"], default="muscriptor")
+    parser.add_argument("--model", choices=["small", "medium", "large"], default="small")
     parser.add_argument("--onset-threshold", type=float, default=0.5)
     parser.add_argument("--frame-threshold", type=float, default=0.3)
     parser.add_argument("--minimum-note-length", type=float, default=58)
@@ -125,7 +160,7 @@ def main():
     inputs = [p.resolve() for p in args.inputs]
     args.out_dir = args.out_dir.resolve()
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    {"basic-pitch": basic_pitch, "yourmt3": yourmt3}[args.engine](inputs, args.out_dir, args)
+    {"muscriptor": muscriptor, "basic-pitch": basic_pitch, "yourmt3": yourmt3}[args.engine](inputs, args.out_dir, args)
 
 
 if __name__ == "__main__":
