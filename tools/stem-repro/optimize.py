@@ -1,6 +1,5 @@
 import json
 
-import numpy as np
 import scipy.optimize as so
 
 from features import chroma, dist3
@@ -35,7 +34,7 @@ def fit(song, part, patch, span, maxiter, popsize):
     r = so.differential_evolution(loss, bounds, x0=x0, maxiter=maxiter, popsize=popsize, seed=0, polish=False, tol=1e-3)
     loss(r.x)
     return dict(part=part, patch=patch, loss0=round(l0, 3), loss=round(float(r.fun), 3),
-                params=dict(zip(PARAMS, [float(v) for v in r.x])), params0=dict(zip(PARAMS, [float(v) for v in np.asarray(x0)])))
+                params=dict(zip(PARAMS, [float(v) for v in r.x])), params0=dict(zip(PARAMS, [float(v) for v in x0])))
 
 
 def main(song, args):
