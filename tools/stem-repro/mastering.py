@@ -100,10 +100,12 @@ def fit_bus(stem_sum, premaster):
     return best[2], dict(compressor=best[1], peaks=peak_reduction(x, best[2]), vs_premaster=best[3])
 
 
-def soft_clip(y, ceiling_db, knee):
+def soft_clip(y, ceiling_db, knee, oversample=1):
+    u = sg.resample_poly(y, oversample, 1, axis=0) if oversample > 1 else y
     c = 10 ** (ceiling_db / 20)
-    v = y / c
-    return v / (1 + np.abs(v) ** knee) ** (1 / knee) * c
+    v = u / c
+    v = v / (1 + np.abs(v) ** knee) ** (1 / knee) * c
+    return (sg.resample_poly(v, 1, oversample, axis=0) if oversample > 1 else v)[:len(y)]
 
 
 def fit_master(mix, premaster, master):
@@ -112,16 +114,16 @@ def fit_master(mix, premaster, master):
     want = np.array([r["gain_db"] for r in transfer(premaster, master)])
     want_crest, want_tp = stats(master)["crest"], true_peak_db(master)
     best = None
-    for ceiling, knee in itertools.product([-3, -2, -1.5, -1, -0.5, 0], [4, 8, 32]):
+    for ceiling, knee, oversample in itertools.product([-3, -2, -1.5, -1, -0.5, 0], [4, 8, 32], [1, 4]):
         g = target - lufs(pre)
         for _ in range(5):
-            y = soft_clip(pre * 10 ** (g / 20), ceiling, knee)
+            y = soft_clip(pre * 10 ** (g / 20), ceiling, knee, oversample)
             g += target - lufs(y)
         got = np.array([r["gain_db"] for r in transfer(mix, y)])
         k = min(len(got), len(want))
         s = abs(stats(y)["crest"] - want_crest) + np.max(np.abs(got[:k] - want[:k])) / 2 + abs(true_peak_db(y) - want_tp) / 2
         if best is None or s < best[0]:
-            best = (s, dict(ceiling_db=ceiling, knee=knee, gain_db=round(float(g), 1)), y)
+            best = (s, dict(ceiling_db=ceiling, knee=knee, oversample=oversample, gain_db=round(float(g), 1)), y)
     y = best[2]
     return y, dict(clipper=best[1], true_peak_db=true_peak_db(y), level_transfer=transfer(mix, y), vs_master=compare(y, master))
 
