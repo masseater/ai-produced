@@ -7,7 +7,7 @@ import soundfile as sf
 
 from audio import SR, load, lr_db, lufs, mid_side, side_mid_db, stats
 from features import dist
-from match_eq import apply, curve
+from match_eq import curve, match
 
 
 def compare(cand, ref):
@@ -33,9 +33,8 @@ def balance(y, target):
     return np.stack([y[:, 0] * 10 ** (d / 20), y[:, 1] * 10 ** (-d / 20)], 1)
 
 
-def place(raw, ref):
-    eq = curve(raw, ref)
-    y = apply(raw, eq)
+def place(raw, ref, passes=2):
+    y, eq = match(raw, ref, passes)
     target_sm = side_mid_db(ref)
     y = widen(y, target_sm) if target_sm > -60 else np.repeat(y.mean(1, keepdims=True), 2, 1)
     y = balance(y, lr_db(ref))

@@ -45,20 +45,23 @@ VST3と音色の場所は、環境変数`SURGE_VST3`と`SURGE_PATCHES`で変え�
 `tools/stem-repro`で`uv run python cli.py <song.json> <コマンド>`として、上から順に動かす。
 結果はJSONで標準出力に出る。
 
-| 順  | コマンド                                              | やること                                                                     |
-| --- | ----------------------------------------------------- | ---------------------------------------------------------------------------- |
-| 1   | `stems`                                               | ステムごとのラウドネス、ピーク、ステレオ幅、鳴っている区間、帯域の配分を出す |
-| 2   | `interstem --section B --kick drums_kick --bass bass` | ステム同士の関係を出す                                                       |
-| 3   | `mastering --bus`                                     | ステムの和からプリマスター、プリマスターからマスターへの変化を出す           |
-| 4   | `transcribe.py`（下記）                               | MIDIの無いパートを採譜する                                                   |
-| 5   | `filter-notes --stem arp2 --midi <採譜MIDI>`          | ステムに無い音を捨て、ベロシティを音量から付け直す                           |
-| 6   | `search --out <作業先>`                               | Surgeの全音色を各パートで採点し、上位を長い区間で採点し直す                  |
-| 7   | `optimize --part bass --patch <fxp>`                  | 音量とフィルターの包絡を動かし、原曲との差を下げる                           |
-| 8   | `kick-fit --stem drums_kick --section B`              | キックの合成パラメータを原曲に合わせる                                       |
-| 9   | `resynth --stem drums_top --out <wav>`                | 音色で作れないパートをノイズから作り直す。所見には使わない                   |
-| 10  | `place --stem bass --raw <wav> --out <wav>`           | EQ、ステレオ幅、左右の偏り、ラウドネスを原曲のステムに合わせる               |
-| 11  | `shape --stem piano --raw <wav> --out <wav>`          | 小節ごとと1拍の中の音量の形を原曲に合わせてから`place`をかける               |
+| 順  | コマンド                                                                     | やること                                                                                       |
+| --- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| 1   | `stems`                                                                      | ステムごとのラウドネス、ピーク、ステレオ幅、鳴っている区間、帯域の配分を出す                   |
+| 2   | `interstem --section B --kick drums_kick --bass bass`                        | ステム同士の関係を出す                                                                         |
+| 3   | `mastering --bus`                                                            | ステムの和からプリマスター、プリマスターからマスターへの変化を出す                             |
+| 4   | `transcribe.py`（下記）                                                      | MIDIの無いパートを採譜する                                                                     |
+| 5   | `filter-notes --stem arp2 --midi <採譜MIDI>`                                 | ステムに無い音を捨て、ベロシティを音量から付け直す                                             |
+| 6   | `search --out <作業先>`                                                      | Surgeの全音色を各パートで採点し、上位を長い区間で採点し直す                                    |
+| 7   | `optimize --part bass --patch <fxp>`                                         | 音量とフィルターの包絡とノート全体の時間のずれを動かし、原曲との差を下げる。出たずれを13に渡す |
+| 8   | `kick-fit --stem drums_kick --section B`                                     | 複数発を揃えた中央値の波形に、キックの合成パラメータを合わせる                                 |
+| 9   | `kick-track --stem drums_kick --section B --params <8の出力>`                | 1発ずつ位置と強さを検出して並べ、音量包絡を5 msごとに原曲へ寄せる                              |
+| 10  | `resynth --stem drums_top --out <wav>`                                       | 音色で作れないパートをノイズから作り直す。所見には使わない                                     |
+| 11  | `place --stem bass --raw <wav> --out <wav>`                                  | EQ、ステレオ幅、左右の偏り、ラウドネスを原曲のステムに合わせる                                 |
+| 12  | `shape --stem piano --raw <wav> --out <wav>`                                 | 小節ごとと1拍の中の音量の形を原曲に合わせてから`place`をかける                                 |
+| 13  | `note-shape --stem arp1 --part arp1 --raw <wav> --out <wav> --shift-ms <ms>` | 鳴っていないノートを除き、ノート単位の切り方と包絡と音量の組み合わせから一番近いものを選ぶ     |
+| 14  | `fit-bus-master --stems-dir <ステムの書き出し先> --out <dir>`                | バスのコンプレッサーと、マスターのEQとソフトクリッパーを原曲に当てはめる                       |
 
 採譜は`uv run --python 3.11 --with "basic-pitch[onnx]" --with "numpy<2" python transcribe.py <出力先> <BPM> <ステム...>`で動かす。
 `interstem`に`--repro <ディレクトリ>`を付けると、作り直したステムの値も並べて出す。
-最後に、`place`と`shape`が当てた量と、6〜8で残った差を作品のwikiページに記録する。
+最後に、9〜14が当てた量と、6〜8で残った差を作品のwikiページに記録する。
