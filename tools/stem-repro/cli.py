@@ -8,6 +8,7 @@ import notes_filter
 import optimize
 import place
 import search
+import shape
 import stems
 from song import Song
 
@@ -64,6 +65,13 @@ def parser():
     s.add_argument("--raw", required=True)
     s.add_argument("--out", required=True)
     s.set_defaults(run=place.main)
+
+    s = sub.add_parser("shape")
+    s.add_argument("--stem", required=True)
+    s.add_argument("--raw", required=True)
+    s.add_argument("--out", required=True)
+    s.add_argument("--bars-only", action="store_true")
+    s.set_defaults(run=shape.main)
 
     s = sub.add_parser("resynth")
     s.add_argument("--stem", required=True)

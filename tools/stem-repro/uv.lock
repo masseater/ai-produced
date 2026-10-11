@@ -471,6 +471,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pebble"
+version = "5.2.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a1/05/8b55d257b54bc0841db1dac5e28e495adc19b4227d73089ce95fc24bf37b/pebble-5.2.3.tar.gz", hash = "sha256:6fce8cc8cbf367588406f66e4b62ec36e22594a6c720bff1d08cc2e565a66af3", size = 42668, upload-time = "2026-10-04T22:29:04.063Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4c/a2/ab7713b3b90f240500259fd2b90a284259ed332a03de4813cb5e1efe1758/pebble-5.2.3-py3-none-any.whl", hash = "sha256:9f25c2b8bf4716b51f78b74fea4d58b26c4dfd03160e8223b99f1e3424b3914a", size = 36956, upload-time = "2026-10-04T22:29:02.663Z" },
+]
+
+[[package]]
 name = "pedalboard"
 version = "0.9.26"
 source = { registry = "https://pypi.org/simple" }
@@ -738,6 +747,7 @@ dependencies = [
     { name = "mido" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "pebble" },
     { name = "pedalboard" },
     { name = "pyloudnorm" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
@@ -750,6 +760,7 @@ requires-dist = [
     { name = "librosa", specifier = ">=0.11" },
     { name = "mido", specifier = ">=1.3" },
     { name = "numpy", specifier = ">=2" },
+    { name = "pebble", specifier = ">=5.2" },
     { name = "pedalboard", specifier = ">=0.9.26" },
     { name = "pyloudnorm", specifier = ">=0.1.1" },
     { name = "scipy", specifier = ">=1.14" },
