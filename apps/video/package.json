@@ -8,6 +8,7 @@
   },
   "scripts": {
     "studio": "remotion studio src/app/index.ts --public-dir ../../songs/001-mou-ikkai/04-reaper/render",
+    "test": "vp test run --passWithNoTests",
     "render": "remotion render src/app/index.ts MouIkkai --public-dir ../../songs/001-mou-ikkai/04-reaper/render",
     "timing": "uv run --project ../../tools/lyric-timing ../../tools/lyric-timing/lyric_timing.py ../../songs/001-mou-ikkai/02-composition/score.toml ../../songs/001-mou-ikkai/02-composition/generated/vocal.tsv src/pages/mou-ikkai/generated/mou-ikkai.json",
     "typecheck": "tsc --noEmit",
