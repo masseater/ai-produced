@@ -9,6 +9,12 @@
       "matchPackageNames": ["effect", "@effect/**", "!@effect/tsgo", "alchemy", "@alchemy.run/**"],
       "groupName": "effect and alchemy",
       "automerge": false
+    },
+    {
+      "matchFileNames": ["tools/audio-to-midi/**"],
+      "matchPackageNames": ["torch", "torchaudio"],
+      "groupName": "torch",
+      "automerge": false
     }
   ],
   "customManagers": [
