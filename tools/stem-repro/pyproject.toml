@@ -2,7 +2,7 @@
 name = "stem-repro"
 version = "0.0.0"
 description = "Reproduce a reference song from its published stems and MIDI, and measure how each stem and the mix differ"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.14,<3.15"
 dependencies = [
   "librosa>=0.11",
   "mido>=1.3",
