@@ -1,11 +1,16 @@
+import itertools
 import json
+from pathlib import Path
 
 import numpy as np
+import pedalboard as pb
 import scipy.signal as sg
+import soundfile as sf
 
-from audio import SR, load, stats
+from audio import SR, load, lufs, stats
 from features import env
-from match_eq import curve
+from match_eq import apply, curve
+from place import compare
 
 
 def true_peak_db(x):
@@ -73,3 +78,63 @@ def main(song, args):
     if "master" in song.cfg:
         out["mastering_premaster_to_master"] = measure(premaster, load(song.file(song.cfg["master"]), n))
     print(json.dumps(out, ensure_ascii=False, indent=1))
+
+
+def loudness_to(y, target):
+    return y * 10 ** ((target - lufs(y)) / 20)
+
+
+def fit_bus(stem_sum, premaster):
+    target = lufs(premaster)
+    want = stats(premaster)["crest"]
+    x = loudness_to(stem_sum, target)
+    peak = 20 * np.log10(np.abs(x).max())
+    best = None
+    for below, ratio, attack, release in itertools.product([3, 6, 9, 12, 15], [2, 4, 8], [0.5, 3, 10], [50, 150]):
+        comp = pb.Compressor(threshold_db=peak - below, ratio=ratio, attack_ms=attack, release_ms=release)
+        y = loudness_to(comp(x.T.astype(np.float32), SR).T.astype(float), target)
+        c = compare(y, premaster)
+        s = abs(c["cand"]["crest"] - want) + c["env_db"] / 2
+        if best is None or s < best[0]:
+            best = (s, dict(threshold_below_peak_db=below, ratio=ratio, attack_ms=attack, release_ms=release), y, c)
+    return best[2], dict(compressor=best[1], peaks=peak_reduction(x, best[2]), vs_premaster=best[3])
+
+
+def soft_clip(y, ceiling_db, knee):
+    c = 10 ** (ceiling_db / 20)
+    v = y / c
+    return v / (1 + np.abs(v) ** knee) ** (1 / knee) * c
+
+
+def fit_master(mix, premaster, master):
+    target = lufs(master)
+    pre = apply(mix, curve(premaster, master))
+    want = np.array([r["gain_db"] for r in transfer(premaster, master)])
+    want_crest, want_tp = stats(master)["crest"], true_peak_db(master)
+    best = None
+    for ceiling, knee in itertools.product([-3, -2, -1.5, -1, -0.5, 0], [4, 8, 32]):
+        g = target - lufs(pre)
+        for _ in range(5):
+            y = soft_clip(pre * 10 ** (g / 20), ceiling, knee)
+            g += target - lufs(y)
+        got = np.array([r["gain_db"] for r in transfer(mix, y)])
+        k = min(len(got), len(want))
+        s = abs(stats(y)["crest"] - want_crest) + np.max(np.abs(got[:k] - want[:k])) / 2 + abs(true_peak_db(y) - want_tp) / 2
+        if best is None or s < best[0]:
+            best = (s, dict(ceiling_db=ceiling, knee=knee, gain_db=round(float(g), 1)), y)
+    y = best[2]
+    return y, dict(clipper=best[1], true_peak_db=true_peak_db(y), level_transfer=transfer(mix, y), vs_master=compare(y, master))
+
+
+def main_fit(song, args):
+    n = song.frames()
+    premaster = load(song.file(song.cfg["premaster"]), n)
+    master = load(song.file(song.cfg["master"]), n)
+    stem_sum = sum(load(p, n) for p in sorted(Path(args.stems_dir).glob("*.wav")))
+    mix, bus = fit_bus(stem_sum, premaster)
+    out, mst = fit_master(mix, premaster, master)
+    d = Path(args.out)
+    d.mkdir(parents=True, exist_ok=True)
+    sf.write(d / "mix_noMst.wav", mix, SR, subtype="FLOAT")
+    sf.write(d / "master.wav", out, SR, subtype="PCM_24")
+    print(json.dumps(dict(bus=bus, master=mst), ensure_ascii=False, indent=1, default=float))
