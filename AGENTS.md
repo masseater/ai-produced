@@ -45,6 +45,12 @@ release. Add a tool name to select part of the graph. For example, run
 
 <!--VITE PLUS END-->
 
+## 環境変数と認証
+
+- 環境変数は必要最小限にする。環境変数が一つ増えるだけで、どの環境で何を設定するかという考慮事項が爆発的に増えるためである。
+- 環境変数にしてよいのは、設定や認証に限らず、本当に環境ごとに変わる値だけである。環境で変わらない値はコードや Alchemy の設定に書き、ツールにフラグがあればフラグを使う。
+- Cloudflare などのクラウドの認証は Alchemy のプロファイルで管理する。
+
 ## レビューとCI
 
 - PRのレビューは行わない。PRは作ったらすぐマージする。
@@ -52,11 +58,19 @@ release. Add a tool name to select part of the graph. For example, run
 - CIはmainへのpushで必ず走らせる。ワークフローは `.github/workflows/verify.yml` である。
 - デプロイやリリースのジョブは、同じワークフローで `needs: verify` を指定し、mainの必須CIが通ってから実行する。
 - マージ前の確認は手元の `vp run verify` で行う。
+- PRごとの動作検証やデプロイはしない。動作の確認は、mainにマージしてデプロイされた本番で実測して行う。
+- Claude のクラウドセッションではプロキシが GitHub API を拒むため、session-start フック（`.claude/hooks/session-start.sh`）が `ZIZMOR_NO_ONLINE_AUDITS=true` を設定し、zizmor はオフライン監査だけを行う。オンライン監査は main の CI（`.github/workflows/verify.yml`）が担う。
+
+## jev-lint
+
+- ルールは無料の `respan/span-01-lite` で判定する `.jev-lint.yaml` に置く。正解の分かる違反例と違反でない例を `--cache none --retry 3` で判定させ、span-01-lite で両者を分けられないルールだけを `.jev-lint.decider.yaml`（有料の decider）に置く。無料で判定できるルールにまで課金しないためである。
+- span-01-lite は `kind: noul` のルールしか判定できない。
 
 ## 計測
 
 - 推測するな、計測しろ。仮説を立てたら、実装や修正の前に計測で事実を確かめ、その結果だけで判断する。
 - 機能開発に取り掛かる前に、AIが自分でデバッグできる仕組みを必ず作る。再現手段、ログやスパン、その出力を読む経路の3つである。
+- 計測は本番環境で行えるようにする。できないときは、あらゆる手段で本番同等を保証したステージング環境を作って行う。手元やテスト環境だけの計測は判断の根拠にしない。
 - 実践の手順は `measure-dont-guess` スキル（`docs/skills/measure-dont-guess/SKILL.md`）にある。不具合の調査は `systematic-debugging`、完了の確認は `verification-before-completion` スキルに従う。
 
 ## クラウドとMac miniの分担
@@ -79,3 +93,5 @@ wav、mp3、flacなどの音声は、`.gitattributes` の設定でGit LFSに保�
 このリポジトリはpublicである。
 既存の曲や動画そのもの（原曲など他人の音源や映像）は、リポジトリに入れてはならない。
 分析用に取得した音源や動画はリポジトリの外か、`.gitignore` で除外した `reference/` か `downloads/` に置く。
+## ベース
+- このリポジトリのベースは https://github.com/masseater/typescript-template である。テンプレート由来の構成・方針はテンプレートに従う。

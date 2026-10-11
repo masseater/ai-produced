@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "alchemy dev",
+    "test": "vp test run --passWithNoTests",
     "typecheck": "tsc --noEmit",
     "steiger": "steiger ./src",
     "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet",
