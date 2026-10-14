@@ -47,10 +47,10 @@ release. Add a tool name to select part of the graph. For example, run
 ## レビューとCI
 
 - PRのレビューは行わない。PRは作ったらすぐマージする。
-- PR単位のCIは走らせない。`pull_request` トリガーのワークフローを追加しない。
+- PR単位のCIは走らせない。`pull_request` トリガーのワークフローは、最新の main を取り込んでいない PR のマージをルールセットで拒むための `up-to-date`（何も検査しない）だけにする。
 - CIはmainへのpushで必ず走らせる。ワークフローは `.github/workflows/verify.yml` である。
 - デプロイやリリースのジョブは、同じワークフローで `needs: verify` を指定し、mainの必須CIが通ってから実行する。
-- マージ前の確認は手元の `vp run verify` で行う。
+- マージ前に base ブランチを取り込み、手元の `vp run verify` を通してからマージする。
 - PRごとの動作検証やデプロイはしない。動作の確認は、mainにマージしてデプロイされた本番で実測して行う。
 - Claude のクラウドセッションではプロキシが GitHub API を拒むため、session-start フック（`.claude/hooks/session-start.sh`）が `ZIZMOR_NO_ONLINE_AUDITS=true` を設定し、zizmor はオフライン監査だけを行う。オンライン監査は main の CI（`.github/workflows/verify.yml`）が担う。
 
@@ -65,6 +65,13 @@ release. Add a tool name to select part of the graph. For example, run
 - 機能開発に取り掛かる前に、AIが自分でデバッグできる仕組みを必ず作る。再現手段、ログやスパン、その出力を読む経路の3つである。
 - 計測は本番環境で行えるようにする。できないときは、あらゆる手段で本番同等を保証したステージング環境を作って行う。手元やテスト環境だけの計測は判断の根拠にしない。
 - 実践の手順は `measure-dont-guess` スキル（`docs/skills/measure-dont-guess/SKILL.md`）にある。不具合の調査は `systematic-debugging`、完了の確認は `verification-before-completion` スキルに従う。
+
+## 構成
+
+- `songs/<連番>-<名前>/` に1曲ずつ工程別の成果物と log.md を置く。構成は `docs/songs.md` にある。
+- `apps/video` は Remotion の映像で、`songs/` の書き出し音声と、`tools/lyric-timing` が作る歌詞のタイミングを読む。
+- `apps/wiki` は `docs/wiki/` の分析 wiki を閲覧と検索のために配信する。`apps/web` はテンプレート由来の Web アプリである。
+- `tools/` の解析や変換は Python（`uv run --project tools/<name>`）か C#（`openutau-render`）で書かれ、`vp run verify` の対象外である。
 
 ## 成果物と素材
 
