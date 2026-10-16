@@ -103,6 +103,15 @@ def note_gain(y, ref, ons, limit=12):
     return y * gl[:, None], dict(mean_db=round(float(np.mean(gains)), 2), sd_db=round(float(np.std(gains)), 2))
 
 
+def silent_mask(ref, threshold=-80, fade_ms=2):
+    m = ref.mean(1)
+    hop = int(HOP * SR)
+    g = np.repeat((frame_db(m, hop) > threshold).astype(float), hop)
+    g = np.pad(g, (0, len(m) - len(g)), mode="edge")
+    f = int(fade_ms / 1000 * SR)
+    return np.convolve(np.pad(g, f, mode="edge"), np.ones(2 * f + 1) / (2 * f + 1), "valid")[:, None]
+
+
 def score(c):
     return c["spec_db"] + c["env_db"]
 
@@ -125,6 +134,10 @@ def candidates(song, raw, ref, lst, shift):
         zn, gains = note_gain(z, ref, ons)
         zn = place(zn, ref, 1)[0]
         out.append((score(compare(zn, ref)), how + "+notegain", zn, dict(moves, note_gain=gains)))
+    mask = silent_mask(ref)
+    for _, how, z, moves in list(out):
+        zm = place(z * mask, ref, 1)[0] * mask
+        out.append((score(compare(zm, ref)), how + "+silence", zm, moves))
     return out
 
 

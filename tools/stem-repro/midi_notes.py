@@ -37,3 +37,14 @@ def events(lst, t0=0.0, t1=None):
         ev.append((mido.Message("note_on", note=p, velocity=v).bytes(), max(0.0, s - t0)))
         ev.append((mido.Message("note_off", note=p).bytes(), end - t0))
     return sorted(ev, key=lambda x: x[1])
+
+
+def write(path, lst, bpm, tpb=480):
+    tick = lambda s: int(round(s * bpm / 60 * tpb))
+    ev = sorted([(tick(s), 1, p, v) for s, e, p, v in lst] + [(tick(e), 0, p, 0) for s, e, p, v in lst])
+    tr = mido.MidiTrack([mido.MetaMessage("set_tempo", tempo=mido.bpm2tempo(bpm))])
+    now = 0
+    for t, on, p, v in ev:
+        tr.append(mido.Message("note_on" if on else "note_off", note=p, velocity=v, time=t - now))
+        now = t
+    mido.MidiFile(ticks_per_beat=tpb, tracks=[tr]).save(path)
