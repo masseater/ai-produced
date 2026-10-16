@@ -36,12 +36,14 @@ def splice(lst, other, ranges):
 
 
 def grid(lst, step, fixed):
-    out = {}
+    best = {}
     for s, e, p, v in lst:
         g = round(s / step)
         t = g * step if abs(s / step - g) <= 0.3 else s
-        out[(round(t, 4), p)] = max(out.get((round(t, 4), p), (t, e, p, 0)), (t, t + step if fixed else max(e, t + 0.03), p, v), key=lambda n: n[3])
-    return sorted(out.values())
+        key = (round(t, 4), p)
+        if key not in best or v > best[key][3]:
+            best[key] = (t, t + step if fixed else max(e, t + 0.03), p, v)
+    return sorted(best.values())
 
 
 def main_edit(song, args):

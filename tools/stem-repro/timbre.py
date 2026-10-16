@@ -12,21 +12,17 @@ HOP = 256
 WINDOWS = [(0, 30), (30, 80), (80, 150), (150, 300)]
 
 
-def hz(p):
-    return 440 * 2 ** ((p - 69) / 12)
-
-
 def f0_frames(lst, t0, n, voices):
     f = np.zeros((n, voices))
     for s, e, p, _ in lst:
         for i in range(max(int((s - t0) * SR / HOP), 0), min(int((e - t0) * SR / HOP) + 1, n)):
-            row = sorted([v for v in f[i] if v > 0] + [hz(p)])[:voices]
+            row = sorted([v for v in f[i] if v > 0] + [librosa.midi_to_hz(p)])[:voices]
             f[i] = row + [0] * (voices - len(row))
     return f
 
 
 def split(x, lst, t0, voices=4, harmonics=40):
-    m = int(4 * SR / min(hz(n[2]) for n in lst)) | 1
+    m = int(4 * SR / min(librosa.midi_to_hz(n[2]) for n in lst)) | 1
     nfft = int(2 ** np.ceil(np.log2(2 * m)))
     w = np.hamming(m)
     w /= w.sum()
