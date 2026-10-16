@@ -59,7 +59,7 @@ def descriptors(x, ons, bins=60):
         centroid=librosa.feature.spectral_centroid(S=s, sr=SR)[0],
         rolloff=librosa.feature.spectral_rolloff(S=s, sr=SR, roll_percent=0.85)[0],
         flatness=librosa.feature.spectral_flatness(S=s)[0],
-        flux=np.concatenate([[0], np.sqrt((np.diff(np.log(s + 1e-6), axis=1).clip(0) ** 2).mean(0))]),
+        flux=librosa.onset.onset_strength(S=librosa.amplitude_to_db(s), sr=SR, max_size=1),
     )
     return {k: np.median([v[i:i + bins] for i in (int(t * SR / HOP) for t in ons) if i + bins <= len(v)], 0) for k, v in d.items()}
 

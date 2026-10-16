@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+import librosa
 import numpy as np
 import soundfile as sf
 
@@ -106,8 +107,9 @@ def note_gain(y, ref, ons, limit=12):
 def silent_mask(ref, threshold=-80, fade_ms=2):
     m = ref.mean(1)
     hop = int(HOP * SR)
-    g = np.repeat((frame_db(m, hop) > threshold).astype(float), hop)
-    g = np.pad(g, (0, len(m) - len(g)), mode="edge")
+    g = np.zeros(len(m))
+    for a, b in librosa.effects.split(m, top_db=-threshold, ref=1.0, frame_length=2 * hop, hop_length=hop):
+        g[a:b] = 1
     f = int(fade_ms / 1000 * SR)
     return np.convolve(np.pad(g, f, mode="edge"), np.ones(2 * f + 1) / (2 * f + 1), "valid")[:, None]
 
