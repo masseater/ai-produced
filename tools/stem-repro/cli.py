@@ -1,5 +1,6 @@
 import argparse
 
+import design
 import interstem
 import kick
 import mastering
@@ -11,6 +12,7 @@ import place
 import search
 import shape
 import stems
+import timbre
 from song import Song
 
 
@@ -67,12 +69,41 @@ def parser():
     s.add_argument("--popsize", type=int, default=10)
     s.set_defaults(run=optimize.main)
 
+    s = sub.add_parser("design")
+    s.add_argument("--part", required=True)
+    s.add_argument("--template", default="Init Saw")
+    s.add_argument("--filter", choices=list(design.FILTERS), default="lp24")
+    s.add_argument("--bars", type=float, nargs=2, required=True)
+    s.add_argument("--iters", type=int, default=150)
+    s.add_argument("--noise", action="store_true")
+    s.add_argument("--midi")
+    s.set_defaults(run=design.main)
+
+    s = sub.add_parser("render")
+    s.add_argument("--part", required=True)
+    s.add_argument("--params", required=True)
+    s.add_argument("--midi")
+    s.add_argument("--out", required=True)
+    s.set_defaults(run=design.main_render)
+
     s = sub.add_parser("filter-notes")
     s.add_argument("--stem", required=True)
     s.add_argument("--midi", required=True)
     s.add_argument("--bars", type=float, nargs=2)
     s.add_argument("--threshold", type=float, default=-30)
     s.set_defaults(run=notes_filter.main)
+
+    s = sub.add_parser("edit-notes")
+    s.add_argument("--midi", required=True)
+    s.add_argument("--track", type=int)
+    s.add_argument("--out", required=True)
+    s.add_argument("--splice")
+    s.add_argument("--splice-bars", type=float, nargs="+", default=[])
+    s.add_argument("--grid", type=int)
+    s.add_argument("--fixed", action="store_true")
+    s.add_argument("--stem")
+    s.add_argument("--level-bars", type=float, nargs=2)
+    s.set_defaults(run=notes_filter.main_edit)
 
     s = sub.add_parser("place")
     s.add_argument("--stem", required=True)
@@ -95,6 +126,14 @@ def parser():
     s.add_argument("--midi")
     s.add_argument("--shift-ms", type=float, default=0.0)
     s.set_defaults(run=note_shape.main)
+
+    s = sub.add_parser("timbre")
+    s.add_argument("--stem", required=True)
+    s.add_argument("--repro", required=True)
+    s.add_argument("--bars", type=float, nargs=2, required=True)
+    s.add_argument("--part")
+    s.add_argument("--midi")
+    s.set_defaults(run=timbre.main)
 
     s = sub.add_parser("resynth")
     s.add_argument("--stem", required=True)
