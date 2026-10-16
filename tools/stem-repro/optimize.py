@@ -4,7 +4,7 @@ import numpy as np
 import scipy.optimize as so
 
 from features import chroma, dist3
-from midi_notes import events
+from midi_notes import events, shifted
 from note_shape import note_profile
 from surge import Surge
 
@@ -35,7 +35,7 @@ def fit(song, part, patch, maxiter, popsize):
         for p, v in zip(prm, x[:-1]):
             p.raw_value = float(v)
         sh = x[-1] / 1000
-        m = synth.render_mono(events([(a + sh, b + sh, p, v) for a, b, p, v in lst], t0, t1), t1 - t0, len(ref))
+        m = synth.render_mono(events(shifted(lst, sh), t0, t1), t1 - t0, len(ref))
         if m is None:
             return None
         s, e, c = dist3(m, ref, cref)
