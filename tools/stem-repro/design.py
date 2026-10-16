@@ -30,19 +30,19 @@ def shifted(lst, sh):
     return [(a + sh, b + sh, p, v) for a, b, p, v in lst]
 
 
-def harmonics(m, ons, f0s, n=12, hop=0.01, win=0.04, frames=15):
+def harmonics(m, ons, f0s, n=12, hop=0.01, win=0.04, frames=15, nfft=4096):
     w, h = int(win * SR), int(hop * SR)
-    t = np.arange(w) / SR
-    k_t = np.arange(1, n + 1)[:, None] * t[None]
-    acc, k = np.zeros((frames, n)), 0
+    freqs = np.fft.rfftfreq(nfft, 1 / SR)
+    acc, k = np.zeros((n, frames)), 0
     for s, f0 in zip(ons, f0s):
         i = int(s * SR)
         if i < 0 or i + (frames - 1) * h + w > len(m):
             continue
         seg = np.stack([m[i + j * h:i + j * h + w] for j in range(frames)]) * np.hanning(w)
-        acc += np.abs(seg @ np.exp(-2j * np.pi * f0 * k_t).T) ** 2
+        power = np.abs(np.fft.rfft(seg, nfft)).T ** 2
+        acc += librosa.f0_harmonics(power, f0=np.full(frames, f0), freqs=freqs, harmonics=np.arange(1, n + 1))
         k += 1
-    d = 10 * np.log10(acc / max(k, 1) + 1e-20)
+    d = 10 * np.log10(acc.T / max(k, 1) + 1e-20)
     return np.maximum(d - d.max(), -60)
 
 
