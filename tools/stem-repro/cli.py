@@ -101,8 +101,6 @@ def parser():
     s.add_argument("--splice-bars", type=float, nargs="+", default=[])
     s.add_argument("--grid", type=int)
     s.add_argument("--fixed", action="store_true")
-    s.add_argument("--stem")
-    s.add_argument("--level-bars", type=float, nargs=2)
     s.set_defaults(run=notes_filter.main_edit)
 
     s = sub.add_parser("place")
