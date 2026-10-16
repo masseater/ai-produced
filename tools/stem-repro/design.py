@@ -8,7 +8,7 @@ import soundfile as sf
 
 from audio import SR
 from features import dist
-from midi_notes import events
+from midi_notes import events, shifted
 from midi_notes import notes as read_notes
 from optimize import note_env
 from surge import PATCHES, Surge
@@ -24,10 +24,6 @@ PARAMS = [
 NOISE = ["a_noise_volume", "a_noise_color", "a_osc_1_unison_detune"]
 SHIFT_MS = 12
 TEMPLATES = os.path.join(PATCHES, "patches_factory", "Templates")
-
-
-def shifted(lst, sh):
-    return [(a + sh, b + sh, p, v) for a, b, p, v in lst]
 
 
 def harmonics(m, ons, f0s, n=12, hop=0.01, win=0.04, frames=15, nfft=4096):

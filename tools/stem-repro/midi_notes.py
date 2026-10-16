@@ -30,6 +30,10 @@ def notes(path, track=None):
     return sorted(out)
 
 
+def shifted(lst, sh):
+    return [(a + sh, b + sh, p, v) for a, b, p, v in lst]
+
+
 def events(lst, t0=0.0, t1=None):
     ev = []
     for s, e, p, v in lst:
