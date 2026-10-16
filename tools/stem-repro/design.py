@@ -2,6 +2,7 @@ import json
 import os
 
 import cma
+import librosa
 import numpy as np
 import soundfile as sf
 
@@ -11,7 +12,6 @@ from midi_notes import events
 from midi_notes import notes as read_notes
 from optimize import note_env
 from surge import PATCHES, Surge
-from timbre import hz
 
 FILTERS = dict(off=0, lp12=0.025, lp24=0.05, ladder=0.085, vintage=0.295, obxd12=0.325, obxd24=0.355, k35=0.385, diode=0.445)
 PARAMS = [
@@ -23,6 +23,11 @@ PARAMS = [
 ]
 NOISE = ["a_noise_volume", "a_noise_color", "a_osc_1_unison_detune"]
 SHIFT_MS = 12
+TEMPLATES = os.path.join(PATCHES, "patches_factory", "Templates")
+
+
+def shifted(lst, sh):
+    return [(a + sh, b + sh, p, v) for a, b, p, v in lst]
 
 
 def harmonics(m, ons, f0s, n=12, hop=0.01, win=0.04, frames=15):
@@ -46,21 +51,22 @@ def fit(song, part, template, filt, bars, iters, noise, notes=None):
     t0, t1 = b0 * song.bar, b1 * song.bar
     lst = song.notes_in(notes or song.part_notes(part), b0, b1)
     ref = song.bars(song.stem(part), b0, b1).mean(1)
-    ons, f0s = [n[0] - t0 for n in lst], [hz(n[2]) for n in lst]
+    ons, f0s = [n[0] - t0 for n in lst], [librosa.midi_to_hz(n[2]) for n in lst]
     h_ref, ne_ref = harmonics(ref, ons, f0s), note_env(ref, ons)
     fixed = dict(a_filter_1_type=FILTERS[filt], a_waveshaper_type=0.02 if filt != "off" else 0.0)
     if noise:
         fixed["a_noise_mute"] = 0.0
     names = PARAMS + (NOISE if noise else [])
     synth = Surge()
-    synth.load(os.path.join(PATCHES, "patches_factory", "Templates", template + ".fxp"), fixed)
+    patch = os.path.join(TEMPLATES, template + ".fxp")
+    synth.load(patch, fixed)
     prm = [synth.plugin.parameters[n] for n in names]
 
     def terms(x):
         for p, v in zip(prm, x[:-1]):
             p.raw_value = float(np.clip(v, 0, 1))
         sh = (x[-1] - 0.5) * 2 * SHIFT_MS / 1000
-        m = synth.render_mono(events([(a + sh, b + sh, p, v) for a, b, p, v in lst], t0, t1), t1 - t0, len(ref))
+        m = synth.render_mono(events(shifted(lst, sh), t0, t1), t1 - t0, len(ref))
         if m is None:
             return None
         s, e = dist(m, ref)
@@ -79,7 +85,7 @@ def fit(song, part, template, filt, bars, iters, noise, notes=None):
     x = es.result.xbest
     return dict(
         part=part,
-        patch=os.path.join(PATCHES, "patches_factory", "Templates", template + ".fxp"),
+        patch=patch,
         filter=filt,
         loss=round(float(es.result.fbest), 3),
         spec_env_harmonics_noteenv=[round(v, 3) for v in terms(x)],
@@ -100,6 +106,6 @@ def main_render(song, args):
     synth = Surge()
     synth.load(pick["patch"], pick["params"])
     n = song.frames()
-    y = synth.render(events([(a + sh, b + sh, p, v) for a, b, p, v in lst]), n / SR)[:n]
+    y = synth.render(events(shifted(lst, sh)), n / SR)[:n]
     sf.write(args.out, y, SR, subtype="FLOAT")
     print(json.dumps(dict(part=args.part, notes=len(lst), out=args.out)))
