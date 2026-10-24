@@ -27,10 +27,10 @@
     },
     "cloudflare": {
       "source": "cloudflare/skills",
-      "ref": "0871daceb347e3c51693fbe9c77555468df7e410",
+      "ref": "c430dd965cea3a8faf0ef035e3b3d73b38518081",
       "sourceType": "github",
       "skillPath": "skills/cloudflare/SKILL.md",
-      "computedHash": "4f0291c3924bb6cfec5311b23cc9798ee0292c055ce88543cf2d2cc3001174f6"
+      "computedHash": "ec9de05454b2c5101c92d9e4927065258c090fa5207a106d764f7cc07ed55dbb"
     },
     "effect-ts": {
       "source": "Effect-TS/skills",
@@ -58,7 +58,7 @@
       "ref": "5e95aaebb84541742686e56352b7569acf4306f1",
       "sourceType": "github",
       "skillPath": "feature-sliced-design/SKILL.md",
-      "computedHash": "98d09ea1a9acac34fc5720c610c4ee7c7780dd30b2f287d733961f8e7e9d980b"
+      "computedHash": "ffed722f612ca9f9de3f35345c2beb40fb0d56a39391d85f27d6523cf52a07d3"
     },
     "mac-mini-handoff": {
       "source": "./docs/skills/mac-mini-handoff",
@@ -124,7 +124,7 @@
     },
     "workers-best-practices": {
       "source": "cloudflare/skills",
-      "ref": "0871daceb347e3c51693fbe9c77555468df7e410",
+      "ref": "c430dd965cea3a8faf0ef035e3b3d73b38518081",
       "sourceType": "github",
       "skillPath": "skills/workers-best-practices/SKILL.md",
       "computedHash": "e1c30e93854345114dfa6a0a077363119eb99c03e5c64a8f2109349802e1f2aa"
@@ -134,7 +134,7 @@
       "ref": "15244a1369c192d6b7e74963ee9709537fadf166",
       "sourceType": "github",
       "skillPath": "skills/yomiyasu/SKILL.md",
-      "computedHash": "a3d50b77af3cd0c9c2fdd796ed7a21f0f13d5da91709a5067d168a4a183638a4"
+      "computedHash": "f45a6586b47b539db151b18cab28687cc6541650b07e577976211a87919086c7"
     }
   }
 }
