@@ -277,8 +277,8 @@ catalogs:
       specifier: 4.0.534
       version: 4.0.534
     '@remotion/google-fonts':
-      specifier: 4.0.534
-      version: 4.0.534
+      specifier: 4.0.538
+      version: 4.0.538
     '@remotion/media':
       specifier: 4.0.534
       version: 4.0.534
@@ -464,7 +464,7 @@ importers:
     dependencies:
       '@remotion/google-fonts':
         specifier: catalog:stack
-        version: 4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 4.0.538(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@remotion/media':
         specifier: catalog:stack
         version: 4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -4260,8 +4260,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  '@remotion/google-fonts@4.0.534':
-    resolution: {integrity: sha512-bgXF3QJ5Mkjmnaz1ROm1UfeP0jCJpkv4y6EPoisIVtexqVgwk9Zmp1dMemE81ok38zDLHTqM0/+5msBKWuhg3A==}
+  '@remotion/google-fonts@4.0.538':
+    resolution: {integrity: sha512-rDNJ0T74bFh217K5v8ficP2aTyERxVGEe5SWYqVeIBsFfV3DEW+m3qwWHwaBt7gOpvArfJrtGY2q2z9Mra7RQQ==}
 
   '@remotion/licensing@4.0.534':
     resolution: {integrity: sha512-pNP8OfY+vbDbjNBLYGoxGyE0SsReRy85G/QTF17mQC86dt2+pzsYlOkG2mq6R4tkt27xaQv8O5EFiJfYYfVkkw==}
@@ -9829,6 +9829,12 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
+  remotion@4.0.538:
+    resolution: {integrity: sha512-HA9/+3GOfNxBtT+iFsqmzGtegtE1M3qra3N/iBiXv5oRX+1q0HsFTjcFxT9Ljmmodd5huVZLKLK0ymvYsecCaw==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
   remove-accents@0.5.0:
     resolution: {integrity: sha512-8g3/Otx1eJaVD12e31UbJj1YzdtVvzH85HV7t+9MJYk/u3XmkOUJ5Ys9wQrf9PCPK8+xn4ymzqYCiZl6QWKn+A==}
 
@@ -14705,9 +14711,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@remotion/google-fonts@4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@remotion/google-fonts@4.0.538(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
-      remotion: 4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      remotion: 4.0.538(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
     transitivePeerDependencies:
       - react
       - react-dom
@@ -21193,6 +21199,11 @@ snapshots:
   remeda@2.33.4: {}
 
   remotion@4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+    dependencies:
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+
+  remotion@4.0.538(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)

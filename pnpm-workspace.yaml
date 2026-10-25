@@ -53,7 +53,7 @@ catalogs:
     drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-ab785fc
     "@remotion/cli": 4.0.534
-    "@remotion/google-fonts": 4.0.534
+    "@remotion/google-fonts": 4.0.538
     "@remotion/media": 4.0.534
     "@remotion/tailwind-v4": 4.0.534
     eden-tanstack-react-query: 0.5.0
