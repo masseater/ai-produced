@@ -1,6 +1,6 @@
 baseUrl: https://openrouter.ai/api
 apiKeyEnv: OPENROUTER_API_KEY
-model: perplexity/pplx-decider-v1.1-27b
+model: perplexity/pplx-decider-v1.2
 files: [apps/web/src]
 exclude:
   - "**/*.test.ts"
