@@ -189,8 +189,8 @@ catalogs:
       specifier: 0.66.1
       version: 0.66.1
     '@remotion/eslint-plugin':
-      specifier: 4.0.534
-      version: 4.0.534
+      specifier: 4.0.538
+      version: 4.0.538
     '@shadcn/lint':
       specifier: 0.2.0
       version: 0.2.0
@@ -379,7 +379,7 @@ importers:
         version: 0.66.1(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))
       '@remotion/eslint-plugin':
         specifier: 'catalog:'
-        version: 4.0.534(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
+        version: 4.0.538(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
       '@shadcn/lint':
         specifier: 'catalog:'
         version: 0.2.0(@typescript-eslint/parser@8.71.1(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3))(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))
@@ -4255,8 +4255,8 @@ packages:
   '@remotion/elevenlabs@4.0.534':
     resolution: {integrity: sha512-TPd1XFSUfausKxeIljPqWOslJpeYARAeZFT2TSmvrmQBpz3i8yoG96gk3qXkqj7ebzQAqzv75bzd8jegwRU1Gw==}
 
-  '@remotion/eslint-plugin@4.0.534':
-    resolution: {integrity: sha512-W+Uov0dmY4RGFW2uHHO0MG+yTgXeTr9iQGRSTK+UfHviQyjDcOfFICRHc+u6oRMmtZEwr4n1CKhfcBPdG8X0Ag==}
+  '@remotion/eslint-plugin@4.0.538':
+    resolution: {integrity: sha512-v5bvJKWCNJy2J49lxqBFbV3Gu2ZEOKIVrPMOkKRtudk91XsBbgymVDjGEYyp9pc0HYehA2ulvLNkxC5Ea9GQ2Q==}
     peerDependencies:
       eslint: '>=7.0.0'
 
@@ -14697,13 +14697,13 @@ snapshots:
       '@remotion/captions': 4.0.534
       zod: 4.5.4
 
-  '@remotion/eslint-plugin@4.0.534(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)':
+  '@remotion/eslint-plugin@4.0.538(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)':
     dependencies:
       '@typescript-eslint/utils': 5.19.0(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
       eslint: 10.12.0(jiti@2.7.0)(supports-color@8.1.1)
+      typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
-      - typescript
 
   '@remotion/google-fonts@4.0.534(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
