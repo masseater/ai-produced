@@ -37,35 +37,6 @@ jobs:
       - run: vp run verify
         env:
           GH_TOKEN: ${{ github.token }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-
-  jev-lint:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: voidzero-dev/setup-vp@68f39c78aaf39be468cabd2afb09c162574c84af # v1.21.2
-        with:
-          cache: true
-          run-install: |
-            - args: ['--frozen-lockfile']
-      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: .jev-lint/baseline.json
-          key: jev-lint-${{ hashFiles('.jev-lint.yaml') }}-${{ github.sha }}
-          restore-keys: jev-lint-${{ hashFiles('.jev-lint.yaml') }}-
-      - id: jev-lint
-        run: vp exec jev-lint check
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      - if: always() && steps.jev-lint.outcome != 'skipped'
-        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: .jev-lint/baseline.json
-          key: jev-lint-${{ hashFiles('.jev-lint.yaml') }}-${{ github.sha }}
 
   autofix:
     needs: verify

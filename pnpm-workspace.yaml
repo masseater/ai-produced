@@ -23,7 +23,6 @@ catalog:
   eslint-plugin-react-hooks: 7.1.1
   syncpack: 15.3.3
   vite: npm:@voidzero-dev/vite-plus-core@1.1.0
-  jev-lint: 0.7.0
   "@eslint/config-helpers": 0.7.0
   eslint-plugin-no-comments: 1.2.1
   eslint-plugin-baseline-js: 0.7.4
@@ -95,7 +94,6 @@ packageExtensions:
       "@steiger/toolkit": 0.2.3
 patchedDependencies:
   "@tanstack/eslint-plugin-start@0.1.0": patches/@tanstack__eslint-plugin-start@0.1.0.patch
-  jev-lint@0.7.0: patches/jev-lint@0.7.0.patch
 minimumReleaseAgeExclude:
   - "@remotion/bundler@4.0.533"
   - "@remotion/captions@4.0.533"

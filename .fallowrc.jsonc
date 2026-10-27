@@ -113,12 +113,6 @@
       ],
     },
     {
-      "name": "jev-lint",
-      "enablers": ["jev-lint"],
-      "configPatterns": [".jev-lint.yaml"],
-      "toolingDependencies": ["jev-lint"],
-    },
-    {
       "name": "skills",
       "enablers": ["skills"],
       "configPatterns": ["skills-lock.json"],

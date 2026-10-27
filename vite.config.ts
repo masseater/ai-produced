@@ -187,10 +187,6 @@ export default defineConfig({
           ],
         },
       },
-      "jev-lint": {
-        command: "jev-lint review --base origin/main",
-        cache: false,
-      },
     },
   },
 });
