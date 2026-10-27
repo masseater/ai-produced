@@ -34,7 +34,6 @@
     "eslint-plugin-no-comments": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "fallow": "catalog:stack",
-    "jev-lint": "catalog:",
     "renovate": "catalog:stack",
     "skills": "catalog:",
     "syncpack": "catalog:",

@@ -21,11 +21,9 @@ AI が人間のボカロPと同じ工程を踏んだときに、本当に良い�
 
 ```sh
 vp install
-cp .env.example .env
 vp run verify
 ```
 
-`.env` の `OPENROUTER_API_KEY` には OpenRouter の API キーを入れる。
 `vp run verify` が通れば、手元の準備はできている。
 
 曲の映像は Remotion で作る。
@@ -51,7 +49,6 @@ main への push で検査とデプロイが走る。
 
 | 名前                      | 用途                                      |
 | ------------------------- | ----------------------------------------- |
-| `OPENROUTER_API_KEY`      | 検査で使う jev-lint の判定                |
 | `CLAUDE_CODE_OAUTH_TOKEN` | 検査が落ちたときの Claude Code の自動修正 |
 | `CLOUDFLARE_ACCOUNT_ID`   | Web アプリのデプロイ                      |
 | `CLOUDFLARE_API_TOKEN`    | Web アプリのデプロイ                      |

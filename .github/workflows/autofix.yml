@@ -29,7 +29,6 @@ jobs:
       group: verify-autofix-${{ inputs.branch }}
     env:
       GH_TOKEN: ${{ github.token }}
-      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       HEAD_BRANCH: ${{ inputs.branch }}
       HEAD_SHA: ${{ inputs.sha }}
       FAILED_RUN_ID: ${{ inputs.run_id }}
