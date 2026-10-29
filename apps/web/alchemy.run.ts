@@ -30,8 +30,5 @@ export type { WebEnv };
 export default Stack(
   "ai-produced",
   { providers: providers(), state: state() },
-  Effect.gen(function* stack() {
-    const { url } = yield* web;
-    return { url };
-  }),
+  Effect.void,
 );
