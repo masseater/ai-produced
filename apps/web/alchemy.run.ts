@@ -27,11 +27,4 @@ const web = Effect.gen(function* web() {
 type WebEnv = InferEnv<typeof web>;
 
 export type { WebEnv };
-export default Stack(
-  "ai-produced",
-  { providers: providers(), state: state() },
-  Effect.gen(function* stack() {
-    const { url } = yield* web;
-    return { url };
-  }),
-);
+export default Stack("ai-produced", { providers: providers(), state: state() }, Effect.void);
