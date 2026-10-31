@@ -30,7 +30,7 @@
       "ref": "86505e44f87d801aa1864a3c4109e9a8ae5c409f",
       "sourceType": "github",
       "skillPath": "skills/cloudflare/SKILL.md",
-      "computedHash": "ec9de05454b2c5101c92d9e4927065258c090fa5207a106d764f7cc07ed55dbb"
+      "computedHash": "f08c8c1be96dfad7f9d5418b1345477dd2e55af58c8da01326c9a2616c7ed721"
     },
     "effect-ts": {
       "source": "Effect-TS/skills",
@@ -44,7 +44,7 @@
       "ref": "1466d85aa4f2a0fec91f71311e65bbfa91aa7dc5",
       "sourceType": "github",
       "skillPath": "elysia/SKILL.md",
-      "computedHash": "55268e69a2c766ed67e56a0db57544f60cc52dba0c7f024a974baf965e525e1b"
+      "computedHash": "e0bc0ecce6cecc34f14cf445c72f7df0cec278e64dfd4ea99f26c503e98624d6"
     },
     "email-and-password-best-practices": {
       "source": "better-auth/skills",
@@ -75,7 +75,7 @@
       "ref": "65e7edd67e77420eaf02c5df00fdc0521417d809",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
-      "computedHash": "dbd30d9c331c8957e065270150ffe44b4ba11ad5259cc9144240f63c45b05f1c"
+      "computedHash": "48405ce3611ebdfd7958978117501d0b3d36ac91048cb3a43b36233e8e839d52"
     },
     "reference-materials": {
       "source": "./docs/skills/reference-materials",
@@ -87,7 +87,7 @@
       "ref": "481d523374745e77d0cf9c53a4115ab5dd7c8481",
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
-      "computedHash": "da388f632cd83783c02967446e21941c9ee8291ccb43ba74c23f7d4e9b7c298c"
+      "computedHash": "b864a958765563321f485a96f4d59c0bb6539f4286ab6d8b8b66895b7ebd302d"
     },
     "stem-repro": {
       "source": "./docs/skills/stem-repro",
@@ -127,14 +127,14 @@
       "ref": "86505e44f87d801aa1864a3c4109e9a8ae5c409f",
       "sourceType": "github",
       "skillPath": "skills/workers-best-practices/SKILL.md",
-      "computedHash": "e1c30e93854345114dfa6a0a077363119eb99c03e5c64a8f2109349802e1f2aa"
+      "computedHash": "e12970301753ed7eaa5ca375d4b98e0e36c9554e8f2809cb4b543c2ea7d9b4b8"
     },
     "yomiyasu": {
       "source": "nanaism/yomiyasu",
       "ref": "552c12c472ddfb79e2ee7a15219847782686a945",
       "sourceType": "github",
       "skillPath": "skills/yomiyasu/SKILL.md",
-      "computedHash": "f45a6586b47b539db151b18cab28687cc6541650b07e577976211a87919086c7"
+      "computedHash": "d339749e69e67a3979a902a1ffb481f93492bf1ab9375557e26fbf7102af9463"
     }
   }
 }
