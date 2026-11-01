@@ -366,7 +366,7 @@ overrides:
   vite-plus@>=1.0.0-rc.0 <1.3.0: ^1.3.0
   zod@>=4.0.0 <4.6.6: ^4.6.6
 
-packageExtensionsChecksum: sha256-+VMdP1PtirSQ7Lhy8zZaF5Ha03FJIIM31JqoRyxSKXQ=
+packageExtensionsChecksum: sha256-UoeDPdVJlHAcCJ2gi51cFcqdMlCrOXaY2vq0XL5Rcuw=
 
 patchedDependencies:
   '@tanstack/eslint-plugin-start@0.1.0': 364cc40b73326fe59c5d685ac247690de2302e3e731b7b7d37583701f9370644
