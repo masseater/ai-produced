@@ -59,6 +59,7 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: read
     concurrency:
       group: deploy
@@ -71,11 +72,9 @@ jobs:
           cache: true
           run-install: |
             - args: ['--frozen-lockfile']
+      - run: .github/scripts/cloudflare-token.sh
       - run: vp exec alchemy deploy --stage production --yes
         working-directory: apps/web
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
   release:
     needs: verify
