@@ -1,4 +1,4 @@
-import { Effect, Schema } from "effect";
+import { Effect, Schema, String as Str, pipe } from "effect";
 
 import { localBin, runCommand, runHook, writeJson } from "./env.ts";
 
@@ -11,11 +11,11 @@ const StopOutput = Schema.Struct({
 
 runHook(
   Effect.gen(function* stopGate() {
-    const verify = yield* runCommand(yield* localBin("vp"), ["run", "verify"]);
+    const verify = yield* runCommand(yield* localBin("vp"), ["run", "--log", "grouped", "verify"]);
     if (!verify.succeeded) {
       yield* writeJson(StopOutput, {
         decision: "block",
-        reason: `vp run verify が失敗している。\n${verify.output.slice(-REPORTED_OUTPUT_LENGTH)}`,
+        reason: `vp run verify が失敗している。\n${pipe(verify.output, Str.takeRight(REPORTED_OUTPUT_LENGTH))}`,
       });
     }
   }),

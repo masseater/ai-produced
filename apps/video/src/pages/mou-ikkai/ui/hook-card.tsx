@@ -1,3 +1,4 @@
+import { Array as Arr, pipe } from "effect";
 import type { ReactNode } from "react";
 
 import { HookRow } from "#/pages/mou-ikkai/ui/hook-row";
@@ -12,9 +13,10 @@ const HookCard = ({ sung, tiled }: HookCardProps): ReactNode => {
   }
   return (
     <div className="grid grid-cols-3 gap-x-24 gap-y-12">
-      {TILES.map((tile) => (
-        <HookRow key={tile} sung={sung} size="tile" />
-      ))}
+      {pipe(
+        TILES,
+        Arr.map((tile) => <HookRow key={tile} sung={sung} size="tile" />),
+      )}
     </div>
   );
 };

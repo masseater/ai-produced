@@ -1,3 +1,4 @@
+import { Array as Arr, pipe } from "effect";
 import type { ReactNode } from "react";
 
 import type { Size, Tone } from "#/pages/mou-ikkai/ui/glyphs";
@@ -28,9 +29,12 @@ type HookRowProps = Readonly<{ sung: number; size: Size }>;
 
 const HookRow = ({ sung, size }: HookRowProps): ReactNode => (
   <div className="flex">
-    {HOOK.map(({ id, char }, position) => (
-      <Glyphs key={id} text={char} tone={toneOf(position, sung)} size={size} />
-    ))}
+    {pipe(
+      HOOK,
+      Arr.map(({ id, char }, position) => (
+        <Glyphs key={id} text={char} tone={toneOf(position, sung)} size={size} />
+      )),
+    )}
   </div>
 );
 

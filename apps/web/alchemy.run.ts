@@ -1,6 +1,6 @@
+import { D1, Website, providers, state } from "@alchemy.run/cloudflare";
+import type { InferEnv } from "@alchemy.run/cloudflare";
 import { Stack, makeRandom } from "alchemy";
-import { D1, Website, providers, state } from "alchemy/Cloudflare";
-import type { InferEnv } from "alchemy/Cloudflare";
 import { Effect } from "effect";
 
 const TRACE_SAMPLING_RATE = 0.1;

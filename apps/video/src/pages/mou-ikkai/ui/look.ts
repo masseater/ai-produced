@@ -1,6 +1,6 @@
 import { loadFont } from "@remotion/google-fonts/NotoSansJP";
 
-import type { LayoutName, PaletteName } from "#/pages/mou-ikkai/model/storyboard";
+import type { LayoutName, PaletteName } from "#/pages/mou-ikkai/model/plan";
 
 loadFont("normal", { weights: ["400", "900"], subsets: ["japanese", "latin"] });
 

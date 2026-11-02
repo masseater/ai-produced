@@ -1,4 +1,4 @@
-import { Array as Arr, Option } from "effect";
+import { Array as Arr, Option, pipe } from "effect";
 
 import type { Moment } from "#/pages/mou-ikkai/model/moment";
 import type { Line } from "#/pages/mou-ikkai/model/song";
@@ -14,7 +14,11 @@ const hookOf = (moment: Moment): number =>
     Option.getOrElse(() => NOT_HOOK),
   );
 
-const isHookLine = (line: Line): boolean => line.morae.every((mora) => mora.hook > NOT_HOOK);
+const isHookLine = (line: Line): boolean =>
+  pipe(
+    line.morae,
+    Arr.every((mora) => mora.hook > NOT_HOOK),
+  );
 
 const showsHook = (shot: LyricsShot, moment: Moment): boolean =>
   hookOf(moment) > NOT_HOOK && (shot.treatment === "chop" || isHookLine(moment.line));
@@ -31,8 +35,11 @@ const contentOf = ({ shot, moment }: Readonly<{ shot: LyricsShot; moment: Moment
 
 const sungInHook = (moment: Moment): number => {
   const hook = hookOf(moment);
-  return moment.line.morae.filter((mora, index) => mora.hook === hook && index <= moment.mora)
-    .length;
+  return pipe(
+    moment.line.morae,
+    Arr.filter((mora, index) => mora.hook === hook && index <= moment.mora),
+    Arr.length,
+  );
 };
 
 const moraText = (moment: Moment): string =>

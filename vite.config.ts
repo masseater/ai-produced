@@ -1,36 +1,21 @@
-import { presets as effectPresets } from "@effect/tsgo/oxlint-presets";
-import eslintReact from "@eslint-react/eslint-plugin";
 import htmlReact from "@html-eslint/eslint-plugin-react";
 import { plugin as shadcn } from "@shadcn/lint";
 import tanstackQuery from "@tanstack/eslint-plugin-query";
 import tanstackRouter from "@tanstack/eslint-plugin-router";
+import { Struct } from "effect";
 import baselineJs from "eslint-plugin-baseline-js";
-import reactHooks from "eslint-plugin-react-hooks";
 import { defineConfig } from "vite-plus";
 
 import {
   allRulesOf,
   asErrors,
+  effectRules,
+  eslintReactRules,
   generated,
+  reactHooksRules,
   remotionRules,
   restrictedImports,
 } from "./lint.config.ts";
-
-const reactHooksRules = asErrors(
-  Object.keys(reactHooks.configs["recommended-latest"].rules).map((name) =>
-    name.replace("react-hooks/", "react-hooks-js/"),
-  ),
-);
-
-const eslintReactRules = asErrors(
-  Object.keys(eslintReact.configs["strict-typescript"].rules ?? {}).filter(
-    (name) => !(name.replace("@eslint-react/", "react-hooks-js/") in reactHooksRules),
-  ),
-);
-
-const effectRules = asErrors(
-  Object.values(effectPresets).flatMap((preset) => Object.keys(preset.rules ?? {})),
-);
 
 export default defineConfig({
   staged: {
@@ -90,7 +75,7 @@ export default defineConfig({
       ...allRulesOf({ prefix: "shadcn", plugin: shadcn }),
       ...allRulesOf({ prefix: "baseline-js", plugin: baselineJs }),
       ...baselineJs.configs.recommended().rules,
-      ...asErrors(Object.keys(htmlReact.configs.all.rules ?? {})),
+      ...asErrors(Struct.keys(htmlReact.configs.all.rules ?? {})),
       ...reactHooksRules,
       ...eslintReactRules,
       ...effectRules,
@@ -136,7 +121,7 @@ export default defineConfig({
         "error",
         {
           capIsNewExceptions: ["CloudflareApiLive", "Stack"],
-          capIsNewExceptionPattern: "^(Config|Context|Data|Schema|D1|Website|Workers)\\.",
+          capIsNewExceptionPattern: String.raw`^(Config|Context|Data|Schema|D1|Website|Workers)\.`,
         },
       ],
       "typescript/no-empty-interface": ["error", { allowSingleExtends: true }],

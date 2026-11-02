@@ -12,6 +12,7 @@
       {
         "name": "@effect/language-service",
         "allowedUnstableApis": [
+          "@effect/atom-react",
           "effect/http/FetchHttpClient#layer",
           "effect/observability/Otlp#layerFromConfig",
           "effect/observability/OtlpExporter#Flusher",

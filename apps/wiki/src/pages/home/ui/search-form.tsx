@@ -1,5 +1,5 @@
 import { Button } from "@workspace/ui/components/button";
-import { Option } from "effect";
+import { Option, String as Str } from "effect";
 import { useCallback } from "react";
 import type { ReactNode } from "react";
 
@@ -14,7 +14,7 @@ const MAX_LENGTH = 200;
 const textOf = (formData: Readonly<FormData>): string =>
   Option.fromNullishOr(formData.get(FIELD)).pipe(
     Option.filter((value) => typeof value === "string"),
-    Option.map((value) => value.trim()),
+    Option.map(Str.trim),
     Option.getOrElse(() => NO_QUERY),
   );
 
