@@ -189,8 +189,8 @@ catalogs:
       specifier: 0.66.1
       version: 0.66.1
     '@remotion/eslint-plugin':
-      specifier: 4.0.538
-      version: 4.0.538
+      specifier: 4.0.539
+      version: 4.0.539
     '@shadcn/lint':
       specifier: 0.2.0
       version: 0.2.0
@@ -398,7 +398,7 @@ importers:
         version: 0.66.1(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))
       '@remotion/eslint-plugin':
         specifier: 'catalog:'
-        version: 4.0.538(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
+        version: 4.0.539(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
       '@shadcn/lint':
         specifier: 'catalog:'
         version: 0.2.0(@typescript-eslint/parser@8.71.1(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3))(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))
@@ -4335,8 +4335,8 @@ packages:
   '@remotion/elevenlabs@4.0.539':
     resolution: {integrity: sha512-B/WswM4UWebc9kHhMGnFhQH13od27p6x480fe2UJCrljkCI5UZPKiRyzH6LIPAknyuYInds48DnQVNVaJwuqPg==}
 
-  '@remotion/eslint-plugin@4.0.538':
-    resolution: {integrity: sha512-v5bvJKWCNJy2J49lxqBFbV3Gu2ZEOKIVrPMOkKRtudk91XsBbgymVDjGEYyp9pc0HYehA2ulvLNkxC5Ea9GQ2Q==}
+  '@remotion/eslint-plugin@4.0.539':
+    resolution: {integrity: sha512-vVZoSjhzOjbfkQtYMysESn+UsRvVuYzP70XYuGDFgJSNUKZ1bpZvz3J1xPb1/bj2aFg6v2g2uK/DPFywfe+lhw==}
     peerDependencies:
       eslint: '>=7.0.0'
 
@@ -14891,7 +14891,7 @@ snapshots:
       '@remotion/captions': 4.0.539
       zod: 4.6.7
 
-  '@remotion/eslint-plugin@4.0.538(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)':
+  '@remotion/eslint-plugin@4.0.539(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)':
     dependencies:
       '@typescript-eslint/utils': 5.19.0(eslint@10.12.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
       eslint: 10.12.0(jiti@2.7.0)(supports-color@8.1.1)
