@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@effect/tsgo": "catalog:stack",
-    "@feature-sliced/steiger-plugin": "0.8.0",
+    "@feature-sliced/steiger-plugin": "0.8.1",
     "@remotion/cli": "catalog:stack",
     "@remotion/tailwind-v4": "catalog:stack",
     "@types/react": "19.3.0",
