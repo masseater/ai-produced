@@ -1,3 +1,4 @@
+import { Array as Arr, pipe } from "effect";
 import type { ReactNode } from "react";
 
 import { FPS, frameOf, SIXTEENTHS_PER_BAR } from "#/pages/mou-ikkai/model/song";
@@ -33,9 +34,12 @@ const Tape = ({ elapsed }: TapeProps): ReactNode => {
         {`▶ ${clock(played)} / ${clock(LOOP_FRAMES)}`}
       </div>
       <div className="absolute bottom-30 left-30 flex w-420 gap-1">
-        {SEGMENTS.map(({ id, until }) => (
-          <div key={id} className={`h-1 flex-1 ${fillOf(until, played)}`} />
-        ))}
+        {pipe(
+          SEGMENTS,
+          Arr.map(({ id, until }) => (
+            <div key={id} className={`h-1 flex-1 ${fillOf(until, played)}`} />
+          )),
+        )}
       </div>
     </>
   );

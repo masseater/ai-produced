@@ -1,11 +1,9 @@
-import { Array as Arr, Option } from "effect";
+import { Array as Arr, Number as Num, Option, pipe } from "effect";
 import type { ReactNode } from "react";
 
 import type { Line, Word } from "#/pages/mou-ikkai/model/song";
 import type { Size, Tone } from "#/pages/mou-ikkai/ui/glyphs";
 import { Glyphs } from "#/pages/mou-ikkai/ui/glyphs";
-
-const NO_CHARS = 0;
 
 type Fit = Readonly<{ maxChars: number; size: Size }>;
 
@@ -39,7 +37,11 @@ const toneOf = (word: Word, mora: number): Tone => {
 };
 
 const sizeOf = (line: Line, direction: keyof typeof directions): Size => {
-  const chars = line.words.reduce((sum, word) => sum + word.text.length, NO_CHARS);
+  const chars = pipe(
+    line.words,
+    Arr.map((word) => word.text.length),
+    Num.sumAll,
+  );
   return Arr.findFirst(fits[direction], (fit) => chars <= fit.maxChars).pipe(
     Option.map((fit) => fit.size),
     Option.getOrElse((): Size => "line-sm"),
@@ -50,14 +52,17 @@ type LineTextProps = Readonly<{ line: Line; mora: number; direction: keyof typeo
 
 const LineText = ({ line, mora, direction }: LineTextProps): ReactNode => (
   <div className={directions[direction]}>
-    {line.words.map((word) => (
-      <Glyphs
-        key={`${word.text}${word.morae.join(",")}`}
-        text={word.text}
-        tone={toneOf(word, mora)}
-        size={sizeOf(line, direction)}
-      />
-    ))}
+    {pipe(
+      line.words,
+      Arr.map((word) => (
+        <Glyphs
+          key={`${word.text}${pipe(word.morae, Arr.map(String), Arr.join(","))}`}
+          text={word.text}
+          tone={toneOf(word, mora)}
+          size={sizeOf(line, direction)}
+        />
+      )),
+    )}
   </div>
 );
 

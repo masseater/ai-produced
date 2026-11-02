@@ -1,4 +1,4 @@
-import { Array as Arr, Option } from "effect";
+import { Array as Arr, Option, pipe } from "effect";
 
 import { DURATION_IN_FRAMES, frameOf, song } from "#/pages/mou-ikkai/model/song";
 import type { Line } from "#/pages/mou-ikkai/model/song";
@@ -20,27 +20,36 @@ type Entry = Readonly<{
 
 const NEXT = 1;
 
-const entries: readonly Entry[] = song.lines.flatMap((line) => {
-  const lineFrom = Arr.head(line.morae).pipe(
-    Option.map((mora) => frameOf(mora.start)),
-    Option.getOrElse(() => DURATION_IN_FRAMES),
-  );
-  return line.morae.map((mora, index) => ({
-    line,
-    mora: index,
-    lineFrom,
-    from: frameOf(mora.start),
-    to: frameOf(mora.start + mora.length),
-  }));
-});
+const entries: readonly Entry[] = pipe(
+  song.lines,
+  Arr.flatMap((line) => {
+    const lineFrom = Arr.head(line.morae).pipe(
+      Option.map((mora) => frameOf(mora.start)),
+      Option.getOrElse(() => DURATION_IN_FRAMES),
+    );
+    return pipe(
+      line.morae,
+      Arr.map((mora, index) => ({
+        line,
+        mora: index,
+        lineFrom,
+        from: frameOf(mora.start),
+        to: frameOf(mora.start + mora.length),
+      })),
+    );
+  }),
+);
 
-const entryByFrame: readonly Entry[] = entries.flatMap((entry, index) => {
-  const next = Arr.get(entries, index + NEXT).pipe(
-    Option.map((following) => following.from),
-    Option.getOrElse(() => DURATION_IN_FRAMES),
-  );
-  return Array.from({ length: next - entry.from }, () => entry);
-});
+const entryByFrame: readonly Entry[] = pipe(
+  entries,
+  Arr.flatMap((entry, index) => {
+    const next = Arr.get(entries, index + NEXT).pipe(
+      Option.map((following) => following.from),
+      Option.getOrElse(() => DURATION_IN_FRAMES),
+    );
+    return Array.from({ length: next - entry.from }, () => entry);
+  }),
+);
 
 const firstFrom = Arr.head(entries).pipe(
   Option.map((entry) => entry.from),

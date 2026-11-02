@@ -1,17 +1,57 @@
+import { presets as effectPresets } from "@effect/tsgo/oxlint-presets";
+import eslintReact from "@eslint-react/eslint-plugin";
 import remotion from "@remotion/eslint-plugin";
+import { Array, Record, String, Struct, pipe } from "effect";
+import reactHooks from "eslint-plugin-react-hooks";
 
-type Rules = Readonly<Record<string, "error">>;
+type Rules = Record.ReadonlyRecord<string, "error">;
 
 const asErrors = (names: readonly string[]): Rules =>
-  Object.fromEntries(names.map((name) => [name, "error"] as const));
+  Record.fromEntries(
+    pipe(
+      names,
+      Array.map((name) => [name, "error"] as const),
+    ),
+  );
 
 const allRulesOf = ({
   prefix,
   plugin,
-}: Readonly<{ prefix: string; plugin: Readonly<{ rules: object }> }>): Rules =>
-  asErrors(Object.keys(plugin.rules).map((rule) => `${prefix}/${rule}`));
+}: Readonly<{
+  prefix: string;
+  plugin: Readonly<{ rules: Record.ReadonlyRecord<string, unknown> }>;
+}>): Rules =>
+  asErrors(
+    pipe(
+      Record.keys(plugin.rules),
+      Array.map((rule) => `${prefix}/${rule}`),
+    ),
+  );
 
 const remotionRules = allRulesOf({ prefix: "@remotion", plugin: remotion });
+
+const reactHooksRuleNames = pipe(
+  Struct.keys(reactHooks.configs["recommended-latest"].rules),
+  Array.map(String.replace("react-hooks/", "react-hooks-js/")),
+);
+
+const reactHooksRules = asErrors(reactHooksRuleNames);
+
+const eslintReactRuleNames = pipe(
+  Struct.keys(eslintReact.configs["strict-typescript"].rules ?? {}),
+  Array.filter(
+    (name) => !(pipe(name, String.replace("@eslint-react/", "react-hooks-js/")) in reactHooksRules),
+  ),
+);
+
+const eslintReactRules = asErrors(eslintReactRuleNames);
+
+const effectRuleNames = pipe(
+  Record.values(effectPresets),
+  Array.flatMap((preset) => Struct.keys(preset.rules ?? {})),
+);
+
+const effectRules = asErrors(effectRuleNames);
 
 const REACT_STATE_HOOKS: readonly string[] = [
   "useState",
@@ -143,22 +183,32 @@ const requiredStack: Readonly<Record<string, readonly string[]>> = {
   ],
 };
 
-const requiredStackEntries = Object.entries(requiredStack).flatMap(([message, modules]) =>
-  modules.map((module) => ({ message, module })),
+const requiredStackEntries = pipe(
+  Record.toEntries(requiredStack),
+  Array.flatMap(([message, modules]) =>
+    pipe(
+      modules,
+      Array.map((module) => ({ message, module })),
+    ),
+  ),
 );
 
-const requiredStackPaths: readonly Readonly<{ name: string; message: string }>[] =
-  requiredStackEntries
-    .filter(({ module }) => !module.includes("*"))
-    .map(({ message, module }) => ({ name: module, message }));
+const requiredStackPaths: readonly Readonly<{ name: string; message: string }>[] = pipe(
+  requiredStackEntries,
+  Array.filter(({ module }) => !pipe(module, String.includes("*"))),
+  Array.map(({ message, module }) => ({ name: module, message })),
+);
 
 const requiredStackPatterns: readonly Readonly<{ group: readonly string[]; message: string }>[] =
-  requiredStackEntries.map(({ message, module }) => {
-    if (module.includes("*")) {
-      return { group: [module, `${module}/**`], message };
-    }
-    return { group: [`${module}/**`], message };
-  });
+  pipe(
+    requiredStackEntries,
+    Array.map(({ message, module }) => {
+      if (pipe(module, String.includes("*"))) {
+        return { group: [module, `${module}/**`], message };
+      }
+      return { group: [`${module}/**`], message };
+    }),
+  );
 
 const restrictedImports = {
   paths: [
@@ -186,5 +236,15 @@ const generated = [
   "CHANGELOG.md",
 ];
 
-export { allRulesOf, asErrors, generated, remotionRules, requiredStack, restrictedImports };
+export {
+  allRulesOf,
+  asErrors,
+  effectRules,
+  eslintReactRules,
+  generated,
+  reactHooksRules,
+  remotionRules,
+  requiredStack,
+  restrictedImports,
+};
 export type { Rules };

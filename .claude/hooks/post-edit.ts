@@ -1,15 +1,15 @@
-import { Array as Arr, Effect, FileSystem, Path, Schema, pipe } from "effect";
-import type { Stdio } from "effect";
+import { Array as Arr, Effect, Schema, String as Str, pipe } from "effect";
 
 import {
   blockWhen,
   localBin,
-  projectDir,
+  projectRoot,
   readHookInput,
   runCommand,
   runHook,
   writeJson,
 } from "./env.ts";
+import { HookPlatform } from "./platform.ts";
 import type { CommandResult } from "./platform.ts";
 
 const PostToolUseInput = Schema.Struct({
@@ -24,10 +24,14 @@ const PostToolUseOutput = Schema.Struct({
 });
 
 const locate = Effect.fn("locate")(function* locate(filePath: string) {
-  const path = yield* Path.Path;
-  const root = path.resolve(yield* projectDir);
-  const [scope = "", name = ""] = path.relative(root, filePath).split(path.sep);
-  const candidates = [scope, path.join(scope, name)].filter((dir) => dir !== "");
+  const platform = yield* HookPlatform;
+  const root = yield* projectRoot;
+  const segments = pipe(platform.relative(root, filePath), Str.split(platform.sep));
+  const [scope, name = ""] = segments;
+  const candidates = pipe(
+    [scope, platform.join(scope, name)],
+    Arr.filter((dir) => dir !== ""),
+  );
   return { candidates, root };
 });
 
@@ -35,15 +39,16 @@ const fallowTargets = Effect.fn("fallowTargets")(function* fallowTargets(
   root: string,
   candidates: readonly string[],
 ) {
-  const fs = yield* FileSystem.FileSystem;
-  const path = yield* Path.Path;
+  const platform = yield* HookPlatform;
   const withConfig = yield* pipe(
     candidates,
-    Effect.filter((dir: string) =>
-      fs.exists(path.join(root, dir, ".fallowrc.jsonc")).pipe(Effect.orDie),
-    ),
+    Effect.filter((dir: string) => platform.exists(platform.join(root, dir, ".fallowrc.jsonc"))),
   );
-  return [[], ...withConfig.map((dir) => ["-r", dir])];
+  const flags = pipe(
+    withConfig,
+    Arr.map((dir) => ["-r", dir]),
+  );
+  return [[], ...flags];
 });
 
 const runFallow = Effect.fn("runFallow")(function* runFallow(
@@ -55,41 +60,36 @@ const runFallow = Effect.fn("runFallow")(function* runFallow(
   const runs = yield* Effect.forEach(
     targets,
     (args) =>
-      runCommand(fallow, [
-        "--changed-since",
-        "HEAD",
-        "--production",
-        "--quiet",
-        "--format",
-        "compact",
-        ...args,
-      ]),
+      runCommand(fallow, ["--changed-since", "HEAD", "--quiet", "--format", "compact", ...args]),
     { concurrency: "unbounded" },
   );
-  yield* blockWhen({
-    reasons: runs.filter((run) => !run.succeeded).map((run) => run.output),
-  });
+  const failed = pipe(
+    runs,
+    Arr.filter((run) => !run.succeeded),
+    Arr.map((run) => run.output),
+  );
+  yield* blockWhen(failed);
   return runs;
 });
 
 const reportDuplication = (
   runs: readonly CommandResult[],
-): Effect.Effect<void, never, Stdio.Stdio> => {
-  const duplication = Arr.dedupe(
-    runs
-      .flatMap((run) => run.stdout.split("\n"))
-      .filter((line) => line.startsWith("code-duplication:")),
+): Effect.Effect<void, never, HookPlatform> => {
+  const lines = pipe(
+    runs,
+    Arr.flatMap((run) => pipe(run.stdout, Str.split("\n"))),
   );
+  const duplication = pipe(lines, Arr.filter(Str.startsWith("code-duplication:")), Arr.dedupe);
   if (!Arr.isArrayNonEmpty(duplication)) {
     return Effect.void;
   }
   return writeJson(PostToolUseOutput, {
     hookSpecificOutput: {
       hookEventName: "PostToolUse",
-      additionalContext: [
-        "fallow が重複を検出した。共通化すべきか判断すること。",
-        ...duplication,
-      ].join("\n"),
+      additionalContext: pipe(
+        ["fallow が重複を検出した。共通化すべきか判断すること。", ...duplication],
+        Arr.join("\n"),
+      ),
     },
   });
 };

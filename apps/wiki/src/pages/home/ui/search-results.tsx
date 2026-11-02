@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Match } from "effect";
+import { Array as Arr, Match, String as Str, pipe } from "effect";
 import type { ReactNode } from "react";
 
 import { homeQueries } from "#/pages/home/api/queries";
@@ -17,17 +17,20 @@ const SearchResults = ({ query }: Readonly<{ query: string }>): ReactNode =>
       error: () => <p className="text-destructive text-sm">{FAILED}</p>,
       success: ({ data }) => (
         <ol className="flex flex-col gap-3">
-          {data.map((hit) => {
-            const excerpt = hit.text.slice(START, EXCERPT_LENGTH);
-            return (
-              <li key={hit.id}>
-                <WikiLink section={hit.section} name={hit.name}>
-                  {hit.title}
-                </WikiLink>
-                <p className="text-muted-foreground text-sm">{excerpt}</p>
-              </li>
-            );
-          })}
+          {pipe(
+            data,
+            Arr.map((hit) => {
+              const excerpt = Str.slice(START, EXCERPT_LENGTH)(hit.text);
+              return (
+                <li key={hit.id}>
+                  <WikiLink section={hit.section} name={hit.name}>
+                    {hit.title}
+                  </WikiLink>
+                  <p className="text-muted-foreground text-sm">{excerpt}</p>
+                </li>
+              );
+            }),
+          )}
         </ol>
       ),
     }),

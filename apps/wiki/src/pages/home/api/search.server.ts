@@ -8,7 +8,9 @@ import {
   ManagedRuntime,
   Number as Num,
   Order,
+  String as Str,
   Struct,
+  pipe,
 } from "effect";
 
 import type { PageSummary } from "#/shared/content";
@@ -32,19 +34,21 @@ type SearchHit = Passage & Readonly<{ score: number }>;
 type Vector = readonly number[];
 
 const passagesOf = (page: PageSummary & Readonly<{ body: string }>): readonly Passage[] =>
-  page.body
-    .split(SECTION_PATTERN)
-    .map((part) => part.trim())
-    .filter((part) => part !== "")
-    .map((text, index) => ({
+  pipe(
+    page.body,
+    Str.split(SECTION_PATTERN),
+    Arr.map(Str.trim),
+    Arr.filter(Str.isNonEmpty),
+    Arr.map((text, index) => ({
       id: `${page.slug}#${index}`,
       section: page.section,
       name: page.name,
       title: page.title,
       text,
-    }));
+    })),
+  );
 
-const passages: readonly Passage[] = wikiPages.flatMap((page) => passagesOf(page));
+const passages: readonly Passage[] = pipe(wikiPages, Arr.flatMap(passagesOf));
 
 const runEmbedding = (batch: readonly string[]): Effect.Effect<readonly Vector[]> =>
   Effect.promise(() => env.AI.run(MODEL, { text: [...batch] })).pipe(
@@ -52,9 +56,7 @@ const runEmbedding = (batch: readonly string[]): Effect.Effect<readonly Vector[]
   );
 
 const embed = (texts: readonly string[]): Effect.Effect<readonly Vector[]> =>
-  Effect.forEach(Arr.chunksOf(texts, BATCH_SIZE), runEmbedding).pipe(
-    Effect.map((outputs) => outputs.flat()),
-  );
+  Effect.forEach(Arr.chunksOf(texts, BATCH_SIZE), runEmbedding).pipe(Effect.map(Arr.flatten));
 
 class PassageIndex extends Context.Service<
   PassageIndex,
@@ -62,7 +64,10 @@ class PassageIndex extends Context.Service<
 >()("wiki/pages/home/api/search.server/PassageIndex") {}
 
 const buildVectors = embed(
-  passages.map((passage) => `${DOCUMENT_PREFIX}${passage.title} | text: ${passage.text}`),
+  pipe(
+    passages,
+    Arr.map((passage) => `${DOCUMENT_PREFIX}${passage.title} | text: ${passage.text}`),
+  ),
 );
 
 const passageIndexLive = Layer.effect(
@@ -106,7 +111,10 @@ const searchPages = (query: string): Promise<readonly SearchHit[]> =>
     }).pipe(Effect.withSpan("wiki.search")),
   );
 
-const pageSummaries: readonly PageSummary[] = wikiPages.map((page) => Struct.omit(page, ["body"]));
+const pageSummaries: readonly PageSummary[] = pipe(
+  wikiPages,
+  Arr.map((page) => Struct.omit(page, ["body"])),
+);
 
 export type { SearchHit };
 export { pageSummaries, searchPages };
