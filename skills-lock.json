@@ -30,7 +30,7 @@
       "ref": "1a33048817d06df12882cb881dfc754e7039954a",
       "sourceType": "github",
       "skillPath": "skills/cloudflare/SKILL.md",
-      "computedHash": "f08c8c1be96dfad7f9d5418b1345477dd2e55af58c8da01326c9a2616c7ed721"
+      "computedHash": "e7c26bb690042060d60fcccf3e5807d000c9c064f732b6fcfccb8bbcdc5dc04a"
     },
     "effect-ts": {
       "source": "Effect-TS/skills",
@@ -75,7 +75,7 @@
       "ref": "341268561baaff256927c931ec8215dbd30e3cee",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
-      "computedHash": "48405ce3611ebdfd7958978117501d0b3d36ac91048cb3a43b36233e8e839d52"
+      "computedHash": "c614730bccf763448d84ed2b5c71164b0ad7410a0823da3639e62e9d9bf2b641"
     },
     "reference-materials": {
       "source": "./docs/skills/reference-materials",
@@ -127,14 +127,14 @@
       "ref": "1a33048817d06df12882cb881dfc754e7039954a",
       "sourceType": "github",
       "skillPath": "skills/workers-best-practices/SKILL.md",
-      "computedHash": "e12970301753ed7eaa5ca375d4b98e0e36c9554e8f2809cb4b543c2ea7d9b4b8"
+      "computedHash": "b6252e1aa7c41d1fbec7f064684deb9bd79866c2b6f3e18deee6d7a0c673f3f3"
     },
     "yomiyasu": {
       "source": "nanaism/yomiyasu",
       "ref": "29d67ccb05e370b5958d72920a9cd1aa829dee80",
       "sourceType": "github",
       "skillPath": "skills/yomiyasu/SKILL.md",
-      "computedHash": "d339749e69e67a3979a902a1ffb481f93492bf1ab9375557e26fbf7102af9463"
+      "computedHash": "931929b8d7be2c1413927dec7c7ad44b2fba5caee2cd8394a52e7727d3a2c959"
     }
   }
 }
