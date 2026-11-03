@@ -15,6 +15,10 @@
       "matchPackageNames": ["torch", "torchaudio"],
       "groupName": "torch",
       "automerge": false
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "!/-dev\\./"
     }
   ],
   "customManagers": [
