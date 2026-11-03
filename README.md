@@ -12,7 +12,7 @@ AI が人間のボカロPと同じ工程を踏んだときに、本当に良い�
 
 ## 手元で動かす
 
-前提は次のとおりである。
+### 前提
 
 - Vite+ の CLI である `vp`
 - 解析と変換のツールを動かす uv と .NET
@@ -24,17 +24,17 @@ vp install
 vp run verify
 ```
 
-`vp run verify` が通れば、手元の準備はできている。
+### 曲の映像を確かめる
 
 曲の映像は Remotion で作る。
-REAPER で書き出した音声を、`apps/video/package.json` の `studio` が `--public-dir` に指定する場所へ置いてから、次のコマンドで確かめる。
+REAPER で書き出した音声を、`apps/video/package.json` の `studio` が `--public-dir` に指定する場所へ置いてから、次を実行する。
 
 ```sh
 cd apps/video
 vp run studio
 ```
 
-Web アプリをデプロイするときは、Cloudflare の認証情報を Alchemy のプロファイルに登録してから `apps/web` でデプロイする。
+### Web アプリをデプロイする
 
 ```sh
 vp exec --filter web alchemy profile edit --add Cloudflare
@@ -50,8 +50,6 @@ main への push で検査とデプロイが走る。
 | 名前                      | 用途                                      |
 | ------------------------- | ----------------------------------------- |
 | `CLAUDE_CODE_OAUTH_TOKEN` | 検査が落ちたときの Claude Code の自動修正 |
-| `CLOUDFLARE_ACCOUNT_ID`   | Web アプリのデプロイ                      |
-| `CLOUDFLARE_API_TOKEN`    | Web アプリのデプロイ                      |
 
 Settings → Actions → General では「Allow GitHub Actions to create and approve pull requests」を有効にする。
-release-please と自動修正が PR を作るためである。
+有効にしないと、release-please と自動修正が PR を作れない。
