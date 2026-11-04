@@ -70,7 +70,6 @@ overrides:
   effect: "catalog:stack"
   "@effect/platform-node-shared": 4.0.7
   "@effect/sql-d1": 4.0.7
-  "@effect/sql-sqlite-do": 4.0.7
   "@effect/vitest": 4.0.7
   vite@*: "catalog:"
   eslint-plugin-react-hooks>zod-validation-error: ^5.0.0
