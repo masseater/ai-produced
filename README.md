@@ -17,7 +17,6 @@ AI が人間のボカロPと同じ工程を踏んだときに、本当に良い�
 - Vite+ の CLI である `vp`
 - 解析と変換のツールを動かす uv と .NET
 - 歌声と音源の書き出しに使う OpenUtau と REAPER
-- Web アプリをデプロイするなら Cloudflare のアカウント
 
 ```sh
 vp install
@@ -34,17 +33,9 @@ cd apps/video
 vp run studio
 ```
 
-### Web アプリをデプロイする
-
-```sh
-vp exec --filter web alchemy profile edit --add Cloudflare
-cd apps/web
-vp run deploy
-```
-
 ## GitHub Actions の準備
 
-main への push で検査とデプロイが走る。
+main への push で検査が走る。
 リポジトリの Actions secrets に次を登録する。
 
 | 名前                      | 用途                                      |

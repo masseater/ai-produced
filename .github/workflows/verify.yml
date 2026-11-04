@@ -54,28 +54,6 @@ jobs:
           gh workflow run autofix.yml --repo "$GITHUB_REPOSITORY" --ref "$HEAD_BRANCH"
           -f run_id="$FAILED_RUN_ID" -f branch="$HEAD_BRANCH" -f sha="$HEAD_SHA"
 
-  deploy:
-    needs: verify
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-    concurrency:
-      group: deploy
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: voidzero-dev/setup-vp@68f39c78aaf39be468cabd2afb09c162574c84af # v1.21.2
-        with:
-          cache: true
-          run-install: |
-            - args: ['--frozen-lockfile']
-      - run: .github/scripts/cloudflare-token.sh
-      - run: vp exec alchemy deploy --stage production --yes
-        working-directory: apps/web
-
   release:
     needs: verify
     if: github.event_name == 'push' && github.repository == 'masseater/typescript-template'

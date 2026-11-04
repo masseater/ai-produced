@@ -37,11 +37,9 @@ description: 仮説を白黒つける計測を実装や修正の前に決めて�
 ## 何を計るか
 
 サーバーの信号はEffectのAPIで出し、Cloudflare Workers Observabilityに集める。
-`Effect.withSpan` は `apps/web/src/pages/home/api/tracing.server.ts` がWorkersのトレースに写す。
 `Effect.log*` はWorkers Logsに入る。
 D1やfetchの呼び出しは、Cloudflareが自動でスパンにする。
 メトリクスは、Workersのリクエスト数・エラー数・CPU時間・所要時間を使う。
-観測の設定とサンプリング率は `apps/web/alchemy.run.ts` の `observability` にある。
 
 | 課題   | 出すもの                                                                                                            |
 | ------ | ------------------------------------------------------------------------------------------------------------------- |
@@ -60,7 +58,6 @@ D1やfetchの呼び出しは、Cloudflareが自動でスパンにする。
 本番のログ・トレース・メトリクスは、`.mcp.json` の `cloudflare-observability` MCPサーバーで問い合わせる。
 ほかのCloudflareのAPIは `cloudflare-api` MCPサーバーで呼ぶ。
 どちらもAlchemyのプロファイルの認証情報を使う。
-デプロイしたWorkerのログを流して見るときは、`apps/web` で `vp exec alchemy logs --tail` を使う。
 
 Effectのログとブラウザのconsoleは、`vp run dev` のターミナルにも出る。
 手元の出力は、計る仕組みが動くかを確かめるためだけに使う。
