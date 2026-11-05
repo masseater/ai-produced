@@ -68,7 +68,7 @@
     "measure-dont-guess": {
       "source": "./docs/skills/measure-dont-guess",
       "sourceType": "local",
-      "computedHash": "26c3183fedaad983b439d63804240dd4d822ce87f0ca0718e85e6b96b4ef910d"
+      "computedHash": "230d74b73e3e9ba71fc14966baa9328adf9c9014cb18ca62db4742845aaa3b48"
     },
     "modern-web-guidance": {
       "source": "GoogleChrome/modern-web-guidance",
@@ -81,6 +81,13 @@
       "source": "./docs/skills/reference-materials",
       "sourceType": "local",
       "computedHash": "0c6e406da9ae32331de429e47b25e08453bf74d8dc9e17c97f42d7d272dce8c1"
+    },
+    "repo-conventions": {
+      "source": "masseater/skills",
+      "ref": "837e2ce66807cc1a565791a1d771cb41c493c280",
+      "sourceType": "github",
+      "skillPath": "skills/repo-conventions/SKILL.md",
+      "computedHash": "47d9a9a9a9a5ef3c10566ded8e508c0dd55ecab9b9855a7cc2e059725515a290"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",
@@ -121,6 +128,13 @@
       "sourceType": "github",
       "skillPath": "skills/verification-before-completion/SKILL.md",
       "computedHash": "b529822bdac4b197b180fe12225cff86b930b65910435103c10622df7f041651"
+    },
+    "vite-plus": {
+      "source": "masseater/skills",
+      "ref": "837e2ce66807cc1a565791a1d771cb41c493c280",
+      "sourceType": "github",
+      "skillPath": "skills/vite-plus/SKILL.md",
+      "computedHash": "a2497fefbd662078e91b88e88742eebfe18b1a56bc34da5cc5b0ccc75320dcf3"
     },
     "workers-best-practices": {
       "source": "cloudflare/skills",
