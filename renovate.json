@@ -1,14 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "security:minimumReleaseAgeNpm", ":semanticCommits"],
+  "extends": [
+    "config:recommended",
+    "security:minimumReleaseAgeNpm",
+    ":semanticCommits",
+    "group:allNonMajor"
+  ],
   "automerge": true,
   "ignoreTests": true,
   "platformAutomerge": false,
   "packageRules": [
     {
       "matchPackageNames": ["effect", "@effect/**", "!@effect/tsgo", "alchemy", "@alchemy.run/**"],
-      "groupName": "effect and alchemy",
-      "automerge": false
+      "groupName": "effect and alchemy"
     },
     {
       "matchFileNames": ["tools/audio-to-midi/**"],
