@@ -3,10 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet",
-    "prepare": "effect-tsgo patch --typescript --oxlint"
-  },
   "dependencies": {
     "@alchemy.run/cloudflare": "catalog:stack",
     "@effect/platform-node": "catalog:",

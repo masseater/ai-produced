@@ -8,11 +8,6 @@
     "./lib/utils": "./src/lib/utils.ts",
     "./globals.css": "./src/styles/globals.css"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "vp test run --passWithNoTests",
-    "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet"
-  },
   "dependencies": {
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",

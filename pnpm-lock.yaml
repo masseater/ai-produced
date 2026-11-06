@@ -347,6 +347,9 @@ importers:
       '@eslint-react/eslint-plugin':
         specifier: 'catalog:'
         version: 5.28.8(eslint@10.14.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
+      '@feature-sliced/steiger-plugin':
+        specifier: 0.8.1
+        version: 0.8.1(typescript@6.0.3)(vitest@5.0.5)
       '@html-eslint/eslint-plugin-react':
         specifier: 'catalog:'
         version: 0.67.0(eslint@10.14.0(jiti@2.7.0)(supports-color@8.1.1))
@@ -401,6 +404,9 @@ importers:
       skills:
         specifier: 'catalog:'
         version: 1.7.4
+      steiger:
+        specifier: catalog:stack
+        version: 0.8.1(typescript@6.0.3)(vitest@5.0.5)
       syncpack:
         specifier: 'catalog:'
         version: 15.3.3
@@ -463,9 +469,6 @@ importers:
       '@effect/tsgo':
         specifier: catalog:stack
         version: 0.63.0
-      '@feature-sliced/steiger-plugin':
-        specifier: 0.8.1
-        version: 0.8.1(typescript@7.1.0-beta)(vitest@5.0.5)
       '@remotion/cli':
         specifier: catalog:stack
         version: 4.0.539(@swc/helpers@0.5.23)(lightningcss@1.33.0)(postcss@8.5.32)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@8.1.1)(typescript@7.1.0-beta)(uglify-js@3.19.3)
@@ -481,9 +484,6 @@ importers:
       react:
         specifier: 19.3.1
         version: 19.3.1
-      steiger:
-        specifier: catalog:stack
-        version: 0.8.1(typescript@7.1.0-beta)(vitest@5.0.5)
       typescript:
         specifier: catalog:stack
         version: 7.1.0-beta
@@ -548,9 +548,6 @@ importers:
       '@effect/tsgo':
         specifier: catalog:stack
         version: 0.63.0
-      '@feature-sliced/steiger-plugin':
-        specifier: 0.8.1
-        version: 0.8.1(typescript@7.1.0-beta)(vitest@5.0.5)
       '@tailwindcss/vite':
         specifier: 4.3.3
         version: 4.3.3(@voidzero-dev/vite-plus-core@1.4.0(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(typescript@7.1.0-beta)(yaml@2.9.1))
@@ -566,9 +563,6 @@ importers:
       alchemy:
         specifier: catalog:stack
         version: 2.0.0-beta.84(@effect/platform-node@4.0.7(effect@4.0.7)(redis@6.2.1(@opentelemetry/api@1.9.1)))(@types/node@26.6.6)(@types/react@19.3.0)(effect@4.0.7)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(typescript@7.1.0-beta)(ws@8.22.0)
-      steiger:
-        specifier: catalog:stack
-        version: 0.8.1(typescript@7.1.0-beta)(vitest@5.0.5)
       typescript:
         specifier: catalog:stack
         version: 7.1.0-beta
@@ -10594,13 +10588,13 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  '@feature-sliced/steiger-plugin@0.8.1(typescript@7.1.0-beta)(vitest@5.0.5)':
+  '@feature-sliced/steiger-plugin@0.8.1(typescript@6.0.3)(vitest@5.0.5)':
     dependencies:
       '@feature-sliced/filesystem': 3.1.1
       '@steiger/toolkit': 0.2.3(vitest@5.0.5)
       fastest-levenshtein: 1.0.16
       pluralize: 8.0.0
-      tsconfck: 3.1.6(typescript@7.1.0-beta)
+      tsconfck: 3.1.6(typescript@6.0.3)
       web-tree-sitter: 0.26.13
     transitivePeerDependencies:
       - typescript
@@ -18484,10 +18478,10 @@ snapshots:
 
   std-env@4.3.0: {}
 
-  steiger@0.8.1(typescript@7.1.0-beta)(vitest@5.0.5):
+  steiger@0.8.1(typescript@6.0.3)(vitest@5.0.5):
     dependencies:
       '@clack/prompts': 0.9.1
-      '@feature-sliced/steiger-plugin': 0.8.1(typescript@7.1.0-beta)(vitest@5.0.5)
+      '@feature-sliced/steiger-plugin': 0.8.1(typescript@6.0.3)(vitest@5.0.5)
       chokidar: 4.0.3
       cosmiconfig: 10.0.1
       effector: 23.4.4
@@ -18980,9 +18974,9 @@ snapshots:
 
   ts-pattern@5.9.2: {}
 
-  tsconfck@3.1.6(typescript@7.1.0-beta):
+  tsconfck@3.1.6(typescript@6.0.3):
     optionalDependencies:
-      typescript: 7.1.0-beta
+      typescript: 6.0.3
 
   tslib@1.14.1: {}
 
