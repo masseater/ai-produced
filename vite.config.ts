@@ -18,6 +18,7 @@ import {
 } from "./lint.config.ts";
 
 export default defineConfig({
+  test: { projects: ["apps/*", "libs/*", "infra/*", "tools/*"], passWithNoTests: true },
   staged: {
     "*": "vp check --fix",
   },
@@ -160,9 +161,59 @@ export default defineConfig({
   run: {
     cache: true,
     tasks: {
+      verify: {
+        command: "vp check --deny-warnings",
+        cache: {
+          env: ["OPENROUTER_API_KEY"],
+          untrackedEnv: [
+            "CLAUDECODE",
+            "CLAUDE_CODE_REMOTE",
+            "HTTPS_PROXY",
+            "https_proxy",
+            "NO_PROXY",
+            "no_proxy",
+            "SSL_CERT_FILE",
+            "NODE_EXTRA_CA_CERTS",
+          ],
+        },
+        dependsOn: [
+          "test",
+          "syncpack",
+          "markdown-lint",
+          "renovate",
+          "actions-lint",
+          "steiger",
+          "fallow",
+          "audit",
+        ],
+      },
+      test: "vp test run",
+      syncpack: "syncpack lint",
+      "markdown-lint": [
+        'textlint "**/*.md"',
+        `git -c core.quotePath=false ls-files -co --exclude-standard '*.md' | git -c core.quotePath=false -c core.excludesFile=.textlintignore check-ignore --no-index --stdin -nv | awk -F '\\t' '$1 == "::" { print $2 }' | tr '\\n' '\\0' | xargs -0 -r -n 1 -P 4 python3 "$(skills ls --json | jq -r '.[] | select(.name == "yomiyasu").path')/scripts/yomiyasu_lint.py" --strict`,
+      ],
+      steiger: 'for src in apps/*/src; do steiger "$src" || exit 1; done',
+      audit: {
+        command:
+          'before="$(cksum pnpm-workspace.yaml)"; vp pm audit --fix || exit; if [ "$before" != "$(cksum pnpm-workspace.yaml)" ]; then echo "vp pm audit --fix rewrote pnpm-workspace.yaml. Run vp install and commit the diff." >&2; exit 1; fi',
+        cache: false,
+      },
+      gitleaks: {
+        command:
+          'go run github.com/zricethezav/gitleaks/v8@v8.30.1 git --redact --no-banner --log-opts="$(git rev-parse -q --verify "$GITLEAKS_BASE" || echo origin/main)..HEAD"',
+        cache: false,
+      },
+      renovate: "renovate-config-validator --strict",
+      fallow: [
+        "fallow --production --quiet --format compact",
+        "fallow dead-code --no-production --quiet --format compact",
+        "fallow dupes --quiet --format compact",
+        "fallow security --fail-on-issues --quiet",
+      ],
       "actions-lint": {
         command:
-          "uvx --from actionlint-py@1.7.12.25 actionlint && uvx zizmor@1.30.1 .github && ast-grep scan --rule .github/rules/no-full-history-checkout.yml .github/workflows",
+          "uvx --from actionlint-py@1.7.12.25 actionlint && uvx zizmor@1.32.0 .github && ast-grep scan --rule .github/rules/no-full-history-checkout.yml .github/workflows",
         cache: {
           untrackedEnv: [
             "GH_TOKEN",

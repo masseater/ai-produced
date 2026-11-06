@@ -1,4 +1,5 @@
 {
+  "entry": ["apps/video/src/app/index.ts"],
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
   "production": true,
   "typeAware": { "enabled": true, "require": "complete" },

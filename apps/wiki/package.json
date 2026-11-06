@@ -6,15 +6,6 @@
   "imports": {
     "#/*": "./src/*"
   },
-  "scripts": {
-    "dev": "alchemy dev",
-    "test": "vp test run --passWithNoTests",
-    "typecheck": "tsc --noEmit",
-    "steiger": "steiger ./src",
-    "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet",
-    "deploy": "alchemy deploy",
-    "destroy": "alchemy destroy"
-  },
   "dependencies": {
     "@effect/atom-react": "catalog:stack",
     "@tailwindcss/typography": "catalog:",
@@ -37,13 +28,11 @@
     "@alchemy.run/cloudflare": "catalog:stack",
     "@cloudflare/workers-types": "catalog:",
     "@effect/tsgo": "catalog:stack",
-    "@feature-sliced/steiger-plugin": "0.8.1",
     "@tailwindcss/vite": "4.3.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "catalog:",
     "alchemy": "catalog:stack",
-    "steiger": "catalog:stack",
     "typescript": "catalog:stack",
     "vite": "catalog:",
     "vite-plus": "catalog:stack"

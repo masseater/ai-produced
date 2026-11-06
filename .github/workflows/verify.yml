@@ -12,31 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: voidzero-dev/setup-vp@68f39c78aaf39be468cabd2afb09c162574c84af # v1.21.2
+      - uses: $/.github/actions/setup
+      - uses: masseater/typescript-template/.github/actions/verify@0c9f2c316a486637e22878aea5e0a4a1a7f630c4
         with:
-          cache: true
-          run-install: |
-            - args: ['--frozen-lockfile']
-      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
-        with:
-          enable-cache: false
-      - if: github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          BEFORE_SHA: ${{ github.event.before }}
-          HEAD_SHA: ${{ github.sha }}
-        run: |
-          gh auth setup-git
-          commits="$(gh api "repos/$GITHUB_REPOSITORY/compare/$BEFORE_SHA...$HEAD_SHA" --jq .total_commits)"
-          git fetch --no-tags --depth="$((commits + 1))" origin "$HEAD_SHA"
-          vp exec commitlint --from "$BEFORE_SHA" --to "$HEAD_SHA" --verbose
-      - run: vp run verify
-        env:
-          GH_TOKEN: ${{ github.token }}
+          github-token: ${{ github.token }}
 
   autofix:
     needs: verify

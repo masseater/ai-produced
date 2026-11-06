@@ -9,11 +9,6 @@
     "./api-route": "./src/api-route.ts",
     "./router": "./src/router.ts"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "vp test run --passWithNoTests",
-    "fallow": "fallow --production --quiet --format compact && fallow dupes --quiet --format compact && fallow security --fail-on-issues --quiet"
-  },
   "dependencies": {
     "@elysiajs/eden": "catalog:stack",
     "@tanstack/react-query": "catalog:stack",
