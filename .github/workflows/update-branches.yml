@@ -1,0 +1,34 @@
+name: update-branches
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: masseater/typescript-template/.github/actions/update-branches@68becbb0934725055f1c657f1e77a529f0e3e338
+
+  ci-telemetry:
+    needs: [update]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+    steps:
+      - uses: masseater/typescript-template/.github/actions/ci-telemetry@68becbb0934725055f1c657f1e77a529f0e3e338
+        with:
+          github-token: ${{ github.token }}
