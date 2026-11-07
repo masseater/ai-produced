@@ -14,16 +14,19 @@ on:
 permissions: {}
 
 jobs:
-  dispatch:
+  check:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       actions: write
     steps:
-      - env:
-          GH_TOKEN: ${{ github.token }}
-          BRANCH: ${{ github.ref_name }}
-        run: gh workflow run skills-lock.yml --repo "$GITHUB_REPOSITORY" --ref main -f branch="$BRANCH"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: masseater/typescript-template/.github/actions/skills-lock@03a7485dd2e6f73aa49aaa4926aba33b1f7f59b0
+        with:
+          branch: ${{ github.ref_name }}
 
   rehash:
     if: github.event_name == 'workflow_dispatch'
@@ -39,12 +42,12 @@ jobs:
         with:
           ref: ${{ inputs.branch }}
           persist-credentials: false
-      - uses: masseater/typescript-template/.github/actions/skills-lock@68becbb0934725055f1c657f1e77a529f0e3e338
+      - uses: masseater/typescript-template/.github/actions/skills-lock@03a7485dd2e6f73aa49aaa4926aba33b1f7f59b0
         with:
           branch: ${{ inputs.branch }}
 
   ci-telemetry:
-    needs: [dispatch, rehash]
+    needs: [check, rehash]
     if: always()
     runs-on: ubuntu-latest
     permissions:
