@@ -69,12 +69,6 @@
     },
     {
       "customType": "regex",
-      "managerFilePatterns": ["/^vite\\.config\\.ts$/"],
-      "matchStrings": ["uvx (?:--from )?(?<depName>[a-z0-9-]+)@(?<currentValue>[0-9.]+)"],
-      "datasourceTemplate": "pypi"
-    },
-    {
-      "customType": "regex",
       "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/"],
       "matchStrings": [
         "uses: (?<depName>masseater/typescript-template)/\\.github/actions/[a-z-]+@(?<currentDigest>[0-9a-f]{40})"
