@@ -170,9 +170,6 @@ catalogs:
     '@cloudflare/workers-types':
       specifier: 5.20261106.1
       version: 5.20261106.1
-    '@commitlint/cli':
-      specifier: 21.2.4
-      version: 21.2.4
     '@commitlint/config-conventional':
       specifier: 21.2.4
       version: 21.2.4
@@ -317,9 +314,6 @@ importers:
       '@ast-grep/cli':
         specifier: 'catalog:'
         version: 0.51.1
-      '@commitlint/cli':
-        specifier: 'catalog:'
-        version: 21.2.4(conventional-commits-parser@7.1.3)(typescript@7.1.0-beta)
       '@commitlint/config-conventional':
         specifier: 'catalog:'
         version: 21.2.4
@@ -1019,11 +1013,6 @@ packages:
   '@cloudflare/workers-types@5.20261106.1':
     resolution: {integrity: sha512-uQtZyYehF0hwImaFi0/z/BWeTC/DMKpEo+nCySs5WZwoMhnIqLnN3sVjS7GCBc222EWf+F6khsHPWIvPEaP6JA==}
 
-  '@commitlint/cli@21.2.4':
-    resolution: {integrity: sha512-g3M/wrQdElqGH5vROIeL2QiYIxrzqUkhCgsDyDlWfKEyQdCt10OyMB28W2cJtpZ+VNGMvmaN923infr1hOfyrg==}
-    engines: {node: '>=22.12.0'}
-    hasBin: true
-
   '@commitlint/config-conventional@21.2.4':
     resolution: {integrity: sha512-IRldtwgNmR0SySR7wizFbhRmq45lPt6H3XCNTMyVN7jrPLgi8JlTRR6Eg1HLWUQt9P1Lh3k6eY25ilDa47EE6w==}
     engines: {node: '>=22.12.0'}
@@ -1064,10 +1053,6 @@ packages:
     resolution: {integrity: sha512-Jt61QpF1xA88damCELe8I0FlDZPSpXNc8IhN7z5kZ0EcDYPjdZ+ZHPvsSXl69r2MIlLnNKeHhOn2cmVpziFE9w==}
     engines: {node: '>=22.12.0'}
 
-  '@commitlint/read@21.2.3':
-    resolution: {integrity: sha512-szAepuLA1vTTr7fuudEg7jYyVHudf+FH+vptU91bhxE1WnE8TKrfTAi44HVllz8XpI8Pvp4GjR/iP5Nshgh+og==}
-    engines: {node: '>=22.12.0'}
-
   '@commitlint/resolve-extends@21.2.3':
     resolution: {integrity: sha512-bqJdmAtXgAQel+l02uIsF7rHgKgx1AGZdGBjam7uK4XW54ZAQtB6XAIUXezYprQiCcRMpBh4fHs5JodXK4mVZA==}
     engines: {node: '>=22.12.0'}
@@ -1078,10 +1063,6 @@ packages:
 
   '@commitlint/to-lines@21.0.1':
     resolution: {integrity: sha512-bd1BFII7p1EQZre9Kaj+kKaMFP3cFCdt21K7DItVux9XP5WjLgJ0/Uy1pJJh9aPwVJ6SKg62PxqlZaHI8hQAXw==}
-    engines: {node: '>=22.12.0'}
-
-  '@commitlint/top-level@21.2.0':
-    resolution: {integrity: sha512-Y5gmQ+KxzqCrBFJfLvFEPvvwD3LDiNZoTT2yeFBm96M8qhmqSzQc5DvX3rheAaAMjyIvMXOCLS/mWfdpONsjyQ==}
     engines: {node: '>=22.12.0'}
 
   '@commitlint/types@21.2.3':
@@ -1104,18 +1085,6 @@ packages:
       zod: ^4.6.6
     peerDependenciesMeta:
       zod:
-        optional: true
-
-  '@conventional-changelog/git-client@3.2.0':
-    resolution: {integrity: sha512-sD/E0vzpkoDz/dqM1Hhv0ihC4KBw6RXjefeO8SG1XrX+wGkMxe1pKeedkKDPCtr2JjuhbuS9aJNgOvnT8hbeBw==}
-    engines: {node: '>=22'}
-    peerDependencies:
-      conventional-commits-filter: ^6.0.1
-      conventional-commits-parser: ^7.1.3
-    peerDependenciesMeta:
-      conventional-commits-filter:
-        optional: true
-      conventional-commits-parser:
         optional: true
 
   '@conventional-changelog/template@1.4.0':
@@ -3611,10 +3580,6 @@ packages:
 
   '@simple-git/argv-parser@2.0.1':
     resolution: {integrity: sha512-M++IaVWrN+vYalilOHfwvT2IL3wYZtVEBQpmX6DLSOJLtxbZ+SUeIDE3IiPogzhPACLajwtxfa5rp+ZX1FczzQ==}
-
-  '@simple-libs/child-process-utils@2.0.0':
-    resolution: {integrity: sha512-dvNoRKLijXnD0XoJAz94pbNuB5GQgDr55UhpSPhffDkTT0Cmcqh9jSCOtwfT2d4H6MI9E7c4SgtMuJXZ6F3c6A==}
-    engines: {node: '>=22'}
 
   '@simple-libs/stream-utils@2.0.0':
     resolution: {integrity: sha512-fCTuZK4QBa+39Oz9l4OGfJfz+GpwCp3AqO7Zch3to99xHPgstVsRFpeQ8LNd2o1Gv8raL2mCFwiaHh7bFSp5DQ==}
@@ -8838,10 +8803,6 @@ packages:
     resolution: {integrity: sha512-hVDIBwsRruT73PbK7uP5ebUt+ezEtCmzZz3F59BSr2F6OVFnJ/6h8liuvdLrQ88Xmnk6/+xGGuq+pG9WwTuy3A==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  verkit@0.5.0:
-    resolution: {integrity: sha512-u4J1hr6Y+C/hit34GwL3eIcUf3wngT8TlYUjK7tk0jxydKLAq3sYvifjdTDA6U3KCKRcQCQDGf/srjxfZF3l7g==}
-    engines: {node: '>=18.12.0'}
-
   vfile-message@2.0.4:
     resolution: {integrity: sha512-DjssxRGkMvifUOJre00juHoP9DPWuzjxKuMDrhNbk2TdaYYBNMStsNhEOt3idrtI12VQYM/1+iM0KOzXi4pxwQ==}
 
@@ -9716,21 +9677,6 @@ snapshots:
 
   '@cloudflare/workers-types@5.20261106.1': {}
 
-  '@commitlint/cli@21.2.4(conventional-commits-parser@7.1.3)(typescript@7.1.0-beta)':
-    dependencies:
-      '@commitlint/config-conventional': 21.2.4
-      '@commitlint/format': 21.2.3
-      '@commitlint/lint': 21.2.4
-      '@commitlint/load': 21.2.4(typescript@7.1.0-beta)
-      '@commitlint/read': 21.2.3(conventional-commits-parser@7.1.3)
-      '@commitlint/types': 21.2.3
-      tinyexec: 1.3.1
-      yargs: 18.2.0
-    transitivePeerDependencies:
-      - conventional-commits-filter
-      - conventional-commits-parser
-      - typescript
-
   '@commitlint/config-conventional@21.2.4':
     dependencies:
       '@commitlint/types': 21.2.3
@@ -9787,16 +9733,6 @@ snapshots:
       conventional-changelog-angular: 9.4.0
       conventional-commits-parser: 7.1.3
 
-  '@commitlint/read@21.2.3(conventional-commits-parser@7.1.3)':
-    dependencies:
-      '@commitlint/top-level': 21.2.0
-      '@commitlint/types': 21.2.3
-      '@conventional-changelog/git-client': 3.2.0(conventional-commits-parser@7.1.3)
-      tinyexec: 1.3.1
-    transitivePeerDependencies:
-      - conventional-commits-filter
-      - conventional-commits-parser
-
   '@commitlint/resolve-extends@21.2.3':
     dependencies:
       '@commitlint/config-validator': 21.2.3
@@ -9814,10 +9750,6 @@ snapshots:
 
   '@commitlint/to-lines@21.0.1': {}
 
-  '@commitlint/top-level@21.2.0':
-    dependencies:
-      escalade: 3.2.0
-
   '@commitlint/types@21.2.3':
     dependencies:
       conventional-commits-parser: 7.1.3
@@ -9834,14 +9766,6 @@ snapshots:
       semver: 7.8.5
     optionalDependencies:
       zod: 4.6.7
-
-  '@conventional-changelog/git-client@3.2.0(conventional-commits-parser@7.1.3)':
-    dependencies:
-      '@simple-libs/child-process-utils': 2.0.0
-      '@simple-libs/stream-utils': 2.0.0
-      verkit: 0.5.0
-    optionalDependencies:
-      conventional-commits-parser: 7.1.3
 
   '@conventional-changelog/template@1.4.0': {}
 
@@ -12157,10 +12081,6 @@ snapshots:
   '@simple-git/argv-parser@2.0.1':
     dependencies:
       '@simple-git/args-pathspec': 1.0.4
-
-  '@simple-libs/child-process-utils@2.0.0':
-    dependencies:
-      '@simple-libs/stream-utils': 2.0.0
 
   '@simple-libs/stream-utils@2.0.0': {}
 
@@ -18162,8 +18082,6 @@ snapshots:
       builtins: 5.1.0
 
   validate-npm-package-name@7.0.2: {}
-
-  verkit@0.5.0: {}
 
   vfile-message@2.0.4:
     dependencies:
