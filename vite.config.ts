@@ -69,7 +69,7 @@ export default defineConfig({
       { name: "no-comments", specifier: "eslint-plugin-no-comments" },
       { name: "baseline-js", specifier: "eslint-plugin-baseline-js" },
       { name: "@html-eslint/react", specifier: "@html-eslint/eslint-plugin-react" },
-      { name: "@remotion", specifier: "@remotion/eslint-plugin" },
+      { name: "@remotion", specifier: `${typedRules}/remotion` },
     ],
     rules: {
       "vite-plus/prefer-vite-plus-imports": "error",
