@@ -29,8 +29,7 @@
     {
       "matchFileNames": ["tools/audio-to-midi/**"],
       "matchPackageNames": ["torch", "torchaudio"],
-      "groupName": "torch",
-      "automerge": false
+      "enabled": false
     },
     {
       "matchFileNames": ["tools/audio-to-midi/**"],
