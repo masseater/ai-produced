@@ -1,5 +1,5 @@
 import { presets as effectPresets } from "@effect/tsgo/oxlint-presets";
-import eslintReact from "@eslint-react/eslint-plugin";
+import eslintReact from "@r_masseater/oxlint-typed-rules/react";
 import remotion from "@remotion/eslint-plugin";
 import { Array, Record, String, Struct, pipe } from "effect";
 import reactHooks from "eslint-plugin-react-hooks";
