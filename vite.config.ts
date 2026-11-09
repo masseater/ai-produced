@@ -1,7 +1,8 @@
 import htmlReact from "@html-eslint/eslint-plugin-react";
+import tanstackQuery from "@r_masseater/oxlint-typed-rules/tanstack-query";
+import tanstackRouter from "@r_masseater/oxlint-typed-rules/tanstack-router";
+import fsd from "@r_masseater/vp-tools/fsd";
 import { plugin as shadcn } from "@shadcn/lint";
-import tanstackQuery from "@tanstack/eslint-plugin-query";
-import tanstackRouter from "@tanstack/eslint-plugin-router";
 import { Struct } from "effect";
 import baselineJs from "eslint-plugin-baseline-js";
 import { defineConfig } from "vite-plus";
@@ -17,7 +18,11 @@ import {
   restrictedImports,
 } from "./lint.config.ts";
 
+const typedRules = "@r_masseater/oxlint-typed-rules";
+
 export default defineConfig({
+  commitlint: { extends: ["@commitlint/config-conventional"] },
+  steiger: fsd.configs.recommended,
   test: { projects: ["apps/*", "libs/*", "infra/*", "tools/*"], passWithNoTests: true },
   staged: {
     "*": "vp check --fix",
@@ -55,17 +60,17 @@ export default defineConfig({
     },
     jsPlugins: [
       { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
-      { name: "tanstack-query", specifier: "@tanstack/eslint-plugin-query" },
-      { name: "tanstack-router", specifier: "@tanstack/eslint-plugin-router" },
-      { name: "tanstack-start", specifier: "@r_masseater/oxlint-typed-rules/tanstack-start" },
-      { name: "drizzle", specifier: "eslint-plugin-drizzle" },
+      { name: "tanstack-query", specifier: `${typedRules}/tanstack-query` },
+      { name: "tanstack-router", specifier: `${typedRules}/tanstack-router` },
+      { name: "tanstack-start", specifier: `${typedRules}/tanstack-start` },
+      { name: "drizzle", specifier: `${typedRules}/drizzle` },
       { name: "react-hooks-js", specifier: "eslint-plugin-react-hooks" },
-      { name: "@eslint-react", specifier: "@eslint-react/eslint-plugin" },
+      { name: "@eslint-react", specifier: `${typedRules}/react` },
       { name: "shadcn", specifier: "@shadcn/lint" },
       { name: "no-comments", specifier: "eslint-plugin-no-comments" },
       { name: "baseline-js", specifier: "eslint-plugin-baseline-js" },
       { name: "@html-eslint/react", specifier: "@html-eslint/eslint-plugin-react" },
-      { name: "@remotion", specifier: "@remotion/eslint-plugin" },
+      { name: "@remotion", specifier: `${typedRules}/remotion` },
     ],
     rules: {
       "vite-plus/prefer-vite-plus-imports": "error",
@@ -193,7 +198,7 @@ export default defineConfig({
         'textlint "**/*.md"',
         `git -c core.quotePath=false ls-files -co --exclude-standard '*.md' | git -c core.quotePath=false -c core.excludesFile=.textlintignore check-ignore --no-index --stdin -nv | awk -F '\\t' '$1 == "::" { print $2 }' | tr '\\n' '\\0' | xargs -0 -r -n 1 -P 4 python3 "$(skills ls --json | jq -r '.[] | select(.name == "yomiyasu").path')/scripts/yomiyasu_lint.py" --strict`,
       ],
-      steiger: 'for src in apps/*/src; do steiger "$src" || exit 1; done',
+      steiger: "vp-tools steiger apps/*/src",
       audit: {
         command:
           'before="$(cksum pnpm-workspace.yaml)"; vp pm audit --fix || exit; if [ "$before" != "$(cksum pnpm-workspace.yaml)" ]; then echo "vp pm audit --fix rewrote pnpm-workspace.yaml. Run vp install and commit the diff." >&2; exit 1; fi',
