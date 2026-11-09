@@ -8,7 +8,7 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@r_masseater/oxlint-typed-rules": 0.0.2
+  "@r_masseater/oxlint-typed-rules": 0.1.1
   "@ast-grep/cli": 0.51.0
   "@cloudflare/workers-types": 5.20261101.1
   "@effect/platform-node": 4.1.2
@@ -70,7 +70,6 @@ overrides:
   effect: "catalog:stack"
   "@effect/platform-node-shared": 4.1.2
   "@effect/sql-d1": 4.1.2
-  "@effect/vitest": 4.1.2
   vite@*: "catalog:"
   eslint-plugin-react-hooks>zod-validation-error: ^5.0.0
   glob@>=9.0.0 <=14.0.1: ^14.0.2
@@ -95,7 +94,7 @@ packageExtensions:
     dependencies:
       "@steiger/toolkit": 0.2.3
 minimumReleaseAgeExclude:
-  - "@r_masseater/oxlint-typed-rules@0.0.2"
+  - "@r_masseater/oxlint-typed-rules@0.1.1"
   - "@remotion/bundler@4.0.533"
   - "@remotion/captions@4.0.533"
   - "@remotion/cli@4.0.533"
