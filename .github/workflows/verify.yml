@@ -18,7 +18,7 @@ jobs:
         with:
           persist-credentials: false
       - uses: $/.github/actions/setup
-      - uses: masseater/typescript-template/.github/actions/verify@7281237f4197f17506c6b5f54ebb90d529faa387
+      - uses: masseater/typescript-template/.github/actions/verify@dfa6379559a180aea5e527bc883c8972a1a85474
         with:
           github-token: ${{ github.token }}
 

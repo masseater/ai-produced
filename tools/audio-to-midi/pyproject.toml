@@ -2,19 +2,19 @@
 name = "audio-to-midi"
 version = "0.0.0"
 description = "Transcribe a stem or a mix to MIDI with Basic Pitch or YourMT3+, and score a transcription against a reference MIDI"
-requires-python = ">=3.15,<3.16"
+requires-python = ">=3.11,<3.12"
 dependencies = [
   "basic-pitch==0.4.0",
   "setuptools<85",
-  "torch==2.15.0+cpu",
-  "torchaudio==2.11.1+cpu",
+  "torch==2.4.1",
+  "torchaudio==2.4.1",
   "lightning>=2.2.1",
   "transformers==4.57.6",
   "einops",
   "deprecated",
   "huggingface-hub",
   "librosa",
-  "numpy==2.5.4",
+  "numpy==1.26.4",
   "pretty-midi",
   "mir-eval",
   "wandb>=0.28.0",

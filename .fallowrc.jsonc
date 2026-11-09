@@ -4,6 +4,7 @@
   "production": true,
   "typeAware": { "enabled": true, "require": "complete" },
   "failOnParseError": true,
+  "ignoreDependencies": ["@effect/language-service"],
   "ignorePatterns": [".claude/**", "tools/tempo-octave/**", "tools/mora-check/**"],
   "audit": { "gate": "all" },
   "security": {

@@ -30,7 +30,7 @@
       "ref": "6eb6c781aa9b6438e0c7307bd102788a75fe1a6d",
       "sourceType": "github",
       "skillPath": "skills/cloudflare/SKILL.md",
-      "computedHash": "e7c26bb690042060d60fcccf3e5807d000c9c064f732b6fcfccb8bbcdc5dc04a"
+      "computedHash": "1cce94a0fea413a5d5f9dd18d2a72cd90e925017c791eb6554be14f5bb777576"
     },
     "effect-ts": {
       "source": "Effect-TS/skills",
@@ -87,7 +87,7 @@
       "ref": "36f05840060cd852a04188534808dfbdaa95d211",
       "sourceType": "github",
       "skillPath": "skills/repo-conventions/SKILL.md",
-      "computedHash": "47d9a9a9a9a5ef3c10566ded8e508c0dd55ecab9b9855a7cc2e059725515a290"
+      "computedHash": "332393d2bc04058aa675993315afe5be8d462b4ec2b6e26a010004117c08ed98"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",
@@ -106,7 +106,7 @@
       "ref": "22f0b463e7a5e579904dd6211a520321035526f7",
       "sourceType": "github",
       "skillPath": "skills/systematic-debugging/SKILL.md",
-      "computedHash": "276fb0aadb002ab930cc2a56de89e16995a2e3e70b33587652bf0a5fb123148d"
+      "computedHash": "b7b6e98c3bffe371893bdb69845ec61124a65b6a96313dc8d6a2bce4437b13eb"
     },
     "typescript-discriminated-unions": {
       "source": "mkosir/typescript-style-guide",
@@ -134,7 +134,7 @@
       "ref": "36f05840060cd852a04188534808dfbdaa95d211",
       "sourceType": "github",
       "skillPath": "skills/vite-plus/SKILL.md",
-      "computedHash": "a2497fefbd662078e91b88e88742eebfe18b1a56bc34da5cc5b0ccc75320dcf3"
+      "computedHash": "8ebe433192b92cafcf50404a4d3c27e03a64000c1b984bceac81898ca83e951b"
     },
     "workers-best-practices": {
       "source": "cloudflare/skills",
