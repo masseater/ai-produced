@@ -84,7 +84,7 @@
     },
     "repo-conventions": {
       "source": "masseater/skills",
-      "ref": "837e2ce66807cc1a565791a1d771cb41c493c280",
+      "ref": "36f05840060cd852a04188534808dfbdaa95d211",
       "sourceType": "github",
       "skillPath": "skills/repo-conventions/SKILL.md",
       "computedHash": "47d9a9a9a9a5ef3c10566ded8e508c0dd55ecab9b9855a7cc2e059725515a290"
@@ -131,7 +131,7 @@
     },
     "vite-plus": {
       "source": "masseater/skills",
-      "ref": "837e2ce66807cc1a565791a1d771cb41c493c280",
+      "ref": "36f05840060cd852a04188534808dfbdaa95d211",
       "sourceType": "github",
       "skillPath": "skills/vite-plus/SKILL.md",
       "computedHash": "a2497fefbd662078e91b88e88742eebfe18b1a56bc34da5cc5b0ccc75320dcf3"
