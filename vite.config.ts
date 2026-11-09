@@ -222,7 +222,7 @@ export default defineConfig({
       ],
       "actions-lint": {
         command:
-          "uvx --from actionlint-py@1.7.12.25 actionlint && uvx zizmor@1.32.0 .github && ast-grep scan --rule .github/rules/no-full-history-checkout.yml .github/workflows",
+          "go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12 &&uvx zizmor@1.32.0 .github && ast-grep scan --rule .github/rules/no-full-history-checkout.yml .github/workflows",
         cache: {
           untrackedEnv: [
             "GH_TOKEN",
