@@ -11,14 +11,37 @@
   "platformAutomerge": false,
   "packageRules": [
     {
-      "matchPackageNames": ["effect", "@effect/**", "!@effect/tsgo", "alchemy", "@alchemy.run/**"],
+      "matchPackageNames": [
+        "effect",
+        "@effect/**",
+        "!@effect/tsgo",
+        "alchemy",
+        "@alchemy.run/**",
+        "@distilled.cloud/**"
+      ],
       "groupName": "effect and alchemy"
+    },
+    {
+      "matchDepTypes": ["pnpm-workspace.overrides"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     },
     {
       "matchFileNames": ["tools/audio-to-midi/**"],
       "matchPackageNames": ["torch", "torchaudio"],
       "groupName": "torch",
       "automerge": false
+    },
+    {
+      "matchFileNames": ["tools/audio-to-midi/**"],
+      "matchDepTypes": ["requires-python"],
+      "enabled": false
+    },
+    {
+      "matchFileNames": ["tools/audio-to-midi/**"],
+      "matchPackageNames": ["numpy"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     },
     {
       "matchPackageNames": ["typescript"],
