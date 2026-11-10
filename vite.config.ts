@@ -1,7 +1,7 @@
 import htmlReact from "@html-eslint/eslint-plugin-react";
 import tanstackQuery from "@r_masseater/oxlint-typed-rules/tanstack-query";
 import tanstackRouter from "@r_masseater/oxlint-typed-rules/tanstack-router";
-import fsd from "@r_masseater/vp-tools/fsd";
+import fsd from "@r_masseater/vite-plus-adopt/fsd";
 import { plugin as shadcn } from "@shadcn/lint";
 import { Struct } from "effect";
 import baselineJs from "eslint-plugin-baseline-js";
@@ -198,7 +198,7 @@ export default defineConfig({
         'textlint "**/*.md"',
         `git -c core.quotePath=false ls-files -co --exclude-standard '*.md' | git -c core.quotePath=false -c core.excludesFile=.textlintignore check-ignore --no-index --stdin -nv | awk -F '\\t' '$1 == "::" { print $2 }' | tr '\\n' '\\0' | xargs -0 -r -n 1 -P 4 python3 "$(skills ls --json | jq -r '.[] | select(.name == "yomiyasu").path')/scripts/yomiyasu_lint.py" --strict`,
       ],
-      steiger: "vp-tools steiger apps/*/src",
+      steiger: "vpa steiger apps/*/src",
       audit: {
         command:
           'before="$(cksum pnpm-workspace.yaml)"; vp pm audit --fix || exit; if [ "$before" != "$(cksum pnpm-workspace.yaml)" ]; then echo "vp pm audit --fix rewrote pnpm-workspace.yaml. Run vp install and commit the diff." >&2; exit 1; fi',
