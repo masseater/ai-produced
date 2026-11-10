@@ -9,7 +9,7 @@ catalogMode: prefer
 
 catalog:
   "@r_masseater/oxlint-typed-rules": 0.1.4
-  "@r_masseater/vite-plus-adopt": 0.2.0
+  "@r_masseater/vite-plus-adopt": 0.3.2
   "@ast-grep/cli": 0.51.1
   "@cloudflare/workers-types": 5.20261107.1
   "@effect/platform-node": 4.1.2
@@ -57,7 +57,6 @@ catalogs:
     renovate: 44.222.1
     remotion: 4.0.541
     tailwindcss: 4.3.5
-    textlint: 15.8.0
     typescript: 7.1.0-beta
     vite-plus: 1.5.0
 overrides:
@@ -69,8 +68,8 @@ overrides:
   glob@>=9.0.0 <=14.0.1: ^14.0.2
   minimatch@<11.0.1: ^11.0.1
   postcss-selector-parser@<6.1.5: ^6.1.5
-  zod@<4.6.6: ^4.6.6
   "steiger>@feature-sliced/steiger-plugin": "-"
+  katex@>=0.11.0 <0.18.2: ^0.19.0
 peerDependencyRules:
   allowAny:
     - vite
@@ -87,7 +86,7 @@ allowBuilds:
   re2: true
 minimumReleaseAgeExclude:
   - "@r_masseater/oxlint-typed-rules@0.1.4"
-  - "@r_masseater/vite-plus-adopt@0.2.0"
+  - "@r_masseater/vite-plus-adopt@0.3.2"
   - "@remotion/bundler@4.0.533"
   - "@remotion/captions@4.0.533"
   - "@remotion/cli@4.0.533"

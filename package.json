@@ -26,7 +26,6 @@
     "renovate": "catalog:stack",
     "skills": "catalog:",
     "syncpack": "catalog:",
-    "textlint": "catalog:stack",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "vite-plus": "catalog:stack"
   },

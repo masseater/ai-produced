@@ -102,10 +102,10 @@
       "entryPoints": ["syncpack.config.ts"],
     },
     {
-      "name": "textlint",
-      "enablers": ["textlint"],
-      "configPatterns": [".textlintrc"],
+      "name": "vite-plus-adopt",
+      "enablers": ["@r_masseater/vite-plus-adopt"],
       "toolingDependencies": [
+        "@commitlint/config-conventional",
         "@textlint-ja/textlint-rule-preset-ai-writing",
         "textlint-rule-preset-ja-technical-writing",
       ],

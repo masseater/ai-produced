@@ -13,7 +13,7 @@
 
 - CI は main への push で走らせる。ワークフローは `.github/workflows/verify.yml` で、デプロイやリリースのジョブは `needs: verify` で main の必須 CI が通ってから動く。
 - `pull_request` トリガーのワークフローは、最新の main を取り込んでいない PR のマージをルールセットで拒むための `up-to-date`（何も検査しない）だけにする。
-- Claude のクラウドセッションではプロキシが GitHub API を拒むため、session-start フック（`.claude/hooks/session-start.sh`）が `ZIZMOR_NO_ONLINE_AUDITS=true` を設定し、zizmor はオフライン監査だけを行う。オンライン監査は main の CI が担う。
+- Claude のクラウドセッションではプロキシが GitHub API を拒む。vpa は `CLAUDE_CODE_REMOTE` があると zizmor にオフライン監査だけを行わせ、オンライン監査は main の CI が担う。
 
 ## 制作
 
