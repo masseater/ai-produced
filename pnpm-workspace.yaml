@@ -9,7 +9,7 @@ catalogMode: prefer
 
 catalog:
   "@r_masseater/oxlint-typed-rules": 0.1.4
-  "@r_masseater/vp-tools": 0.1.4
+  "@r_masseater/vite-plus-adopt": 0.2.0
   "@ast-grep/cli": 0.51.1
   "@cloudflare/workers-types": 5.20261106.1
   "@effect/platform-node": 4.1.2
@@ -77,6 +77,7 @@ peerDependencyRules:
   allowedVersions:
     vite: "*"
 allowBuilds:
+  "@r_masseater/vite-plus-adopt": true
   "@ast-grep/cli": true
   esbuild: true
   workerd: true
@@ -86,7 +87,7 @@ allowBuilds:
   re2: true
 minimumReleaseAgeExclude:
   - "@r_masseater/oxlint-typed-rules@0.1.4"
-  - "@r_masseater/vp-tools@0.1.4"
+  - "@r_masseater/vite-plus-adopt@0.2.0"
   - "@remotion/bundler@4.0.533"
   - "@remotion/captions@4.0.533"
   - "@remotion/cli@4.0.533"
