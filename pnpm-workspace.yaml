@@ -11,7 +11,7 @@ catalog:
   "@r_masseater/oxlint-typed-rules": 0.1.4
   "@r_masseater/vite-plus-adopt": 0.2.0
   "@ast-grep/cli": 0.51.1
-  "@cloudflare/workers-types": 5.20261106.1
+  "@cloudflare/workers-types": 5.20261107.1
   "@effect/platform-node": 4.1.2
   "@shadcn/lint": 0.2.5
   "@types/node": 26.6.6
@@ -21,9 +21,9 @@ catalog:
   eslint-plugin-no-comments: 1.2.1
   eslint-plugin-baseline-js: 0.7.7
   eslint: 10.14.0
-  "@html-eslint/eslint-plugin-react": 0.67.0
+  "@html-eslint/eslint-plugin-react": 0.68.0
   "@commitlint/config-conventional": 21.2.4
-  "@tanstack/react-query-devtools": 5.106.1
+  "@tanstack/react-query-devtools": 5.107.1
   "@vitejs/plugin-react": 6.2.1
   "@vitejs/plugin-rsc": 0.5.39
   skills: 1.7.6
@@ -35,10 +35,10 @@ catalog:
 catalogs:
   stack:
     "@effect/atom-react": 4.1.2
-    "@effect/tsgo": 0.67.4
+    "@effect/tsgo": 0.67.5
     "@elysiajs/eden": 1.4.9
     "@openfeature/server-sdk": 1.23.0
-    "@tanstack/react-query": 5.106.1
+    "@tanstack/react-query": 5.107.1
     "@tanstack/react-start": 1.169.4
     "@alchemy.run/cloudflare": 2.0.0-beta.85
     alchemy: 2.0.0-beta.85
@@ -52,11 +52,11 @@ catalogs:
     eden-tanstack-react-query: 0.5.1
     effect: 4.1.2
     elysia: 1.4.31
-    fallow: 3.40.0
+    fallow: 3.41.0
     radix-ui: 1.8.1
-    renovate: 44.221.5
+    renovate: 44.222.1
     remotion: 4.0.541
-    tailwindcss: 4.3.4
+    tailwindcss: 4.3.5
     textlint: 15.8.0
     typescript: 7.1.0-beta
     vite-plus: 1.5.0
