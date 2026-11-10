@@ -1,12 +1,12 @@
 import htmlReact from "@html-eslint/eslint-plugin-react";
 import tanstackQuery from "@r_masseater/oxlint-typed-rules/tanstack-query";
 import tanstackRouter from "@r_masseater/oxlint-typed-rules/tanstack-router";
-import fsd from "@r_masseater/vite-plus-adopt/fsd";
 import { plugin as shadcn } from "@shadcn/lint";
 import { Struct } from "effect";
 import baselineJs from "eslint-plugin-baseline-js";
 import { defineConfig } from "vite-plus";
 
+import { checkTasks, checks } from "./checks.config.ts";
 import {
   allRulesOf,
   asErrors,
@@ -21,8 +21,7 @@ import {
 const typedRules = "@r_masseater/oxlint-typed-rules";
 
 export default defineConfig({
-  commitlint: { extends: ["@commitlint/config-conventional"] },
-  steiger: fsd.configs.recommended,
+  ...checks,
   test: { projects: ["apps/*", "libs/*", "infra/*", "tools/*"], passWithNoTests: true },
   staged: {
     "*": "vp check --fix",
@@ -184,34 +183,20 @@ export default defineConfig({
         dependsOn: [
           "test",
           "syncpack",
-          "markdown-lint",
+          "vpa",
+          "yomiyasu",
           "renovate",
           "actions-lint",
-          "steiger",
           "fallow",
           "audit",
         ],
       },
       test: "vp test run",
       syncpack: "syncpack lint",
-      "markdown-lint": [
-        'textlint "**/*.md"',
-        `git -c core.quotePath=false ls-files -co --exclude-standard '*.md' | git -c core.quotePath=false -c core.excludesFile=.textlintignore check-ignore --no-index --stdin -nv | awk -F '\\t' '$1 == "::" { print $2 }' | tr '\\n' '\\0' | xargs -0 -r -n 1 -P 4 python3 "$(skills ls --json | jq -r '.[] | select(.name == "yomiyasu").path')/scripts/yomiyasu_lint.py" --strict`,
-      ],
-      steiger: "vpa steiger apps/*/src",
+      ...checkTasks,
       audit: {
         command:
           'before="$(cksum pnpm-workspace.yaml)"; vp pm audit --fix || exit; if [ "$before" != "$(cksum pnpm-workspace.yaml)" ]; then echo "vp pm audit --fix rewrote pnpm-workspace.yaml. Run vp install and commit the diff." >&2; exit 1; fi',
-        cache: false,
-      },
-      betterleaks: {
-        command:
-          'betterleaks git . --config .betterleaks.toml --redact --no-banner --revision="$(git rev-parse -q --verify "$BETTERLEAKS_BASE" || echo origin/main)..HEAD"',
-        cache: false,
-      },
-      "betterleaks:staged": {
-        command:
-          "git diff --cached --no-ext-diff --no-textconv --no-color --src-prefix=a/ --dst-prefix=b/ | betterleaks stdin --git-diff --config .betterleaks.toml --redact --no-banner",
         cache: false,
       },
       renovate: "renovate-config-validator --strict",
@@ -221,21 +206,8 @@ export default defineConfig({
         "fallow dupes --quiet --format compact",
         "fallow security --fail-on-issues --quiet",
       ],
-      "actions-lint": {
-        command:
-          "actionlint && zizmor .github && ast-grep scan --rule .github/rules/no-full-history-checkout.yml .github/workflows",
-        cache: {
-          untrackedEnv: [
-            "GH_TOKEN",
-            "ZIZMOR_NO_ONLINE_AUDITS",
-            "HTTPS_PROXY",
-            "https_proxy",
-            "NO_PROXY",
-            "no_proxy",
-            "SSL_CERT_FILE",
-          ],
-        },
-      },
+      "actions-lint":
+        "ast-grep scan --rule .github/rules/no-full-history-checkout.yml .github/workflows",
     },
   },
 });
