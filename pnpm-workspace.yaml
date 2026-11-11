@@ -11,7 +11,7 @@ catalog:
   "@r_masseater/oxlint-typed-rules": 0.1.4
   "@r_masseater/vite-plus-adopt": 0.3.2
   "@ast-grep/cli": 0.51.1
-  "@cloudflare/workers-types": 5.20261107.1
+  "@cloudflare/workers-types": 5.20261108.1
   "@effect/platform-node": 4.1.2
   "@shadcn/lint": 0.2.5
   "@types/node": 26.6.6
@@ -39,7 +39,7 @@ catalogs:
     "@elysiajs/eden": 1.4.9
     "@openfeature/server-sdk": 1.23.0
     "@tanstack/react-query": 5.107.1
-    "@tanstack/react-start": 1.169.4
+    "@tanstack/react-start": 1.169.5
     "@alchemy.run/cloudflare": 2.0.0-beta.85
     alchemy: 2.0.0-beta.85
     better-auth: 1.7.18
@@ -54,7 +54,7 @@ catalogs:
     elysia: 1.4.31
     fallow: 3.41.0
     radix-ui: 1.8.1
-    renovate: 44.222.2
+    renovate: 44.222.4
     remotion: 4.0.541
     tailwindcss: 4.3.5
     typescript: 7.1.0-beta
