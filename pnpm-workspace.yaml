@@ -11,7 +11,7 @@ catalog:
   "@r_masseater/oxlint-typed-rules": 0.1.4
   "@r_masseater/vite-plus-adopt": 0.3.2
   "@ast-grep/cli": 0.51.1
-  "@cloudflare/workers-types": 5.20261107.1
+  "@cloudflare/workers-types": 5.20261108.1
   "@effect/platform-node": 4.1.2
   "@shadcn/lint": 0.2.5
   "@types/node": 26.6.6
@@ -39,7 +39,7 @@ catalogs:
     "@elysiajs/eden": 1.4.9
     "@openfeature/server-sdk": 1.23.0
     "@tanstack/react-query": 5.107.1
-    "@tanstack/react-start": 1.169.4
+    "@tanstack/react-start": 1.169.5
     "@alchemy.run/cloudflare": 2.0.0-beta.85
     alchemy: 2.0.0-beta.85
     better-auth: 1.7.18
@@ -54,14 +54,13 @@ catalogs:
     elysia: 1.4.31
     fallow: 3.41.0
     radix-ui: 1.8.1
-    renovate: 44.222.2
+    renovate: 44.222.4
     remotion: 4.0.541
     tailwindcss: 4.3.5
     typescript: 7.1.0-beta
     vite-plus: 1.5.0
 overrides:
   effect: "catalog:stack"
-  "@effect/platform-node-shared": 4.1.2
   "@effect/sql-d1": 4.1.2
   vite@*: "catalog:"
   eslint-plugin-react-hooks>zod-validation-error: ^5.0.0
@@ -84,39 +83,3 @@ allowBuilds:
   core-js-pure: false
   dtrace-provider: false
   re2: true
-minimumReleaseAgeExclude:
-  - "@r_masseater/oxlint-typed-rules@0.1.4"
-  - "@r_masseater/vite-plus-adopt@0.3.2"
-  - "@remotion/bundler@4.0.533"
-  - "@remotion/captions@4.0.533"
-  - "@remotion/cli@4.0.533"
-  - "@remotion/codemods@4.0.533"
-  - "@remotion/compositor-darwin-arm64@4.0.533"
-  - "@remotion/compositor-darwin-x64@4.0.533"
-  - "@remotion/compositor-linux-arm64-gnu@4.0.533"
-  - "@remotion/compositor-linux-arm64-musl@4.0.533"
-  - "@remotion/compositor-linux-x64-gnu@4.0.533"
-  - "@remotion/compositor-linux-x64-musl@4.0.533"
-  - "@remotion/compositor-win32-x64-msvc@4.0.533"
-  - "@remotion/elevenlabs@4.0.533"
-  - "@remotion/google-fonts@4.0.533"
-  - "@remotion/licensing@4.0.533"
-  - "@remotion/media-parser@4.0.533"
-  - "@remotion/media-utils@4.0.533"
-  - "@remotion/media@4.0.533"
-  - "@remotion/openai-whisper@4.0.533"
-  - "@remotion/paths@4.0.533"
-  - "@remotion/player@4.0.533"
-  - "@remotion/renderer@4.0.533"
-  - "@remotion/sdk@4.0.533"
-  - "@remotion/streaming@4.0.533"
-  - "@remotion/studio-protocol@4.0.533"
-  - "@remotion/studio-server@4.0.533"
-  - "@remotion/studio-shared@4.0.533"
-  - "@remotion/studio@4.0.533"
-  - "@remotion/timeline-utils@4.0.533"
-  - "@remotion/web-renderer@4.0.533"
-  - "@remotion/zod-types@4.0.533"
-  - remotion@4.0.533
-  - "@remotion/tailwind-v4@4.0.533"
-  - "@remotion/eslint-plugin@4.0.533"
