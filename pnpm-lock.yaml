@@ -294,7 +294,6 @@ catalogs:
 
 overrides:
   effect: 4.1.2
-  '@effect/platform-node-shared': 4.1.2
   '@effect/sql-d1': 4.1.2
   vite@*: npm:@voidzero-dev/vite-plus-core@1.5.0
   eslint-plugin-react-hooks>zod-validation-error: ^5.0.0
