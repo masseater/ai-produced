@@ -1,154 +1,154 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "analysis-wiki": {
       "source": "./docs/skills/analysis-wiki",
       "sourceType": "local",
-      "computedHash": "370184d0d9900d49785e8c1f1ad7e26d813102ff5ed1a73b195c6f4d260ddb4b"
+      "computedHash": "1bba14f15c06c847865b6c1c61cf57ced4d41bb6d21b06526906f97ef0298864"
     },
     "audio-to-midi": {
       "source": "./docs/skills/audio-to-midi",
       "sourceType": "local",
-      "computedHash": "c9b034c59893e7ef4176987e805059acd541bfd6a33a4a8247bf6fe2691a5dcc"
+      "computedHash": "877fdc493258f89734dfc3c46d3c95b3fd1607605127229a311ab71c6550cefc"
     },
     "better-auth-best-practices": {
       "source": "better-auth/skills",
       "ref": "20c9e88a5c007461a703f1c213572b073196113e",
       "sourceType": "github",
       "skillPath": "better-auth/best-practices/SKILL.md",
-      "computedHash": "0c30be0e118c2b7a0c4c57bd9e63bf110c7e420a79ec6ce7997153f3b1e066ee"
+      "computedHash": "2773c3687f2cf96d659049ebf2d8c86058a33541b09360712df0dc6b1404c403"
     },
     "better-auth-security-best-practices": {
       "source": "better-auth/skills",
       "ref": "20c9e88a5c007461a703f1c213572b073196113e",
       "sourceType": "github",
       "skillPath": "security/SKILL.md",
-      "computedHash": "7a230edf3a24ce18162cb4379f59b6a19b8d24ca04db530609d0f15cede556dc"
+      "computedHash": "36e9710eaa13c61c00bec00a4902fdc6ed829e6de13127238ae57494e93c1d9d"
     },
     "cloudflare": {
       "source": "cloudflare/skills",
       "ref": "cbf893b954222276bf1af57e5f23379231e0efb9",
       "sourceType": "github",
       "skillPath": "skills/cloudflare/SKILL.md",
-      "computedHash": "1cce94a0fea413a5d5f9dd18d2a72cd90e925017c791eb6554be14f5bb777576"
+      "computedHash": "a40c5c77e4b96b0f6603a54e67bf2ff401a872366af48ff8f6ae0e872d4ad324"
     },
     "effect-ts": {
       "source": "Effect-TS/skills",
       "ref": "155c50c911f9c99c294ef8a4461981c5bbe6453e",
       "sourceType": "github",
       "skillPath": "skills/effect-ts/SKILL.md",
-      "computedHash": "cb225ba5dda169883dfee680fba6c570c89245ba19242a9bc5c3f2ac8218a55f"
+      "computedHash": "0e5d926566561f7fe206f5f60c1c53e21d1519fd6de8408a7e3c9934d55ad04f"
     },
     "elysiajs": {
       "source": "elysiajs/skills",
       "ref": "1466d85aa4f2a0fec91f71311e65bbfa91aa7dc5",
       "sourceType": "github",
       "skillPath": "elysia/SKILL.md",
-      "computedHash": "e0bc0ecce6cecc34f14cf445c72f7df0cec278e64dfd4ea99f26c503e98624d6"
+      "computedHash": "a6c0405d2b902e2fe6227d612812d376f5ebb568ea55ec28634f92abf16485c4"
     },
     "email-and-password-best-practices": {
       "source": "better-auth/skills",
       "ref": "20c9e88a5c007461a703f1c213572b073196113e",
       "sourceType": "github",
       "skillPath": "better-auth/emailAndPassword/SKILL.md",
-      "computedHash": "863886759f729081e265941f4f72c503835d55a1f34f6d63cebe6571159fff4a"
+      "computedHash": "407c1244202876daa748818ed41dc55afde1b3f7aec48ae3a1f1c8a7ee40465e"
     },
     "feature-sliced-design": {
       "source": "feature-sliced/skills",
       "ref": "5e95aaebb84541742686e56352b7569acf4306f1",
       "sourceType": "github",
       "skillPath": "feature-sliced-design/SKILL.md",
-      "computedHash": "ffed722f612ca9f9de3f35345c2beb40fb0d56a39391d85f27d6523cf52a07d3"
+      "computedHash": "1e0cac31c1e579545f055b6585ada1a3d75ee5ed91052addc6e9a49ec63d674b"
     },
     "mac-mini-handoff": {
       "source": "./docs/skills/mac-mini-handoff",
       "sourceType": "local",
-      "computedHash": "bfe5b575e2b7a41a8e7156ee3faa233639061d0911c7e4d412f0becd932113f9"
+      "computedHash": "fe830b96bcc31a62680dc6c94d9434c8487e49ca3b27542b25f6db5956fbd354"
     },
     "measure-dont-guess": {
       "source": "./docs/skills/measure-dont-guess",
       "sourceType": "local",
-      "computedHash": "230d74b73e3e9ba71fc14966baa9328adf9c9014cb18ca62db4742845aaa3b48"
+      "computedHash": "2436e04c4dfabdfeeac2a44b67a0aca228b0dd61771261cd114c18a3cea73f57"
     },
     "modern-web-guidance": {
       "source": "GoogleChrome/modern-web-guidance",
       "ref": "4dd968349e54ca45a05dd5c818fb035c9054b022",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
-      "computedHash": "8ea2818acb8fc266fd58123427700e9fe424e03f9913089ee4f3d1b041d72841"
+      "computedHash": "9e69ce00dc314b64f6664031b70295ea46c7de93ac682c624808df6e48e08b66"
     },
     "reference-materials": {
       "source": "./docs/skills/reference-materials",
       "sourceType": "local",
-      "computedHash": "0c6e406da9ae32331de429e47b25e08453bf74d8dc9e17c97f42d7d272dce8c1"
+      "computedHash": "39aeae3e70db39a3fd55cb42397da866b954e52a9d6fbea1c60467d78bbca507"
     },
     "repo-conventions": {
       "source": "masseater/skills",
       "ref": "c9a5959d7fd7b6478ca895fc953f7c9c711d02a8",
       "sourceType": "github",
       "skillPath": "plugins/masseater-skills/skills/repo-conventions/SKILL.md",
-      "computedHash": "70953b204cf62968ecf493c086ef5ca4c09be338a2460222e733c0b7760dc4c2"
+      "computedHash": "e5d70127a8519e9a9803d322e791fe18e1e9ba37e673234811560bb82a237cd6"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",
       "ref": "e62c9435fff729a175f38983dee73b2cb4f6a069",
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
-      "computedHash": "b864a958765563321f485a96f4d59c0bb6539f4286ab6d8b8b66895b7ebd302d"
+      "computedHash": "388962d16c7a4f13aaeee0d8f128e50a87df8553d42ef7988c39c0e1c74a40e8"
     },
     "stem-repro": {
       "source": "./docs/skills/stem-repro",
       "sourceType": "local",
-      "computedHash": "73fbb251931fd78104ed6cbee5e93e338ab7173f2f49fc17f635767d3bf2cee5"
+      "computedHash": "f84d8e9c7669e7d1c9b5225b64fb2e1693e43076a31e7241bd467edcb8548a58"
     },
     "systematic-debugging": {
       "source": "obra/superpowers",
       "ref": "22f0b463e7a5e579904dd6211a520321035526f7",
       "sourceType": "github",
       "skillPath": "skills/systematic-debugging/SKILL.md",
-      "computedHash": "b7b6e98c3bffe371893bdb69845ec61124a65b6a96313dc8d6a2bce4437b13eb"
+      "computedHash": "79ff0583175346e39431b0dc713b223edd1bd7a7ea2b6c8b78b2fb9a3fed6782"
     },
     "typescript-discriminated-unions": {
       "source": "mkosir/typescript-style-guide",
       "ref": "170074a0df9b07f4a4a78e3596ec1edf06a14da7",
       "sourceType": "github",
       "skillPath": "skills/typescript-discriminated-unions/SKILL.md",
-      "computedHash": "9d78f0a301706ba0becfa780ef9c6a80dee373340a240c4a5f5e59de1d75f370"
+      "computedHash": "a246ddf02c9335402f1f5fffc5aa17cebb6bca2726481a8f19cd5dfb80774c17"
     },
     "typescript-variables": {
       "source": "mkosir/typescript-style-guide",
       "ref": "170074a0df9b07f4a4a78e3596ec1edf06a14da7",
       "sourceType": "github",
       "skillPath": "skills/typescript-variables/SKILL.md",
-      "computedHash": "a4f4459aa4c0dd16f8fd43401b76c4e9cb68265a73060d7f184ddb438f911afd"
+      "computedHash": "f43818b36a0db6457b4cf06df4acb056e2d981f70d741b5e320297a0c0168cf8"
     },
     "verification-before-completion": {
       "source": "obra/superpowers",
       "ref": "22f0b463e7a5e579904dd6211a520321035526f7",
       "sourceType": "github",
       "skillPath": "skills/verification-before-completion/SKILL.md",
-      "computedHash": "b529822bdac4b197b180fe12225cff86b930b65910435103c10622df7f041651"
+      "computedHash": "09b0e3a4689c1c38a3b8fc6ef57a1d4165aa33c0013d546dbde9dd348941a319"
     },
     "vite-plus": {
       "source": "masseater/skills",
       "ref": "c9a5959d7fd7b6478ca895fc953f7c9c711d02a8",
       "sourceType": "github",
       "skillPath": "plugins/masseater-skills/skills/vite-plus/SKILL.md",
-      "computedHash": "8ebe433192b92cafcf50404a4d3c27e03a64000c1b984bceac81898ca83e951b"
+      "computedHash": "6960577058c0b13c61f22d703c339b188436fc637095cfcee3d011a6606f44ce"
     },
     "workers-best-practices": {
       "source": "cloudflare/skills",
       "ref": "cbf893b954222276bf1af57e5f23379231e0efb9",
       "sourceType": "github",
       "skillPath": "skills/workers-best-practices/SKILL.md",
-      "computedHash": "afc1b560659bcbbf043741e04a865b99e7d5b094bf62573d6188a8b26de235ab"
+      "computedHash": "7f941bbc549454872a4c7c261bf75a1ef7aaa69666bc85cec91e97cf40c11cc6"
     },
     "yomiyasu": {
       "source": "nanaism/yomiyasu",
       "ref": "db78b9bc5e868549b517a037df7a4d1c93edac23",
       "sourceType": "github",
       "skillPath": "skills/yomiyasu/SKILL.md",
-      "computedHash": "efae9f5d075542c998612d061108e8fcee68147cf39f4dee1b1e549eefcfa5cc"
+      "computedHash": "713c7534b4d2d81048d604e2729e5e7306a78da9f5831377b4904a5c7694507a"
     }
   }
 }
