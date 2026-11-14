@@ -60,7 +60,6 @@ catalogs:
     typescript: 7.1.0-beta
     vite-plus: 1.6.0
 overrides:
-  "@effect/sql-d1": 4.1.4
   vite@*: "catalog:"
   eslint-plugin-react-hooks>zod-validation-error: ^5.0.0
   glob@>=9.0.0 <=14.0.1: ^14.0.2

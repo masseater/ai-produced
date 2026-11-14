@@ -296,7 +296,6 @@ catalogs:
       version: 1.6.0
 
 overrides:
-  '@effect/sql-d1': 4.1.4
   vite@*: npm:@voidzero-dev/vite-plus-core@1.6.0
   eslint-plugin-react-hooks>zod-validation-error: ^5.0.0
   glob@>=9.0.0 <=14.0.1: ^14.0.2
