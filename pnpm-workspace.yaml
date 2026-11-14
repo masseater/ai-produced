@@ -45,17 +45,17 @@ catalogs:
     better-auth: 1.7.20
     drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-ab785fc
-    "@remotion/cli": 4.0.542
-    "@remotion/google-fonts": 4.0.542
-    "@remotion/media": 4.0.542
-    "@remotion/tailwind-v4": 4.0.542
+    "@remotion/cli": 4.0.543
+    "@remotion/google-fonts": 4.0.543
+    "@remotion/media": 4.0.543
+    "@remotion/tailwind-v4": 4.0.543
     eden-tanstack-react-query: 0.5.1
     effect: 4.1.4
     elysia: 1.4.32
     fallow: 3.42.0
     radix-ui: 1.8.1
-    renovate: 44.233.0
-    remotion: 4.0.542
+    renovate: 44.234.0
+    remotion: 4.0.543
     tailwindcss: 4.3.5
     typescript: 7.1.0-beta
     vite-plus: 1.6.0
