@@ -12,7 +12,7 @@ catalog:
   "@r_masseater/vite-plus-adopt": 0.4.0
   "@ast-grep/cli": 0.51.1
   "@cloudflare/workers-types": 5.20261110.1
-  "@effect/platform-node": 4.1.3
+  "@effect/platform-node": 4.1.4
   "@shadcn/lint": 0.2.5
   "@types/node": 26.6.6
   eslint-plugin-react-hooks: 7.1.1
@@ -34,7 +34,7 @@ catalog:
   "@tailwindcss/typography": 0.5.20
 catalogs:
   stack:
-    "@effect/atom-react": 4.1.3
+    "@effect/atom-react": 4.1.4
     "@effect/tsgo": 0.67.7
     "@elysiajs/eden": 1.4.9
     "@openfeature/server-sdk": 1.23.0
@@ -50,7 +50,7 @@ catalogs:
     "@remotion/media": 4.0.542
     "@remotion/tailwind-v4": 4.0.542
     eden-tanstack-react-query: 0.5.1
-    effect: 4.1.3
+    effect: 4.1.4
     elysia: 1.4.31
     fallow: 3.42.0
     radix-ui: 1.8.1
@@ -60,7 +60,7 @@ catalogs:
     typescript: 7.1.0-beta
     vite-plus: 1.5.1
 overrides:
-  "@effect/sql-d1": 4.1.3
+  "@effect/sql-d1": 4.1.4
   vite@*: "catalog:"
   eslint-plugin-react-hooks>zod-validation-error: ^5.0.0
   glob@>=9.0.0 <=14.0.1: ^14.0.2
