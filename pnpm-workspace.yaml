@@ -35,14 +35,14 @@ catalog:
 catalogs:
   stack:
     "@effect/atom-react": 4.1.4
-    "@effect/tsgo": 0.67.7
+    "@effect/tsgo": 0.68.0
     "@elysiajs/eden": 1.4.9
     "@openfeature/server-sdk": 1.23.0
     "@tanstack/react-query": 5.107.1
     "@tanstack/react-start": 1.169.5
     "@alchemy.run/cloudflare": 2.0.0-beta.85
     alchemy: 2.0.0-beta.85
-    better-auth: 1.7.20
+    better-auth: 1.7.21
     drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-ab785fc
     "@remotion/cli": 4.0.543
@@ -54,7 +54,7 @@ catalogs:
     elysia: 1.4.32
     fallow: 3.42.0
     radix-ui: 1.8.1
-    renovate: 44.234.0
+    renovate: 44.234.1
     remotion: 4.0.543
     tailwindcss: 4.3.5
     typescript: 7.1.0-beta
