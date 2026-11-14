@@ -32,6 +32,6 @@ jobs:
         with:
           persist-credentials: false
       - if: steps.changed.outputs.skills-lock == 'true'
-        uses: masseater/typescript-template/.github/actions/skills-lock@4619d415cd6ecf9c9a723d3551526bacdeaf0521
+        uses: masseater/typescript-template/.github/actions/skills-lock@8807d1fbbb0254e6c5f40a18ffaa4146954a48e3
         with:
           branch: ${{ github.head_ref }}
