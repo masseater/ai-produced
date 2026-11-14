@@ -54,7 +54,7 @@ catalogs:
     elysia: 1.4.32
     fallow: 3.42.0
     radix-ui: 1.8.1
-    renovate: 44.232.1
+    renovate: 44.233.0
     remotion: 4.0.542
     tailwindcss: 4.3.5
     typescript: 7.1.0-beta

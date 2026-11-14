@@ -283,8 +283,8 @@ catalogs:
       specifier: 4.0.542
       version: 4.0.542
     renovate:
-      specifier: 44.232.1
-      version: 44.232.1
+      specifier: 44.233.0
+      version: 44.233.0
     tailwindcss:
       specifier: 4.3.5
       version: 4.3.5
@@ -359,7 +359,7 @@ importers:
         version: 3.42.0
       renovate:
         specifier: catalog:stack
-        version: 44.232.1(supports-color@8.1.1)(typanion@3.14.0)
+        version: 44.233.0(supports-color@8.1.1)(typanion@3.14.0)
       skills:
         specifier: 'catalog:'
         version: 1.8.1
@@ -7911,8 +7911,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  renovate@44.232.1:
-    resolution: {integrity: sha512-WWU/iasi0aUIv8mOxlU7+moI2J+FGwOFU3cGszh0GYjXnP3hEeMc0X+2mRHYOwdXr0BUzR1XdLmbfO9luTtejw==}
+  renovate@44.233.0:
+    resolution: {integrity: sha512-j/KjBJVt6SjzF34IRDbfYnMshfqtChR1JHtoQ9dDYQgp+ij0Cn0MvEhzCDX1B9J4ScybHecy18ZWrkH13Dllzg==}
     engines: {node: ^24.11.0 || ^26.13.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -16958,7 +16958,7 @@ snapshots:
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
-  renovate@44.232.1(supports-color@8.1.1)(typanion@3.14.0):
+  renovate@44.233.0(supports-color@8.1.1)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1139.0
       '@aws-sdk/client-ec2': 3.1139.0
