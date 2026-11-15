@@ -32,15 +32,3 @@ REAPER で書き出した音声を、`apps/video/package.json` の `studio` が 
 cd apps/video
 vp run studio
 ```
-
-## GitHub Actions の準備
-
-main への push で検査が走る。
-リポジトリの Actions secrets に次を登録する。
-
-| 名前                      | 用途                                      |
-| ------------------------- | ----------------------------------------- |
-| `CLAUDE_CODE_OAUTH_TOKEN` | 検査が落ちたときの Claude Code の自動修正 |
-
-Settings → Actions → General では「Allow GitHub Actions to create and approve pull requests」を有効にする。
-有効にしないと、release-please と自動修正が PR を作れない。
