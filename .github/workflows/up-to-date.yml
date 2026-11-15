@@ -35,3 +35,15 @@ jobs:
         uses: masseater/typescript-template/.github/actions/skills-lock@eeeed3cd1ec6cbeabc464f7b1a0bd727703bfd7c
         with:
           branch: ${{ github.head_ref }}
+
+  wake:
+    needs: [up-to-date]
+    if: failure() && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: gh workflow run update-branches.yml --repo "$GITHUB_REPOSITORY" --ref "$DEFAULT_BRANCH"
