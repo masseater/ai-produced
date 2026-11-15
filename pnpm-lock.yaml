@@ -292,8 +292,8 @@ catalogs:
       specifier: 4.0.543
       version: 4.0.543
     renovate:
-      specifier: 44.235.2
-      version: 44.235.2
+      specifier: 44.235.4
+      version: 44.235.4
     tailwindcss:
       specifier: 4.3.5
       version: 4.3.5
@@ -367,7 +367,7 @@ importers:
         version: 3.42.0
       renovate:
         specifier: catalog:stack
-        version: 44.235.2(supports-color@8.1.1)(typanion@3.14.0)
+        version: 44.235.4(supports-color@8.1.1)(typanion@3.14.0)
       skills:
         specifier: 'catalog:'
         version: 1.8.1
@@ -1094,6 +1094,15 @@ packages:
 
   '@containerbase/base@14.66.16':
     resolution: {integrity: sha512-90xFit8D4PnfOll2GrE5O9v4bhZvlRm6C5Q/kq0yXrTq4LJ4l8+rqODA0i3cUMq2KXC73dVR72UBkkkJ25gxHQ==}
+    engines: {node: '>=24.10.0'}
+    peerDependencies:
+      zod: ^4.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
+  '@containerbase/base@14.66.18':
+    resolution: {integrity: sha512-znv1iQAdvSrUm9fS15LFZxJwI9dzT5MPy96+6EqRcfZVMHU5QHnTUI73WDpEUQam33avuAh5ocF9ssxvZ/Nt9A==}
     engines: {node: '>=24.10.0'}
     peerDependencies:
       zod: ^4.0.0
@@ -3360,8 +3369,8 @@ packages:
   '@remotion/zod-types@4.0.543':
     resolution: {integrity: sha512-i1WhDdXdH7W8EqeG6lL4Ra/TlHQL9uVF+6wG6k0O4EZ8ZnTzXp+mNuVf2j9nXMVEGaJ+JVc7ya4EeqRPJ03/cw==}
 
-  '@renovatebot/base-image@13.165.1':
-    resolution: {integrity: sha512-gdbx3RjL3t+XRi4Q4OM+WonoSawGPGSrm211UgdqV6kqvFfxUmWCTwSItsr7HoD2NYr5S96cZvkjN5zUt/+aVw==}
+  '@renovatebot/base-image@13.165.3':
+    resolution: {integrity: sha512-CgyzRUUBWZfqM6vw65BLTidzoHy8EnEkLoQQeSb41LJyQPGvPpcslEqMcYnV96unMzNCa0xqp/CIxsdEhSRpAw==}
     engines: {node: '>=24.10.0'}
     peerDependencies:
       zod: ^4.0.0
@@ -7924,8 +7933,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  renovate@44.235.2:
-    resolution: {integrity: sha512-kH6D7Nt2g1eV6CvZY+P5ocP/p61Kjp6SzdHsNAZ5HtxMKRx3c+vRle5LSjXBpFfSpMQoyXDNy6BjbgkbqqBuiw==}
+  renovate@44.235.4:
+    resolution: {integrity: sha512-NuoFliZWfdrCwOKKpgsE6T5ivZQE9N3y8KN9cZlwFWdxKUJMNI24+xnndhlT0AnmZqTQI9kkZfC/q1JNjkAK0g==}
     engines: {node: ^24.11.0 || ^26.13.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -9825,6 +9834,12 @@ snapshots:
       picocolors: 1.1.1
 
   '@containerbase/base@14.66.16(zod@4.6.7)':
+    dependencies:
+      semver: 7.8.6
+    optionalDependencies:
+      zod: 4.6.7
+
+  '@containerbase/base@14.66.18(zod@4.6.7)':
     dependencies:
       semver: 7.8.6
     optionalDependencies:
@@ -11997,9 +12012,9 @@ snapshots:
       - react
       - react-dom
 
-  '@renovatebot/base-image@13.165.1(zod@4.6.7)':
+  '@renovatebot/base-image@13.165.3(zod@4.6.7)':
     dependencies:
-      '@containerbase/base': 14.66.16(zod@4.6.7)
+      '@containerbase/base': 14.66.18(zod@4.6.7)
     optionalDependencies:
       zod: 4.6.7
 
@@ -16975,7 +16990,7 @@ snapshots:
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
-  renovate@44.235.2(supports-color@8.1.1)(typanion@3.14.0):
+  renovate@44.235.4(supports-color@8.1.1)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1139.0
       '@aws-sdk/client-ec2': 3.1139.0
@@ -17008,7 +17023,7 @@ snapshots:
       '@pnpm/parse-overrides': 1001.0.4
       '@qnighy/marshal': 0.1.3
       '@redis/client': 6.3.1(@opentelemetry/api@1.10.0)
-      '@renovatebot/base-image': 13.165.1(zod@4.6.7)
+      '@renovatebot/base-image': 13.165.3(zod@4.6.7)
       '@renovatebot/detect-tools': 5.0.0
       '@renovatebot/good-enough-parser': 4.0.3
       '@renovatebot/osv-offline': 4.5.10(supports-color@8.1.1)(zod@4.6.7)
