@@ -3,19 +3,7 @@ import fsd from "@r_masseater/vite-plus-adopt/fsd";
 import { Array as Arr, pipe } from "effect";
 import type { UserConfig } from "vite-plus";
 
-const MARKDOWN_IGNORES = [
-  "AGENTS.md",
-  ".agents/skills/**",
-  ".claude/worktrees/**",
-  "**/.venv/**",
-  "CHANGELOG.md",
-];
-
-const markdownFiles = pipe(
-  MARKDOWN_IGNORES,
-  Arr.map((glob) => `':(glob,exclude)${glob}'`),
-  Arr.join(" "),
-);
+const MARKDOWN_IGNORES = ["AGENTS.md", ".agents/skills/**", "CHANGELOG.md"];
 
 const PUBLIC_VALUES = [String.raw`\bCF_BEACON_TOKEN = "[0-9a-f]{32}"`];
 
@@ -34,6 +22,7 @@ const checks: ToolSections = {
     ignores: MARKDOWN_IGNORES,
     rules: {
       "@textlint-ja/preset-ai-writing": true,
+      "@masseater.dev/yomiyasu": true,
       "preset-ja-technical-writing": {
         "sentence-length": { max: 120 },
         "ja-no-mixed-period": { allowPeriodMarks: [":"] },
@@ -59,7 +48,6 @@ const checks: ToolSections = {
 
 const checkTasks: NonNullable<NonNullable<UserConfig["run"]>["tasks"]> = {
   vpa: { command: "vpa", cache: false },
-  yomiyasu: `git ls-files -z '*.md' ${markdownFiles} | xargs -0 -r -n 1 -P 4 sh -c 'python3 "$0" --strict < "$1" || { echo "yomiyasu: $1" >&2; exit 1; }' "$(skills ls --json | jq -r '.[] | select(.name == "yomiyasu").path')/scripts/yomiyasu_lint.py"`,
 };
 
 export { checkTasks, checks };

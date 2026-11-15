@@ -329,6 +329,9 @@ importers:
       '@html-eslint/eslint-plugin-react':
         specifier: 'catalog:'
         version: 0.68.0(eslint@10.14.0(jiti@2.7.0)(supports-color@8.1.1))
+      '@masseater.dev/textlint-rule-yomiyasu':
+        specifier: github:masseater/masseater.dev#path:/libs/textlint-rule-yomiyasu
+        version: https://codeload.github.com/masseater/masseater.dev/tar.gz/938a46ff738201fbd708afb432e96528678c8a5f#path:/libs/textlint-rule-yomiyasu(effect@4.1.4)
       '@r_masseater/oxlint-typed-rules':
         specifier: 'catalog:'
         version: 0.4.1(effect@4.1.4)(typescript@7.1.0-beta)
@@ -1750,6 +1753,12 @@ packages:
 
   '@loaderkit/resolve@1.0.6':
     resolution: {integrity: sha512-G8FdIoF5CypfwmD9rl8BXod5HDn8JqB0CCNBXDTaRZ+yRYhARrrSToX1zg1zy9jX3zLqigsELwhT4gNtkdQAUg==}
+
+  '@masseater.dev/textlint-rule-yomiyasu@https://codeload.github.com/masseater/masseater.dev/tar.gz/938a46ff738201fbd708afb432e96528678c8a5f#path:/libs/textlint-rule-yomiyasu':
+    resolution: {gitHosted: true, integrity: sha512-kQxFwJxJRNv70J0s4U7PVUxPetyWqtZtKkUk0gDmZAB27FNYCl6LnOymdHCl6GbFQftJd0vEcyj1Kk4pCYIqdA==, path: /libs/textlint-rule-yomiyasu, tarball: https://codeload.github.com/masseater/masseater.dev/tar.gz/938a46ff738201fbd708afb432e96528678c8a5f}
+    version: 0.0.0
+    peerDependencies:
+      effect: ^4.0.0
 
   '@mediabunny/aac-encoder@1.64.0':
     resolution: {integrity: sha512-u9BnYGgDsPw4xjD7YRt285wsz+QR5Cp0Lzi/aZTrZ1FHBqYW4c7uyIFD1NhU+jKOO5IZgXhMOw9Y2IEjyr2k5Q==}
@@ -10357,6 +10366,10 @@ snapshots:
   '@loaderkit/resolve@1.0.6':
     dependencies:
       '@braidai/lang': 1.1.2
+
+  '@masseater.dev/textlint-rule-yomiyasu@https://codeload.github.com/masseater/masseater.dev/tar.gz/938a46ff738201fbd708afb432e96528678c8a5f#path:/libs/textlint-rule-yomiyasu(effect@4.1.4)':
+    dependencies:
+      effect: 4.1.4
 
   '@mediabunny/aac-encoder@1.64.0(mediabunny@1.64.0)':
     dependencies:
