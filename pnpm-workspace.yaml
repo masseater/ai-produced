@@ -40,8 +40,8 @@ catalogs:
     "@openfeature/server-sdk": 1.23.0
     "@tanstack/react-query": 5.107.1
     "@tanstack/react-start": 1.169.5
-    "@alchemy.run/cloudflare": 2.0.0-beta.85
-    alchemy: 2.0.0-beta.85
+    "@alchemy.run/cloudflare": 2.0.0-beta.87
+    alchemy: 2.0.0-beta.87
     better-auth: 1.7.21
     drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-ab785fc
