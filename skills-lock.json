@@ -87,7 +87,7 @@
       "ref": "b22383e9dfdbdd2c1c127afaf2228fed90963630",
       "sourceType": "github",
       "skillPath": "plugins/masseater-skills/skills/repo-conventions/SKILL.md",
-      "computedHash": "e5d70127a8519e9a9803d322e791fe18e1e9ba37e673234811560bb82a237cd6"
+      "computedHash": "41989590c6e95a2eeec633f65c90c71f36ea0379cdfe6833345ea495f61ee445"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",
@@ -134,7 +134,7 @@
       "ref": "b22383e9dfdbdd2c1c127afaf2228fed90963630",
       "sourceType": "github",
       "skillPath": "plugins/masseater-skills/skills/vite-plus/SKILL.md",
-      "computedHash": "6960577058c0b13c61f22d703c339b188436fc637095cfcee3d011a6606f44ce"
+      "computedHash": "80d9dc1e764c62f08ac1169766e44b31e0db168246cdccb0de416d3af660bdff"
     },
     "workers-best-practices": {
       "source": "cloudflare/skills",
