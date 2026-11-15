@@ -12,6 +12,7 @@ clap = { version = "4.6.7", features = ["derive"] }
 ebur128 = "0.1.11"
 ndarray = "0.17.2"
 num-complex = "0.4.6"
+num-traits = "0.2.19"
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = { version = "1.0.154", features = ["preserve_order"] }
 sonara = { git = "https://github.com/kkollsga/sonara", rev = "15fb81d34e4e6ca856508e5520a84b1a4ab42b6e" }

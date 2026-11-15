@@ -3,11 +3,12 @@ use std::fs;
 use std::path::Path;
 use std::process::Command;
 
+use num_traits::ToPrimitive;
 use serde_json::Value;
 
 fn write(path: &Path, rate: u32, channels: &[Vec<f64>]) {
     let spec = hound::WavSpec {
-        channels: channels.len() as u16,
+        channels: u16::try_from(channels.len()).unwrap(),
         sample_rate: rate,
         bits_per_sample: 32,
         sample_format: hound::SampleFormat::Float,
@@ -15,7 +16,7 @@ fn write(path: &Path, rate: u32, channels: &[Vec<f64>]) {
     let mut writer = hound::WavWriter::create(path, spec).unwrap();
     for i in 0..channels[0].len() {
         for channel in channels {
-            writer.write_sample(channel[i] as f32).unwrap();
+            writer.write_sample(channel[i].to_f32().unwrap()).unwrap();
         }
     }
     writer.finalize().unwrap();
@@ -68,14 +69,14 @@ fn drums(rate: u32, seconds: u32, slow_bpm: f64, snare_offset: f64) -> Vec<f64> 
     let beat = 60.0 / slow_bpm;
     let mut seed = 12345u64;
     let mut out = vec![0.0; (rate * seconds) as usize];
-    for (i, sample) in out.iter_mut().enumerate() {
-        let t = i as f64 / f64::from(rate);
+    for (i, sample) in (0u32..).zip(out.iter_mut()) {
+        let t = f64::from(i) / f64::from(rate);
         let since_kick = t % beat;
         let since_snare = (t - snare_offset * beat).rem_euclid(beat);
         seed = seed
             .wrapping_mul(6_364_136_223_846_793_005)
             .wrapping_add(1_442_695_040_888_963_407);
-        let noise = (seed >> 33) as f64 / f64::from(1u32 << 31) - 1.0;
+        let noise = f64::from(u32::try_from(seed >> 33).unwrap()) / f64::from(1u32 << 31) - 1.0;
         let kick = (2.0 * PI * 60.0 * since_kick).sin() * (-since_kick / 0.12).exp();
         let snare = noise * (-since_snare / 0.08).exp();
         *sample = 0.5 * kick + 0.3 * snare;
@@ -106,9 +107,10 @@ fn vocal_sections_skip_silence_and_track_a_steady_pitch() {
     let rate = 22050;
     let path = dir.path().join("voice.wav");
     let bar = 2.0;
-    let voice: Vec<f64> = (0..(f64::from(rate) * bar * 4.0) as usize)
+    let frames = (f64::from(rate) * bar * 4.0).to_u32().unwrap();
+    let voice: Vec<f64> = (0..frames)
         .map(|i| {
-            let t = i as f64 / f64::from(rate);
+            let t = f64::from(i) / f64::from(rate);
             if t < bar * 2.0 {
                 0.0
             } else {
