@@ -6,6 +6,7 @@ use audio::{Decoded, decode, mean, percentile, round};
 use clap::Parser;
 use ebur128::{EbuR128, Mode};
 use ndarray::Array1;
+use num_traits::ToPrimitive;
 use serde::Serialize;
 use serde_json::{Value, json};
 use sonara::core::audio::resample;
@@ -83,13 +84,14 @@ struct Loudness {
 }
 
 fn loudness(decoded: &Decoded) -> Result<Loudness> {
+    let channels = u32::try_from(decoded.channels)?;
     let mut meter = EbuR128::new(
-        decoded.channels as u32,
+        channels,
         decoded.rate,
         Mode::I | Mode::LRA | Mode::TRUE_PEAK,
     )?;
     meter.add_frames_f32(&decoded.samples)?;
-    let peak = (0..decoded.channels as u32)
+    let peak = (0..channels)
         .map(|channel| meter.true_peak(channel))
         .collect::<Result<Vec<_>, _>>()?
         .into_iter()
@@ -101,7 +103,7 @@ fn loudness(decoded: &Decoded) -> Result<Loudness> {
     })
 }
 
-fn energy(values: &Array1<f32>) -> f64 {
+fn energy(values: &Array1<f32>) -> Result<f64> {
     mean(values.iter().map(|v| f64::from(*v).powi(2)))
 }
 
@@ -117,7 +119,7 @@ fn measure(path: &Path, bpm: Option<f64>, offset: f64, duration: Option<f64>) ->
     };
     let window = WindowSpec::Named("hann".into());
     let power = stft_power(y.view(), 4096, 2048, &window, true, PadMode::Constant, 2.0)?;
-    let freqs = fft_frequencies(SR as f32, 4096);
+    let freqs = fft_frequencies(SR.to_f32().context("sample rate")?, 4096);
     let band_power = |lo: f32, hi: f32| -> f64 {
         freqs
             .iter()
@@ -137,7 +139,7 @@ fn measure(path: &Path, bpm: Option<f64>, offset: f64, duration: Option<f64>) ->
     let voiced: Vec<f64> = rms_db.iter().copied().filter(|v| *v > -80.0).collect();
     let y22 = resample(y.view(), SR, 22050)?;
     let onsets = onset_detect(Some(y22.view()), None, 22050, 512, false, 0.07, 0)?;
-    let seconds = y.len() as f64 / f64::from(SR);
+    let seconds = y.len().to_f64().context("sample count")? / f64::from(SR);
     let peak = left
         .iter()
         .chain(right.iter())
@@ -147,18 +149,25 @@ fn measure(path: &Path, bpm: Option<f64>, offset: f64, duration: Option<f64>) ->
         .iter()
         .map(|(_, lo, hi)| round(10.0 * (band_power(*lo, *hi) / total).log10(), 2))
         .collect();
+    let loudness_spread = if voiced.is_empty() {
+        None
+    } else {
+        Some(round(
+            percentile(&voiced, 90.0)? - percentile(&voiced, 10.0)?,
+            2,
+        ))
+    };
     Ok(Metrics {
         bpm,
         lufs_integrated: level.as_ref().map(|l| l.integrated),
         lra: level.as_ref().map(|l| l.range),
         true_peak_dbtp: level.as_ref().map(|l| l.true_peak),
-        crest_db: round(20.0 * (peak / energy(&y).sqrt()).log10(), 2),
-        stereo_side_to_mid_db: round(10.0 * (energy(&side) / energy(&mid) + 1e-12).log10(), 2),
-        onsets_per_s: round(onsets.len() as f64 / seconds, 2),
-        spectral_centroid_hz: round(mean(centroid.row(0).iter().map(|v| f64::from(*v))), 1),
-        loudness_p90_minus_p10_db: (!voiced.is_empty())
-            .then(|| round(percentile(&voiced, 90.0) - percentile(&voiced, 10.0), 2)),
-        rms_dbfs: round(10.0 * (energy(&y) + 1e-12).log10(), 2),
+        crest_db: round(20.0 * (peak / energy(&y)?.sqrt()).log10(), 2),
+        stereo_side_to_mid_db: round(10.0 * (energy(&side)? / energy(&mid)? + 1e-12).log10(), 2),
+        onsets_per_s: round(onsets.len().to_f64().context("onset count")? / seconds, 2),
+        spectral_centroid_hz: round(mean(centroid.row(0).iter().map(|v| f64::from(*v)))?, 1),
+        loudness_p90_minus_p10_db: loudness_spread,
+        rms_dbfs: round(10.0 * (energy(&y)? + 1e-12).log10(), 2),
         sub: bands[0],
         low: bands[1],
         mid: bands[2],
