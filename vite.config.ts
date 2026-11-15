@@ -183,7 +183,6 @@ export default defineConfig({
           "test",
           "syncpack",
           "vpa",
-          "yomiyasu",
           "renovate",
           "actions-lint",
           "fallow",

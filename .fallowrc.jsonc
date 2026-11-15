@@ -106,6 +106,7 @@
       "enablers": ["@r_masseater/vite-plus-adopt"],
       "toolingDependencies": [
         "@commitlint/config-conventional",
+        "@masseater.dev/textlint-rule-yomiyasu",
         "@textlint-ja/textlint-rule-preset-ai-writing",
         "textlint-rule-preset-ja-technical-writing",
       ],
