@@ -14,7 +14,7 @@ export default defineConfig({
         cache: false,
       },
       timing:
-        "uv run --project ../../tools/lyric-timing ../../tools/lyric-timing/lyric_timing.py ../../songs/001-mou-ikkai/02-composition/score.toml ../../songs/001-mou-ikkai/02-composition/generated/vocal.tsv src/pages/mou-ikkai/generated/mou-ikkai.json",
+        "cargo run -q -p song --bin lyric-timing -- ../../songs/001-mou-ikkai/02-composition/score.toml ../../songs/001-mou-ikkai/02-composition/generated/vocal.tsv src/pages/mou-ikkai/generated/mou-ikkai.json",
     },
   },
 });

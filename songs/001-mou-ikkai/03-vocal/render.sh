@@ -35,7 +35,7 @@ colors="${COLORS-$(cut -f4 <<<"$singer_line")}"
 phonemizer="${PHONEMIZER:-}"
 echo "singer=$singer_id colors=$colors phonemizer=${phonemizer:-default}"
 
-(cd "$repo/tools/ustx-from-vocal" && uv run ustx_from_vocal.py \
+(cd "$repo" && cargo run -q -p song --bin ustx-from-vocal -- \
   "$song/02-composition/generated/vocal.tsv" \
   --score "$song/02-composition/score.toml" \
   --out "$out/mou-ikkai.ustx" \

@@ -3,9 +3,9 @@
 ## 構成
 
 - `songs/<連番>-<名前>/` に1曲ずつ工程別の成果物と log.md を置く。構成は `docs/songs.md` にある。
-- `apps/video` は Remotion の映像で、`songs/` の書き出し音声と、`tools/lyric-timing` が作る歌詞のタイミングを読む。
+- `apps/video` は Remotion の映像で、`songs/` の書き出し音声と、`tools/song` の lyric-timing が作る歌詞のタイミングを読む。
 - `apps/wiki` は `docs/wiki/` の分析 wiki を閲覧と検索のために配信する。
-- `tools/` の解析や変換は Python（`uv run --project tools/<name>`）か C#（`openutau-render`）で書かれ、`vp run verify` の対象外である。
+- `tools/` 配下のツールは、Cargoワークスペース内のRustクレートである。ただし、`openutau-render` はC#である。`cargo run -p <crate> --bin <tool> -- <args>` で実行する。`vp run verify` を実行すると、rustfmt、clippy、およびクレートのテストが実行される。
 
 ## CI
 
