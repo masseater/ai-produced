@@ -1,7 +1,7 @@
 [workspace]
 resolver = "3"
 members = ["tools/*"]
-exclude = ["tools/openutau-render", "tools/audio-to-midi", "tools/stem-repro"]
+exclude = ["tools/openutau-render", "tools/stem-repro"]
 
 [workspace.package]
 version = "0.0.0"

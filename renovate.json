@@ -27,22 +27,6 @@
       "enabled": false
     },
     {
-      "matchFileNames": ["tools/audio-to-midi/**"],
-      "matchPackageNames": ["torch", "torchaudio"],
-      "enabled": false
-    },
-    {
-      "matchFileNames": ["tools/audio-to-midi/**"],
-      "matchDepTypes": ["requires-python"],
-      "enabled": false
-    },
-    {
-      "matchFileNames": ["tools/audio-to-midi/**"],
-      "matchPackageNames": ["numpy"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
-    },
-    {
       "matchPackageNames": ["typescript"],
       "allowedVersions": "/^(?:[7-9]|[1-9][0-9]+)\\.[0-9]+\\.[0-9]+(?:-(?:beta|rc)[0-9.]*)?$/"
     },
