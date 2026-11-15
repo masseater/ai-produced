@@ -42,7 +42,7 @@ catalogs:
     "@tanstack/react-start": 1.169.5
     "@alchemy.run/cloudflare": 2.0.0-beta.87
     alchemy: 2.0.0-beta.87
-    better-auth: 1.7.21
+    better-auth: 1.7.22
     drizzle-kit: 1.0.0-rc.5-ab785fc
     drizzle-orm: 1.0.0-rc.5-ab785fc
     "@remotion/cli": 4.0.543
@@ -54,7 +54,7 @@ catalogs:
     elysia: 1.4.32
     fallow: 3.42.0
     radix-ui: 1.8.1
-    renovate: 44.235.1
+    renovate: 44.235.2
     remotion: 4.0.543
     tailwindcss: 4.3.5
     typescript: 7.1.0-beta
