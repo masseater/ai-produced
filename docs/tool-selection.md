@@ -136,8 +136,8 @@ Workers上の小規模な意味検索で、全件のコサイン計算とVectori
 2026-10-10に、tools/にある自作ツールのうち次の4つについて既存の代わりを調べた。
 
 2026-11-15、リポジトリでPythonが使用されなくなったため、tools/内のPythonツールがRustで書き直された。
-score-midi、lyric-timing、mora-check、ustx-from-vocal、およびmidi-rppはtools/songクレートのバイナリとなった。
-最初の楽曲の出力結果は、コミット済みファイルとバイト単位で一致している：02-composition/generatedのMIDIファイルとテーブル、ビデオタイミングのJSON、およびREAPERプロジェクトである。
+score-midi、lyric-timing、mora-check、ustx-from-vocal、midi-rppはtools/songクレートのバイナリとなった。
+最初の楽曲の出力結果は、コミット済みファイルとバイト単位で一致している：02-composition/generatedのMIDIファイルとテーブル、ビデオタイミングのJSON、REAPERプロジェクトである。
 .ustxファイルはYAMLデータとして一致しており、異なるのはクォート形式のみである。
 クレートのテストはこれらの出力を検証するため、ツールとコミット済みファイルの乖離が生じた場合はverifyが失敗する。
 
