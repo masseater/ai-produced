@@ -1,0 +1,37 @@
+[workspace]
+resolver = "3"
+members = ["tools/*"]
+exclude = [
+  "tools/openutau-render",
+  "tools/audio-to-midi",
+  "tools/mix-metrics",
+  "tools/stem-repro",
+  "tools/tempo-octave",
+]
+
+[workspace.package]
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.100"
+publish = false
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+cast_possible_truncation = "allow"
+cast_precision_loss = "allow"
+cast_sign_loss = "allow"
+cast_possible_wrap = "allow"
+similar_names = "allow"
+many_single_char_names = "allow"
+needless_range_loop = "allow"
+
+[profile.release]
+lto = "thin"
+
+[profile.dev.package."*"]
+opt-level = 3

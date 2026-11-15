@@ -69,3 +69,5 @@ songs/*/04-reaper/*-mix.rpp
 # Downloaded reference songs and videos (public repo)
 reference/
 downloads/
+
+/target

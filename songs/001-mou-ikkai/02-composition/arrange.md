@@ -1,6 +1,6 @@
 # 001「もういっかい」アレンジメモ
 
-楽譜は score.toml に書き、MIDIはそこから生成する。`tools/score-midi` が generated/ にMIDIと歌の割り付け表を書き出す。
+楽譜は score.toml に書き、MIDIはそこから生成する。`tools/song` の score-midi が generated/ にMIDIと歌の割り付け表を書き出す。
 
 ## コード進行
 
