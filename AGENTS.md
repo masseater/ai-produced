@@ -6,14 +6,10 @@
 - `apps/video` は Remotion の映像で、`songs/` の書き出し音声と、`tools/lyric-timing` が作る歌詞のタイミングを読む。
 - `apps/wiki` は `docs/wiki/` の分析 wiki を閲覧と検索のために配信する。
 - `tools/` の解析や変換は Python（`uv run --project tools/<name>`）か C#（`openutau-render`）で書かれ、`vp run verify` の対象外である。
-- コードコメントは書かず、lint が落とす。必須技術のパッケージは pnpm の stack カタログから参照し、未参照のカタログ項目と未使用の依存は fallow が落とす。
-- Claude Code では `.claude/settings.json` が pnpm・pnpx・pn・pnx の実行を拒否する。
 
 ## CI
 
-- CI は main への push で走らせる。ワークフローは `.github/workflows/verify.yml` で、デプロイやリリースのジョブは `needs: verify` で main の必須 CI が通ってから動く。
 - `pull_request` トリガーのワークフローは、最新の main を取り込んでいない PR のマージをルールセットで拒むための `up-to-date`（何も検査しない）だけにする。
-- Claude のクラウドセッションではプロキシが GitHub API を拒む。vpa は `CLAUDE_CODE_REMOTE` があると zizmor にオフライン監査だけを行わせ、オンライン監査は main の CI が担う。
 
 ## 制作
 
