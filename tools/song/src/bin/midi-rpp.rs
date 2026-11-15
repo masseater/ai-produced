@@ -5,6 +5,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{Context, Result, anyhow};
 use clap::Parser;
 use midly::{MetaMessage, MidiMessage, Smf, Timing, TrackEvent, TrackEventKind};
+use num_traits::ToPrimitive;
 use uuid::Uuid;
 
 #[derive(Parser)]
@@ -153,7 +154,9 @@ fn message_bytes(channel: u8, message: MidiMessage) -> Vec<u8> {
         MidiMessage::ChannelAftertouch { vel } => vec![0xd0 | channel, vel.into()],
         MidiMessage::PitchBend { bend } => {
             let value = bend.0.as_int();
-            vec![0xe0 | channel, (value & 0x7f) as u8, (value >> 7) as u8]
+            let [low, _] = (value & 0x7f).to_le_bytes();
+            let [high, _] = (value >> 7).to_le_bytes();
+            vec![0xe0 | channel, low, high]
         }
     }
 }
@@ -257,8 +260,11 @@ fn main() -> Result<()> {
         .max()
         .unwrap_or(0);
     let length_ticks = end_ticks.div_ceil(bar_ticks) * bar_ticks;
-    let seconds = |ticks: u64| ticks as f64 / ppq as f64 * 60.0 / bpm;
-    let length_seconds = seconds(length_ticks);
+    let seconds = |ticks: u64| -> Result<f64> {
+        let ticks = ticks.to_f64().context("ticks")?;
+        Ok(ticks / ppq.to_f64().context("ppq")? * 60.0 / bpm)
+    };
+    let length_seconds = seconds(length_ticks)?;
     let mut audio: Vec<(String, String)> = args
         .audio
         .iter()
@@ -280,7 +286,7 @@ fn main() -> Result<()> {
     ];
     for (index, (tick, name)) in found.markers.iter().enumerate() {
         let index = (index + 1).to_string();
-        let at = format!("{:.6}", seconds(*tick));
+        let at = format!("{:.6}", seconds(*tick)?);
         let id = guid(&format!("marker/{index}"));
         children.push(line(&[
             "MARKER", &index, &at, name, "0", "0", "1", "B", &id,
