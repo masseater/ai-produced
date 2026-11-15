@@ -1,8 +1,9 @@
 use std::collections::HashMap;
 
-use anyhow::{Result, anyhow};
+use anyhow::{Context, Result, anyhow};
 use midly::num::{u4, u7, u15, u24, u28};
 use midly::{Format, Header, MetaMessage, MidiMessage, Smf, Timing, TrackEvent, TrackEventKind};
+use num_traits::ToPrimitive;
 
 pub const DRUM_PROGRAM: u16 = 128;
 
@@ -35,12 +36,12 @@ pub struct Instrument {
 }
 
 struct TempoMap {
-    changes: Vec<(u64, f64)>,
+    changes: Vec<(u32, f64)>,
     ppq: f64,
 }
 
 impl TempoMap {
-    fn seconds(&self, tick: u64) -> f64 {
+    fn seconds(&self, tick: u32) -> f64 {
         let mut seconds = 0.0;
         let mut last_tick = 0;
         let mut per_tick = 0.5 / self.ppq;
@@ -48,14 +49,19 @@ impl TempoMap {
             if at >= tick {
                 break;
             }
-            seconds += (at - last_tick) as f64 * per_tick;
+            seconds += f64::from(at - last_tick) * per_tick;
             last_tick = at;
             per_tick = tempo / 1e6 / self.ppq;
         }
-        seconds + (tick - last_tick) as f64 * per_tick
+        seconds + f64::from(tick - last_tick) * per_tick
     }
 }
 
+/// Reads the notes of a Standard MIDI File, in seconds, grouped by program, channel and track.
+///
+/// # Errors
+///
+/// Returns an error when the file does not parse or uses timecode timing.
 pub fn read(data: &[u8]) -> Result<Vec<Instrument>> {
     let smf = Smf::parse(data)?;
     let Timing::Metrical(ppq) = smf.header.timing else {
@@ -63,9 +69,9 @@ pub fn read(data: &[u8]) -> Result<Vec<Instrument>> {
     };
     let mut changes = Vec::new();
     for track in &smf.tracks {
-        let mut tick = 0u64;
+        let mut tick = 0u32;
         for event in track {
-            tick += u64::from(u32::from(event.delta));
+            tick = tick.saturating_add(u32::from(event.delta));
             if let TrackEventKind::Meta(MetaMessage::Tempo(tempo)) = event.kind {
                 changes.push((tick, f64::from(u32::from(tempo))));
             }
@@ -79,11 +85,11 @@ pub fn read(data: &[u8]) -> Result<Vec<Instrument>> {
     let mut instruments: Vec<Instrument> = Vec::new();
     let mut index: HashMap<(u8, u8, usize), usize> = HashMap::new();
     for (track_index, track) in smf.tracks.iter().enumerate() {
-        let mut tick = 0u64;
+        let mut tick = 0u32;
         let mut programs = [0u8; 16];
-        let mut open: HashMap<(u8, u8), Vec<u64>> = HashMap::new();
+        let mut open: HashMap<(u8, u8), Vec<u32>> = HashMap::new();
         for event in track {
-            tick += u64::from(u32::from(event.delta));
+            tick = tick.saturating_add(u32::from(event.delta));
             let TrackEventKind::Midi { channel, message } = event.kind else {
                 continue;
             };
@@ -133,10 +139,12 @@ pub const TICKS_PER_BEAT: u16 = 480;
 const TEMPO: u32 = 500_000;
 const DRUM_BEATS: f64 = 1.0 / 32.0;
 
-fn tick_of(beats: f64) -> u64 {
+fn tick_of(beats: f64) -> Result<u32> {
     (beats * f64::from(TICKS_PER_BEAT))
         .round_ties_even()
-        .max(0.0) as u64
+        .max(0.0)
+        .to_u32()
+        .with_context(|| format!("bad note time {beats} beats"))
 }
 
 struct Event {
@@ -196,11 +204,16 @@ fn tempo_event() -> TrackEvent<'static> {
     }
 }
 
+/// Writes notes as a type 1 Standard MIDI File with one track per program.
+///
+/// # Errors
+///
+/// Returns an error when a note time is negative or too large, or a program is above 127.
 pub fn write(notes: &[Note], name: fn(u16) -> String) -> Result<Vec<u8>> {
     let mut order: Vec<u16> = Vec::new();
     let mut channels: HashMap<u16, u8> = HashMap::new();
     let mut free: Vec<u8> = (0..9).chain(10..16).rev().collect();
-    let mut messages: HashMap<u16, Vec<(u64, MidiMessage)>> = HashMap::new();
+    let mut messages: HashMap<u16, Vec<(u32, MidiMessage)>> = HashMap::new();
     for event in sorted_events(notes) {
         let key = event.program;
         channels.entry(key).or_insert_with(|| {
@@ -226,13 +239,17 @@ pub fn write(notes: &[Note], name: fn(u16) -> String) -> Result<Vec<u8>> {
         messages
             .entry(key)
             .or_default()
-            .push((tick_of(event.beats), message));
+            .push((tick_of(event.beats)?, message));
     }
     let names: Vec<String> = order.iter().map(|key| name(*key)).collect();
     let mut tracks = vec![vec![tempo_event(), track_end()]];
     for (key, name) in order.iter().zip(&names) {
         let channel = u4::new(channels[key]);
-        let program = if *key == DRUM_PROGRAM { 0 } else { *key as u8 };
+        let program = if *key == DRUM_PROGRAM {
+            0
+        } else {
+            u8::try_from(*key)?
+        };
         let mut track = vec![
             TrackEvent {
                 delta: u28::new(0),
@@ -252,7 +269,7 @@ pub fn write(notes: &[Note], name: fn(u16) -> String) -> Result<Vec<u8>> {
         let mut last = 0;
         for (tick, message) in &messages[key] {
             track.push(TrackEvent {
-                delta: u28::new((tick - last) as u32),
+                delta: u28::new(tick - last),
                 kind: TrackEventKind::Midi {
                     channel,
                     message: *message,

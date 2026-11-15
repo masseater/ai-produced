@@ -3,6 +3,7 @@ use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result};
 use clap::{Parser, ValueEnum};
+use num_traits::ToPrimitive;
 use transcribe::midi::{self, Note};
 use transcribe::muscriptor::{Muscriptor, SAMPLE_RATE, instrument_name};
 use transcribe::{BasicPitchParams, basic_pitch};
@@ -32,16 +33,17 @@ struct Args {
     minimum_note_length: f64,
 }
 
-fn sounding(note: &Note, samples: &[f32], rate: u32) -> bool {
+fn sounding(note: &Note, samples: &[f32], rate: u32) -> Result<bool> {
     let rate = f64::from(rate);
-    let start = (note.onset * rate) as usize;
-    let window = (0.08 * rate) as usize;
+    let start = (note.onset * rate).to_usize().context("note onset")?;
+    let window = (0.08 * rate).to_usize().context("window")?;
     let chunk = &samples[start.min(samples.len())..(start + window).min(samples.len())];
     if chunk.is_empty() {
-        return false;
+        return Ok(false);
     }
-    let energy = chunk.iter().map(|v| f64::from(*v).powi(2)).sum::<f64>() / chunk.len() as f64;
-    10.0 * (energy + 1e-12).log10() > SILENCE_DB
+    let energy = chunk.iter().map(|v| f64::from(*v).powi(2)).sum::<f64>()
+        / chunk.len().to_f64().context("window length")?;
+    Ok(10.0 * (energy + 1e-12).log10() > SILENCE_DB)
 }
 
 fn muscriptor(model: &Muscriptor, wav: &Path) -> Result<Vec<u8>> {
@@ -49,10 +51,12 @@ fn muscriptor(model: &Muscriptor, wav: &Path) -> Result<Vec<u8>> {
     let notes = model.transcribe(decoded.mono(SAMPLE_RATE)?.as_slice().unwrap_or_default())?;
     let native = decoded.mono(decoded.rate)?;
     let samples = native.as_slice().unwrap_or_default();
-    let kept: Vec<Note> = notes
-        .into_iter()
-        .filter(|n| sounding(n, samples, decoded.rate))
-        .collect();
+    let mut kept: Vec<Note> = Vec::new();
+    for note in notes {
+        if sounding(&note, samples, decoded.rate)? {
+            kept.push(note);
+        }
+    }
     midi::write(&kept, instrument_name)
 }
 

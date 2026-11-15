@@ -2,6 +2,7 @@ use std::fs;
 use std::path::Path;
 use std::process::Command;
 
+use num_traits::ToPrimitive;
 use serde_json::Value;
 use transcribe::midi::{self, Note, read};
 
@@ -20,21 +21,22 @@ fn hz(pitch: u8) -> f64 {
 }
 
 fn write_melody(path: &Path) {
-    let rate = 44100usize;
-    let mut samples = vec![0f64; rate * 5];
+    let rate = 44100u32;
+    let frames = 44100usize;
+    let mut samples = vec![0f64; frames * 5];
     let mut seed = 1u64;
     for (pitch, onset, _) in MELODY {
-        let period = (rate as f64 / hz(pitch)) as usize;
+        let period = (f64::from(rate) / hz(pitch)).to_usize().unwrap();
         let mut string: Vec<f64> = (0..period)
             .map(|_| {
                 seed = seed
                     .wrapping_mul(6_364_136_223_846_793_005)
                     .wrapping_add(1_442_695_040_888_963_407);
-                (seed >> 33) as f64 / f64::from(1u32 << 31) - 1.0
+                f64::from(u32::try_from(seed >> 33).unwrap()) / f64::from(1u32 << 31) - 1.0
             })
             .collect();
-        let start = (onset * rate as f64) as usize;
-        for i in 0..rate * 2 {
+        let start = (onset * f64::from(rate)).to_usize().unwrap();
+        for i in 0..frames * 2 {
             let at = i % period;
             let value = string[at];
             string[at] = 0.996 * 0.5 * (value + string[(at + 1) % period]);
@@ -45,14 +47,14 @@ fn write_melody(path: &Path) {
     }
     let spec = hound::WavSpec {
         channels: 1,
-        sample_rate: rate as u32,
+        sample_rate: rate,
         bits_per_sample: 16,
         sample_format: hound::SampleFormat::Int,
     };
     let mut writer = hound::WavWriter::create(path, spec).unwrap();
     for sample in samples {
         writer
-            .write_sample((sample.clamp(-1.0, 1.0) * 32767.0) as i16)
+            .write_sample((sample.clamp(-1.0, 1.0) * 32767.0).to_i16().unwrap())
             .unwrap();
     }
     writer.finalize().unwrap();

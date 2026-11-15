@@ -1,8 +1,9 @@
 use std::fs;
 use std::path::PathBuf;
 
-use anyhow::Result;
+use anyhow::{Context, Result};
 use clap::Parser;
+use num_traits::ToPrimitive;
 use serde_json::json;
 use transcribe::midi::{ScoredNote, read};
 
@@ -68,9 +69,9 @@ fn score(
     estimate: &[ScoredNote],
     shift: f64,
     offset_ratio: Option<f64>,
-) -> (f64, f64, f64) {
+) -> Result<(f64, f64, f64)> {
     if reference.is_empty() || estimate.is_empty() {
-        return (0.0, 0.0, 0.0);
+        return Ok((0.0, 0.0, 0.0));
     }
     let edges: Vec<Vec<usize>> = estimate
         .iter()
@@ -96,15 +97,17 @@ fn score(
     let mut owner = vec![None; reference.len()];
     let matched = (0..estimate.len())
         .filter(|&e| augment(e, &edges, &mut owner, &mut vec![false; reference.len()]))
-        .count() as f64;
-    let precision = matched / estimate.len() as f64;
-    let recall = matched / reference.len() as f64;
+        .count()
+        .to_f64()
+        .context("match count")?;
+    let precision = matched / estimate.len().to_f64().context("estimate count")?;
+    let recall = matched / reference.len().to_f64().context("reference count")?;
     let f1 = if precision + recall > 0.0 {
         2.0 * precision * recall / (precision + recall)
     } else {
         0.0
     };
-    (precision, recall, f1)
+    Ok((precision, recall, f1))
 }
 
 fn round3(value: f64) -> f64 {
@@ -115,22 +118,27 @@ fn main() -> Result<()> {
     let args = Args::parse();
     let reference = load(&args.reference, args.ref_instrument, None)?;
     let estimate = load(&args.estimate, None, args.est_programs.as_deref())?;
-    let steps = ((2.0 * args.max_shift + 1e-9) / STEP).floor() as usize;
-    let shift = (0..=steps)
-        .map(|k| -args.max_shift + k as f64 * STEP)
-        .fold((0.0, f64::NEG_INFINITY), |best, s| {
-            let f = score(&reference, &estimate, s, None).2;
-            if f > best.1 { (s, f) } else { best }
-        })
-        .0;
-    let (precision, recall, f1) = score(&reference, &estimate, shift, None);
-    let (_, _, f1_offset) = score(&reference, &estimate, shift, Some(0.2));
+    let steps = ((2.0 * args.max_shift + 1e-9) / STEP)
+        .floor()
+        .to_u32()
+        .context("max shift")?;
+    let mut shift = (0.0, f64::NEG_INFINITY);
+    for k in 0..=steps {
+        let s = -args.max_shift + f64::from(k) * STEP;
+        let f = score(&reference, &estimate, s, None)?.2;
+        if f > shift.1 {
+            shift = (s, f);
+        }
+    }
+    let shift = shift.0;
+    let (precision, recall, f1) = score(&reference, &estimate, shift, None)?;
+    let (_, _, f1_offset) = score(&reference, &estimate, shift, Some(0.2))?;
     println!(
         "{}",
         json!({
             "reference_notes": reference.len(),
             "estimated_notes": estimate.len(),
-            "shift_ms": (shift * 1000.0).round_ties_even() as i64,
+            "shift_ms": (shift * 1000.0).round_ties_even().to_i64().context("shift")?,
             "precision": round3(precision),
             "recall": round3(recall),
             "f1": round3(f1),

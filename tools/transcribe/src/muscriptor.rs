@@ -3,6 +3,7 @@ use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result};
 use hf_hub::HFClientSync;
+use num_traits::ToPrimitive;
 use tract_onnx::prelude::*;
 
 use crate::midi::{DRUM_PROGRAM, Note};
@@ -80,12 +81,12 @@ enum Token {
 
 fn token(id: usize) -> Token {
     match id {
-        SHIFT..PITCH => Token::Shift((id - SHIFT) as u32),
-        PITCH..VELOCITY => Token::Pitch((id - PITCH) as u8),
-        VELOCITY..TIE => Token::Velocity((id - VELOCITY) as u8),
+        SHIFT..PITCH => u32::try_from(id - SHIFT).map_or(Token::Other, Token::Shift),
+        PITCH..VELOCITY => u8::try_from(id - PITCH).map_or(Token::Other, Token::Pitch),
+        VELOCITY..TIE => u8::try_from(id - VELOCITY).map_or(Token::Other, Token::Velocity),
         TIE => Token::Tie,
-        PROGRAM..DRUM => Token::Program((id - PROGRAM) as u16),
-        DRUM..VOCAB => Token::Drum((id - DRUM) as u8),
+        PROGRAM..DRUM => u16::try_from(id - PROGRAM).map_or(Token::Other, Token::Program),
+        DRUM..VOCAB => u8::try_from(id - DRUM).map_or(Token::Other, Token::Drum),
         _ => Token::Other,
     }
 }
@@ -126,8 +127,8 @@ struct Tracker {
     open: Vec<((u16, u8), f64)>,
     seek: f64,
     next_seek: Option<f64>,
-    start_tick: i64,
-    tick: i64,
+    start_tick: u32,
+    tick: u32,
     program: Option<u16>,
     velocity: Option<u8>,
     in_prologue: bool,
@@ -144,7 +145,7 @@ impl Tracker {
             .collect()
     }
 
-    fn boundary(&mut self, seek: f64, next_seek: Option<f64>) -> Vec<Action> {
+    fn boundary(&mut self, seek: f64, next_seek: Option<f64>) -> Result<Vec<Action>> {
         let actions = if self.started && self.in_prologue {
             self.end_all(self.seek)
         } else {
@@ -152,7 +153,10 @@ impl Tracker {
         };
         self.seek = seek;
         self.next_seek = next_seek;
-        self.start_tick = (seek * FRAME_RATE).round_ties_even() as i64;
+        self.start_tick = (seek * FRAME_RATE)
+            .round_ties_even()
+            .to_u32()
+            .with_context(|| format!("bad segment start {seek} s"))?;
         self.tick = self.start_tick;
         self.program = None;
         self.velocity = None;
@@ -160,7 +164,7 @@ impl Tracker {
         self.skip_rest = false;
         self.tie_set.clear();
         self.started = true;
-        actions
+        Ok(actions)
     }
 
     fn feed(&mut self, id: usize) -> Vec<Action> {
@@ -199,10 +203,10 @@ impl Tracker {
         if self.skip_rest {
             return Vec::new();
         }
-        let time = self.tick as f64 / FRAME_RATE;
+        let time = f64::from(self.tick) / FRAME_RATE;
         let inside = self.next_seek.is_none_or(|next| time < next);
         match event {
-            Token::Shift(value) if value > 0 => self.tick = self.start_tick + i64::from(value),
+            Token::Shift(value) if value > 0 => self.tick = self.start_tick.saturating_add(value),
             Token::Program(program) => self.program = Some(program),
             Token::Velocity(velocity) => self.velocity = Some(velocity),
             Token::Drum(pitch) if inside => return vec![Action::Hit(pitch, time)],
@@ -354,6 +358,11 @@ fn plan(path: &Path, audio_input: bool) -> Result<Plan> {
 }
 
 impl Muscriptor {
+    /// Downloads the pinned ONNX conversion of `MuScriptor` small and plans both graphs.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error when a model cannot be downloaded or loaded by tract.
     pub fn load() -> Result<Self> {
         Ok(Self {
             conditioner: plan(&download("muscriptor-small-cond.onnx")?, true)?,
@@ -376,9 +385,9 @@ impl Muscriptor {
         let mut past_k: TValue =
             tract_ndarray::Array5::<f32>::zeros((LAYERS, 1, 0, HEADS, HEAD_DIM)).into_tvalue();
         let mut past_v = past_k.clone();
-        let mut input: Vec<i64> = std::iter::once(INITIAL)
-            .chain(prompt.iter().map(|t| *t as i64))
-            .collect();
+        let mut input: Vec<i64> = std::iter::once(Ok(INITIAL))
+            .chain(prompt.iter().map(|t| i64::try_from(*t)))
+            .collect::<Result<_, _>>()?;
         let mut tokens = prompt.to_vec();
         let mut first = true;
         for _ in prompt.len()..MAX_GEN {
@@ -409,19 +418,27 @@ impl Muscriptor {
                 break;
             }
             tokens.push(next);
-            input = vec![next as i64];
+            input = vec![i64::try_from(next)?];
         }
         Ok(tokens)
     }
 
+    /// Transcribes 16 kHz mono audio, segment by segment, into notes.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error when the model fails to run or emits an impossible time.
     pub fn transcribe(&self, audio: &[f32]) -> Result<Vec<Note>> {
         let chunks = audio.len().div_ceil(SEGMENT);
         let mut tracker = Tracker::default();
         let mut notes = Notes::default();
         for index in 0..chunks {
-            let seek = index as f64 * SEGMENT_SECONDS;
-            let next = (index + 1 < chunks).then(|| (index + 1) as f64 * SEGMENT_SECONDS);
-            notes.apply(tracker.boundary(seek, next));
+            let seek = index.to_f64().context("segment index")? * SEGMENT_SECONDS;
+            let next = (index + 1 < chunks)
+                .then(|| (index + 1).to_f64().context("segment index"))
+                .transpose()?
+                .map(|n| n * SEGMENT_SECONDS);
+            notes.apply(tracker.boundary(seek, next)?);
             let prompt = if index > 0 {
                 tie_prologue(&tracker.open_keys())
             } else {
@@ -475,7 +492,7 @@ mod tests {
     fn notes_are_carried_across_a_tied_boundary() {
         let mut tracker = Tracker::default();
         let mut notes = Notes::default();
-        notes.apply(tracker.boundary(0.0, Some(5.0)));
+        notes.apply(tracker.boundary(0.0, Some(5.0)).unwrap());
         for id in [
             TIE,
             PROGRAM,
@@ -487,7 +504,7 @@ mod tests {
         ] {
             notes.apply(tracker.feed(id));
         }
-        notes.apply(tracker.boundary(5.0, None));
+        notes.apply(tracker.boundary(5.0, None).unwrap());
         assert_eq!(tracker.open_keys(), vec![(0, 60), (0, 64)]);
         for id in [PROGRAM, PITCH + 60, TIE, VELOCITY, SHIFT + 50, PITCH + 60] {
             notes.apply(tracker.feed(id));

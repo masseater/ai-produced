@@ -12,6 +12,11 @@ pub struct BasicPitchParams {
     pub minimum_note_length_ms: f64,
 }
 
+/// Transcribes a file with Basic Pitch and returns a Standard MIDI File.
+///
+/// # Errors
+///
+/// Returns an error when the audio cannot be decoded or the model fails.
 pub fn basic_pitch(wav: &Path, params: &BasicPitchParams) -> Result<Vec<u8>> {
     let audio = audio::decode(wav)?.mono(22050)?;
     let transcriber = BasicPitch::new()?

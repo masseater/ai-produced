@@ -3989,6 +3989,7 @@ dependencies = [
  "hf-hub",
  "hound",
  "midly",
+ "num-traits",
  "serde_json",
  "tempfile",
  "tract-onnx",
