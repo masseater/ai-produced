@@ -624,6 +624,7 @@ dependencies = [
  "clap",
  "csv",
  "midly",
+ "num-traits",
  "regex",
  "serde",
  "serde-saphyr",
