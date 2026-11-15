@@ -135,10 +135,15 @@ Workers上の小規模な意味検索で、全件のコサイン計算とVectori
 
 2026-10-10に、tools/にある自作ツールのうち次の4つについて既存の代わりを調べた。
 
-かなをモーラに分ける処理は、PyPIで見つけたjamorasepに置き換えた。
-mora-checkとlyric-timingは拗音をつなぐ処理と母音の表を手書きしていた。
-jamorasepは拗音、長音、促音、撥音をそれぞれ1モーラに分け、母音もsimple-ipaの形式で返す。
-置き換えの前後で、1曲目の歌詞の検査表と歌詞タイミングのJSONは1バイトも変わらなかった。
+2026-11-15、リポジトリでPythonが使用されなくなったため、tools/内のPythonツールがRustで書き直された。
+score-midi、lyric-timing、mora-check、ustx-from-vocal、およびmidi-rppはtools/songクレートのバイナリとなった。
+最初の楽曲の出力結果は、コミット済みファイルとバイト単位で一致している：02-composition/generatedのMIDIファイルとテーブル、ビデオタイミングのJSON、およびREAPERプロジェクトである。
+.ustxファイルはYAMLデータとして一致しており、異なるのはクォート形式のみである。
+クレートのテストはこれらの出力を検証するため、ツールとコミット済みファイルの乖離が生じた場合はverifyが失敗する。
+
+かなをモーラに分ける場合、もはやjamorasepは使われない。
+このクレートは、小さな仮名を直前の仮名に結合し、score-midiが既に行っていたように、表から母音を読み取る。
+メンテナンスされているRustのクレートではこの分割は行われない。wana_kanaは仮名をローマ字に変換するが、モーラの分割は行わない。
 無声化しやすい音の判定は手書きのまま残す。pyopenjtalkは話し言葉の無声化を返すが、歌では音の長さで無声化が変わり、判定の前提が合わない。
 
 lyric-timingの残りは、score.tomlとvocal.tsvを動画用のJSONへ変える処理である。
@@ -149,15 +154,16 @@ ustx-from-vocalはturboegg1145/OpenUtau-MCPと比べた。
 OpenUtau-MCPの.ustx生成は歌詞、長さ、音高だけを読み、ピッチ点とビブラートは固定値、表情曲線は空で書き出す。
 声色（clr）、ポルタメント、ビブラートの量、息継ぎの音符、DiffSingerの曲線（brec、tenc、voic、velc、dyn）は書けない。
 OpenUtau本体のMIDI読み込みも同様に、ノートと歌詞以外を持ち込めない。
-.ustxはYAMLなので、生成はpyyamlで書く今の形を続ける。
-公式シリアライザ（Ustx.Load/Save）は生成には使わない。render.shがtools/openutau-renderの--saveでpyyamlの出力を読み込んで保存し直すので、形式の誤りはそこで止まる。生成をC#へ移すと、調声の設定を変えるたびにMacでOpenUtau本体ごとビルドが要る。
+.ustxファイルはpyyamlではなくserde-saphyrで記述されている。
+公式シリアライザ（Ustx.Load/Save）は生成には使わない。render.shがtools/openutau-renderの--saveで生成した.ustxを読み込んで保存し直すので、形式の誤りはそこで止まる。生成をC#へ移すと、調声の設定を変えるたびにMacでOpenUtau本体ごとビルドが要る。
 
 mix-metricsは、ラウドネス、ラウドネスレンジ、トゥルーピークをffmpegのebur128フィルターで測る。
 pyloudnormも統合ラウドネスとラウドネスレンジは測れるが、READMEにトゥルーピークの記載がない。ebur128なら3つを1回で測れる。
 周波数帯の比率、スペクトル重心、オンセット数、歌のピッチはlibrosaで求め、ツールでは比率の計算だけを書いている。
 帯域の比率はessentiaのEnergyBandRatioでも求められるが、参照曲の分析と同じSTFTと帯の区切りで比べる必要があるため、librosaのSTFTから計算する形を続ける。essentiaはAGPLで、Macへの導入も別に要る。
 
-tools/のmidi-rppとtempo-octaveは、追加時のコミットに既存の手段と比べた結果がある。midi-rppはREAPERプロジェクトの直列化に既存のrppライブラリを使い、MIDIソースを扱えないreathonは採らなかった。MIDIのイベント行の組み立てだけを自作している。
+tools/のmidi-rppとtempo-octaveは、追加時のコミットに既存の手段と比べた結果がある。MIDIソースを扱えないreathonは採らなかった。
+REAPERプロジェクトはクレート自体によって記述されている。というのも、RustのクレートでRPPファイルを記述するものはなく、rpp-parserは単にそれらを読み取るだけだからだ。
 REAPER公式のInsertMediaでMIDIファイルを読み込めば、このイベント行の組み立ては不要になりうる。ただしテンポとセクションのマーカーを同時に入れられるかはMacで試していない。
 tempo-octaveは、librosa、madmom、essentiaの拍追跡がテンポの候補を出すだけで、倍と半分のどちらが正しいかをドラムの役割から決める手段を持たないため自作した。
 lyric-timingについて上に書いた「LRCなどは行単位」は、モーラ単位の時刻を持つ形式を検索して確かめたものではない。

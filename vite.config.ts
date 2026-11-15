@@ -188,9 +188,18 @@ export default defineConfig({
           "actions-lint",
           "fallow",
           "audit",
+          "cargo",
         ],
       },
       test: "vp test run",
+      cargo: {
+        command: [
+          "cargo fmt --all --check",
+          "cargo clippy --workspace --all-targets --locked -- -D warnings",
+          "cargo test --workspace --locked",
+        ],
+        cache: { input: [{ auto: true }, "!target/**"], output: [] },
+      },
       syncpack: "syncpack lint",
       ...checkTasks,
       audit: {

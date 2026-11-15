@@ -1,0 +1,25 @@
+[package]
+name = "song"
+description = "Song pipeline tools: score to MIDI, lyric timing, mora table, USTX and REAPER project builders"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+csv = "1.4.0"
+midly = "0.5.3"
+regex = "1.13.1"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+serde-saphyr = "2.1.1"
+uuid = { version = "1.29.2", features = ["v5"] }
+toml = "1.2.1"
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+[lints]
+workspace = true
