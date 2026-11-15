@@ -2,6 +2,7 @@ import { CloudflareApiLive, Credentials } from "@alchemy.run/cloudflare";
 import { NodeServices } from "@effect/platform-node";
 import { AuthProviders } from "alchemy";
 import { Effect, Layer, Match, Redacted, Schema } from "effect";
+import { SecureRandom } from "effect/crypto";
 import { FetchHttpClient } from "effect/http";
 
 import { runHookWith, writeJson } from "./env.ts";
@@ -12,6 +13,7 @@ const cloudflareApi = CloudflareApiLive().pipe(
   Layer.provide(Layer.succeed(AuthProviders, {})),
   Layer.provide(NodeServices.layer),
   Layer.provide(FetchHttpClient.layer),
+  Layer.provide(SecureRandom.layerWebCrypto),
 );
 
 runHookWith(cloudflareApi)(
