@@ -4,6 +4,7 @@ use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result, anyhow, bail};
 use clap::Parser;
+use num_traits::ToPrimitive;
 use serde::{Deserialize, Serialize};
 
 const TPQ: i64 = 480;
@@ -385,7 +386,7 @@ fn build_notes(rows: &[Row], colors: &[String], tuning: &Tuning) -> Result<Vec<N
     Ok(notes)
 }
 
-fn shorten(notes: &mut [Note], tuning: &Tuning) {
+fn shorten(notes: &mut [Note], tuning: &Tuning) -> Result<()> {
     let lyrics: Vec<String> = notes.iter().map(|n| n.lyric.clone()).collect();
     for (i, note) in notes.iter_mut().enumerate() {
         let ratio = tuning.section.get(&note.section).and_then(|s| s.staccato);
@@ -397,10 +398,15 @@ fn shorten(notes: &mut [Note], tuning: &Tuning) {
             && note.lyric != CLOSURE_LYRIC
             && !tied
         {
-            let scaled = (note.duration as f64 * ratio / 30.0).round_ties_even() as i64 * 30;
+            let steps = (note.duration.to_f64().context("note duration")? * ratio / 30.0)
+                .round_ties_even()
+                .to_i64()
+                .ok_or_else(|| anyhow!("bad staccato ratio {ratio}"))?;
+            let scaled = steps * 30;
             note.duration = scaled.max(60);
         }
     }
+    Ok(())
 }
 
 fn add_breaths(notes: Vec<Note>, tuning: &Tuning) -> Vec<Note> {
@@ -485,7 +491,7 @@ fn main() -> Result<()> {
         .deserialize()
         .collect::<Result<_, _>>()?;
     let mut notes = build_notes(&rows, &colors, &tuning)?;
-    shorten(&mut notes, &tuning);
+    shorten(&mut notes, &tuning)?;
     let notes = add_breaths(notes, &tuning);
     let curves = build_curves(&score, &tuning);
     let end = notes.last().map_or(0, end_of);
