@@ -157,10 +157,13 @@ OpenUtau本体のMIDI読み込みも同様に、ノートと歌詞以外を持�
 .ustxファイルはpyyamlではなくserde-saphyrで記述されている。
 公式シリアライザ（Ustx.Load/Save）は生成には使わない。render.shがtools/openutau-renderの--saveで生成した.ustxを読み込んで保存し直すので、形式の誤りはそこで止まる。生成をC#へ移すと、調声の設定を変えるたびにMacでOpenUtau本体ごとビルドが要る。
 
-mix-metricsは、ラウドネス、ラウドネスレンジ、トゥルーピークをffmpegのebur128フィルターで測る。
-pyloudnormも統合ラウドネスとラウドネスレンジは測れるが、READMEにトゥルーピークの記載がない。ebur128なら3つを1回で測れる。
-周波数帯の比率、スペクトル重心、オンセット数、歌のピッチはlibrosaで求め、ツールでは比率の計算だけを書いている。
-帯域の比率はessentiaのEnergyBandRatioでも求められるが、参照曲の分析と同じSTFTと帯の区切りで比べる必要があるため、librosaのSTFTから計算する形を続ける。essentiaはAGPLで、Macへの導入も別に要る。
+mix-metrics と tempo-octave は現在、tools/audio クレートのバイナリとなっており、ボーカルセクションの測定値はその vocal-sections のバイナリとなっている。
+このクレートでは、STFT、RMS、オンセット、スペクトル重心と平坦度、pyin、HPSS、ビートトラッキング、テンポグラムの測定に、librosa の Rust 移植版である sonara を呼び出している。
+ラウドネス、ラウドネス範囲、真のピークは、libebur128 の移植版である ebur128 クレートから取得される。
+テスト信号では、ffmpeg の ebur128 フィルターと同等の積分ラウドネスと真のピークが得られ、ラウドネス範囲は 0.1 LU 低かった。
+--judge オプションは、C ライブラリを使用せずに Opus をエンコードする Rust クレートが存在しないため、引き続き ffmpeg を用いて Opus にエンコードされる。
+比較のために Python の librosa は実行されていない。そのためクレートのテストでは、既知の応答を持つ信号（-23 dBFS の 1 kHz 正弦波、既知のテンポのドラムパターン、無音後の定常トーン）に対して tools を検証している。
+帯域の比率はessentiaのEnergyBandRatioでも求められるが、参照曲の分析と同じSTFTと帯の区切りで比べる必要があるため、librosaと同じSTFTから計算する形を続ける。essentiaはAGPLで、導入も別に要る。
 
 tools/のmidi-rppとtempo-octaveは、追加時のコミットに既存の手段と比べた結果がある。MIDIソースを扱えないreathonは採らなかった。
 REAPERプロジェクトはクレート自体によって記述されている。というのも、RustのクレートでRPPファイルを記述するものはなく、rpp-parserは単にそれらを読み取るだけだからだ。

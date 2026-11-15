@@ -1,0 +1,26 @@
+[package]
+name = "audio"
+description = "Audio analysis tools: mix metrics against the taste band, per-section vocal description, tempo octave from kick and snare"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+ebur128 = "0.1.11"
+ndarray = "0.17.2"
+num-complex = "0.4.6"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = { version = "1.0.154", features = ["preserve_order"] }
+sonara = { git = "https://github.com/kkollsga/sonara", rev = "15fb81d34e4e6ca856508e5520a84b1a4ab42b6e" }
+symphonia = { version = "0.6.1", features = ["all"] }
+tempfile = "3.27.0"
+toml = "1.2.1"
+
+[dev-dependencies]
+hound = "3.5.1"
+
+[lints]
+workspace = true
