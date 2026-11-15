@@ -12,13 +12,14 @@ description: 公開されたステムとMIDIがある曲を、パートごとに
 
 画面を使わずクラウドで動かす。
 
-| 用途   | 使うもの                                                     |
-| ------ | ------------------------------------------------------------ |
-| シンセ | Surge XT 1.3.4のLinux版debを展開し、VST3を`/opt/surge`に置く |
-| 音色   | debに入っている`/usr/share/surge-xt/patches_*`               |
-| ピアノ | FluidSynthとSalamander Grand PianoのSF2（CC-BY 3.0）         |
+| 用途   | 使うもの                                                                                                                                   |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| シンセ | Linux版Surge XT 1.3.4をCLAPプラグインとして読み込む。初回に、固定したdebをダウンロードしてSHA-256を確かめ、`~/.cache/stem-repro`に展開する |
+| 音色   | debに入っている`patches_*`                                                                                                                 |
+| ピアノ | FluidSynthとSalamander Grand PianoのSF2（CC-BY 3.0）                                                                                       |
 
-VST3と音色の場所は、環境変数`SURGE_VST3`と`SURGE_PATCHES`で変えられる。
+プラグインと音色の場所は、環境変数`SURGE_CLAP`と`SURGE_PATCHES`で変えられる。
+`cargo test --release -p stem-repro -- --ignored`は、Surge XTをダウンロードし、付属の音色で音が出ることを確かめる。
 
 ## 曲の設定
 
@@ -42,7 +43,7 @@ VST3と音色の場所は、環境変数`SURGE_VST3`と`SURGE_PATCHES`で変え�
 
 ## 手順
 
-`tools/stem-repro`で`uv run python cli.py <song.json> <コマンド>`として、上から順に動かす。
+リポジトリのルートで`cargo run --release -p stem-repro --bin stem-repro -- <song.json> <コマンド>`として、上から順に動かす。
 結果はJSONで標準出力に出る。
 
 | 順  | コマンド                                                                     | やること                                                                                       |
@@ -50,7 +51,7 @@ VST3と音色の場所は、環境変数`SURGE_VST3`と`SURGE_PATCHES`で変え�
 | 1   | `stems`                                                                      | ステムごとのラウドネス、ピーク、ステレオ幅、鳴っている区間、帯域の配分を出す                   |
 | 2   | `interstem --section B --kick drums_kick --bass bass`                        | ステム同士の関係を出す                                                                         |
 | 3   | `mastering --bus`                                                            | ステムの和からプリマスター、プリマスターからマスターへの変化を出す                             |
-| 4   | `transcribe.py`（下記）                                                      | MIDIの無いパートを採譜する                                                                     |
+| 4   | `transcribe`（下記）                                                         | MIDIの無いパートを採譜する                                                                     |
 | 5   | `filter-notes --stem arp2 --midi <採譜MIDI>`                                 | ステムに無い音を捨て、ベロシティを音量から付け直す                                             |
 | 6   | `search --out <作業先>`                                                      | Surgeの全音色を各パートで採点し、上位を長い区間で採点し直す                                    |
 | 7   | `optimize --part bass --patch <fxp>`                                         | 音量とフィルターの包絡とノート全体の時間のずれを動かし、原曲との差を下げる。出たずれを13に渡す |
@@ -71,6 +72,6 @@ VST3と音色の場所は、環境変数`SURGE_VST3`と`SURGE_PATCHES`で変え�
 | 3   | `design --part arp2 --template "Init Saw" --filter lp24 --bars 40 48 --midi <mid>` | 初期音色からフィルターの種類を決め、オシレーター、フィルター、包絡を倍音の時間変化に合わせる |
 | 4   | `render --part arp2 --params <3の出力> --midi <mid> --out <wav>`                   | 曲全体を書き出し、13に渡す。13は原曲の無音区間を写す候補も比べる                             |
 
-採譜は`uv run --python 3.11 --with "basic-pitch[onnx]" --with "numpy<2" python transcribe.py <出力先> <BPM> <ステム...>`で動かす。
+採譜は`audio-to-midi`スキルに従い、`cargo run --release -p transcribe --bin transcribe -- -e basic-pitch -o <出力先> <ステム...>`で動かす。
 `interstem`に`--repro <ディレクトリ>`を付けると、作り直したステムの値も並べて出す。
 最後に、9〜14が当てた量と、6〜8で残った差を作品のwikiページに記録する。

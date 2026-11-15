@@ -47,10 +47,6 @@ dist-ssr
 *.rpp-bak
 *.reapeaks
 
-# Python
-.venv
-__pycache__
-
 # .NET
 tools/openutau-render/bin
 tools/openutau-render/obj
