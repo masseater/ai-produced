@@ -60,11 +60,6 @@
       "skillPath": "feature-sliced-design/SKILL.md",
       "computedHash": "1e0cac31c1e579545f055b6585ada1a3d75ee5ed91052addc6e9a49ec63d674b"
     },
-    "mac-mini-handoff": {
-      "source": "./docs/skills/mac-mini-handoff",
-      "sourceType": "local",
-      "computedHash": "1a1818c238231cece64dc941b0a1c28579058ec729012e096dbe7c953635b9cf"
-    },
     "measure-dont-guess": {
       "source": "./docs/skills/measure-dont-guess",
       "sourceType": "local",
@@ -135,6 +130,11 @@
       "sourceType": "github",
       "skillPath": "plugins/masseater-skills/skills/vite-plus/SKILL.md",
       "computedHash": "5ee8b5e12252c0451c4e170b1bec0126c810791e190965290c66b366ffba4453"
+    },
+    "windows-pc": {
+      "source": "./docs/skills/windows-pc",
+      "sourceType": "local",
+      "computedHash": "77d539007a64d6f1fe264c894a656a63d2c246f03ea02345c89143278d8c83bd"
     },
     "workers-best-practices": {
       "source": "cloudflare/skills",
