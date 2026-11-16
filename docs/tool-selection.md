@@ -44,7 +44,7 @@ REAPERのAPIにはbase64の関数が無いため、純Luaのiskolbin/lbase64（�
 OpenUtauのプロジェクト（.ustx）はYAMLなので、ノート、歌詞、ピッチ、表情曲線まで全部をファイルとして書ける。
 公式には画面なしで書き出す機能がない。
 既存のOpenUtau-HeadlessはOpenUtau全体のフォークで、コマンドは書き出しと歌手一覧だけである。ピッチの自動生成や音素の書き出しはできない。
-制作ではこの2つを使う。songs/001-mou-ikkai/03-vocal/render.shは毎回--phonemesで音素を書き出して「っ」の扱いなどを検査し、PITCHを指定したときは--pitchでピッチを自動生成してから書き出す。
+制作ではこの2つを使う。songs/001-mou-ikkai の `vocal` タスク（`bin/vocal.ts`）は毎回--phonemesで音素を書き出して「っ」の扱いなどを検査し、PITCHを指定したときは--pitchでピッチを自動生成してから書き出す。
 turboegg1145/OpenUtau-MCPは.ustxの生成と表情曲線を扱うが、音声のプレビューは独自の合成で、OpenUtau本体の書き出しは使わない。
 OpenUtau Issue #1615は画面なしの書き出しを求める要望である。報告者はOpenUtau.CoreのPlaybackManager.RenderToFilesを呼んだが、画面側のスレッドを前提とする処理で詰まった。返答のないまま「not planned」で閉じられた。
 そこでOpenUtau本体の固定したコミットを参照するtools/openutau-renderを作った。Issueと同じRenderToFilesを、自前の処理ループを画面スレッドの代わりに渡して呼び、画面の「Export Wav」と同じ処理で書き出す。
@@ -155,7 +155,7 @@ OpenUtau-MCPの.ustx生成は歌詞、長さ、音高だけを読み、ピッチ
 声色（clr）、ポルタメント、ビブラートの量、息継ぎの音符、DiffSingerの曲線（brec、tenc、voic、velc、dyn）は書けない。
 OpenUtau本体のMIDI読み込みも同様に、ノートと歌詞以外を持ち込めない。
 .ustxファイルはpyyamlではなくserde-saphyrで記述されている。
-公式シリアライザ（Ustx.Load/Save）は生成には使わない。render.shがtools/openutau-renderの--saveで生成した.ustxを読み込んで保存し直すので、形式の誤りはそこで止まる。生成をC#へ移すと、調声の設定を変えるたびにMacでOpenUtau本体ごとビルドが要る。
+公式シリアライザ（Ustx.Load/Save）は生成には使わない。`vocal` タスクがtools/openutau-renderの--saveで生成した.ustxを読み込んで保存し直すので、形式の誤りはそこで止まる。生成をC#へ移すと、調声の設定を変えるたびにMacでOpenUtau本体ごとビルドが要る。
 
 mix-metrics と tempo-octave は現在、tools/audio クレートのバイナリとなっており、ボーカルセクションの測定値はその vocal-sections のバイナリとなっている。
 このクレートでは、STFT、RMS、オンセット、スペクトル重心と平坦度、pyin、HPSS、ビートトラッキング、テンポグラムの測定に、librosa の Rust 移植版である sonara を呼び出している。

@@ -18,11 +18,6 @@ pub struct Decoded {
     pub rate: u32,
 }
 
-/// Decodes every audio packet of the default track into interleaved samples.
-///
-/// # Errors
-///
-/// Returns an error when the file cannot be opened, has no audio track, or fails to decode.
 pub fn decode(path: &Path) -> Result<Decoded> {
     let file = File::open(path).with_context(|| path.display().to_string())?;
     let stream = MediaSourceStream::new(Box::new(file), MediaSourceStreamOptions::default());
@@ -106,11 +101,6 @@ impl Decoded {
             .collect()
     }
 
-    /// Resamples the first two channels between `offset` and `offset + duration` seconds.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error when the span is negative or not finite, or resampling fails.
     pub fn stereo(
         &self,
         rate: u32,
@@ -124,11 +114,6 @@ impl Decoded {
         ])
     }
 
-    /// Averages all channels and resamples the result.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error when resampling fails.
     pub fn mono(&self, rate: u32) -> Result<Array1<f32>> {
         let channels = self.channels.to_f32().context("channel count")?;
         let mono: Array1<f32> = (0..self.frames())
@@ -147,11 +132,6 @@ pub fn round(value: f64, digits: i32) -> f64 {
     (value * scale).round_ties_even() / scale
 }
 
-/// Linear-interpolated percentile, the same as numpy's default.
-///
-/// # Errors
-///
-/// Returns an error when `values` is empty or `q` is outside 0 to 100.
 pub fn percentile(values: &[f64], q: f64) -> Result<f64> {
     let mut sorted = values.to_vec();
     sorted.sort_by(f64::total_cmp);
@@ -169,11 +149,6 @@ pub fn percentile(values: &[f64], q: f64) -> Result<f64> {
     Ok(sorted[low] + (sorted[high] - sorted[low]) * (position - floor))
 }
 
-/// Arithmetic mean. An empty input gives NaN.
-///
-/// # Errors
-///
-/// Returns an error when the count does not fit in `f64`.
 pub fn mean(values: impl IntoIterator<Item = f64>) -> Result<f64> {
     let (sum, count) = values
         .into_iter()

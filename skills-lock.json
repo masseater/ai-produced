@@ -4,12 +4,12 @@
     "analysis-wiki": {
       "source": "./docs/skills/analysis-wiki",
       "sourceType": "local",
-      "computedHash": "1bba14f15c06c847865b6c1c61cf57ced4d41bb6d21b06526906f97ef0298864"
+      "computedHash": "0e9ec1af5076efeab8ffdecfef4172abddbad0c0f09c7f97607899146141d48c"
     },
     "audio-to-midi": {
       "source": "./docs/skills/audio-to-midi",
       "sourceType": "local",
-      "computedHash": "877fdc493258f89734dfc3c46d3c95b3fd1607605127229a311ab71c6550cefc"
+      "computedHash": "fc805fabd620e707101143c179a336b47564646bc691ef3981e40885b6e525fd"
     },
     "better-auth-best-practices": {
       "source": "better-auth/skills",
@@ -63,12 +63,12 @@
     "mac-mini-handoff": {
       "source": "./docs/skills/mac-mini-handoff",
       "sourceType": "local",
-      "computedHash": "fe830b96bcc31a62680dc6c94d9434c8487e49ca3b27542b25f6db5956fbd354"
+      "computedHash": "1a1818c238231cece64dc941b0a1c28579058ec729012e096dbe7c953635b9cf"
     },
     "measure-dont-guess": {
       "source": "./docs/skills/measure-dont-guess",
       "sourceType": "local",
-      "computedHash": "2436e04c4dfabdfeeac2a44b67a0aca228b0dd61771261cd114c18a3cea73f57"
+      "computedHash": "b7a0e71c382aeb32aff10542fc6bc1811fc409000fca8a83b4a4f8efb3603a90"
     },
     "modern-web-guidance": {
       "source": "GoogleChrome/modern-web-guidance",
@@ -80,7 +80,7 @@
     "reference-materials": {
       "source": "./docs/skills/reference-materials",
       "sourceType": "local",
-      "computedHash": "39aeae3e70db39a3fd55cb42397da866b954e52a9d6fbea1c60467d78bbca507"
+      "computedHash": "41343b1ddc8ec38a5e4ab889c8db62faf8d95812a37af352239f5f5d30529e0b"
     },
     "repo-conventions": {
       "source": "masseater/skills",
@@ -99,7 +99,7 @@
     "stem-repro": {
       "source": "./docs/skills/stem-repro",
       "sourceType": "local",
-      "computedHash": "f84d8e9c7669e7d1c9b5225b64fb2e1693e43076a31e7241bd467edcb8548a58"
+      "computedHash": "68296a8e2f4119a136aeec84c49bc87f07137a86a2044e889ce413873ad269f5"
     },
     "systematic-debugging": {
       "source": "obra/superpowers",

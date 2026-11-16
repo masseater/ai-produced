@@ -3,7 +3,7 @@ name: stem-repro
 description: 公開されたステムとMIDIがある曲を、パートごとに作り直して原曲と計測で比べ、音作りを数値で取り出すときに使う。
 ---
 
-# ステム再現
+# stem-repro
 
 手法の考え方、指標の定義、結果の読み方は `docs/wiki/topics/stem-reproduction.md` にある。
 素材と曲ごとの `song.json` は `reference-materials` スキルに従って reference 側に置く。

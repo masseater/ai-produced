@@ -1,4 +1,5 @@
 import htmlReact from "@html-eslint/eslint-plugin-react";
+import { workspaceSettings } from "@r_masseater/msch/workspace-settings";
 import tanstackQuery from "@r_masseater/oxlint-typed-rules/tanstack-query";
 import tanstackRouter from "@r_masseater/oxlint-typed-rules/tanstack-router";
 import { plugin as shadcn } from "@shadcn/lint";
@@ -20,20 +21,26 @@ import {
 
 const typedRules = "@r_masseater/oxlint-typed-rules";
 
+const workspace = await workspaceSettings({
+  root: import.meta.dirname,
+  ruleSets: { remotion: remotionRules },
+  dependencySets: {},
+});
+
 export default defineConfig({
   ...checks,
-  test: { projects: ["apps/*", "libs/*", "infra/*", "tools/*"], passWithNoTests: true },
+  test: { projects: [...workspace.testProjects], passWithNoTests: true },
   staged: {
     "*": "vp check --fix",
   },
   fmt: {
-    ignorePatterns: generated,
+    ignorePatterns: [...generated, ...workspace.lint.ignorePatterns],
     sortImports: true,
     sortTailwindcss: true,
     sortPackageJson: true,
   },
   lint: {
-    ignorePatterns: generated,
+    ignorePatterns: [...generated, ...workspace.lint.ignorePatterns],
     plugins: [
       "eslint",
       "typescript",
@@ -143,17 +150,16 @@ export default defineConfig({
         rules: { "import/no-default-export": "off" },
       },
       {
-        files: ["apps/video/**"],
-        rules: remotionRules,
+        files: ["vite.config.ts"],
+        rules: {
+          "baseline-js/use-baseline": ["error", { ignoreFeatures: ["top-level-await"] }],
+        },
       },
       {
-        files: ["apps/video/src/app/root.tsx"],
-        rules: { "import/no-unassigned-import": ["error", { allow: ["**/*.css"] }] },
-      },
-      {
-        files: ["**/shared/ui/**", "libs/ui/src/components/**"],
+        files: ["**/shared/ui/**"],
         rules: { "shadcn/no-restyle": "off", "react/jsx-props-no-spreading": "off" },
       },
+      ...workspace.lint.overrides,
     ],
     options: {
       typeAware: true,
@@ -187,17 +193,17 @@ export default defineConfig({
           "actions-lint",
           "fallow",
           "audit",
-          "cargo",
+          "msch",
+          ...workspace.tasks.verify,
         ],
       },
       test: "vp test run",
-      cargo: {
-        command: [
-          "cargo fmt --all --check",
-          "cargo clippy --workspace --all-targets --locked -- -D warnings",
-          "cargo test --workspace --locked",
-        ],
-        cache: { input: [{ auto: true }, "!target/**"], output: [] },
+      msch: {
+        command: "msch",
+        cache: {
+          input: [{ auto: true }, "!node_modules/.cache/**"],
+          untrackedEnv: ["HTTPS_PROXY", "https_proxy", "NO_PROXY", "no_proxy", "SSL_CERT_FILE"],
+        },
       },
       syncpack: "syncpack lint",
       ...checkTasks,

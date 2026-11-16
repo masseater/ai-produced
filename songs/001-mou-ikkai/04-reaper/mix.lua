@@ -1,4 +1,4 @@
-local here = ({reaper.get_action_context()})[2]:match("^(.*)/[^/]*$")
+local here = ({reaper.get_action_context()})[2]:match("^(.*)[/\\][^/\\]*$")
 package.path = here .. "/?.lua;" .. package.path
 local surge = require("surge")
 

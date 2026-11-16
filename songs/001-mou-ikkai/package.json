@@ -1,0 +1,19 @@
+{
+  "name": "@workspace/mou-ikkai",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./*"
+  },
+  "dependencies": {
+    "@effect/platform-node": "catalog:",
+    "effect": "catalog:stack"
+  },
+  "devDependencies": {
+    "@effect/tsgo": "catalog:stack",
+    "@types/node": "catalog:",
+    "typescript": "catalog:stack",
+    "vite-plus": "catalog:stack"
+  }
+}

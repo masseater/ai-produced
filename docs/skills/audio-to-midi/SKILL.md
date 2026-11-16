@@ -3,7 +3,7 @@ name: audio-to-midi
 description: ステムやミックスの音声をMIDIに採譜するとき、採譜の精度を正解のMIDIと比べるときに使う。
 ---
 
-# 音声からMIDIへの採譜
+# audio-to-midi
 
 素材の取得と置き場は `reference-materials` スキルに従う。
 コマンドはリポジトリのルートで実行する。

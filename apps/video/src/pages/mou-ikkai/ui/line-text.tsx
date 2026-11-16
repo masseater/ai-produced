@@ -7,7 +7,14 @@ import { Glyphs } from "#/pages/mou-ikkai/ui/glyphs";
 
 type Fit = Readonly<{ maxChars: number; size: Size }>;
 
-const fits: Readonly<Record<"across" | "down", readonly Fit[]>> = {
+const directions = {
+  across: "flex max-w-420 flex-wrap gap-x-12",
+  down: "flex max-h-215 flex-wrap gap-y-12 [writing-mode:vertical-rl]",
+} as const;
+
+type Direction = keyof typeof directions;
+
+const fits: Readonly<Record<Direction, readonly Fit[]>> = {
   across: [
     { maxChars: 9, size: "line-xl" },
     { maxChars: 12, size: "line-lg" },
@@ -20,11 +27,6 @@ const fits: Readonly<Record<"across" | "down", readonly Fit[]>> = {
   ],
 };
 
-const directions = {
-  across: "flex max-w-420 flex-wrap gap-x-12",
-  down: "flex max-h-215 flex-wrap gap-y-12 [writing-mode:vertical-rl]",
-} as const;
-
 const toneOf = (word: Word, mora: number): Tone => {
   if (word.morae.includes(mora)) {
     return "now";
@@ -36,7 +38,7 @@ const toneOf = (word: Word, mora: number): Tone => {
   return "ahead";
 };
 
-const sizeOf = (line: Line, direction: keyof typeof directions): Size => {
+const sizeOf = (line: Line, direction: Direction): Size => {
   const chars = pipe(
     line.words,
     Arr.map((word) => word.text.length),
@@ -48,7 +50,7 @@ const sizeOf = (line: Line, direction: keyof typeof directions): Size => {
   );
 };
 
-type LineTextProps = Readonly<{ line: Line; mora: number; direction: keyof typeof directions }>;
+type LineTextProps = Readonly<{ line: Line; mora: number; direction: Direction }>;
 
 const LineText = ({ line, mora, direction }: LineTextProps): ReactNode => (
   <div className={directions[direction]}>
@@ -66,4 +68,5 @@ const LineText = ({ line, mora, direction }: LineTextProps): ReactNode => (
   </div>
 );
 
+export type { Direction };
 export { LineText };

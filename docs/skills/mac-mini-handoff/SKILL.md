@@ -3,7 +3,7 @@ name: mac-mini-handoff
 description: REAPERやMac上のプラグインが要る作業を、クラウドのスレッドからMac mini常駐のスレッドへ渡すとき、またはMac mini側で受けるときに使う。.RPPを開く、書き出す、Macのプラグインで鳴らす作業が該当する。
 ---
 
-# Mac miniへの受け渡し
+# mac-mini-handoff
 
 クラウド側は分析、設計、MIDI、.RPPの生成、スクリプトを受け持つ。
 Mac mini側は、REAPERとMac上のプラグインを使う作業を受け持つ。

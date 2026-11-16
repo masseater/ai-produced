@@ -12,10 +12,8 @@ AI が人間のボカロPと同じ工程を踏んだときに、本当に良い�
 
 ## 手元で動かす
 
-### 前提
-
-- Vite+ の CLI である `vp`
-- 解析と変換のツールを動かす uv と .NET
+- Vite+ の CLI である `vp`（`vp install` が Rust のツールチェーンとクレートも取得する）
+- `tools/openutau-render` をビルドする .NET
 - 歌声と音源の書き出しに使う OpenUtau と REAPER
 
 ```sh
@@ -23,12 +21,4 @@ vp install
 vp run verify
 ```
 
-### 曲の映像を確かめる
-
-曲の映像は Remotion で作る。
-REAPER で書き出した音声を、`apps/video/package.json` の `studio` が `--public-dir` に指定する場所へ置いてから、次を実行する。
-
-```sh
-cd apps/video
-vp run studio
-```
+曲の映像を確かめる手順など、アプリごとの使い方は `apps/` の各ワークスペースの README.md にある。

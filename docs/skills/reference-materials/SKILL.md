@@ -3,7 +3,7 @@ name: reference-materials
 description: 他人の曲や映像に由来する素材を取得・分離・採譜・保存・参照するときに使う。原曲の音源と動画、ステム、採譜MIDI、そこから作った音声や中間データが対象である。
 ---
 
-# 参照素材
+# reference-materials
 
 他人の曲に由来する素材は、private リポジトリ masseater/ai-produced-reference にだけ置く。
 このリポジトリには入れない。入れてよいのはコード、設定、数値と手法を書いた分析ノートだけである。
