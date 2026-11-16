@@ -1,10 +1,11 @@
 use std::path::PathBuf;
 
-use anyhow::Result;
-use audio::{decode, round};
+use anyhow::{Context, Result};
+use audio::{decode, mean, round};
 use clap::Parser;
 use ndarray::{Array1, Array2, ArrayView1, Axis, Slice};
 use num_complex::Complex64;
+use num_traits::ToPrimitive;
 use serde_json::{Value, json};
 use sonara::beat::beat_track;
 use sonara::core::convert::{fft_frequencies, tempo_frequencies};
@@ -14,7 +15,7 @@ use sonara::feature::rhythm::tempogram;
 use sonara::onset::onset_strength;
 use sonara::{PadMode, WindowSpec};
 
-const BINS: usize = 8;
+const BINS: u8 = 8;
 const SR: u32 = 22050;
 const HOP: usize = 256;
 const N_FFT: usize = 2048;
@@ -56,9 +57,11 @@ fn band_env(spec: &Array2<f32>, freqs: &Array1<f32>, lo: f32, hi: f32) -> Vec<f6
     flux.iter().map(|v| v / (max + 1e-9)).collect()
 }
 
-fn fold(env: &[f64], frame_t: &[f64], beats: &[f64]) -> (Vec<f64>, Vec<f64>) {
-    let mut phase = [0.0f64; BINS];
-    let mut phase_n = [0.0f64; BINS];
+fn fold(env: &[f64], frame_t: &[f64], beats: &[f64]) -> Result<(Vec<f64>, Vec<f64>)> {
+    let bins = f64::from(BINS);
+    let last_bin = usize::from(BINS) - 1;
+    let mut phase = vec![0.0f64; usize::from(BINS)];
+    let mut phase_n = vec![0.0f64; usize::from(BINS)];
     let mut bar = [0.0f64; 4];
     let mut bar_n = [0.0f64; 4];
     for (i, pair) in beats.windows(2).enumerate() {
@@ -70,21 +73,24 @@ fn fold(env: &[f64], frame_t: &[f64], beats: &[f64]) -> (Vec<f64>, Vec<f64>) {
             continue;
         }
         for &f in &inside {
-            let idx = (((frame_t[f] - start) / (end - start) * BINS as f64) as usize).min(BINS - 1);
+            let idx = ((frame_t[f] - start) / (end - start) * bins)
+                .to_usize()
+                .context("phase bin")?
+                .min(last_bin);
             phase[idx] += env[f];
             phase_n[idx] += 1.0;
         }
         let head: Vec<f64> = inside
             .iter()
-            .filter(|&&f| frame_t[f] < start + (end - start) / BINS as f64)
+            .filter(|&&f| frame_t[f] < start + (end - start) / bins)
             .map(|&f| env[f])
             .collect();
         if !head.is_empty() {
-            bar[i % 4] += head.iter().sum::<f64>() / head.len() as f64;
+            bar[i % 4] += mean(head)?;
         }
         bar_n[i % 4] += 1.0;
     }
-    (
+    Ok((
         phase
             .iter()
             .zip(&phase_n)
@@ -94,20 +100,23 @@ fn fold(env: &[f64], frame_t: &[f64], beats: &[f64]) -> (Vec<f64>, Vec<f64>) {
             .zip(&bar_n)
             .map(|(b, n)| b / n.max(1.0))
             .collect(),
-    )
+    ))
 }
 
-fn circular_phase(profile: &[f64]) -> f64 {
-    let average = profile.iter().sum::<f64>() / profile.len() as f64;
-    let sum: Complex64 = profile
-        .iter()
-        .enumerate()
+fn circular_phase(profile: &[f64]) -> Result<f64> {
+    let average = mean(profile.iter().copied())?;
+    let sum: Complex64 = (0u8..)
+        .zip(profile)
         .map(|(k, p)| {
-            let angle = 2.0 * std::f64::consts::PI * k as f64 / BINS as f64;
+            let angle = 2.0 * std::f64::consts::PI * f64::from(k) / f64::from(BINS);
             Complex64::from_polar((p - average).max(0.0), angle)
         })
         .sum();
-    (sum.arg() / (2.0 * std::f64::consts::PI)).rem_euclid(1.0)
+    Ok((sum.arg() / (2.0 * std::f64::consts::PI)).rem_euclid(1.0))
+}
+
+fn seconds(frame: usize) -> Result<f64> {
+    Ok((frame * HOP).to_f64().context("frame time")? / f64::from(SR))
 }
 
 fn verdict_of(gap: f64) -> &'static str {
@@ -146,28 +155,36 @@ fn analyse(y: &ArrayView1<f32>, slow: f64) -> Result<Value> {
         PadMode::Constant,
         1.0,
     )?;
-    let freqs = fft_frequencies(SR as f32, N_FFT);
-    let frame_t: Vec<f64> = (0..spec.ncols())
-        .map(|f| (f * HOP) as f64 / f64::from(SR))
-        .collect();
+    let sr = SR.to_f32().context("sample rate")?;
+    let freqs = fft_frequencies(sr, N_FFT);
+    let frame_t: Vec<f64> = (0..spec.ncols()).map(seconds).collect::<Result<_>>()?;
     let kick = band_env(&spec, &freqs, 30.0, 150.0);
     let snare = band_env(&spec, &freqs, 180.0, 5000.0);
     let onset = onset_strength(percussive.view(), SR, HOP)?;
-    let (_, beat_frames) = beat_track(None, Some(onset.view()), SR, HOP, slow as f32, 400.0, true)?;
+    let (_, beat_frames) = beat_track(
+        None,
+        Some(onset.view()),
+        SR,
+        HOP,
+        slow.to_f32().context("slow bpm")?,
+        400.0,
+        true,
+    )?;
     let beats: Vec<f64> = beat_frames
         .iter()
-        .map(|f| (f * HOP) as f64 / f64::from(SR))
-        .collect();
-    let (kick_phase, kick_bar) = fold(&kick, &frame_t, &beats);
-    let (snare_phase, snare_bar) = fold(&snare, &frame_t, &beats);
-    let gap = ((circular_phase(&snare_phase) - circular_phase(&kick_phase) + 0.5).rem_euclid(1.0)
+        .map(|f| seconds(*f))
+        .collect::<Result<_>>()?;
+    let (kick_phase, kick_bar) = fold(&kick, &frame_t, &beats)?;
+    let (snare_phase, snare_bar) = fold(&snare, &frame_t, &beats)?;
+    let gap = ((circular_phase(&snare_phase)? - circular_phase(&kick_phase)? + 0.5)
+        .rem_euclid(1.0)
         - 0.5)
         .abs();
     let win = 384.min(onset.len());
     let gram = tempogram(None, Some(onset.view()), SR, HOP, win)?
         .mean_axis(Axis(1))
         .unwrap_or_else(|| Array1::zeros(win));
-    let axis = tempo_frequencies(gram.len(), HOP, SR as f32);
+    let axis = tempo_frequencies(gram.len(), HOP, sr);
     let strength = |bpm: f64| -> f64 {
         let nearest = (1..axis.len())
             .min_by(|a, b| {
@@ -201,8 +218,14 @@ fn main() -> Result<()> {
     let mut result = json!({ "whole": analyse(&y.view(), args.slow_bpm)? });
     if let Some(section) = &args.section {
         let rate = f64::from(SR);
-        let start = ((section[0] * rate) as usize).min(y.len());
-        let end = ((section[1] * rate) as usize).clamp(start, y.len());
+        let start = (section[0] * rate)
+            .to_usize()
+            .context("bad section start")?
+            .min(y.len());
+        let end = (section[1] * rate)
+            .to_usize()
+            .context("bad section end")?
+            .clamp(start, y.len());
         result["section"] = analyse(
             &y.slice_axis(Axis(0), Slice::from(start..end)),
             args.slow_bpm,

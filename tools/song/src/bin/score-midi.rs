@@ -7,6 +7,7 @@ use anyhow::{Context, Result, anyhow, bail};
 use clap::Parser;
 use midly::num::{u4, u7, u15, u24, u28};
 use midly::{Format, Header, MetaMessage, MidiMessage, Smf, Timing, TrackEvent, TrackEventKind};
+use num_traits::ToPrimitive;
 use regex::Regex;
 use serde::Deserialize;
 use song::{moras, vowel};
@@ -238,7 +239,7 @@ fn expand(tokens: &str, motifs: &HashMap<String, String>) -> Result<Vec<String>>
     Ok(expanded.split_whitespace().map(str::to_string).collect())
 }
 
-fn voice(pcs: &[i64], previous: Option<&[i64]>) -> Vec<i64> {
+fn voice(pcs: &[i64], previous: Option<&[i64]>) -> Result<Vec<i64>> {
     let low = 52;
     let high = 76;
     let mut best: Option<(f64, Vec<i64>)> = None;
@@ -263,38 +264,45 @@ fn voice(pcs: &[i64], previous: Option<&[i64]>) -> Vec<i64> {
             if chord[chord.len() - 1] > high {
                 continue;
             }
-            let cost = match previous {
-                Some(previous) => {
-                    let mut sorted = chord.clone();
-                    sorted.sort_unstable();
-                    let mut before = previous.to_vec();
-                    before.sort_unstable();
-                    sorted
-                        .iter()
-                        .zip(&before)
-                        .map(|(a, b)| (a - b).abs())
-                        .sum::<i64>() as f64
-                }
-                None => (chord.iter().sum::<i64>() as f64 / chord.len() as f64 - 64.0).abs(),
+            let cost = if let Some(previous) = previous {
+                let mut sorted = chord.clone();
+                sorted.sort_unstable();
+                let mut before = previous.to_vec();
+                before.sort_unstable();
+                sorted
+                    .iter()
+                    .zip(&before)
+                    .map(|(a, b)| (a - b).abs())
+                    .sum::<i64>()
+                    .to_f64()
+                    .context("voice leading cost")?
+            } else {
+                let sum = chord.iter().sum::<i64>().to_f64().context("chord sum")?;
+                (sum / chord.len().to_f64().context("chord size")? - 64.0).abs()
             };
             if best.as_ref().is_none_or(|(lowest, _)| cost < *lowest) {
                 best = Some((cost, chord));
             }
         }
     }
-    best.map_or_default(|(_, chord)| chord)
+    Ok(best.map_or_default(|(_, chord)| chord))
 }
 
 fn bass_pitch(root: i64) -> i64 {
     28 + (root - 4).rem_euclid(12)
 }
 
-fn velocity(base: f64, energy: f64) -> u8 {
-    ((base * (0.55 + 0.45 * energy)).trunc() as i64).clamp(1, 127) as u8
+fn velocity(base: f64, energy: f64) -> Result<u8> {
+    let scaled = base * (0.55 + 0.45 * energy);
+    let clamped = scaled
+        .to_i64()
+        .ok_or_else(|| anyhow!("velocity {scaled} is not an integer"))?
+        .clamp(1, 127);
+    Ok(u8::try_from(clamped)?)
 }
 
-fn midi_pitch(pitch: i64) -> u8 {
-    pitch.clamp(0, 127) as u8
+fn midi_pitch(pitch: i64) -> Result<u8> {
+    Ok(u8::try_from(pitch.clamp(0, 127))?)
 }
 
 fn place_vocal(
@@ -317,11 +325,11 @@ fn place_vocal(
     for (index, (entry, lyric)) in entries.iter().zip(lyric_lines).enumerate() {
         let index = index + 1;
         let tokens = expand(&entry.notes, motifs)?;
-        let sung = tokens.iter().filter(|t| !t.starts_with('r')).count();
+        let sung_notes = tokens.iter().filter(|t| !t.starts_with('r')).count();
         let line_moras = moras(&lyric.reading);
-        if sung != line_moras.len() {
+        if sung_notes != line_moras.len() {
             song.problems.push(format!(
-                "{} line {index}: {sung} notes for {} morae ({})",
+                "{} line {index}: {sung_notes} notes for {} morae ({})",
                 section.name,
                 line_moras.len(),
                 lyric.reading
@@ -417,36 +425,48 @@ struct Bar<'a> {
 }
 
 impl Bar<'_> {
-    fn v(&self, base: f64) -> u8 {
+    fn v(&self, base: f64) -> Result<u8> {
         velocity(base, self.energy)
     }
 
-    fn hit(&mut self, pos: f64, pitch: u8, base: f64) {
-        self.hit_for(pos, pitch, base, 1.0);
+    fn hit(&mut self, pos: f64, pitch: u8, base: f64) -> Result<()> {
+        self.hit_for(pos, pitch, base, 1.0)
     }
 
-    fn hit_for(&mut self, pos: f64, pitch: u8, base: f64, length: f64) {
-        let velocity = self.v(base);
+    fn hit_for(&mut self, pos: f64, pitch: u8, base: f64, length: f64) -> Result<()> {
+        let velocity = self.v(base)?;
+        let sixteenths = |count: f64| (count * SIXTEENTH.to_f64()?).to_i64();
+        let offset = sixteenths(pos).ok_or_else(|| anyhow!("bad drum position {pos}"))?;
+        let length = sixteenths(length).ok_or_else(|| anyhow!("bad drum length {length}"))?;
         self.song.notes.push(Note {
             track: "Drums",
-            start: self.tick + (pos * SIXTEENTH as f64) as i64,
-            length: (length * SIXTEENTH as f64) as i64,
+            start: self.tick + offset,
+            length,
             pitch,
             velocity,
             lyric: String::new(),
         });
+        Ok(())
     }
 
-    fn add(&mut self, track: &'static str, pos: i64, length: i64, pitch: i64, base: f64) {
-        let velocity = self.v(base);
+    fn add(
+        &mut self,
+        track: &'static str,
+        pos: i64,
+        length: i64,
+        pitch: i64,
+        base: f64,
+    ) -> Result<()> {
+        let velocity = self.v(base)?;
         self.song.notes.push(Note {
             track,
             start: self.tick + pos * SIXTEENTH,
             length: length * SIXTEENTH,
-            pitch: midi_pitch(pitch),
+            pitch: midi_pitch(pitch)?,
             velocity,
             lyric: String::new(),
         });
+        Ok(())
     }
 
     fn drums(&mut self, style: &str, bar_index: usize, bars: usize) -> Result<()> {
@@ -454,35 +474,35 @@ impl Bar<'_> {
         match style {
             "none" => {}
             "halftime_light" => {
-                self.hit(8.0, RIM, 70.0);
+                self.hit(8.0, RIM, 70.0)?;
                 for pos in (0..16).step_by(2) {
-                    self.hit(f64::from(pos), HAT, if pos % 4 == 0 { 60.0 } else { 45.0 });
+                    self.hit(f64::from(pos), HAT, if pos % 4 == 0 { 60.0 } else { 45.0 })?;
                 }
             }
             "halftime" => {
                 for pos in [0.0, 10.0] {
-                    self.hit(pos, KICK, 100.0);
+                    self.hit(pos, KICK, 100.0)?;
                 }
-                self.hit(8.0, SNARE, 95.0);
+                self.hit(8.0, SNARE, 95.0)?;
                 for pos in (0..16).step_by(2) {
-                    self.hit(f64::from(pos), HAT, if pos % 4 == 0 { 70.0 } else { 50.0 });
+                    self.hit(f64::from(pos), HAT, if pos % 4 == 0 { 70.0 } else { 50.0 })?;
                 }
                 if bar_index == 0 {
-                    self.hit_for(0.0, CRASH, 80.0, 8.0);
+                    self.hit_for(0.0, CRASH, 80.0, 8.0)?;
                 }
             }
             "heartbeat" => {
-                self.hit(0.0, KICK, 70.0);
-                self.hit(3.0, KICK, 55.0);
+                self.hit(0.0, KICK, 70.0)?;
+                self.hit(3.0, KICK, 55.0)?;
             }
             "build" => self.build(bar_index, bars)?,
             "chorus" | "last" => {
                 for pos in [0.0, 6.0, 8.0] {
-                    self.hit(pos, KICK, 115.0);
+                    self.hit(pos, KICK, 115.0)?;
                 }
                 for pos in [4.0, 12.0] {
-                    self.hit(pos, SNARE, 115.0);
-                    self.hit(pos, CLAP, 85.0);
+                    self.hit(pos, SNARE, 115.0)?;
+                    self.hit(pos, CLAP, 85.0)?;
                 }
                 for pos in (0..16).step_by(2) {
                     let pitch = if pos == 14 { OPEN_HAT } else { HAT };
@@ -490,24 +510,24 @@ impl Bar<'_> {
                         f64::from(pos),
                         pitch,
                         if pos % 4 == 0 { 90.0 } else { 70.0 },
-                    );
+                    )?;
                 }
                 let crash_every = if style == "last" { 2 } else { 4 };
                 if bar_index.is_multiple_of(crash_every) {
-                    self.hit_for(0.0, CRASH, 110.0, 8.0);
+                    self.hit_for(0.0, CRASH, 110.0, 8.0)?;
                 }
                 if phrase_end {
                     for (pos, tom) in (12..16).zip([TOM_HIGH, TOM_HIGH, TOM_MID, TOM_LOW]) {
-                        self.hit(f64::from(pos), tom, 105.0);
+                        self.hit(f64::from(pos), tom, 105.0)?;
                     }
                 }
             }
             "four" => {
                 for pos in [0.0, 4.0, 8.0, 12.0] {
-                    self.hit(pos, KICK, 120.0);
+                    self.hit(pos, KICK, 120.0)?;
                 }
                 for pos in [4.0, 12.0] {
-                    self.hit(pos, CLAP, 110.0);
+                    self.hit(pos, CLAP, 110.0)?;
                 }
                 for pos in 0..16 {
                     let open = pos % 4 == 2;
@@ -515,21 +535,21 @@ impl Bar<'_> {
                         f64::from(pos),
                         if open { OPEN_HAT } else { HAT },
                         if open { 80.0 } else { 50.0 },
-                    );
+                    )?;
                 }
                 if bar_index == 0 {
-                    self.hit_for(0.0, CRASH, 110.0, 8.0);
+                    self.hit_for(0.0, CRASH, 110.0, 8.0)?;
                 }
             }
-            "accel" => self.accel(bar_index, bars),
+            "accel" => self.accel(bar_index, bars)?,
             "hit" => {
-                self.hit(0.0, KICK, 127.0);
-                self.hit_for(0.0, CRASH, 120.0, 16.0);
+                self.hit(0.0, KICK, 127.0)?;
+                self.hit_for(0.0, CRASH, 120.0, 16.0)?;
             }
             "outro" => {
                 if bar_index < 4 {
-                    self.hit(0.0, KICK, 80.0);
-                    self.hit(8.0, RIM, 60.0);
+                    self.hit(0.0, KICK, 80.0)?;
+                    self.hit(8.0, RIM, 60.0)?;
                 }
             }
             other => bail!("unknown drum style {other}"),
@@ -539,15 +559,15 @@ impl Bar<'_> {
 
     fn build(&mut self, bar_index: usize, bars: usize) -> Result<()> {
         for pos in [0.0, 4.0, 8.0, 12.0] {
-            self.hit(pos, KICK, 105.0);
+            self.hit(pos, KICK, 105.0)?;
         }
-        let roll_bar = bar_index as i64 - (bars as i64 - 4);
+        let roll_bar = i64::try_from(bar_index)? - (i64::try_from(bars)? - 4);
         if roll_bar < 0 {
             for pos in [4.0, 12.0] {
-                self.hit(pos, SNARE, 100.0);
+                self.hit(pos, SNARE, 100.0)?;
             }
             for pos in (2..16).step_by(4) {
-                self.hit(f64::from(pos), OPEN_HAT, 60.0);
+                self.hit(f64::from(pos), OPEN_HAT, 60.0)?;
             }
         } else {
             let step = match roll_bar {
@@ -557,60 +577,61 @@ impl Bar<'_> {
                 other => bail!("build has no roll bar {other}"),
             };
             for pos in (0..16).step_by(step) {
-                let ramp = (roll_bar as f64 * 16.0 + f64::from(pos)) / 64.0;
-                self.hit(f64::from(pos), SNARE, 60.0 + 60.0 * ramp);
+                let ramp = (roll_bar.to_f64().context("roll bar")? * 16.0 + f64::from(pos)) / 64.0;
+                self.hit(f64::from(pos), SNARE, 60.0 + 60.0 * ramp)?;
             }
         }
         if bar_index == 0 {
-            self.hit_for(0.0, CRASH, 90.0, 8.0);
+            self.hit_for(0.0, CRASH, 90.0, 8.0)?;
         }
         Ok(())
     }
 
-    fn accel(&mut self, bar_index: usize, bars: usize) {
+    fn accel(&mut self, bar_index: usize, bars: usize) -> Result<()> {
         let stage = bar_index / 2;
         if bar_index + 1 >= bars {
-            return;
+            return Ok(());
         }
         match stage {
             0 => {
                 for pos in [0.0, 4.0, 8.0, 12.0] {
-                    self.hit(pos, KICK, 100.0);
+                    self.hit(pos, KICK, 100.0)?;
                 }
             }
             1 => {
                 for pos in (0..16).step_by(2) {
-                    self.hit(f64::from(pos), KICK, 105.0);
-                    self.hit(f64::from(pos), SNARE, 80.0 + 2.0 * f64::from(pos));
+                    self.hit(f64::from(pos), KICK, 105.0)?;
+                    self.hit(f64::from(pos), SNARE, 80.0 + 2.0 * f64::from(pos))?;
                 }
             }
             2 => {
                 for pos in 0..16 {
-                    self.hit(f64::from(pos), SNARE, 85.0 + 2.0 * f64::from(pos));
+                    self.hit(f64::from(pos), SNARE, 85.0 + 2.0 * f64::from(pos))?;
                 }
                 for pos in [0.0, 4.0, 8.0, 12.0] {
-                    self.hit(pos, KICK, 110.0);
+                    self.hit(pos, KICK, 110.0)?;
                 }
             }
             _ => {
                 for half in 0..32 {
-                    self.hit_for(f64::from(half) / 2.0, SNARE, 90.0 + f64::from(half), 0.5);
+                    self.hit_for(f64::from(half) / 2.0, SNARE, 90.0 + f64::from(half), 0.5)?;
                 }
                 for pos in [0.0, 4.0, 8.0, 12.0] {
-                    self.hit(pos, KICK, 115.0);
+                    self.hit(pos, KICK, 115.0)?;
                 }
             }
         }
+        Ok(())
     }
 
     fn bass(&mut self, style: &str, root: i64, next_root: i64) -> Result<()> {
         let pitch = bass_pitch(root);
         match style {
             "none" => {}
-            "sustain" => self.add("Bass", 0, 16, pitch, 100.0),
+            "sustain" => self.add("Bass", 0, 16, pitch, 100.0)?,
             "half" => {
-                self.add("Bass", 0, 8, pitch, 100.0);
-                self.add("Bass", 8, 8, pitch, 100.0);
+                self.add("Bass", 0, 8, pitch, 100.0)?;
+                self.add("Bass", 8, 8, pitch, 100.0)?;
             }
             "eighths" => {
                 for pos in (0..16).step_by(2) {
@@ -625,25 +646,31 @@ impl Bar<'_> {
                         2,
                         note,
                         if pos % 4 == 0 { 110.0 } else { 90.0 },
-                    );
+                    )?;
                 }
             }
             "offbeat" => {
-                self.add("Bass", 0, 2, pitch, 115.0);
+                self.add("Bass", 0, 2, pitch, 115.0)?;
                 for pos in [2, 6, 10, 14] {
-                    self.add("Bass", pos, 2, pitch, 105.0);
+                    self.add("Bass", pos, 2, pitch, 105.0)?;
                 }
-                self.add("Bass", 7, 1, pitch + 12, 80.0);
-                self.add("Bass", 15, 1, pitch + 12, 80.0);
+                self.add("Bass", 7, 1, pitch + 12, 80.0)?;
+                self.add("Bass", 15, 1, pitch + 12, 80.0)?;
             }
             "build" => {
                 for pos in (0..16).step_by(2) {
-                    self.add("Bass", pos, 2, pitch, 90.0 + pos as f64 * 2.0);
+                    self.add(
+                        "Bass",
+                        pos,
+                        2,
+                        pitch,
+                        90.0 + pos.to_f64().context("bass position")? * 2.0,
+                    )?;
                 }
             }
             "walk" => {
-                self.add("Bass", 0, 6, pitch, 100.0);
-                self.add("Bass", 6, 6, pitch, 100.0);
+                self.add("Bass", 0, 6, pitch, 100.0)?;
+                self.add("Bass", 6, 6, pitch, 100.0)?;
                 let target = bass_pitch(next_root);
                 let step = if target > pitch { 1 } else { -1 };
                 let last = if (target - pitch).abs() > 2 {
@@ -651,9 +678,9 @@ impl Bar<'_> {
                 } else {
                     pitch
                 };
-                self.add("Bass", 12, 4, last, 100.0);
+                self.add("Bass", 12, 4, last, 100.0)?;
             }
-            "stop" => self.add("Bass", 0, 4, pitch, 120.0),
+            "stop" => self.add("Bass", 0, 4, pitch, 120.0)?,
             other => bail!("unknown bass style {other}"),
         }
         Ok(())
@@ -665,41 +692,37 @@ impl Bar<'_> {
             "none" => {}
             "sustain" => {
                 for p in voicing {
-                    self.add(part, 0, 16, *p, 70.0);
+                    self.add(part, 0, 16, *p, 70.0)?;
                 }
             }
             "stabs" => {
                 for pos in [0, 3, 6, 8, 11, 14] {
                     for p in voicing {
-                        self.add(part, pos, 2, p + 12, 65.0);
+                        self.add(part, pos, 2, p + 12, 65.0)?;
                     }
                 }
             }
             "offstabs" => {
                 for pos in [2, 6, 10, 14] {
                     for p in voicing {
-                        self.add(part, pos, 1, p + 12, 70.0);
+                        self.add(part, pos, 1, p + 12, 70.0)?;
                     }
                 }
             }
             "broken" => {
                 let order = [voicing[0], voicing[2], voicing[1], last];
-                for (i, p) in order.iter().chain(&order).enumerate() {
-                    let i = i as i64;
-                    self.add(part, i * 2, 2, *p, if i % 2 == 0 { 80.0 } else { 70.0 });
+                for (i, p) in (0_i64..).zip(order.iter().chain(&order)) {
+                    self.add(part, i * 2, 2, *p, if i % 2 == 0 { 80.0 } else { 70.0 })?;
                 }
             }
             "quarters" => {
-                for (i, p) in [voicing[0], voicing[1], voicing[2], last]
-                    .iter()
-                    .enumerate()
-                {
-                    self.add(part, i as i64 * 4, 4, *p, 60.0);
+                for (i, p) in (0_i64..).zip(&[voicing[0], voicing[1], voicing[2], last]) {
+                    self.add(part, i * 4, 4, *p, 60.0)?;
                 }
             }
             "hit" => {
                 for p in voicing {
-                    self.add(part, 0, 4, p + 12, 110.0);
+                    self.add(part, 0, 4, p + 12, 110.0)?;
                 }
             }
             "arp" => {
@@ -710,9 +733,8 @@ impl Bar<'_> {
                 if cycle.len() > 2 {
                     pattern.extend(cycle[1..cycle.len() - 1].iter().rev());
                 }
-                for pos in 0..16 {
-                    let note = pattern[pos as usize % pattern.len()];
-                    self.add(part, pos, 1, note, if pos % 4 == 0 { 70.0 } else { 55.0 });
+                for (pos, &note) in (0..16).zip(pattern.iter().cycle()) {
+                    self.add(part, pos, 1, note, if pos % 4 == 0 { 70.0 } else { 55.0 })?;
                 }
             }
             other => bail!("unknown {part} style {other}"),
@@ -746,7 +768,7 @@ fn silence_of(spec: &str, position: usize) -> Result<(i64, i64)> {
     let found = pattern
         .captures(spec)
         .ok_or_else(|| anyhow!("bad silence {spec}"))?;
-    let bar = (position as i64 + found[1].parse::<i64>()?) * BAR;
+    let bar = (i64::try_from(position)? + found[1].parse::<i64>()?) * BAR;
     Ok((
         bar + found[2].parse::<i64>()? * SIXTEENTH,
         bar + found[3].parse::<i64>()? * SIXTEENTH,
@@ -778,15 +800,15 @@ fn build(score: &Score, base_dir: &Path) -> Result<Song> {
     let mut bar = 0;
     for (position, (section, index, symbol)) in all_chords.iter().enumerate() {
         let (section, index, symbol) = (*section, *index, *symbol);
+        let start_bar = i64::try_from(position)?;
         if index == 0 {
-            song.markers
-                .push((position as i64 * BAR, section.name.clone()));
+            song.markers.push((start_bar * BAR, section.name.clone()));
             for spec in &section.silent {
                 let silence = silence_of(spec, position)?;
                 song.silences.push(silence);
             }
             let lines = lyrics.get(&section.name).map_or(&[][..], Vec::as_slice);
-            place_vocal(&mut song, section, position as i64, lines, &score.motifs)?;
+            place_vocal(&mut song, section, start_bar, lines, &score.motifs)?;
         }
         let parts = &section.parts;
         song.chords
@@ -797,7 +819,7 @@ fn build(score: &Score, base_dir: &Path) -> Result<Song> {
         let (root, quality) = parse_chord(symbol)?;
         let shape = chord_shape(pad_color(&quality)).unwrap_or(&[0, 4, 7]);
         let pcs: Vec<i64> = shape.iter().map(|i| (root + i).rem_euclid(12)).collect();
-        let chord = voice(&pcs, voicing.as_deref());
+        let chord = voice(&pcs, voicing.as_deref())?;
         let following = all_chords.get(position + 1).map_or(symbol, |next| next.2);
         let next_root = if following == "NC" {
             root
@@ -806,7 +828,7 @@ fn build(score: &Score, base_dir: &Path) -> Result<Song> {
         };
         let mut current = Bar {
             song: &mut song,
-            tick: position as i64 * BAR,
+            tick: start_bar * BAR,
             energy: section.energy.unwrap_or(0.5),
         };
         current.drums(&style_at(parts, "drums", index)?, index, section.bars)?;
@@ -880,7 +902,7 @@ fn apply_silence(song: &mut Song) {
 
 fn check(song: &mut Song, score: &Score, bars: usize) -> Result<()> {
     let rules = &score.rules;
-    if bars as i64 != score.bars {
+    if i64::try_from(bars)? != score.bars {
         song.problems
             .push(format!("song has {bars} bars, expected {}", score.bars));
     }
@@ -950,7 +972,7 @@ fn key_signature(key: &str) -> Result<(i8, bool)> {
         .iter()
         .position(|name| *name == tonic)
         .ok_or_else(|| anyhow!("bad key {key}"))?;
-    Ok((index as i8 - 7, minor))
+    Ok((i8::try_from(index)? - 7, minor))
 }
 
 type Events<'a> = Vec<(i64, u8, TrackEventKind<'a>)>;
@@ -991,7 +1013,10 @@ fn sequence<'a>(
 fn write_midi(song: &Song, score: &Score, path: &Path, start: i64, end: Option<i64>) -> Result<()> {
     let inside = |t: i64| start <= t && end.is_none_or(|end| t < end);
     let (sharps, minor) = key_signature(&score.key)?;
-    let tempo = (60_000_000.0 / score.bpm).round() as u32;
+    let tempo = (60_000_000.0 / score.bpm)
+        .round()
+        .to_u32()
+        .ok_or_else(|| anyhow!("bad bpm {}", score.bpm))?;
     let conductor_head = vec![
         TrackEventKind::Meta(MetaMessage::Tempo(u24::new(tempo))),
         TrackEventKind::Meta(MetaMessage::TimeSignature(4, 2, 24, 8)),
@@ -1063,19 +1088,23 @@ fn write_midi(song: &Song, score: &Score, path: &Path, start: i64, end: Option<i
         tracks.push(sequence(head, events)?);
     }
     let smf = Smf {
-        header: Header::new(Format::Parallel, Timing::Metrical(u15::new(TPQ as u16))),
+        header: Header::new(
+            Format::Parallel,
+            Timing::Metrical(u15::new(u16::try_from(TPQ)?)),
+        ),
         tracks,
     };
     smf.save(path).with_context(|| path.display().to_string())
 }
 
-fn beat_text(tick: i64) -> String {
-    let beat = ((tick % BAR) as f64 / TPQ as f64 + 1.0) * 1000.0;
+fn beat_text(tick: i64) -> Result<String> {
+    let beat =
+        ((tick % BAR).to_f64().context("tick")? / TPQ.to_f64().context("TPQ")? + 1.0) * 1000.0;
     let rounded = beat.round() / 1000.0;
     if rounded.fract() == 0.0 {
-        format!("{rounded:.1}")
+        Ok(format!("{rounded:.1}"))
     } else {
-        format!("{rounded}")
+        Ok(format!("{rounded}"))
     }
 }
 
@@ -1105,7 +1134,7 @@ fn write_tables(song: &Song, out_dir: &Path) -> Result<()> {
             s.vowel.to_string(),
             kind.to_string(),
             (s.start / BAR + 1).to_string(),
-            beat_text(s.start),
+            beat_text(s.start)?,
             s.start.to_string(),
             s.length.to_string(),
             note,

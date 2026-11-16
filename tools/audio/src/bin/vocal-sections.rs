@@ -5,6 +5,7 @@ use anyhow::{Context, Result};
 use audio::{decode, mean, round};
 use clap::Parser;
 use ndarray::{ArrayView1, Axis, Slice};
+use num_traits::ToPrimitive;
 use serde::Deserialize;
 use serde_json::{Map, Value, json};
 use sonara::core::pitch::pyin;
@@ -59,7 +60,7 @@ fn describe(y: &ArrayView1<f32>) -> Result<Value> {
         .filter(|(_, v)| **v)
         .map(|(i, _)| 1200.0 * (f64::from(f0[i]) / 440.0).log2())
         .collect();
-    let wobble = (cents.len() > 15).then(|| {
+    let wobble = if cents.len() > 15 {
         let detrended: Vec<f64> = (0..cents.len())
             .map(|i| {
                 let lo = i.saturating_sub(7);
@@ -67,11 +68,13 @@ fn describe(y: &ArrayView1<f32>) -> Result<Value> {
                 cents[i] - cents[lo..hi].iter().sum::<f64>() / 15.0
             })
             .collect();
-        round(
-            mean(detrended[7..detrended.len() - 7].iter().map(|v| v.abs())),
+        Some(round(
+            mean(detrended[7..detrended.len() - 7].iter().map(|v| v.abs()))?,
             1,
-        )
-    });
+        ))
+    } else {
+        None
+    };
     let at_loud = |values: ArrayView1<f32>| {
         mean(
             values
@@ -81,7 +84,13 @@ fn describe(y: &ArrayView1<f32>) -> Result<Value> {
                 .map(|(v, _)| f64::from(*v)),
         )
     };
-    let centroid = spectral_centroid(Some(y.view()), None, f64::from(SR) as f32, 2048, HOP)?;
+    let centroid = spectral_centroid(
+        Some(y.view()),
+        None,
+        SR.to_f32().context("sample rate")?,
+        2048,
+        HOP,
+    )?;
     let flatness = spectral_flatness(Some(y.view()), None, 2048, HOP, 1e-10, 2.0)?;
     let loud_rms = mean(
         level
@@ -89,13 +98,21 @@ fn describe(y: &ArrayView1<f32>) -> Result<Value> {
             .zip(&loud)
             .filter(|(_, l)| **l)
             .map(|(v, _)| v * v),
-    );
+    )?;
+    let frames = loud.len().to_f64().context("frame count")?;
+    let loud_frames = loud_count.to_f64().context("loud frame count")?;
+    let voiced_frames = voiced
+        .iter()
+        .filter(|v| **v)
+        .count()
+        .to_f64()
+        .context("voiced frame count")?;
     Ok(json!({
         "rms_db": round(20.0 * loud_rms.sqrt().log10(), 1),
-        "centroid_hz": at_loud(centroid.row(0)).round_ties_even() as i64,
-        "flatness": round(at_loud(flatness.row(0)), 4),
-        "sound_ratio": round(loud_count as f64 / loud.len() as f64, 2),
-        "voiced_of_sound": round(voiced.iter().filter(|v| **v).count() as f64 / loud_count as f64, 2),
+        "centroid_hz": at_loud(centroid.row(0))?.round_ties_even().to_i64().context("centroid")?,
+        "flatness": round(at_loud(flatness.row(0))?, 4),
+        "sound_ratio": round(loud_frames / frames, 2),
+        "voiced_of_sound": round(voiced_frames / loud_frames, 2),
         "pitch_wobble_cents": wobble,
     }))
 }
@@ -110,9 +127,15 @@ fn main() -> Result<()> {
     let mut out = Map::new();
     let mut bar = 0;
     for section in &score.sections {
-        let start = ((f64::from(bar) * seconds_per_bar * rate) as usize).min(y.len());
+        let start = (f64::from(bar) * seconds_per_bar * rate)
+            .to_usize()
+            .with_context(|| format!("bad start of {}", section.name))?
+            .min(y.len());
         bar += section.bars;
-        let end = ((f64::from(bar) * seconds_per_bar * rate) as usize).clamp(start, y.len());
+        let end = (f64::from(bar) * seconds_per_bar * rate)
+            .to_usize()
+            .with_context(|| format!("bad end of {}", section.name))?
+            .clamp(start, y.len());
         out.insert(
             section.name.clone(),
             describe(&y.slice_axis(Axis(0), Slice::from(start..end)))?,
