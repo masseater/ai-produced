@@ -12,6 +12,7 @@ catalog:
   "@r_masseater/oxlint-typed-rules": 0.4.1
   "@r_masseater/vite-plus-adopt": 0.4.0
   "@r_masseater/msch": 0.19.0
+  "@r_masseater/textlint-rule-preset-ja": 0.1.1
   "@ast-grep/cli": 0.51.2
   "@cloudflare/workers-types": 5.20261113.1
   "@effect/platform-node": 4.1.4
@@ -88,3 +89,4 @@ cargo:
 minimumReleaseAgeExclude:
   - "@r_masseater/msch@0.19.0"
   - "@r_masseater/oxlint-plugin-decision@0.5.1"
+  - "@r_masseater/textlint-rule-preset-ja@0.1.1"
