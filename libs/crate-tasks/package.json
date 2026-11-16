@@ -1,0 +1,14 @@
+{
+  "name": "@workspace/crate-tasks",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tasks": "./src/tasks.ts"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:stack",
+    "vite-plus": "catalog:stack"
+  }
+}
