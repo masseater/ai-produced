@@ -18,7 +18,8 @@
   },
   "devDependencies": {
     "@types/react": "19.3.0",
-    "typescript": "catalog:stack"
+    "typescript": "catalog:stack",
+    "vite-plus": "catalog:stack"
   },
   "peerDependencies": {
     "react": "19.3.1"

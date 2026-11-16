@@ -67,3 +67,7 @@ reference/
 downloads/
 
 /target
+
+# pnpm-managed cargo sources
+/.pnpm
+/.cargo/config.toml

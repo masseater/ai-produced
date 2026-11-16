@@ -3,7 +3,7 @@ name: analysis-wiki
 description: 参照作品（曲、MV、音MAD、文字PV）の分析結果をdocs/wiki/に書くとき、既存の作品ページやトピックを書き直すときに使う。
 ---
 
-# 分析wikiの書き方
+# analysis-wiki
 
 1作品を1ディレクトリとして`docs/wiki/works/`に置き、複数の作品にまたがる知見は`docs/wiki/topics/`に置く。
 索引は作らない。ページを足せばapps/wikiの一覧と検索に入る。

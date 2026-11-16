@@ -1,6 +1,17 @@
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
+  msch: {
+    lint: {
+      overrides: [
+        { files: ["**"], use: ["remotion"] },
+        {
+          files: ["src/app/root.tsx"],
+          rules: { "import/no-unassigned-import": ["error", { allow: ["**/*.css"] }] },
+        },
+      ],
+    },
+  },
   run: {
     tasks: {
       studio: {

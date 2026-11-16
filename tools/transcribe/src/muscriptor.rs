@@ -358,11 +358,6 @@ fn plan(path: &Path, audio_input: bool) -> Result<Plan> {
 }
 
 impl Muscriptor {
-    /// Downloads the pinned ONNX conversion of `MuScriptor` small and plans both graphs.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error when a model cannot be downloaded or loaded by tract.
     pub fn load() -> Result<Self> {
         Ok(Self {
             conditioner: plan(&download("muscriptor-small-cond.onnx")?, true)?,
@@ -423,11 +418,6 @@ impl Muscriptor {
         Ok(tokens)
     }
 
-    /// Transcribes 16 kHz mono audio, segment by segment, into notes.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error when the model fails to run or emits an impossible time.
     pub fn transcribe(&self, audio: &[f32]) -> Result<Vec<Note>> {
         let chunks = audio.len().div_ceil(SEGMENT);
         let mut tracker = Tracker::default();

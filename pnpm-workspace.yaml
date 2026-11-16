@@ -3,6 +3,7 @@ packages:
   - libs/*
   - infra/*
   - tools/*
+  - songs/*
   - .claude
 
 catalogMode: prefer
@@ -10,6 +11,7 @@ catalogMode: prefer
 catalog:
   "@r_masseater/oxlint-typed-rules": 0.4.1
   "@r_masseater/vite-plus-adopt": 0.4.0
+  "@r_masseater/msch": 0.19.0
   "@ast-grep/cli": 0.51.2
   "@cloudflare/workers-types": 5.20261112.1
   "@effect/platform-node": 4.1.4
@@ -81,3 +83,8 @@ allowBuilds:
   core-js-pure: false
   dtrace-provider: false
   re2: true
+cargo:
+  enabled: true
+minimumReleaseAgeExclude:
+  - "@r_masseater/msch@0.19.0"
+  - "@r_masseater/oxlint-plugin-decision@0.5.1"

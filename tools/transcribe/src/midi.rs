@@ -57,11 +57,6 @@ impl TempoMap {
     }
 }
 
-/// Reads the notes of a Standard MIDI File, in seconds, grouped by program, channel and track.
-///
-/// # Errors
-///
-/// Returns an error when the file does not parse or uses timecode timing.
 pub fn read(data: &[u8]) -> Result<Vec<Instrument>> {
     let smf = Smf::parse(data)?;
     let Timing::Metrical(ppq) = smf.header.timing else {
@@ -204,11 +199,6 @@ fn tempo_event() -> TrackEvent<'static> {
     }
 }
 
-/// Writes notes as a type 1 Standard MIDI File with one track per program.
-///
-/// # Errors
-///
-/// Returns an error when a note time is negative or too large, or a program is above 127.
 pub fn write(notes: &[Note], name: fn(u16) -> String) -> Result<Vec<u8>> {
     let mut order: Vec<u16> = Vec::new();
     let mut channels: HashMap<u16, u8> = HashMap::new();

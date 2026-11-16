@@ -8,6 +8,7 @@ import type { LyricsShot } from "#/pages/mou-ikkai/model/storyboard";
 import { Glyphs } from "#/pages/mou-ikkai/ui/glyphs";
 import { HookCard } from "#/pages/mou-ikkai/ui/hook-card";
 import { LineText } from "#/pages/mou-ikkai/ui/line-text";
+import type { Direction } from "#/pages/mou-ikkai/ui/line-text";
 
 const MASK = "■";
 const MASKED_SHARE = 0.3;
@@ -23,7 +24,7 @@ const chopText = (shot: LyricsShot, moment: Moment): string => {
   return moraText(moment);
 };
 
-const directionOf = (shot: LyricsShot): "across" | "down" => {
+const directionOf = (shot: LyricsShot): Direction => {
   if (shot.layout === "vertical") {
     return "down";
   }
