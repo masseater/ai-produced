@@ -21,4 +21,4 @@
 
 - 本番デプロイと外部公開は、ユーザーの指示を待つ。
 - このリポジトリは public である。他人の曲や映像に由来する素材は入れず、`reference-materials` スキルに従う。
-- REAPER や Mac 上のプラグインが要る作業は、`mac-mini-handoff` スキルに従って Mac mini 常駐のスレッドへ渡す。
+- REAPER や OpenUtau の歌手など、Windows PC にあるものが要る工程は、`windows-pc` スキルに従って PC 上の Remote Control のセッションで実行する。
