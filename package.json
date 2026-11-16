@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare": "vp config && effect-tsgo patch --typescript --oxlint && skills experimental_install --force"
+    "prepare": "vp config && effect-tsgo patch --typescript --oxlint && msch --prepare"
   },
   "devDependencies": {
     "@ast-grep/cli": "catalog:",
@@ -27,7 +27,6 @@
     "eslint-plugin-react-hooks": "catalog:",
     "fallow": "catalog:stack",
     "renovate": "catalog:stack",
-    "skills": "catalog:",
     "syncpack": "catalog:",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "vite-plus": "catalog:stack"

@@ -231,7 +231,6 @@ const generated = [
   ".claude/skills/**",
   ".intent/**",
   "AGENTS.md",
-  "skills-lock.json",
   "CHANGELOG.md",
 ];
 

@@ -29,6 +29,65 @@ const workspace = await workspaceSettings({
 
 export default defineConfig({
   ...checks,
+  skills: {
+    "better-auth/skills": {
+      commit: "20c9e88a5c007461a703f1c213572b073196113e",
+      skills: [
+        "better-auth-best-practices",
+        "better-auth-security-best-practices",
+        "email-and-password-best-practices",
+      ],
+    },
+    "cloudflare/skills": {
+      commit: "cbf893b954222276bf1af57e5f23379231e0efb9",
+      root: "skills",
+      skills: ["cloudflare", "workers-best-practices"],
+    },
+    "Effect-TS/skills": {
+      commit: "155c50c911f9c99c294ef8a4461981c5bbe6453e",
+      root: "skills",
+      skills: ["effect-ts"],
+    },
+    "elysiajs/skills": {
+      commit: "1466d85aa4f2a0fec91f71311e65bbfa91aa7dc5",
+      skills: ["elysiajs"],
+    },
+    "feature-sliced/skills": {
+      commit: "5e95aaebb84541742686e56352b7569acf4306f1",
+      skills: ["feature-sliced-design"],
+    },
+    "GoogleChrome/modern-web-guidance": {
+      commit: "4dd968349e54ca45a05dd5c818fb035c9054b022",
+      root: "skills",
+      skills: ["modern-web-guidance"],
+    },
+    "masseater/skills": {
+      commit: "b323dbad64cdb7140b75686cb129a36b670a621a",
+      root: "plugins/masseater-skills/skills",
+      skills: "all",
+    },
+    "mkosir/typescript-style-guide": {
+      commit: "170074a0df9b07f4a4a78e3596ec1edf06a14da7",
+      root: "skills",
+      skills: ["typescript-discriminated-unions", "typescript-variables"],
+    },
+    "nanaism/yomiyasu": {
+      commit: "db78b9bc5e868549b517a037df7a4d1c93edac23",
+      root: "skills",
+      skills: ["yomiyasu"],
+    },
+    "obra/superpowers": {
+      commit: "22f0b463e7a5e579904dd6211a520321035526f7",
+      root: "skills",
+      skills: ["systematic-debugging", "verification-before-completion"],
+    },
+    "shadcn-ui/ui": {
+      commit: "e62c9435fff729a175f38983dee73b2cb4f6a069",
+      root: "skills",
+      skills: ["shadcn"],
+    },
+    "./docs/skills": { skills: "all" },
+  },
   test: { projects: [...workspace.testProjects], passWithNoTests: true },
   staged: {
     "*": "vp check --fix",

@@ -32,7 +32,7 @@ dist-ssr
 # AI agent worktrees
 .claude/worktrees/
 
-# Agent skills restored from skills-lock.json
+# Agent skills linked by vpa --prepare from the skills section of vite.config.ts
 .agents/skills/*
 !.agents/skills/.gitkeep
 
