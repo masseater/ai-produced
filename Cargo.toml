@@ -1,7 +1,7 @@
 [workspace]
 resolver = "3"
 members = ["tools/*"]
-exclude = ["tools/openutau-render", "tools/stem-repro"]
+exclude = ["tools/openutau-render"]
 
 [workspace.package]
 version = "0.0.0"
@@ -10,7 +10,7 @@ rust-version = "1.100"
 publish = false
 
 [workspace.lints.rust]
-unsafe_code = "forbid"
+unsafe_code = "deny"
 
 [workspace.lints.clippy]
 pedantic = { level = "warn", priority = -1 }
