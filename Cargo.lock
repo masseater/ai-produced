@@ -236,9 +236,9 @@ checksum = "ac07cdecf99051d9a5238b80f35af32cdeba5b336e55d957b318b50137e18da5"
 
 [[package]]
 name = "basic-pitch-rs"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eb3451e4cab45754c5e23241aef4dc22d31c2efb0f41b8b876e1f4fcd17c53ca"
+checksum = "8a2aaeac3525e530290d2f7265e82398417eb81ff3e2e4aef356977fb4ea2011"
 dependencies = [
  "midly",
  "thiserror",
