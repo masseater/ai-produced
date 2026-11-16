@@ -1,5 +1,6 @@
 import type { ToolSections } from "@r_masseater/vite-plus-adopt";
 import fsd from "@r_masseater/vite-plus-adopt/fsd";
+import { rustupToolchain } from "@workspace/crate-tasks/tasks";
 import { Array as Arr, pipe } from "effect";
 import type { UserConfig } from "vite-plus";
 
@@ -48,6 +49,13 @@ const checks: ToolSections = {
 
 const checkTasks: NonNullable<NonNullable<UserConfig["run"]>["tasks"]> = {
   vpa: { command: "vpa", cache: false },
+  msch: {
+    command: `${rustupToolchain(import.meta.dirname)} msch`,
+    cache: {
+      input: [{ auto: true }, "!node_modules/.cache/**"],
+      untrackedEnv: ["HTTPS_PROXY", "https_proxy", "NO_PROXY", "no_proxy", "SSL_CERT_FILE"],
+    },
+  },
 };
 
 export { checkTasks, checks };

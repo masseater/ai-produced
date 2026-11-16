@@ -1,20 +1,11 @@
+import { cargoTask } from "@workspace/crate-tasks/tasks";
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   run: {
     tasks: {
       verify: { command: [], dependsOn: ["cargo"] },
-      cargo: {
-        command: [
-          "cargo fmt -p audio --check",
-          "cargo clippy -p audio --all-targets --locked -- -D warnings",
-          "cargo test -p audio --locked",
-        ],
-        cache: {
-          input: [{ auto: true }, { pattern: "!target/**", base: "workspace" }],
-          output: [],
-        },
-      },
+      cargo: cargoTask({ crate: "audio", root: `${import.meta.dirname}/../..` }),
     },
   },
 });
