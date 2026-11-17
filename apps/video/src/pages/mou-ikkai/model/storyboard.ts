@@ -18,7 +18,7 @@ import {
 } from "#/pages/mou-ikkai/model/song";
 import type { Line, Section } from "#/pages/mou-ikkai/model/song";
 
-type LyricsShot = Readonly<{
+export type LyricsShot = Readonly<{
   kind: "lyrics";
   from: number;
   to: number;
@@ -33,7 +33,7 @@ type LyricsShot = Readonly<{
 
 type SilenceShot = Readonly<{ kind: "silence"; from: number; to: number; section: string }>;
 
-type Shot = LyricsShot | SilenceShot;
+export type Shot = LyricsShot | SilenceShot;
 
 type Span = Readonly<{
   section: Section;
@@ -201,8 +201,5 @@ const shotByFrame: readonly Shot[] = pipe(
 
 const LAST_FRAME = DURATION_IN_FRAMES - NEXT;
 
-const shotAt = (frame: number): Shot =>
+export const shotAt = (frame: number): Shot =>
   Arr.get(shotByFrame, Math.min(Math.max(frame, FIRST), LAST_FRAME)).pipe(Option.getOrThrow);
-
-export { shotAt };
-export type { LyricsShot, Shot };

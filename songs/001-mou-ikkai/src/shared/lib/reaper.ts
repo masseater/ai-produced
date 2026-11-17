@@ -9,7 +9,7 @@ const DONE = "ok";
 const MAC = "/Applications/REAPER.app/Contents/MacOS/REAPER";
 const WINDOWS = String.raw`C:\Program Files\REAPER (x64)\reaper.exe`;
 
-type Script = Readonly<{ lua: string; done: string; seconds: number; cwd: string }>;
+export type Script = Readonly<{ lua: string; done: string; seconds: number; cwd: string }>;
 
 const reaperPath = Effect.gen(function* findReaper() {
   const machine = yield* Machine;
@@ -32,7 +32,7 @@ const running = Effect.fn("running")(function* isRunning(cwd: string) {
   return pipe(stdout, Str.toLowerCase, Str.includes("reaper.exe"));
 });
 
-const ensureClosed = Effect.fn("ensureClosed")(function* checkClosed(
+export const ensureClosed = Effect.fn("ensureClosed")(function* checkClosed(
   task: Readonly<{ cwd: string; doing: string }>,
 ) {
   const open = yield* running(task.cwd);
@@ -66,7 +66,7 @@ const unfinished = (script: Script, log: string): string => {
   return `${script.lua} did not finish`;
 };
 
-const runScript = Effect.fn("runScript")(function* runReaperScript(script: Script) {
+export const runScript = Effect.fn("runScript")(function* runReaperScript(script: Script) {
   const machine = yield* Machine;
   yield* machine.remove(script.done);
   yield* session(script);
@@ -74,6 +74,3 @@ const runScript = Effect.fn("runScript")(function* runReaperScript(script: Scrip
   const finished = pipe(Str.linesIterator(log), Arr.fromIterable, Arr.contains(DONE));
   yield* expect({ holds: finished, message: unfinished(script, log) });
 });
-
-export type { Script };
-export { ensureClosed, runScript };

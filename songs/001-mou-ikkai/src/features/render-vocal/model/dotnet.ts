@@ -10,9 +10,9 @@ const SDK_VERSION_COLUMN = 0;
 const sdkVersion = field(SDK_VERSION_COLUMN);
 
 type Sdk = Readonly<{ command: string; env: Readonly<Record<string, string>> }>;
-type Choice = Readonly<{ when: boolean; value: string; otherwise: string }>;
+export type Choice = Readonly<{ when: boolean; value: string; otherwise: string }>;
 
-const pick = (choice: Choice): string => {
+export const pick = (choice: Choice): string => {
   if (choice.when) {
     return choice.value;
   }
@@ -65,7 +65,7 @@ const installDotnet = Effect.fn("installDotnet")(function* installDotnet(cwd: st
   } satisfies Sdk;
 }, Effect.scoped);
 
-const dotnet = Effect.fn("dotnet")(function* dotnet(cwd: string) {
+export const dotnet = Effect.fn("dotnet")(function* dotnet(cwd: string) {
   const machine = yield* Machine;
   const sdks = yield* machine
     .output({ command: "dotnet", args: ["--list-sdks"], cwd })
@@ -79,6 +79,3 @@ const dotnet = Effect.fn("dotnet")(function* dotnet(cwd: string) {
   }
   return yield* installDotnet(cwd);
 });
-
-export type { Choice };
-export { dotnet, pick };

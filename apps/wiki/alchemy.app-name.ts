@@ -1,0 +1,52 @@
+import { Rules, Zone } from "@alchemy.run/cloudflare";
+import { Stack, isResourceOfType } from "alchemy";
+import { Array as Arr, Effect, Match, Option, Record, Schema, String, pipe } from "effect";
+
+export const APP_NAME = "ai-produced-wiki";
+
+const PREFIX = `${APP_NAME}-`;
+
+const ENV_PREFIX = `${pipe(APP_NAME, String.replaceAll("-", "_"))}_`;
+
+const isZone = (resource: unknown): boolean => isResourceOfType(resource, Zone.Zone.Type);
+
+const decodeNamed = Schema.decodeUnknownOption(Schema.Struct({ name: Schema.String }));
+
+const prefixOf = (resource: unknown): string =>
+  Match.value(resource).pipe(
+    Match.when(Rules.isList, () => ENV_PREFIX),
+    Match.when(isZone, () => ""),
+    Match.orElse(() => PREFIX),
+  );
+
+const describeUnprefixed = (
+  resource: Readonly<{ FQN: string; Props: unknown }>,
+): readonly string[] =>
+  decodeNamed(resource.Props).pipe(
+    Option.filter(({ name }) => !pipe(name, String.startsWith(prefixOf(resource)))),
+    Option.map(({ name }) => `${resource.FQN}: ${name}`),
+    Option.toArray,
+  );
+
+export const requireAppPrefix = Effect.gen(function* requireAppPrefix() {
+  const { name, resources } = yield* Stack;
+  const offenders = [
+    ...Arr.filter(
+      [`Stack: ${name}`],
+      () => name !== APP_NAME && !pipe(name, String.startsWith(PREFIX)),
+    ),
+    ...pipe(
+      Record.values(resources),
+      Arr.flatMap((resource) => describeUnprefixed(resource)),
+    ),
+  ];
+  if (Arr.isReadonlyArrayNonEmpty(offenders)) {
+    const listed = pipe(offenders, Arr.join(", "));
+    return yield* Effect.die(
+      new Error(
+        `Alchemy のスタック名は "${APP_NAME}" か "${PREFIX}" で始まる名前、リソース名は "${PREFIX}"（Rules.List は "${ENV_PREFIX}"）で始める: ${listed}`,
+      ),
+    );
+  }
+  return offenders;
+});

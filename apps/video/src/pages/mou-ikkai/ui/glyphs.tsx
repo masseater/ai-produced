@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-type Tone = "sung" | "now" | "ahead";
-type Size = "chop" | "card" | "tile" | "line-xl" | "line-lg" | "line-md" | "line-sm";
+export type Tone = "sung" | "now" | "ahead";
+export type Size = "chop" | "card" | "tile" | "line-xl" | "line-lg" | "line-md" | "line-sm";
 
 const tones: Readonly<Record<Tone, string>> = {
   sung: "text-(--fg)",
@@ -21,13 +21,10 @@ const sizes: Readonly<Record<Size, string>> = {
 
 type GlyphsProps = Readonly<{ text: string; tone: Tone; size: Size }>;
 
-const Glyphs = ({ text, tone, size }: GlyphsProps): ReactNode => (
+export const Glyphs = ({ text, tone, size }: GlyphsProps): ReactNode => (
   <span
     className={`font-sans leading-tight font-black whitespace-pre ${sizes[size]} ${tones[tone]}`}
   >
     {text}
   </span>
 );
-
-export { Glyphs };
-export type { Size, Tone };

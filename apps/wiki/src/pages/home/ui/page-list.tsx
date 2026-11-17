@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { homeQueries } from "#/pages/home/api/queries";
 import { WikiLink } from "#/shared/ui/wiki-link";
 
-const PageList = (): ReactNode => {
+export const PageList = (): ReactNode => {
   const { data } = useSuspenseQuery(homeQueries.api.pages.get.queryOptions());
   return (
     <ul className="flex flex-col gap-1">
@@ -23,5 +23,3 @@ const PageList = (): ReactNode => {
     </ul>
   );
 };
-
-export { PageList };

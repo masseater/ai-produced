@@ -10,7 +10,7 @@ const WIDTH = 1920;
 const HEIGHT = 1080;
 const defaultProps: MouIkkaiProps = { audio: "mou-ikkai-mix.wav" };
 
-const Root = (): ReactNode => (
+export const Root = (): ReactNode => (
   <Composition<AnyZodObject, MouIkkaiProps>
     id="MouIkkai"
     component={MouIkkai}
@@ -21,5 +21,3 @@ const Root = (): ReactNode => (
     defaultProps={defaultProps}
   />
 );
-
-export { Root };

@@ -245,7 +245,7 @@ const loudness = Effect.fn("loudness")(function* loudness(paths: Paths, options:
   yield* machine.write(machine.join(paths.out, "loudness.txt"), summary);
 });
 
-const render = Effect.gen(function* render() {
+export const render = Effect.gen(function* render() {
   const config = yield* settings.pipe(
     Effect.mapError((failure) => TaskFailed.make({ message: String(failure) })),
   );
@@ -263,5 +263,3 @@ const render = Effect.gen(function* render() {
   yield* checkClosures(paths);
   yield* loudness(paths, options);
 });
-
-export { render };

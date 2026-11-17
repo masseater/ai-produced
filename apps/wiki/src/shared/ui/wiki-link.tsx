@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useMemo } from "react";
 import type { ReactNode } from "react";
 
-const WikiLink = ({
+export const WikiLink = ({
   section,
   name,
   children,
@@ -14,5 +14,3 @@ const WikiLink = ({
     </Link>
   );
 };
-
-export { WikiLink };

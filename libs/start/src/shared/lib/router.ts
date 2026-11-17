@@ -3,7 +3,7 @@ import { createRouter } from "@tanstack/react-router";
 import type { AnyRoute, Router } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 
-const createQueryRouter = <TRouteTree extends AnyRoute>(
+export const createQueryRouter = <TRouteTree extends AnyRoute>(
   routeTree: TRouteTree,
 ): Router<TRouteTree> => {
   const queryClient = new QueryClient();
@@ -17,5 +17,3 @@ const createQueryRouter = <TRouteTree extends AnyRoute>(
   setupRouterSsrQueryIntegration({ router, queryClient });
   return router;
 };
-
-export { createQueryRouter };

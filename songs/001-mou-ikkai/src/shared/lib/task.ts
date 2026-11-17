@@ -22,7 +22,7 @@ import { TaskFailed } from "#/shared/lib/task-failed.ts";
 
 const EXIT_SUCCESS = 0;
 
-type Command = Readonly<{
+export type Command = Readonly<{
   command: string;
   args: readonly string[];
   cwd: string;
@@ -31,7 +31,7 @@ type Command = Readonly<{
 
 type Output = Readonly<{ stdout: string; stderr: string }>;
 
-class Machine extends Context.Service<
+export class Machine extends Context.Service<
   Machine,
   {
     readonly run: (command: Command) => Effect.Effect<void, TaskFailed>;
@@ -52,7 +52,7 @@ class Machine extends Context.Service<
     readonly windows: boolean;
     readonly home: string;
   }
->()("@workspace/mou-ikkai/task/Machine") {}
+>()("@workspace/mou-ikkai/shared/lib/task/Machine") {}
 
 type ProcessOps = Pick<Machine["Service"], "run" | "output" | "succeeds" | "background">;
 
@@ -175,7 +175,7 @@ const machine = Layer.effect(
   }),
 ).pipe(Layer.provide(nodeServicesLayer));
 
-const rows = (text: string): readonly (readonly string[])[] =>
+export const rows = (text: string): readonly (readonly string[])[] =>
   pipe(
     Str.linesIterator(text),
     Arr.fromIterable,
@@ -183,7 +183,7 @@ const rows = (text: string): readonly (readonly string[])[] =>
     Arr.map(Str.split("\t")),
   );
 
-const field =
+export const field =
   (index: number) =>
   (row: readonly string[]): string =>
     pipe(
@@ -191,9 +191,6 @@ const field =
       Option.getOrElse(() => ""),
     );
 
-const runTask = (program: Effect.Effect<void, TaskFailed, Machine>): void => {
+export const runTask = (program: Effect.Effect<void, TaskFailed, Machine>): void => {
   runMain(Effect.provide(program, machine));
 };
-
-export type { Command };
-export { Machine, field, rows, runTask };

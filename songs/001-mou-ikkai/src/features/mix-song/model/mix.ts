@@ -220,7 +220,7 @@ const keepTuning =
     return tune(settings, round, state.threshold);
   };
 
-const mix = Effect.gen(function* mix() {
+export const mix = Effect.gen(function* mix() {
   const machine = yield* Machine;
   yield* prepare;
   yield* balance;
@@ -235,5 +235,3 @@ const mix = Effect.gen(function* mix() {
     machine.join(here, "render", "mou-ikkai-mix.settings.tsv"),
   );
 });
-
-export { mix };

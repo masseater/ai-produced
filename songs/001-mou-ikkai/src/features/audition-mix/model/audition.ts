@@ -37,7 +37,7 @@ const clean = Effect.gen(function* clean() {
   yield* pipe(stale, Effect.forEach(machine.remove));
 });
 
-const audition = Effect.gen(function* audition() {
+export const audition = Effect.gen(function* audition() {
   const machine = yield* Machine;
   yield* clean;
   yield* ensureClosed({ cwd: here, doing: "auditioning" });
@@ -53,5 +53,3 @@ const audition = Effect.gen(function* audition() {
   yield* Console.log(Str.trimEnd(table));
   yield* machine.write(machine.join(here, "render", "audition", "metrics.tsv"), table);
 });
-
-export { audition };

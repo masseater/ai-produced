@@ -3,7 +3,7 @@ import { Array as Arr, Option, pipe } from "effect";
 import { DURATION_IN_FRAMES, frameOf, song } from "#/pages/mou-ikkai/model/song";
 import type { Line } from "#/pages/mou-ikkai/model/song";
 
-type Moment = Readonly<{
+export type Moment = Readonly<{
   line: Line;
   mora: number;
   lineFrom: number;
@@ -56,7 +56,7 @@ const firstFrom = Arr.head(entries).pipe(
   Option.getOrElse(() => DURATION_IN_FRAMES),
 );
 
-const momentAt = (frame: number): Option.Option<Moment> =>
+export const momentAt = (frame: number): Option.Option<Moment> =>
   Arr.get(entryByFrame, frame - firstFrom).pipe(
     Option.map((entry) => ({
       line: entry.line,
@@ -65,6 +65,3 @@ const momentAt = (frame: number): Option.Option<Moment> =>
       sounding: frame < entry.to,
     })),
   );
-
-export { momentAt };
-export type { Moment };

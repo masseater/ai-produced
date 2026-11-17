@@ -22,7 +22,7 @@ const componentsFor = (source: string): Components => ({
   ),
 });
 
-const WikiPage = (): ReactNode => {
+export const WikiPage = (): ReactNode => {
   const { section, name } = useParams({ from: "/wiki/$section/$name" });
   const slug = `${section}/${name}`;
   const { data } = useSuspenseQuery(wikiPageQueries.api.page.get.queryOptions({ slug }));
@@ -40,5 +40,3 @@ const WikiPage = (): ReactNode => {
     </main>
   );
 };
-
-export { WikiPage };

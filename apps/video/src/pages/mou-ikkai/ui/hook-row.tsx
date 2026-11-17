@@ -27,7 +27,7 @@ const toneOf = (position: number, sung: number): Tone => {
 
 type HookRowProps = Readonly<{ sung: number; size: Size }>;
 
-const HookRow = ({ sung, size }: HookRowProps): ReactNode => (
+export const HookRow = ({ sung, size }: HookRowProps): ReactNode => (
   <div className="flex">
     {pipe(
       HOOK,
@@ -37,5 +37,3 @@ const HookRow = ({ sung, size }: HookRowProps): ReactNode => (
     )}
   </div>
 );
-
-export { HookRow };

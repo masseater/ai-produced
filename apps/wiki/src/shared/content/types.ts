@@ -1,6 +1,6 @@
-type Section = "works" | "topics";
+export type Section = "works" | "topics";
 
-type PageSummary = Readonly<{
+export type PageSummary = Readonly<{
   slug: string;
   section: Section;
   name: string;
@@ -9,6 +9,4 @@ type PageSummary = Readonly<{
   tags: readonly string[];
 }>;
 
-type WikiPage = PageSummary & Readonly<{ source: string; body: string }>;
-
-export type { PageSummary, Section, WikiPage };
+export type WikiPage = PageSummary & Readonly<{ source: string; body: string }>;

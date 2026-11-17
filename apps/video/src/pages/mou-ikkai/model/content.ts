@@ -4,11 +4,11 @@ import type { Moment } from "#/pages/mou-ikkai/model/moment";
 import type { Line } from "#/pages/mou-ikkai/model/song";
 import type { LyricsShot } from "#/pages/mou-ikkai/model/storyboard";
 
-type Content = "hook" | "chop" | "line";
+export type Content = "hook" | "chop" | "line";
 
-const NOT_HOOK = 0;
+export const NOT_HOOK = 0;
 
-const hookOf = (moment: Moment): number =>
+export const hookOf = (moment: Moment): number =>
   Arr.get(moment.line.morae, moment.mora).pipe(
     Option.map((mora) => mora.hook),
     Option.getOrElse(() => NOT_HOOK),
@@ -23,7 +23,10 @@ const isHookLine = (line: Line): boolean =>
 const showsHook = (shot: LyricsShot, moment: Moment): boolean =>
   hookOf(moment) > NOT_HOOK && (shot.treatment === "chop" || isHookLine(moment.line));
 
-const contentOf = ({ shot, moment }: Readonly<{ shot: LyricsShot; moment: Moment }>): Content => {
+export const contentOf = ({
+  shot,
+  moment,
+}: Readonly<{ shot: LyricsShot; moment: Moment }>): Content => {
   if (showsHook(shot, moment)) {
     return "hook";
   }
@@ -33,7 +36,7 @@ const contentOf = ({ shot, moment }: Readonly<{ shot: LyricsShot; moment: Moment
   return "line";
 };
 
-const sungInHook = (moment: Moment): number => {
+export const sungInHook = (moment: Moment): number => {
   const hook = hookOf(moment);
   return pipe(
     moment.line.morae,
@@ -42,11 +45,8 @@ const sungInHook = (moment: Moment): number => {
   );
 };
 
-const moraText = (moment: Moment): string =>
+export const moraText = (moment: Moment): string =>
   Arr.get(moment.line.morae, moment.mora).pipe(
     Option.map((mora) => mora.text),
     Option.getOrElse(() => ""),
   );
-
-export { contentOf, hookOf, moraText, NOT_HOOK, sungInHook };
-export type { Content };

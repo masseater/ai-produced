@@ -17,6 +17,10 @@ import type { PageSummary } from "#/shared/content";
 import { wikiPages } from "#/shared/content/index.server";
 
 const MODEL = "@cf/google/embeddinggemma-300m";
+
+const EMBEDDING_GATEWAY = {
+  gateway: { id: "default", metadata: { caller: "ai-produced.wiki.search" } },
+};
 const BATCH_SIZE = 50;
 const DOCUMENT_PREFIX = "title: ";
 const QUERY_PREFIX = "task: search result | query: ";
@@ -30,7 +34,7 @@ type Passage = Readonly<{
   title: string;
   text: string;
 }>;
-type SearchHit = Passage & Readonly<{ score: number }>;
+export type SearchHit = Passage & Readonly<{ score: number }>;
 type Vector = readonly number[];
 
 const passagesOf = (page: PageSummary & Readonly<{ body: string }>): readonly Passage[] =>
@@ -51,7 +55,7 @@ const passagesOf = (page: PageSummary & Readonly<{ body: string }>): readonly Pa
 const passages: readonly Passage[] = pipe(wikiPages, Arr.flatMap(passagesOf));
 
 const runEmbedding = (batch: readonly string[]): Effect.Effect<readonly Vector[]> =>
-  Effect.promise(() => env.AI.run(MODEL, { text: [...batch] })).pipe(
+  Effect.promise(() => env.AI.run(MODEL, { text: [...batch] }, EMBEDDING_GATEWAY)).pipe(
     Effect.map((output) => output.data),
   );
 
@@ -101,7 +105,7 @@ const rank = (queryVector: Vector, vectors: readonly Vector[]): readonly SearchH
     RESULT_LIMIT,
   );
 
-const searchPages = (query: string): Promise<readonly SearchHit[]> =>
+export const searchPages = (query: string): Promise<readonly SearchHit[]> =>
   runtime.runPromise(
     Effect.gen(function* search() {
       const index = yield* PassageIndex;
@@ -111,10 +115,7 @@ const searchPages = (query: string): Promise<readonly SearchHit[]> =>
     }).pipe(Effect.withSpan("wiki.search")),
   );
 
-const pageSummaries: readonly PageSummary[] = pipe(
+export const pageSummaries: readonly PageSummary[] = pipe(
   wikiPages,
   Arr.map((page) => Struct.omit(page, ["body"])),
 );
-
-export type { SearchHit };
-export { pageSummaries, searchPages };

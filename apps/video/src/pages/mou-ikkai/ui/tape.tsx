@@ -26,7 +26,7 @@ const fillOf = (until: number, played: number): string => {
 
 type TapeProps = Readonly<{ elapsed: number }>;
 
-const Tape = ({ elapsed }: TapeProps): ReactNode => {
+export const Tape = ({ elapsed }: TapeProps): ReactNode => {
   const played = Math.max(elapsed, START) % LOOP_FRAMES;
   return (
     <>
@@ -44,5 +44,3 @@ const Tape = ({ elapsed }: TapeProps): ReactNode => {
     </>
   );
 };
-
-export { Tape };

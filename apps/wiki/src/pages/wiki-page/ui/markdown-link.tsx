@@ -7,7 +7,7 @@ import { WikiLink } from "#/shared/ui/wiki-link";
 const LINK_CLASS = "underline";
 const NEW_TAB_LABEL = "（新しいタブで開く）";
 
-const MarkdownLink = ({
+export const MarkdownLink = ({
   href,
   source,
   children,
@@ -27,5 +27,3 @@ const MarkdownLink = ({
       ),
     }),
   );
-
-export { MarkdownLink };

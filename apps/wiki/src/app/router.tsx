@@ -3,7 +3,7 @@ import { createQueryRouter } from "@workspace/start/router";
 
 import { routeTree } from "./generated/routeTree.gen";
 
-type AppRouter = Router<typeof routeTree>;
+export type AppRouter = Router<typeof routeTree>;
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -11,7 +11,4 @@ declare module "@tanstack/react-router" {
   }
 }
 
-const getRouter = (): AppRouter => createQueryRouter(routeTree);
-
-export type { AppRouter };
-export { getRouter };
+export const getRouter = (): AppRouter => createQueryRouter(routeTree);
