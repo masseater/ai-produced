@@ -29,9 +29,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# AI agent worktrees
-.claude/worktrees/
-
 # Agent skills linked by vpa --prepare from the skills section of vite.config.ts
 .agents/skills/*
 !.agents/skills/.gitkeep
@@ -51,13 +48,6 @@ dist-ssr
 tools/openutau-render/bin
 tools/openutau-render/obj
 
-# Rendered audio
-songs/*/03-vocal/render
-
-# REAPER mix output
-songs/*/04-reaper/samples
-songs/*/04-reaper/render
-songs/*/04-reaper/*-mix.rpp
 # Playwright CLI
 .playwright/
 .playwright-cli/

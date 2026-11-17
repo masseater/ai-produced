@@ -1,7 +1,7 @@
 import { Array as Arr, Effect, String as Str, pipe } from "effect";
 
-import { Machine, field, rows } from "#/task.ts";
-import type { Command } from "#/task.ts";
+import { Machine, field, rows } from "#/shared/lib/task.ts";
+import type { Command } from "#/shared/lib/task.ts";
 
 const DOTNET_CHANNEL = "10.0";
 const DOTNET_MAJOR = "10.";

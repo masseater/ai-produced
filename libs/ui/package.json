@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./components/button": "./src/components/button.tsx",
-    "./lib/utils": "./src/lib/utils.ts",
-    "./globals.css": "./src/styles/globals.css"
+    "./components/button": "./src/shared/ui/button.tsx",
+    "./lib/utils": "./src/shared/lib/utils.ts",
+    "./globals.css": "./src/app/globals.css"
   },
   "dependencies": {
     "class-variance-authority": "0.7.1",

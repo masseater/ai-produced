@@ -5,7 +5,7 @@
   "typeAware": { "enabled": true, "require": "complete" },
   "failOnParseError": true,
   "ignoreDependencies": ["@effect/language-service"],
-  "ignorePatterns": [".claude/**", "tools/tempo-octave/**", "tools/mora-check/**"],
+  "ignorePatterns": [".claude/**"],
   "audit": { "gate": "all" },
   "security": {
     "categories": {
@@ -94,39 +94,12 @@
       "name": "vite-plus",
       "enablers": ["vite-plus"],
       "entryPoints": ["vite.config.ts"],
-      "toolingDependencies": ["@ast-grep/cli", "eslint-plugin-no-comments"],
-    },
-    {
-      "name": "syncpack-ts",
-      "enablers": ["syncpack"],
-      "entryPoints": ["syncpack.config.ts"],
-    },
-    {
-      "name": "vite-plus-adopt",
-      "enablers": ["@r_masseater/vite-plus-adopt"],
-      "toolingDependencies": [
-        "@commitlint/config-conventional",
-        "@masseater.dev/textlint-rule-yomiyasu",
-        "@textlint-ja/textlint-rule-preset-ai-writing",
-        "textlint-rule-preset-ja-technical-writing",
-      ],
-    },
-    {
-      "name": "skills",
-      "enablers": ["skills"],
-      "configPatterns": ["skills-lock.json"],
-      "toolingDependencies": ["skills"],
     },
     {
       "name": "tanstack-intent",
       "enablers": ["@tanstack/intent"],
       "configPatterns": [".intent/hooks/*.mjs"],
       "toolingDependencies": ["@tanstack/intent"],
-    },
-    {
-      "name": "steiger",
-      "enablers": ["steiger"],
-      "alwaysUsed": ["steiger.config.{ts,js,mjs}"],
     },
   ],
   "rules": {

@@ -1,12 +1,12 @@
 import { Array as Arr, Console, Effect, String as Str, pipe } from "effect";
 
-import { ensureClosed, runScript } from "#/04-reaper/reaper.ts";
-import { Machine } from "#/task.ts";
+import { ensureClosed, runScript } from "#/shared/lib/reaper.ts";
+import { Machine } from "#/shared/lib/task.ts";
 
 const TIMEOUT_SECONDS = 1800;
 const WAV = ".wav";
 
-const here = import.meta.dirname;
+const here = `${import.meta.dirname}/../../../../04-reaper`;
 
 const auditionWavs = Effect.gen(function* auditionWavs() {
   const machine = yield* Machine;

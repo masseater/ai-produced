@@ -18,7 +18,7 @@ import {
 import type { Scope } from "effect";
 import { ChildProcess, ChildProcessSpawner } from "effect/process";
 
-import { TaskFailed } from "#/task-failed.ts";
+import { TaskFailed } from "#/shared/lib/task-failed.ts";
 
 const EXIT_SUCCESS = 0;
 

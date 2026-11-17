@@ -7,28 +7,12 @@
     "prepare": "vp config && effect-tsgo patch --typescript --oxlint && msch --prepare"
   },
   "devDependencies": {
-    "@ast-grep/cli": "catalog:",
-    "@commitlint/config-conventional": "catalog:",
     "@effect/tsgo": "catalog:stack",
-    "@html-eslint/eslint-plugin-react": "catalog:",
-    "@masseater.dev/textlint-rule-yomiyasu": "github:masseater/masseater.dev#path:/libs/textlint-rule-yomiyasu",
     "@r_masseater/msch": "catalog:",
-    "@r_masseater/oxlint-typed-rules": "catalog:",
-    "@r_masseater/vite-plus-adopt": "catalog:",
-    "@shadcn/lint": "catalog:",
     "@tanstack/intent": "catalog:",
-    "@textlint-ja/textlint-rule-preset-ai-writing": "1.7.0",
     "@types/node": "catalog:",
-    "@workspace/crate-tasks": "workspace:*",
     "effect": "catalog:stack",
-    "eslint": "catalog:",
-    "eslint-plugin-baseline-js": "catalog:",
-    "eslint-plugin-no-comments": "catalog:",
-    "eslint-plugin-react-hooks": "catalog:",
     "fallow": "catalog:stack",
-    "renovate": "catalog:stack",
-    "syncpack": "catalog:",
-    "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "vite-plus": "catalog:stack"
   },
   "devEngines": {

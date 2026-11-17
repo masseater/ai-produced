@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["*.ts", "bin", "03-vocal", "04-reaper"],
+  "include": ["*.ts", "bin", "src"],
   "compilerOptions": {
     "types": ["node"],
     "plugins": [

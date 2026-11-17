@@ -8,9 +8,9 @@ import {
   runCommand,
   runHook,
   writeJson,
-} from "./env.ts";
-import { HookPlatform } from "./platform.ts";
-import type { CommandResult } from "./platform.ts";
+} from "#/shared/lib/env.ts";
+import { HookPlatform } from "#/shared/lib/platform.ts";
+import type { CommandResult } from "#/shared/lib/platform.ts";
 
 const PostToolUseInput = Schema.Struct({
   tool_input: Schema.Struct({ file_path: Schema.optional(Schema.String) }),
@@ -35,20 +35,25 @@ const locate = Effect.fn("locate")(function* locate(filePath: string) {
   return { candidates, root };
 });
 
+const FALLOW_CONFIG = ".fallowrc.jsonc";
+
 const fallowTargets = Effect.fn("fallowTargets")(function* fallowTargets(
   root: string,
   candidates: readonly string[],
 ) {
   const platform = yield* HookPlatform;
-  const withConfig = yield* pipe(
+  const configured = yield* Effect.filter(
     candidates,
-    Effect.filter((dir: string) => platform.exists(platform.join(root, dir, ".fallowrc.jsonc"))),
+    (directory: string) => platform.exists(platform.join(root, directory, FALLOW_CONFIG)),
+    { concurrency: 1 },
   );
-  const flags = pipe(
-    withConfig,
-    Arr.map((dir) => ["-r", dir]),
-  );
-  return [[], ...flags];
+  return [
+    [],
+    ...pipe(
+      configured,
+      Arr.map((directory) => ["-r", directory]),
+    ),
+  ];
 });
 
 const runFallow = Effect.fn("runFallow")(function* runFallow(

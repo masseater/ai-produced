@@ -1,9 +1,10 @@
 import { Array as Arr, Config, Console, Effect, Option, String as Str, pipe } from "effect";
 
-import { dotnet, pick } from "#/03-vocal/dotnet.ts";
-import { TaskFailed, expect } from "#/task-failed.ts";
-import { Machine, field, rows } from "#/task.ts";
-import type { Command } from "#/task.ts";
+import { TaskFailed, expect } from "#/shared/lib/task-failed.ts";
+import { Machine, field, rows } from "#/shared/lib/task.ts";
+import type { Command } from "#/shared/lib/task.ts";
+
+import { dotnet, pick } from "./dotnet.ts";
 
 const OPENUTAU_COMMIT = "799ba8de27c19fb305b1d3c989f1823ad4a8e605";
 const OPENUTAU_REPOSITORY = "https://github.com/stakira/OpenUtau.git";
@@ -64,7 +65,7 @@ const optional = (flag: string, value: string): readonly string[] => {
 
 const pathsOf = Effect.gen(function* pathsOf() {
   const machine = yield* Machine;
-  const song = machine.resolve(here, "..");
+  const song = machine.resolve(here, "..", "..", "..", "..");
   const repo = machine.resolve(song, "..", "..");
   const tool = machine.join(repo, "tools", "openutau-render");
   const out = machine.join(song, "03-vocal", "render");

@@ -1,4 +1,4 @@
-import { render } from "#/03-vocal/render.ts";
-import { runTask } from "#/task.ts";
+import { render } from "#/features/render-vocal/index.ts";
+import { runTask } from "#/shared/lib/task.ts";
 
 runTask(render);

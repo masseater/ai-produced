@@ -1,7 +1,7 @@
 import { Array as Arr, Config, Effect, Schedule, String as Str, pipe } from "effect";
 
-import { TaskFailed, expect } from "#/task-failed.ts";
-import { Machine } from "#/task.ts";
+import { TaskFailed, expect } from "#/shared/lib/task-failed.ts";
+import { Machine } from "#/shared/lib/task.ts";
 
 const STARTUP = "10 seconds";
 const POLL = "1 second";

@@ -1,8 +1,8 @@
 import { Array as Arr, Console, Effect, Option, String as Str, pipe } from "effect";
 
-import { ensureClosed, runScript } from "#/04-reaper/reaper.ts";
-import { TaskFailed } from "#/task-failed.ts";
-import { Machine, field, rows } from "#/task.ts";
+import { ensureClosed, runScript } from "#/shared/lib/reaper.ts";
+import { TaskFailed } from "#/shared/lib/task-failed.ts";
+import { Machine, field, rows } from "#/shared/lib/task.ts";
 
 const TIMEOUT_SECONDS = 900;
 const ROUNDS = 4;
@@ -63,7 +63,7 @@ const drums: readonly Drum[] = [
   tom("tom-high", TOMS.high),
 ];
 
-const here = import.meta.dirname;
+const here = `${import.meta.dirname}/../../../../04-reaper`;
 
 const synthesize = Effect.fn("synthesize")(function* synthesize(drum: Drum) {
   const machine = yield* Machine;
