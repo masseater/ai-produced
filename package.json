@@ -13,12 +13,13 @@
     "@types/node": "catalog:",
     "effect": "catalog:stack",
     "fallow": "catalog:stack",
+    "fallow-type-aware": "catalog:stack",
     "vite-plus": "catalog:stack"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.20.0",
+      "version": "12.21.0",
       "onFail": "download"
     }
   },

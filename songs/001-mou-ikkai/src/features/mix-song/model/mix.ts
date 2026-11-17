@@ -137,7 +137,7 @@ const prepare = Effect.gen(function* prepare() {
   const stems = machine.join(here, "render", "stems");
   yield* machine.makeDirectory(machine.join(here, "samples"));
   yield* machine.makeDirectory(stems);
-  yield* pipe(drums, Effect.forEach(synthesize));
+  yield* Effect.forEach(drums, synthesize, { concurrency: 1 });
   yield* ensureClosed({ cwd: here, doing: "mixing" });
   const names = yield* machine.list(stems);
   const stale = pipe(
@@ -145,7 +145,7 @@ const prepare = Effect.gen(function* prepare() {
     Arr.filter(Str.endsWith(".wav")),
     Arr.map((name) => machine.join(stems, name)),
   );
-  yield* pipe(stale, Effect.forEach(machine.remove));
+  yield* Effect.forEach(stale, machine.remove, { concurrency: 1 });
 });
 
 const gainOf = Effect.fn("gainOf")(function* gainOf(row: readonly string[], vocal: number) {
@@ -161,10 +161,9 @@ const balance = Effect.gen(function* balance() {
   const vocalLufs = yield* lufs(machine.join(here, "render", "stems", "Vocal.wav"));
   const vocal = Number(vocalLufs);
   const levels = yield* machine.read(machine.join(here, "levels.tsv"));
-  const gains = yield* pipe(
-    rows(levels),
-    Effect.forEach((row) => gainOf(row, vocal)),
-  );
+  const gains = yield* Effect.forEach(rows(levels), (row) => gainOf(row, vocal), {
+    concurrency: 1,
+  });
   const table = Arr.join(gains, "");
   yield* Console.log(Str.trimEnd(table));
   yield* machine.write(machine.join(here, "render", "gains.tsv"), table);
