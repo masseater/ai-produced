@@ -34,7 +34,7 @@ const clean = Effect.gen(function* clean() {
   const machine = yield* Machine;
   yield* machine.makeDirectory(machine.join(here, "render", "audition"));
   const stale = yield* auditionWavs;
-  yield* pipe(stale, Effect.forEach(machine.remove));
+  yield* Effect.forEach(stale, machine.remove, { concurrency: 1 });
 });
 
 const audition = Effect.gen(function* audition() {
@@ -48,7 +48,7 @@ const audition = Effect.gen(function* audition() {
     cwd: here,
   });
   const wavs = yield* auditionWavs;
-  const lines = yield* pipe(wavs, Effect.forEach(metricsOf));
+  const lines = yield* Effect.forEach(wavs, metricsOf, { concurrency: 1 });
   const table = Arr.join(lines, "");
   yield* Console.log(Str.trimEnd(table));
   yield* machine.write(machine.join(here, "render", "audition", "metrics.tsv"), table);

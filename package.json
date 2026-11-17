@@ -26,6 +26,7 @@
     "eslint-plugin-no-comments": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "fallow": "catalog:stack",
+    "fallow-type-aware": "catalog:stack",
     "renovate": "catalog:stack",
     "skills": "catalog:",
     "syncpack": "catalog:",
