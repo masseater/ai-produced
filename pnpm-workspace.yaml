@@ -56,6 +56,7 @@ catalogs:
     effect: 4.1.4
     elysia: 1.4.32
     fallow: 3.43.0
+    fallow-type-aware: 3.43.0
     radix-ui: 1.8.1
     renovate: 44.239.1
     remotion: 4.0.543

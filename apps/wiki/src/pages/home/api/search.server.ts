@@ -56,7 +56,9 @@ const runEmbedding = (batch: readonly string[]): Effect.Effect<readonly Vector[]
   );
 
 const embed = (texts: readonly string[]): Effect.Effect<readonly Vector[]> =>
-  Effect.forEach(Arr.chunksOf(texts, BATCH_SIZE), runEmbedding).pipe(Effect.map(Arr.flatten));
+  Effect.forEach(Arr.chunksOf(texts, BATCH_SIZE), runEmbedding, { concurrency: 1 }).pipe(
+    Effect.map(Arr.flatten),
+  );
 
 class PassageIndex extends Context.Service<
   PassageIndex,
