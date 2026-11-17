@@ -33,7 +33,7 @@ const directionOf = (shot: LyricsShot): Direction => {
 
 type BodyProps = Readonly<{ shot: LyricsShot; moment: Moment }>;
 
-const Body = ({ shot, moment }: BodyProps): ReactNode =>
+export const Body = ({ shot, moment }: BodyProps): ReactNode =>
   Match.value(contentOf({ shot, moment })).pipe(
     Match.when("hook", () => (
       <HookCard sung={sungInHook(moment)} tiled={shot.hookLayout === "tile"} />
@@ -44,5 +44,3 @@ const Body = ({ shot, moment }: BodyProps): ReactNode =>
     )),
     Match.exhaustive,
   );
-
-export { Body };

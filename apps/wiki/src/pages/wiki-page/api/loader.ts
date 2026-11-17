@@ -2,7 +2,7 @@ import type { QueryClient } from "@tanstack/react-query";
 
 import { wikiPageQueries } from "./queries";
 
-const loadWikiPage = ({
+export const loadWikiPage = ({
   queryClient,
   slug,
 }: Readonly<{ queryClient: QueryClient; slug: string }>): Promise<unknown> =>
@@ -10,5 +10,3 @@ const loadWikiPage = ({
     ...wikiPageQueries.api.page.get.queryOptions({ slug }),
     staleTime: "static",
   });
-
-export { loadWikiPage };

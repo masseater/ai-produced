@@ -5,7 +5,7 @@ const WIKI_ROOT = "/docs/wiki/";
 const PAGE_PATTERN = /^\/docs\/wiki\/(?<section>works|topics)\/(?<name>[^/]+?)(?:\/index)?\.md$/u;
 const REPOSITORY_BLOB = "https://github.com/masseater/ai-produced/blob/main";
 
-type ResolvedLink =
+export type ResolvedLink =
   | Readonly<{ kind: "page"; section: string; name: string }>
   | Readonly<{ kind: "external"; href: string }>;
 
@@ -22,7 +22,7 @@ const pageOf = (pathname: string): Option.Option<ResolvedLink> =>
     Option.map(({ section, name }) => ({ kind: "page", section, name }) as const),
   );
 
-const resolveLink = ({
+export const resolveLink = ({
   href,
   currentPath,
 }: Readonly<{ href: string; currentPath: string }>): ResolvedLink => {
@@ -41,6 +41,3 @@ const resolveLink = ({
     }),
   );
 };
-
-export type { ResolvedLink };
-export { resolveLink };

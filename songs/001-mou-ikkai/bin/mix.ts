@@ -1,4 +1,4 @@
-import { mix } from "#/04-reaper/mix.ts";
-import { runTask } from "#/task.ts";
+import { mix } from "#/features/mix-song/index.ts";
+import { runTask } from "#/shared/lib/task.ts";
 
 runTask(mix);

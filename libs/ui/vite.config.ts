@@ -5,7 +5,7 @@ export default defineConfig({
     lint: {
       overrides: [
         {
-          files: ["src/components/**"],
+          files: ["src/shared/ui/**"],
           rules: { "shadcn/no-restyle": "off", "react/jsx-props-no-spreading": "off" },
         },
       ],

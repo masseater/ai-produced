@@ -7,7 +7,7 @@ const TILES = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"] as co
 
 type HookCardProps = Readonly<{ sung: number; tiled: boolean }>;
 
-const HookCard = ({ sung, tiled }: HookCardProps): ReactNode => {
+export const HookCard = ({ sung, tiled }: HookCardProps): ReactNode => {
   if (!tiled) {
     return <HookRow sung={sung} size="card" />;
   }
@@ -20,5 +20,3 @@ const HookCard = ({ sung, tiled }: HookCardProps): ReactNode => {
     </div>
   );
 };
-
-export { HookCard };

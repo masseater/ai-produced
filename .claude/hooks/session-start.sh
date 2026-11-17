@@ -11,6 +11,19 @@ if ! command -v vp >/dev/null 2>&1; then
   . "$HOME/.config/vite-plus/env"
 fi
 
+for chrome in /opt/pw-browsers/chromium-*/chrome-linux/chrome; do
+  if [ -x "$chrome" ] && [ -z "${CHROME_PATH:-}" ]; then
+    echo "export CHROME_PATH=\"$chrome\"" >>"$CLAUDE_ENV_FILE"
+  fi
+done
+
 cd "$CLAUDE_PROJECT_DIR"
 vp env on >&2
 vp install --frozen-lockfile >&2
+if [ ! -d node_modules/.vite/task-cache ]; then
+  repository="$(git remote get-url origin | sed -E 's#\.git$##; s#.*[/:]([^/]+/[^/]+)$#\1#')"
+  artifact="$(gh api "repos/$repository/actions/artifacts?name=vp-cache.tar&per_page=5" --jq '[.artifacts[] | select(.expired | not)][0].id // empty' 2>/dev/null || true)"
+  if [ -n "$artifact" ]; then
+    gh api "repos/$repository/actions/artifacts/$artifact/zip" | tar -x >&2 || rm -rf node_modules/.vite/task-cache
+  fi
+fi

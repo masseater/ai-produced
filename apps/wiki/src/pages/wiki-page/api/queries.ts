@@ -15,6 +15,4 @@ const client = createIsomorphicFn()
   .server(() => serverClient<WikiPageRoutes>(loadWikiPageRoutes))
   .client(() => browserClient<WikiPageRoutes>());
 
-const wikiPageQueries = createQueries<WikiPageRoutes>(client());
-
-export { wikiPageQueries };
+export const wikiPageQueries = createQueries<WikiPageRoutes>(client());

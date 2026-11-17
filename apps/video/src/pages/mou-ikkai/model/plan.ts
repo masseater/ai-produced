@@ -3,13 +3,13 @@ import { Option } from "effect";
 import { SIXTEENTHS_PER_BAR, SIXTEENTHS_PER_BEAT } from "#/pages/mou-ikkai/model/song";
 import type { Section } from "#/pages/mou-ikkai/model/song";
 
-type Treatment = "loop" | "verse" | "build" | "chorus" | "chop" | "bridge";
-type PaletteName = "ink" | "paper" | "rec" | "signal" | "ash";
-type LayoutName = "center" | "topLeft" | "bottomRight" | "vertical" | "tile";
+export type Treatment = "loop" | "verse" | "build" | "chorus" | "chop" | "bridge";
+export type PaletteName = "ink" | "paper" | "rec" | "signal" | "ash";
+export type LayoutName = "center" | "topLeft" | "bottomRight" | "vertical" | "tile";
 type LayoutBy = "cut" | "bar" | "line";
 type Silence = "none" | "lastBeat" | "lastBar";
 
-type Plan = Readonly<{
+export type Plan = Readonly<{
   treatment: Treatment;
   palettes: readonly PaletteName[];
   layouts: readonly LayoutName[];
@@ -22,10 +22,10 @@ type Plan = Readonly<{
   tileFromBar: number;
 }>;
 
-const FIRST = 0;
-const NEXT = 1;
-const NO_LEAD = 0;
-const LEAD_FRAMES = 2;
+export const FIRST = 0;
+export const NEXT = 1;
+export const NO_LEAD = 0;
+export const LEAD_FRAMES = 2;
 const SIXTEENTH = 1;
 const EIGHTH = 2;
 const HALF_NOTE = EIGHTH * SIXTEENTHS_PER_BEAT;
@@ -34,7 +34,7 @@ const BUILD_BEATS_FROM_BAR = 4;
 const BREAK_SIXTEENTHS_FROM_BAR = 4;
 const EXTENSION_FROM_BAR = 16;
 const NEVER = Number.POSITIVE_INFINITY;
-const CLOSURE = "closure";
+export const CLOSURE = "closure";
 
 const still: Omit<Plan, "treatment" | "palettes"> = {
   layouts: ["center"],
@@ -121,14 +121,11 @@ const plans: Readonly<Record<string, Plan>> = {
   Outro: { ...still, treatment: "loop", palettes: ["ink"] },
 };
 
-const silenceLengths: Readonly<Record<Silence, number>> = {
+export const silenceLengths: Readonly<Record<Silence, number>> = {
   none: 0,
   lastBeat: SIXTEENTHS_PER_BEAT,
   lastBar: SIXTEENTHS_PER_BAR,
 };
 
-const planOf = (section: Section): Plan =>
+export const planOf = (section: Section): Plan =>
   Option.fromNullishOr(plans[section.name]).pipe(Option.getOrThrow);
-
-export { CLOSURE, FIRST, LEAD_FRAMES, NEXT, NO_LEAD, planOf, silenceLengths };
-export type { LayoutName, PaletteName, Plan, Treatment };

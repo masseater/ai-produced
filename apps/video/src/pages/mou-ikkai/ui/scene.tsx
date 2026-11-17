@@ -35,7 +35,7 @@ const layoutOf = (shot: LyricsShot, moment: Moment): string => {
 
 type SceneProps = Readonly<{ shot: LyricsShot; moment: Moment; frame: number }>;
 
-const Scene = ({ shot, moment, frame }: SceneProps): ReactNode => {
+export const Scene = ({ shot, moment, frame }: SceneProps): ReactNode => {
   const hook = hookOf(moment);
   return (
     <AbsoluteFill className={`${palettes[paletteOf(shot, moment)]} ${polarityOf(shot, frame)}`}>
@@ -47,5 +47,3 @@ const Scene = ({ shot, moment, frame }: SceneProps): ReactNode => {
     </AbsoluteFill>
   );
 };
-
-export { Scene };

@@ -4,33 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare": "vp config && effect-tsgo patch --typescript --oxlint && skills experimental_install --force"
+    "prepare": "vp config && effect-tsgo patch --typescript --oxlint && msch --prepare"
   },
   "devDependencies": {
-    "@ast-grep/cli": "catalog:",
-    "@commitlint/config-conventional": "catalog:",
     "@effect/tsgo": "catalog:stack",
-    "@html-eslint/eslint-plugin-react": "catalog:",
     "@r_masseater/msch": "catalog:",
-    "@r_masseater/oxlint-typed-rules": "catalog:",
-    "@r_masseater/textlint-rule-preset-ja": "catalog:",
-    "@r_masseater/vite-plus-adopt": "catalog:",
-    "@shadcn/lint": "catalog:",
     "@tanstack/intent": "catalog:",
-    "@textlint-ja/textlint-rule-preset-ai-writing": "1.7.0",
     "@types/node": "catalog:",
-    "@workspace/crate-tasks": "workspace:*",
     "effect": "catalog:stack",
-    "eslint": "catalog:",
-    "eslint-plugin-baseline-js": "catalog:",
-    "eslint-plugin-no-comments": "catalog:",
-    "eslint-plugin-react-hooks": "catalog:",
     "fallow": "catalog:stack",
     "fallow-type-aware": "catalog:stack",
-    "renovate": "catalog:stack",
-    "skills": "catalog:",
-    "syncpack": "catalog:",
-    "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "vite-plus": "catalog:stack"
   },
   "devEngines": {

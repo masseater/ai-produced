@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./api-client": "./src/api-client.ts",
-    "./api-router": "./src/api-router.server.ts",
-    "./api-route": "./src/api-route.ts",
-    "./router": "./src/router.ts"
+    "./api-client": "./src/shared/lib/api-client.ts",
+    "./api-router": "./src/shared/lib/api-router.server.ts",
+    "./api-route": "./src/shared/lib/api-route.ts",
+    "./router": "./src/shared/lib/router.ts"
   },
   "dependencies": {
     "@elysiajs/eden": "catalog:stack",

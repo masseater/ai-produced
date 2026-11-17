@@ -10,7 +10,7 @@ const EXCERPT_LENGTH = 160;
 const PENDING = "検索しています";
 const FAILED = "検索に失敗しました";
 
-const SearchResults = ({ query }: Readonly<{ query: string }>): ReactNode =>
+export const SearchResults = ({ query }: Readonly<{ query: string }>): ReactNode =>
   Match.value(useQuery(homeQueries.api.pages.search.get.queryOptions({ text: query }))).pipe(
     Match.discriminatorsExhaustive("status")({
       pending: () => <p className="text-muted-foreground text-sm">{PENDING}</p>,
@@ -35,5 +35,3 @@ const SearchResults = ({ query }: Readonly<{ query: string }>): ReactNode =>
       ),
     }),
   );
-
-export { SearchResults };

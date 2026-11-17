@@ -12,7 +12,7 @@ const directions = {
   down: "flex max-h-215 flex-wrap gap-y-12 [writing-mode:vertical-rl]",
 } as const;
 
-type Direction = keyof typeof directions;
+export type Direction = keyof typeof directions;
 
 const fits: Readonly<Record<Direction, readonly Fit[]>> = {
   across: [
@@ -52,7 +52,7 @@ const sizeOf = (line: Line, direction: Direction): Size => {
 
 type LineTextProps = Readonly<{ line: Line; mora: number; direction: Direction }>;
 
-const LineText = ({ line, mora, direction }: LineTextProps): ReactNode => (
+export const LineText = ({ line, mora, direction }: LineTextProps): ReactNode => (
   <div className={directions[direction]}>
     {pipe(
       line.words,
@@ -67,6 +67,3 @@ const LineText = ({ line, mora, direction }: LineTextProps): ReactNode => (
     )}
   </div>
 );
-
-export type { Direction };
-export { LineText };

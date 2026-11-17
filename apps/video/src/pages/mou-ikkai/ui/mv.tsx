@@ -7,9 +7,9 @@ import { momentAt } from "#/pages/mou-ikkai/model/moment";
 import { shotAt } from "#/pages/mou-ikkai/model/storyboard";
 import { Scene } from "#/pages/mou-ikkai/ui/scene";
 
-type MouIkkaiProps = Readonly<{ audio: string }>;
+export type MouIkkaiProps = Readonly<{ audio: string }>;
 
-const MouIkkai = ({ audio }: MouIkkaiProps): ReactNode => {
+export const MouIkkai = ({ audio }: MouIkkaiProps): ReactNode => {
   const frame = useCurrentFrame();
   const shot = shotAt(frame);
   const moment = momentAt(frame);
@@ -22,6 +22,3 @@ const MouIkkai = ({ audio }: MouIkkaiProps): ReactNode => {
     </AbsoluteFill>
   );
 };
-
-export { MouIkkai };
-export type { MouIkkaiProps };

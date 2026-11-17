@@ -13,6 +13,4 @@ const client = createIsomorphicFn()
   .server(() => serverClient<HomeRoutes>(loadHomeRoutes))
   .client(() => browserClient<HomeRoutes>());
 
-const homeQueries = createQueries<HomeRoutes>(client());
-
-export { homeQueries };
+export const homeQueries = createQueries<HomeRoutes>(client());

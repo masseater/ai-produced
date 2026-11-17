@@ -18,7 +18,7 @@ const textOf = (formData: Readonly<FormData>): string =>
     Option.getOrElse(() => NO_QUERY),
   );
 
-const SearchForm = (): ReactNode => {
+export const SearchForm = (): ReactNode => {
   const setQuery = useSetSearchQuery();
   const submit = useCallback(
     (formData: Readonly<FormData>) => {
@@ -42,5 +42,3 @@ const SearchForm = (): ReactNode => {
     </search>
   );
 };
-
-export { SearchForm };

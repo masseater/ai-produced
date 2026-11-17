@@ -67,12 +67,10 @@ const toPage = ([path, raw]: readonly [string, string]): Option.Option<WikiPage>
     }),
   );
 
-const wikiPages: readonly WikiPage[] = pipe(
+export const wikiPages: readonly WikiPage[] = pipe(
   Record.toEntries(sources),
   Arr.flatMap((entry) => Option.toArray(toPage(entry))),
 );
 
-const findPage = (slug: string): Option.Option<WikiPage> =>
+export const findPage = (slug: string): Option.Option<WikiPage> =>
   Arr.findFirst(wikiPages, (page) => page.slug === slug);
-
-export { findPage, wikiPages };
