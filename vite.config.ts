@@ -70,7 +70,7 @@ export default defineConfig({
       skills: ["typescript-discriminated-unions", "typescript-variables"],
     },
     "nanaism/yomiyasu": {
-      commit: "c9b9a6d1bb0795356c0e34dc50f501424069d837",
+      commit: "c49d5f1bee91258e33e1febc3569c6c87be7669e",
       root: "skills",
       skills: ["yomiyasu"],
     },
