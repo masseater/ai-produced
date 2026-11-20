@@ -18,7 +18,7 @@ jobs:
         with:
           persist-credentials: false
       - uses: $/.github/actions/setup
-      - uses: masseater/typescript-template/.github/actions/verify@fe9871bea266c7289b1aecc69ce967c9d66a8521
+      - uses: masseater/typescript-template/.github/actions/verify@30137991cda37e5fd3c774272afb3e07cdaa10d0
         with:
           github-token: ${{ github.token }}
 
@@ -57,7 +57,7 @@ jobs:
           manifest-file: .github/release-please/manifest.json
           skip-github-pull-request: true
       - if: github.event_name == 'workflow_dispatch'
-        uses: masseater/typescript-template/.github/actions/credentials@d79be66b83e21575c7f40a75453fea5a51aaff8c
+        uses: masseater/typescript-template/.github/actions/credentials@30137991cda37e5fd3c774272afb3e07cdaa10d0
       - if: github.event_name == 'workflow_dispatch'
         id: release-pr
         uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
