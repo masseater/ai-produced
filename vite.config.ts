@@ -37,7 +37,7 @@ export default defineConfig({
       ],
     },
     "cloudflare/skills": {
-      commit: "5108325ecceabc899c761e07aa617b09c02445ee",
+      commit: "ff191de7d903788eceaf516a514ae7d3b56b924a",
       root: "skills",
       skills: ["cloudflare", "workers-best-practices"],
     },
