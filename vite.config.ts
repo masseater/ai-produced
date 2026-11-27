@@ -80,7 +80,7 @@ export default defineConfig({
       skills: ["systematic-debugging", "verification-before-completion"],
     },
     "shadcn-ui/ui": {
-      commit: "45bbf9ba23c9c0f63d38887947e5fb06f59c7da3",
+      commit: "0e5b2e621a9ee4cf6a604bbe6c5c0d5b70561eb4",
       root: "skills",
       skills: ["shadcn"],
     },
