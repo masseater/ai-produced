@@ -6,7 +6,7 @@ import type { WikiPage } from "./types";
 const Attributes = Schema.Struct({
   title: Schema.optional(Schema.String),
   artist: Schema.optional(Schema.String),
-  tags: Schema.optional(Schema.Array(Schema.String)),
+  tags: Schema.String.pipe(Schema.Array, Schema.optional),
 });
 
 const decodeAttributes = Schema.decodeUnknownOption(Attributes);
