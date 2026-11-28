@@ -12,3 +12,5 @@ runs:
         cache: ${{ inputs.cache }}
         run-install: |
           - args: ['--frozen-lockfile']
+    - shell: bash
+      run: echo "$GITHUB_WORKSPACE/.pnpm/rust/bin" >> "$GITHUB_PATH" # zizmor: ignore[github-env]
