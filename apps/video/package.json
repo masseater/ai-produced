@@ -12,7 +12,7 @@
     "@remotion/google-fonts": "catalog:stack",
     "@remotion/media": "catalog:stack",
     "effect": "catalog:stack",
-    "react-dom": "19.3.1",
+    "react-dom": "catalog:",
     "remotion": "catalog:stack",
     "tailwindcss": "catalog:stack"
   },
@@ -20,9 +20,9 @@
     "@effect/tsgo": "catalog:stack",
     "@remotion/cli": "catalog:stack",
     "@remotion/tailwind-v4": "catalog:stack",
-    "@types/react": "19.3.1",
-    "@types/react-dom": "19.3.0",
-    "react": "19.3.1",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
     "typescript": "catalog:stack"
   }
 }
