@@ -2,6 +2,7 @@
   "name": "wiki",
   "version": "0.0.0",
   "private": true,
+  "description": "Web app that serves and searches the analysis wiki in docs/wiki.",
   "type": "module",
   "imports": {
     "#/*": "./src/*"

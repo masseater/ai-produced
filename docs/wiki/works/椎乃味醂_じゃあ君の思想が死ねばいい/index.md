@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=zKZyXgcCrXQ
-title: "じゃあ君の思想が死ねばいい"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09

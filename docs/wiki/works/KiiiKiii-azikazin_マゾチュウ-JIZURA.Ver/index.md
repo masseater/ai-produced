@@ -1,6 +1,5 @@
 ---
 url: https://www.nicovideo.jp/watch/sm46868333
-title: "[AI]KiiiKiii＆azikazinマゾチュウ_JIZURA.Ver"
 artist: "KiiiKiii＆azikazin"
 kind: lyric-video
 analyzed: 2026-10-04

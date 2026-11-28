@@ -6,7 +6,7 @@ description: 公開されたステムとMIDIがある曲を、パートごとに
 # stem-repro
 
 手法の考え方、指標の定義、結果の読み方は `docs/wiki/topics/stem-reproduction.md` にある。
-素材と曲ごとの `song.json` は `reference-materials` スキルに従って reference 側に置く。
+素材と曲ごとの `song.json` は、他人の曲に由来する素材の決まりに従って reference 側に置く。
 
 ## 環境
 
@@ -72,6 +72,6 @@ description: 公開されたステムとMIDIがある曲を、パートごとに
 | 3   | `design --part arp2 --template "Init Saw" --filter lp24 --bars 40 48 --midi <mid>` | 初期音色からフィルターの種類を決め、オシレーター、フィルター、包絡を倍音の時間変化に合わせる |
 | 4   | `render --part arp2 --params <3の出力> --midi <mid> --out <wav>`                   | 曲全体を書き出し、13に渡す。13は原曲の無音区間を写す候補も比べる                             |
 
-採譜は`audio-to-midi`スキルに従い、`cargo run --release -p transcribe --bin transcribe -- -e basic-pitch -o <出力先> <ステム...>`で動かす。
+採譜は `cargo run --release -p transcribe --bin transcribe -- -e basic-pitch -o <出力先> <ステム...>` で動かす。
 `interstem`に`--repro <ディレクトリ>`を付けると、作り直したステムの値も並べて出す。
 最後に、9〜14が当てた量と、6〜8で残った差を作品のwikiページに記録する。

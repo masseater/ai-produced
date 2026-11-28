@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=MFs7FgQU2xM
-title: "スライ村"
 artist: "稲むり"
 kind: song
 analyzed: 2026-10-04

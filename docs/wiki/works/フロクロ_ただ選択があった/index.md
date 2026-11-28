@@ -1,6 +1,5 @@
 ---
 url: https://drive.google.com/drive/folders/11aEeC1qut2L1cKcR8wr_1aripyDTwyH-
-title: "ただ選択があった"
 artist: "フロクロ"
 kind: song
 analyzed: 2026-10-11

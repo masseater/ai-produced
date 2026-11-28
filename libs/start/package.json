@@ -2,6 +2,7 @@
   "name": "@workspace/start",
   "version": "0.0.0",
   "private": true,
+  "description": "TanStack Start helpers for the API router, API routes and the typed API client.",
   "type": "module",
   "exports": {
     "./api-client": "./src/shared/lib/api-client.ts",

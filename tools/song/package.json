@@ -2,6 +2,7 @@
   "name": "@workspace/song",
   "version": "0.0.0",
   "private": true,
+  "description": "Song pipeline tools: score to MIDI, lyric timing, mora table, USTX and REAPER project builders.",
   "type": "module",
   "devDependencies": {
     "@workspace/crate-tasks": "workspace:*",

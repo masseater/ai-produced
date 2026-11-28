@@ -2,8 +2,8 @@
   "name": "video",
   "version": "0.0.0",
   "private": true,
+  "description": "Remotion video of a song, built from the rendered audio and the lyric timing.",
   "type": "module",
-  "main": "./src/app/index.ts",
   "imports": {
     "#/*": "./src/*"
   },

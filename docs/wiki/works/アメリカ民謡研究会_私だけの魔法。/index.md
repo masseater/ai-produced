@@ -1,13 +1,12 @@
 ---
 url: https://www.youtube.com/watch?v=qd3q0dYpprs
-title: "私だけの魔法。"
 artist: "アメリカ民謡研究会"
 kind: song
 analyzed: 2026-10-04
 tags: [taste-ref]
 ---
 
-# 私だけの魔法。
+# 私だけの魔法
 
 ## 基本情報
 

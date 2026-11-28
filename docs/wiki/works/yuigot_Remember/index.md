@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=UE1y01q6wzQ
-title: "Remember"
 artist: "yuigot"
 kind: song
 analyzed: 2026-10-04

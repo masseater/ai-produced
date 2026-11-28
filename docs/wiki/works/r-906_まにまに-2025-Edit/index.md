@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=6eDhCz2vzVc
-title: "まにまに 2025 Edit"
 artist: "r-906"
 kind: song
 analyzed: 2026-10-04

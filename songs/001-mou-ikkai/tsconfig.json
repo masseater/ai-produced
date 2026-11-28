@@ -6,6 +6,7 @@
     "plugins": [
       {
         "name": "@effect/language-service",
+        "diagnostics": false,
         "allowedUnstableApis": [
           "@effect/platform-node/NodeRuntime#runMain",
           "@effect/platform-node/NodeServices#layer",

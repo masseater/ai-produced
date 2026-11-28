@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=6RZYNVl6Qlw
-title: "この命を響かせたいと思ったのだ"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09

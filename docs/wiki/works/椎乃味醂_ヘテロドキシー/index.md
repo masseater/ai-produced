@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=HbYbXNUgoW8
-title: "ヘテロドキシー"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09
