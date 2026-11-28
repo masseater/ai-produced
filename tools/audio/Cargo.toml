@@ -30,7 +30,7 @@ serde_json = { version = "=1.0.154", features = ["preserve_order"] }
 sonara = { git = "https://github.com/kkollsga/sonara", rev = "15fb81d34e4e6ca856508e5520a84b1a4ab42b6e" }
 symphonia = { version = "=0.6.1", features = ["all"] }
 tempfile = "=3.27.0"
-toml = "=1.2.3+spec-1.1.0"
+toml = "=1.2.3"
 
 [dev-dependencies]
 hound = "=3.5.1"
