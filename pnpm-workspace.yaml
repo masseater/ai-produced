@@ -11,12 +11,12 @@ registry: https://npm.flatt.tech/
 catalogMode: prefer
 
 catalog:
-  "@r_masseater/msch": 0.60.0
+  "@r_masseater/msch": 0.60.1
   "@r_masseater/workers-tracing": 0.6.1
-  "@cloudflare/workers-types": 5.20261124.1
+  "@cloudflare/workers-types": 5.20261125.1
   "@effect/platform-node": 4.1.5
   "@yarnpkg/parsers": 3.1.0
-  "@types/node": 26.6.6
+  "@types/node": 26.6.7
   vite: npm:@voidzero-dev/vite-plus-core@8.3.8001
   "@vitejs/plugin-react": 6.3.0
   "@tanstack/intent": 0.5.6
@@ -34,17 +34,17 @@ catalogs:
     "@tanstack/react-start": 1.169.7
     "@alchemy.run/cloudflare": 2.0.0-beta.87
     alchemy: 2.0.0-beta.87
-    "@remotion/cli": 4.0.546
-    "@remotion/google-fonts": 4.0.546
-    "@remotion/media": 4.0.546
-    "@remotion/tailwind-v4": 4.0.546
+    "@remotion/cli": 4.0.547
+    "@remotion/google-fonts": 4.0.547
+    "@remotion/media": 4.0.547
+    "@remotion/tailwind-v4": 4.0.547
     eden-tanstack-react-query: 0.5.1
     effect: 4.1.5
     elysia: 1.4.32
     fallow: 3.48.0
     fallow-type-aware: 3.48.0
     radix-ui: 1.8.1
-    remotion: 4.0.546
+    remotion: 4.0.547
     tailwindcss: 4.3.5
     typescript: 7.1.0-beta
     vite-plus: 1.8.0
