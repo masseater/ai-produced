@@ -2,9 +2,13 @@ name: up-to-date
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
   workflow_dispatch:
 
 permissions: {}
+
+env:
+  TAKUMI_GUARD_TOKEN: ${{ secrets.TAKUMI_GUARD_TOKEN }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -13,5 +17,26 @@ concurrency:
 jobs:
   up-to-date:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
-      - run: "true"
+      - id: lockfile
+        if: github.event_name == 'pull_request'
+        uses: masseater/typescript-template/.github/actions/pr-changed@01e4330d6c9790af645c67973712c47971137da4
+        with:
+          file: pnpm-lock.yaml
+          github-token: ${{ github.token }}
+      - if: github.event_name == 'pull_request'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - if: github.event_name == 'pull_request'
+        uses: $/.github/actions/setup
+        with:
+          cache: ${{ steps.lockfile.outputs.changed != 'true' }}
+      - if: github.event_name == 'pull_request'
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: vp exec msch --message "$TITLE (#$NUMBER)"
