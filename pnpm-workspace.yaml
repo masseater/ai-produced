@@ -71,7 +71,7 @@ cargo:
   enabled: true
 minimumReleaseAgeExclude:
   - "@r_masseater/vite-plus-adopt@0.10.2 || 0.14.0"
-  - "@r_masseater/msch@0.60.0"
+  - "@r_masseater/msch@0.60.1"
   - "@r_masseater/oxlint-plugin-decision@0.5.1 || 0.8.0"
   - "@r_masseater/textlint-rule-preset-ja@0.1.1 || 0.2.1"
   - "@r_masseater/fu4-linux-x64-gnu@0.3.0"
