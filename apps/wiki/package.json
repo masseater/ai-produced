@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@effect/atom-react": "catalog:stack",
+    "@r_masseater/workers-tracing": "catalog:",
     "@tailwindcss/typography": "catalog:",
     "@tanstack/react-query": "catalog:stack",
     "@tanstack/react-router": "1.170.46",

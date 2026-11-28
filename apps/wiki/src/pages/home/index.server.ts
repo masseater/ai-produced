@@ -1,1 +1,1 @@
-export { homeRoutes } from "./api/routes.server";
+export { homeRoutes } from "./api/routes.server.ts";

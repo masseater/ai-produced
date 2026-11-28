@@ -1,1 +1,1 @@
-export { findPage, wikiPages } from "./pages.server";
+export { findPage, wikiPages } from "./pages.server.ts";

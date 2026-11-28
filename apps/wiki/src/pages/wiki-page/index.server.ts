@@ -1,1 +1,1 @@
-export { wikiPageRoutes } from "./api/routes.server";
+export { wikiPageRoutes } from "./api/routes.server.ts";

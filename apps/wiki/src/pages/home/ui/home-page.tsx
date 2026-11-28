@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { HomeContent } from "./home-content";
-import { SearchForm } from "./search-form";
+import { HomeContent } from "./home-content.tsx";
+import { SearchForm } from "./search-form.tsx";
 
 const TITLE = "分析wiki";
 

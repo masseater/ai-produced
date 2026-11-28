@@ -192,6 +192,9 @@ catalogs:
     '@r_masseater/msch':
       specifier: 0.60.0
       version: 0.60.0
+    '@r_masseater/workers-tracing':
+      specifier: 0.6.1
+      version: 0.6.1
     '@tailwindcss/typography':
       specifier: 0.5.20
       version: 0.5.20
@@ -395,6 +398,9 @@ importers:
       '@effect/atom-react':
         specifier: catalog:stack
         version: 4.1.5(effect@4.1.5)(react@19.3.1)(scheduler@0.28.0)
+      '@r_masseater/workers-tracing':
+        specifier: 'catalog:'
+        version: 0.6.1(34ee4c7df64a6d943de95a28a51f9229)
       '@tailwindcss/typography':
         specifier: 'catalog:'
         version: 0.5.20(tailwindcss@4.3.5)
@@ -2314,6 +2320,32 @@ packages:
       effect: ^4.1.0
       vite: '*'
       vite-plus: '>=1.8.0'
+
+  '@r_masseater/workers-tracing@0.6.1':
+    resolution: {integrity: sha512-6oQdY62gEr784F8xGjqCGRAAT363Zo04eHcokOjvUXbUgwsZDzCUGnHF4iqRv9rduGN26/U/Qat3FPhSBFGBTg==}
+    engines: {node: v26.13.1}
+    hasBin: true
+    peerDependencies:
+      '@alchemy.run/cloudflare': ^2.0.0-beta.85
+      '@distilled.cloud/cloudflare': ^1.0.0-rc.18
+      '@effect/platform-node': ^4.1.2
+      '@tanstack/react-start': ^1.169.4
+      alchemy: ^2.0.0-beta.85
+      effect: ^4.1.2
+      elysia: ^1.4.30
+    peerDependenciesMeta:
+      '@alchemy.run/cloudflare':
+        optional: true
+      '@distilled.cloud/cloudflare':
+        optional: true
+      '@effect/platform-node':
+        optional: true
+      '@tanstack/react-start':
+        optional: true
+      alchemy:
+        optional: true
+      elysia:
+        optional: true
 
   '@r_masseater/y8-linux-x64-gnu@0.4.0':
     resolution: {integrity: sha512-mmj/5WIaJkwREy0eBUb2tHYG6hvj+TvEtls3YwDs8y/JySO/qSlePL6jHkU0ws9PDoUDKx6CxmrrgXmbncD+oA==}
@@ -9455,6 +9487,17 @@ snapshots:
       - bufferutil
       - redis
       - utf-8-validate
+
+  '@r_masseater/workers-tracing@0.6.1(34ee4c7df64a6d943de95a28a51f9229)':
+    dependencies:
+      effect: 4.1.5
+    optionalDependencies:
+      '@alchemy.run/cloudflare': 2.0.0-beta.87(@effect/platform-node@4.1.5(effect@4.1.5)(redis@6.2.1(@opentelemetry/api@1.10.0)))(@types/node@26.6.6)(@voidzero-dev/vite-plus-core@8.3.8001(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(typescript@7.1.0-beta)(yaml@2.9.1))(alchemy@2.0.0-beta.87(@effect/platform-node@4.1.5(effect@4.1.5)(redis@6.2.1(@opentelemetry/api@1.10.0)))(@types/react@19.3.0)(@voidzero-dev/vite-plus-core@8.3.8001(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(typescript@7.1.0-beta)(yaml@2.9.1))(effect@4.1.5)(ws@8.22.1))(effect@4.1.5)(typescript@7.1.0-beta)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.20(effect@4.1.5)
+      '@effect/platform-node': 4.1.5(effect@4.1.5)(redis@6.2.1(@opentelemetry/api@1.10.0))
+      '@tanstack/react-start': 1.169.7(@rspack/core@2.3.0(@swc/helpers@0.5.23))(@vitejs/plugin-rsc@0.5.38(@voidzero-dev/vite-plus-core@8.3.8001(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(typescript@7.1.0-beta)(yaml@2.9.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(@voidzero-dev/vite-plus-core@8.3.8001(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(typescript@7.1.0-beta)(yaml@2.9.1))(esbuild@0.28.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(rolldown@1.2.16)(supports-color@8.1.1)(webpack@5.105.0(esbuild@0.28.1)(lightningcss@1.33.0)(postcss@8.5.32)(uglify-js@3.19.3))
+      alchemy: 2.0.0-beta.87(@effect/platform-node@4.1.5(effect@4.1.5)(redis@6.2.1(@opentelemetry/api@1.10.0)))(@types/react@19.3.0)(@voidzero-dev/vite-plus-core@8.3.8001(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(typescript@7.1.0-beta)(yaml@2.9.1))(effect@4.1.5)(ws@8.22.1)
+      elysia: 1.4.32(@sinclair/typebox@0.34.52)(exact-mirror@0.2.9(@sinclair/typebox@0.34.52))(file-type@22.1.1(supports-color@8.1.1))(openapi-types@12.1.3)(typescript@7.1.0-beta)
 
   '@r_masseater/y8-linux-x64-gnu@0.4.0':
     optional: true

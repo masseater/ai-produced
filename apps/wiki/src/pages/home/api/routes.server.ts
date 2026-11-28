@@ -1,7 +1,7 @@
 import { createRouter } from "@workspace/start/api-router";
 import { t } from "elysia";
 
-import { pageSummaries, searchPages } from "./search.server";
+import { pageSummaries, searchPages } from "./search.server.ts";
 
 const MAX_QUERY_LENGTH = 200;
 

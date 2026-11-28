@@ -1,1 +1,1 @@
-export type { PageSummary } from "./types";
+export type { PageSummary } from "./types.ts";

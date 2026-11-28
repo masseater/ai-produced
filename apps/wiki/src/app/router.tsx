@@ -1,7 +1,7 @@
 import type { Router } from "@tanstack/react-router";
 import { createQueryRouter } from "@workspace/start/router";
 
-import { routeTree } from "./generated/routeTree.gen";
+import { routeTree } from "./generated/routeTree.gen.ts";
 
 export type AppRouter = Router<typeof routeTree>;
 

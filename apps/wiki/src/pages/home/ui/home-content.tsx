@@ -3,8 +3,8 @@ import type { ReactNode } from "react";
 
 import { NO_QUERY, useSearchQuery } from "#/pages/home/model/query";
 
-import { PageList } from "./page-list";
-import { SearchResults } from "./search-results";
+import { PageList } from "./page-list.tsx";
+import { SearchResults } from "./search-results.tsx";
 
 export const HomeContent = (): ReactNode =>
   Match.value(useSearchQuery()).pipe(

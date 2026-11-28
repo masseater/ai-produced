@@ -1,6 +1,6 @@
 import type { QueryClient } from "@tanstack/react-query";
 
-import { wikiPageQueries } from "./queries";
+import { wikiPageQueries } from "./queries.ts";
 
 export const loadWikiPage = ({
   queryClient,

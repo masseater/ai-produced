@@ -2,11 +2,11 @@ import { createIsomorphicFn } from "@tanstack/react-start";
 import { browserClient, createQueries, serverClient } from "@workspace/start/api-client";
 import { Effect } from "effect";
 
-import type { WikiPageRoutes } from "./routes.server";
+import type { WikiPageRoutes } from "./routes.server.ts";
 
 const loadWikiPageRoutes = (): Promise<WikiPageRoutes> =>
   Effect.runPromise(
-    Effect.promise(() => import("./routes.server")).pipe(
+    Effect.promise(() => import("./routes.server.ts")).pipe(
       Effect.map((module) => module.wikiPageRoutes),
     ),
   );
