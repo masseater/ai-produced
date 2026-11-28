@@ -19,21 +19,21 @@ name = "vocal-sections"
 path = "src/app/vocal_sections.rs"
 
 [dependencies]
-anyhow = "1.0.104"
-clap = { version = "4.6.7", features = ["derive"] }
-ebur128 = "0.1.11"
-ndarray = "0.17.2"
-num-complex = "0.4.6"
-num-traits = "0.2.19"
-serde = { version = "1.0.229", features = ["derive"] }
-serde_json = { version = "1.0.154", features = ["preserve_order"] }
+anyhow = "=1.0.105"
+clap = { version = "=4.6.10", features = ["derive"] }
+ebur128 = "=0.1.11"
+ndarray = "=0.17.2"
+num-complex = "=0.4.6"
+num-traits = "=0.2.19"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["preserve_order"] }
 sonara = { git = "https://github.com/kkollsga/sonara", rev = "15fb81d34e4e6ca856508e5520a84b1a4ab42b6e" }
-symphonia = { version = "0.6.1", features = ["all"] }
-tempfile = "3.27.0"
-toml = "1.2.1"
+symphonia = { version = "=0.6.1", features = ["all"] }
+tempfile = "=3.27.0"
+toml = "=1.2.3+spec-1.1.0"
 
 [dev-dependencies]
-hound = "3.5.1"
+hound = "=3.5.1"
 
 [lints]
 workspace = true
