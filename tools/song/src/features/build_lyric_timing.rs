@@ -2,11 +2,11 @@ use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 
+use crate::shared::mora::moras;
 use anyhow::{Context, Result, anyhow, bail};
 use clap::Parser;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
-use song::moras;
 
 const PPQ: i64 = 480;
 const SIXTEENTH: i64 = PPQ / 4;
@@ -282,8 +282,11 @@ fn build(score_path: &Path, vocal_path: &Path) -> Result<Song> {
     })
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    execute(&Args::parse())
+}
+
+fn execute(args: &Args) -> Result<()> {
     let song = build(&args.score, &args.vocal)?;
     let mut text = Vec::new();
     let formatter = serde_json::ser::PrettyFormatter::with_indent(b" ");
@@ -302,4 +305,30 @@ fn main() -> Result<()> {
         args.out.display()
     );
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::shared::test_repository::{repository, song};
+
+    #[test]
+    fn reproduces_the_video_timing() {
+        let out = tempfile::tempdir().expect("tempdir");
+        let json = out.path().join("timing.json");
+        let composition = song().join("02-composition");
+        let args = Args::parse_from([
+            "lyric-timing".as_ref(),
+            composition.join("score.toml").as_os_str(),
+            composition.join("generated/vocal.tsv").as_os_str(),
+            json.as_os_str(),
+        ]);
+        execute(&args).expect("lyric-timing");
+        let committed =
+            repository().join("apps/video/src/pages/mou-ikkai/generated/mou-ikkai.json");
+        assert_eq!(
+            fs::read(json).expect("json"),
+            fs::read(committed).expect("committed")
+        );
+    }
 }

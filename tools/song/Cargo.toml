@@ -6,6 +6,26 @@ edition.workspace = true
 rust-version.workspace = true
 publish.workspace = true
 
+[[bin]]
+name = "mora-check"
+path = "src/app/mora_check.rs"
+
+[[bin]]
+name = "lyric-timing"
+path = "src/app/lyric_timing.rs"
+
+[[bin]]
+name = "midi-rpp"
+path = "src/app/midi_rpp.rs"
+
+[[bin]]
+name = "score-midi"
+path = "src/app/score_midi.rs"
+
+[[bin]]
+name = "ustx-from-vocal"
+path = "src/app/ustx_from_vocal.rs"
+
 [dependencies]
 anyhow = "1.0.104"
 clap = { version = "4.6.7", features = ["derive"] }

@@ -233,8 +233,11 @@ fn audio_track(name: &str, path: &str, length_seconds: f64) -> Element {
     track_element(name, &item_name, source, length_seconds)
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    execute(&Args::parse())
+}
+
+fn execute(args: &Args) -> Result<()> {
     let data = fs::read(&args.midi).with_context(|| args.midi.display().to_string())?;
     let smf = Smf::parse(&data)?;
     let Timing::Metrical(ppq) = smf.header.timing else {
@@ -325,4 +328,30 @@ fn main() -> Result<()> {
         found.markers.len()
     );
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::shared::test_repository::song;
+
+    #[test]
+    fn reproduces_the_reaper_project() {
+        let out = tempfile::tempdir().expect("tempdir");
+        let rpp = out.path().join("mou-ikkai.rpp");
+        let args = Args::parse_from([
+            "midi-rpp".as_ref(),
+            song().join("02-composition/generated/full.mid").as_os_str(),
+            "--out".as_ref(),
+            rpp.as_os_str(),
+            "--audio".as_ref(),
+            "Vocal=../03-vocal/render/mou-ikkai_Vocal.wav".as_ref(),
+        ]);
+        execute(&args).expect("midi-rpp");
+        let committed = song().join("04-reaper/mou-ikkai.rpp");
+        assert_eq!(
+            fs::read(rpp).expect("rpp"),
+            fs::read(committed).expect("committed")
+        );
+    }
 }

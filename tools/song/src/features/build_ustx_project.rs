@@ -473,8 +473,11 @@ fn read_toml<T: for<'de> Deserialize<'de>>(path: &Path) -> Result<T> {
     Ok(toml::from_str(&text)?)
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    execute(&Args::parse())
+}
+
+fn execute(args: &Args) -> Result<()> {
     let score: Score = read_toml(&args.score)?;
     let colors: Vec<String> = args
         .colors
@@ -557,4 +560,31 @@ fn main() -> Result<()> {
         duration / BAR
     );
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::shared::test_repository::song;
+
+    #[test]
+    fn reproduces_the_untuned_project() {
+        let out = tempfile::tempdir().expect("tempdir");
+        let ustx = out.path().join("mou-ikkai.ustx");
+        let args = Args::parse_from([
+            "ustx-from-vocal".as_ref(),
+            song()
+                .join("02-composition/generated/vocal.tsv")
+                .as_os_str(),
+            "--score".as_ref(),
+            song().join("02-composition/score.toml").as_os_str(),
+            "--out".as_ref(),
+            ustx.as_os_str(),
+        ]);
+        execute(&args).expect("ustx-from-vocal");
+        let parse = |path: &Path| -> serde_json::Value {
+            serde_saphyr::from_str(&fs::read_to_string(path).expect("ustx")).expect("yaml")
+        };
+        assert_eq!(parse(&ustx), parse(&song().join("03-vocal/mou-ikkai.ustx")));
+    }
 }

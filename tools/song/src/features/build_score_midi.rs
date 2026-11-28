@@ -3,6 +3,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
+use crate::shared::mora::{moras, vowel};
 use anyhow::{Context, Result, anyhow, bail};
 use clap::Parser;
 use midly::num::{u4, u7, u15, u24, u28};
@@ -10,7 +11,6 @@ use midly::{Format, Header, MetaMessage, MidiMessage, Smf, Timing, TrackEvent, T
 use num_traits::ToPrimitive;
 use regex::Regex;
 use serde::Deserialize;
-use song::{moras, vowel};
 
 const TPQ: i64 = 480;
 const SIXTEENTH: i64 = TPQ / 4;
@@ -1152,7 +1152,7 @@ fn write_tables(song: &Song, out_dir: &Path) -> Result<()> {
     Ok(())
 }
 
-fn run(args: &Args) -> Result<bool> {
+fn execute(args: &Args) -> Result<bool> {
     let text = fs::read_to_string(&args.score).with_context(|| args.score.display().to_string())?;
     let score: Score = toml::from_str(&text)?;
     let base_dir = args.score.parent().unwrap_or_else(|| Path::new("."));
@@ -1192,11 +1192,30 @@ fn run(args: &Args) -> Result<bool> {
     Ok(true)
 }
 
-fn main() -> Result<ExitCode> {
-    let args = Args::parse();
-    Ok(if run(&args)? {
+pub fn run() -> Result<ExitCode> {
+    Ok(if execute(&Args::parse())? {
         ExitCode::SUCCESS
     } else {
         ExitCode::FAILURE
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::shared::test_repository::{assert_same_tree, song};
+
+    #[test]
+    fn reproduces_the_committed_composition() {
+        let out = tempfile::tempdir().expect("tempdir");
+        let composition = song().join("02-composition");
+        let args = Args::parse_from([
+            "score-midi".as_ref(),
+            composition.join("score.toml").as_os_str(),
+            "--out".as_ref(),
+            out.path().as_os_str(),
+        ]);
+        assert!(execute(&args).expect("score-midi"));
+        assert_same_tree(out.path(), &composition.join("generated"));
+    }
 }

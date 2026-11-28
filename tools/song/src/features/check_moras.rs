@@ -1,9 +1,9 @@
 use std::fs;
 use std::path::PathBuf;
 
+use crate::shared::mora::{moras, vowel};
 use anyhow::{Context, Result, anyhow};
 use clap::Parser;
-use song::{moras, vowel};
 
 const VOICELESS: &str = "かきくけこさしすせそたちつてとはひふへほぱぴぷぺぽ";
 
@@ -47,8 +47,11 @@ fn row(kanji: &str, kana: &str) -> String {
     )
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    execute(&Args::parse())
+}
+
+fn execute(args: &Args) -> Result<()> {
     let text =
         fs::read_to_string(&args.lyrics).with_context(|| args.lyrics.display().to_string())?;
     for line in text.lines() {
