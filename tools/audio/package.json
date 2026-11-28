@@ -2,6 +2,7 @@
   "name": "@workspace/audio",
   "version": "0.0.0",
   "private": true,
+  "description": "Audio analysis tools: mix metrics against the taste band, per-section vocal description, tempo octave from kick and snare.",
   "type": "module",
   "devDependencies": {
     "@workspace/crate-tasks": "workspace:*",

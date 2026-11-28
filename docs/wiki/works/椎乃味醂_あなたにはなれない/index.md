@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=_O0h2WqEFjo
-title: "あなたにはなれない"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09

@@ -22,57 +22,15 @@ jobs:
         with:
           github-token: ${{ github.token }}
 
-  autofix:
+  wake:
     needs: verify
     if: failure()
     runs-on: ubuntu-latest
     permissions:
-      actions: write
-    steps:
-      - env:
-          GH_TOKEN: ${{ github.token }}
-          HEAD_BRANCH: ${{ github.ref_name }}
-          HEAD_SHA: ${{ github.sha }}
-          FAILED_RUN_ID: ${{ github.run_id }}
-        run: >-
-          gh workflow run autofix.yml --repo "$GITHUB_REPOSITORY" --ref "$HEAD_BRANCH"
-          -f run_id="$FAILED_RUN_ID" -f branch="$HEAD_BRANCH" -f sha="$HEAD_SHA"
-
-  release:
-    needs: verify
-    if: github.repository == 'masseater/typescript-template'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
       id-token: write
-      actions: write
-    concurrency:
-      group: release
     steps:
-      - id: tagged
-        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          config-file: .github/release-please/config.json
-          manifest-file: .github/release-please/manifest.json
-          skip-github-pull-request: true
-      - if: github.event_name == 'workflow_dispatch'
-        uses: masseater/typescript-template/.github/actions/credentials@30137991cda37e5fd3c774272afb3e07cdaa10d0
-      - if: github.event_name == 'workflow_dispatch'
-        id: release-pr
-        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
-        with:
-          token: ${{ env.GITHUB_APP_TOKEN }}
-          config-file: .github/release-please/config.json
-          manifest-file: .github/release-please/manifest.json
-          skip-github-release: true
-      - if: steps.release-pr.outputs.pr
-        env:
-          GH_TOKEN: ${{ env.GITHUB_APP_TOKEN }}
-          PR: ${{ steps.release-pr.outputs.pr }}
-        run: gh pr merge "$(jq -r .number <<<"$PR")" --repo "$GITHUB_REPOSITORY" --squash --auto
-      - if: steps.tagged.outputs.release_created == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: ${{ steps.tagged.outputs.tag_name }}
-        run: gh workflow run publish.yml --repo "$GITHUB_REPOSITORY" --ref main -f ref="$TAG"
+          persist-credentials: false
+      - uses: $/.github/actions/setup
+      - run: vp exec msch-wake

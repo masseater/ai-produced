@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=oqmkKOLlKQA
-title: "STARGAZER"
 artist: "Tsundere Alley"
 kind: song
 analyzed: 2026-10-04

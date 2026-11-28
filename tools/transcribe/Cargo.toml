@@ -6,6 +6,14 @@ edition.workspace = true
 rust-version.workspace = true
 publish.workspace = true
 
+[[bin]]
+name = "transcribe"
+path = "src/app/transcribe.rs"
+
+[[bin]]
+name = "transcription-score"
+path = "src/app/transcription_score.rs"
+
 [dependencies]
 anyhow = "1.0.104"
 audio = { path = "../audio" }

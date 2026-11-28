@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=eCSO4fL98Xk
-title: "死んでしまったんだ"
 artist: "椎乃味醂"
 kind: song
 analyzed: 2026-10-04

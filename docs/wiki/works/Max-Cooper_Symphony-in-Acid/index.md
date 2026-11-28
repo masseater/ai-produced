@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=_n_iKR3Icio
-title: "Symphony in Acid"
 artist: "Max Cooper"
 kind: mv
 analyzed: 2026-10-04

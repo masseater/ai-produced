@@ -8,7 +8,7 @@ import remarkGfm from "remark-gfm";
 
 import { wikiPageQueries } from "#/pages/wiki-page/api/queries";
 
-import { MarkdownLink } from "./markdown-link";
+import { MarkdownLink } from "./markdown-link.tsx";
 
 const REMARK_PLUGINS = [remarkGfm];
 const BACK_LABEL = "一覧に戻る";

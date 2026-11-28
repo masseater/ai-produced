@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=REPP-p0o6aU
-title: "痛みなんていらなかった"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09

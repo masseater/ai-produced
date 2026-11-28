@@ -15,7 +15,7 @@
     "hooks": "#/shared/lib",
     "lib": "#/shared/lib",
     "utils": "@workspace/ui/lib/utils",
-    "ui": "@workspace/ui/components"
+    "ui": "#/shared/ui"
   },
   "iconLibrary": "lucide"
 }

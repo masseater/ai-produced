@@ -1,0 +1,10 @@
+pub mod eq;
+pub mod note_profile;
+pub mod notes;
+pub mod optim;
+pub mod placement;
+pub mod shaping;
+pub mod signal;
+pub mod song;
+pub mod spectral;
+pub mod surge;

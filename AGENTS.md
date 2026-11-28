@@ -1,24 +1,26 @@
-作業を始める前に `repo-conventions` と `vite-plus` の skill を読み、従う。どちらも masseater/skills にあり、`vp install` が `.agents/skills/` に入れる。このリポジトリのベースは https://github.com/masseater/typescript-template で、テンプレート由来の構成と方針はテンプレートに従う。
+# ai-produced
 
-## 構成
+Follow `masseater-ecosystem`, a skill in masseater/skills that says which skills to load in each situation. `vp install` puts the skills in `.agents/skills/`. This repository is based on https://github.com/masseater/typescript-template, and the structure and policies that come from the template follow the template.
 
-- `songs/<連番>-<名前>/` に1曲ずつ工程別の成果物と log.md を置く。構成は `docs/songs.md` にある。
-- `apps/` の各ワークスペースの内容は、それぞれの README.md にある。
-- `tools/` 配下のツールは、Cargoワークスペース内のRustクレートである。ただし、`openutau-render` はC#である。`cargo run -p <crate> --bin <tool> -- <args>` で実行する。`vp run verify` を実行すると、rustfmt、clippy、およびクレートのテストが実行される。
+An AI makes songs here with the same steps a Vocaloid producer takes. Each piece lives in `songs/<number>-<name>/` with the products of each step and a log.md, and `docs/songs.md` describes the layout.
 
-## CI
+Each workspace has its own AGENTS.md describing it and the rules that apply only there. Read it before changing that workspace.
 
-- `pull_request` トリガーのワークフローは、最新の main を取り込んでいない PR のマージをルールセットで拒むための `up-to-date`（何も検査しない）だけにする。
+## Tech stack
 
-## 制作
+The base stack is TypeScript 7, Effect, Vite+ and Rust.
 
-- 画面操作（スクリーンショット、クリック、キー送信）をしない。ツールは MCP、スクリプト、プロジェクトファイルだけで操作する。
-- 曲は `docs/songs.md` の置き場所で、人間と同じ工程を飛ばさずに進める。工程を進めたら、その曲の log.md に判断とやり直しの理由を書く。
-- 書き出した音声は、ラウドネス、スペクトログラム、ピッチなどの解析結果で判断し、その数値を log.md に残す。
-- 不具合の調査は `systematic-debugging`、完了の確認は `verification-before-completion` スキルに従う。
+## Commands
 
-## 成果物と素材
+- `vp run verify` runs every check in this repository, including rustfmt, clippy and the crate tests. The pre-push hook runs the same checks.
+- Run a Rust tool with `cargo run -p <crate> --bin <tool> -- <args>`.
 
-- 本番デプロイと外部公開は、ユーザーの指示を待つ。
-- このリポジトリは public である。他人の曲や映像に由来する素材は入れず、`reference-materials` スキルに従う。
-- REAPER や OpenUtau の歌手など、Windows PC にあるものが要る工程は、`windows-pc` スキルに従って PC 上の Remote Control のセッションで実行する。
+## Rules
+
+- Do not operate the screen (screenshots, clicks, key presses). Operate tools through MCP, scripts and project files only.
+- Take each piece through the steps in `docs/songs.md` without skipping any step a human producer takes. After each step, write the decisions and the reasons for any redo in that piece's log.md.
+- Judge rendered sound by analysis results such as loudness, spectrogram and pitch, and record the numbers in log.md.
+- Wait for the owner's instruction before deploying to production or publishing anything outside the repository.
+- This repository is public. Do not add material derived from other people's songs or videos.
+- Steps that need something on the Windows PC, such as REAPER or OpenUtau singers, run in a Remote Control session on that PC.
+- The only workflow that runs on `pull_request` is `up-to-date`, which checks nothing and lets the ruleset refuse to merge a pull request that has not taken in the latest main.

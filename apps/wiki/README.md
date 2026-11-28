@@ -5,3 +5,5 @@
 wikiには、参照作品（曲、MV、音MAD、文字PV）を分析した結果を溜める。
 1作品の分析は `works/` に、複数の作品にまたがる知見は `topics/` に置く。
 書き方は `analysis-wiki` スキル（`docs/skills/analysis-wiki/SKILL.md`）にある。
+
+分析wikiの原稿は [`docs/wiki/`](https://github.com/masseater/ai-produced/tree/main/docs/wiki) にある。

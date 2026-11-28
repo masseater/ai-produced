@@ -1,7 +1,7 @@
 import { Array as Arr, Option, Record, Schema, pipe } from "effect";
 import frontMatter from "front-matter";
 
-import type { WikiPage } from "./types";
+import type { WikiPage } from "./types.ts";
 
 const Attributes = Schema.Struct({
   title: Schema.optional(Schema.String),

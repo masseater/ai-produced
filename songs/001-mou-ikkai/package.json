@@ -2,6 +2,7 @@
   "name": "@workspace/mou-ikkai",
   "version": "0.0.0",
   "private": true,
+  "description": "Tasks that render the vocal, audition the mix and mix the song 001-mou-ikkai.",
   "type": "module",
   "imports": {
     "#/*": "./src/*"

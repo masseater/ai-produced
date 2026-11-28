@@ -2,6 +2,7 @@
   "name": "@workspace/ui",
   "version": "0.0.0",
   "private": true,
+  "description": "shadcn design-system components and Tailwind globals shared by the apps.",
   "type": "module",
   "imports": {
     "#/*": "./src/*"

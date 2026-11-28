@@ -2,6 +2,7 @@
   "name": "@workspace/transcribe",
   "version": "0.0.0",
   "private": true,
+  "description": "Transcribe a stem or a mix to MIDI with MuScriptor or Basic Pitch, and score a transcription against a reference MIDI.",
   "type": "module",
   "devDependencies": {
     "@workspace/crate-tasks": "workspace:*",

@@ -1,7 +1,8 @@
 {
-  "name": "@workspace/stem-repro",
+  "name": "@workspace/stem-rebuild",
   "version": "0.0.0",
   "private": true,
+  "description": "Reproduce a reference song from its published stems and MIDI with Surge XT, and measure how each stem and the mix differ.",
   "type": "module",
   "devDependencies": {
     "@workspace/crate-tasks": "workspace:*",

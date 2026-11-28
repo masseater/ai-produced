@@ -1,3 +1,4 @@
+import { runWorkersAi } from "@r_masseater/workers-tracing/workers-ai";
 import { env } from "cloudflare:workers";
 import {
   Array as Arr,
@@ -18,9 +19,7 @@ import { wikiPages } from "#/shared/content/index.server";
 
 const MODEL = "@cf/google/embeddinggemma-300m";
 
-const EMBEDDING_GATEWAY = {
-  gateway: { id: "default", metadata: { caller: "ai-produced.wiki.search" } },
-};
+const CALLER = "ai-produced.wiki.search";
 const BATCH_SIZE = 50;
 const DOCUMENT_PREFIX = "title: ";
 const QUERY_PREFIX = "task: search result | query: ";
@@ -55,8 +54,14 @@ const passagesOf = (page: PageSummary & Readonly<{ body: string }>): readonly Pa
 const passages: readonly Passage[] = pipe(wikiPages, Arr.flatMap(passagesOf));
 
 const runEmbedding = (batch: readonly string[]): Effect.Effect<readonly Vector[]> =>
-  Effect.promise(() => env.AI.run(MODEL, { text: [...batch] }, EMBEDDING_GATEWAY)).pipe(
+  runWorkersAi({
+    operation: "embeddings",
+    model: MODEL,
+    caller: CALLER,
+    call: (options) => env.AI.run(MODEL, { text: [...batch] }, options),
+  }).pipe(
     Effect.map((output) => output.data),
+    Effect.orDie,
   );
 
 const embed = (texts: readonly string[]): Effect.Effect<readonly Vector[]> =>

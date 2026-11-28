@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=D0HvoG7PbR4
-title: "ただ一度とないあの夏へ"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09

@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=N9gQqOf58mQ
-title: "OSINT"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09

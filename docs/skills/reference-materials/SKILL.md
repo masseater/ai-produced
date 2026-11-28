@@ -8,7 +8,7 @@ description: 他人の曲や映像に由来する素材を取得・分離・採�
 他人の曲に由来する素材は、private リポジトリ masseater/ai-produced-reference にだけ置く。
 このリポジトリには入れない。入れてよいのはコード、設定、数値と手法を書いた分析ノートだけである。
 
-まず `../ai-produced-reference` に clone するか pull する。
+まず、このリポジトリと同じ親フォルダに ai-produced-reference という名前で clone するか pull する。
 同じ曲のフォルダがあれば、取得や採譜をやり直さずにそれを使う。
 作った素材は、reference 側の README.md が示す配置で置いて push する。
 

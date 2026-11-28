@@ -1,6 +1,5 @@
 ---
 url: https://www.youtube.com/watch?v=ajCNiYXje7E
-title: "知っちゃった"
 artist: "椎乃味醂"
 kind: mv
 analyzed: 2026-10-09
