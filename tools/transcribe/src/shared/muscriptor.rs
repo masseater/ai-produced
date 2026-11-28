@@ -6,7 +6,7 @@ use hf_hub::HFClientSync;
 use num_traits::ToPrimitive;
 use tract_onnx::prelude::*;
 
-use crate::midi::{DRUM_PROGRAM, Note};
+use crate::shared::midi::{DRUM_PROGRAM, Note};
 
 const REPO_OWNER: &str = "unifolia";
 const REPO_NAME: &str = "muscriptor-small-onnx";

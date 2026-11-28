@@ -1,7 +1,8 @@
 use std::path::PathBuf;
 
+use crate::shared::audio_file::decode;
+use crate::shared::statistics::{mean, round};
 use anyhow::{Context, Result};
-use audio::{decode, mean, round};
 use clap::Parser;
 use ndarray::{Array1, Array2, ArrayView1, Axis, Slice};
 use num_complex::Complex64;
@@ -212,8 +213,12 @@ fn analyse(y: &ArrayView1<f32>, slow: f64) -> Result<Value> {
     }))
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    println!("{}", report(&Args::parse())?);
+    Ok(())
+}
+
+fn report(args: &Args) -> Result<String> {
     let y = decode(&args.audio)?.mono(SR)?;
     let mut result = json!({ "whole": analyse(&y.view(), args.slow_bpm)? });
     if let Some(section) = &args.section {
@@ -231,6 +236,56 @@ fn main() -> Result<()> {
             args.slow_bpm,
         )?;
     }
-    println!("{}", serde_json::to_string(&result)?);
-    Ok(())
+    Ok(serde_json::to_string(&result)?)
+}
+
+#[cfg(test)]
+mod tests {
+    use std::f64::consts::PI;
+
+    use serde_json::Value;
+
+    use super::*;
+    use crate::shared::test_signal::{near, write_wav};
+
+    fn drums(rate: u32, seconds: u32, slow_bpm: f64, snare_offset: f64) -> Vec<f64> {
+        let beat = 60.0 / slow_bpm;
+        let mut seed = 12345u64;
+        let mut out = vec![0.0; (rate * seconds) as usize];
+        for (i, sample) in (0u32..).zip(out.iter_mut()) {
+            let t = f64::from(i) / f64::from(rate);
+            let since_kick = t % beat;
+            let since_snare = (t - snare_offset * beat).rem_euclid(beat);
+            seed = seed
+                .wrapping_mul(6_364_136_223_846_793_005)
+                .wrapping_add(1_442_695_040_888_963_407);
+            let noise = f64::from(u32::try_from(seed >> 33).unwrap()) / f64::from(1u32 << 31) - 1.0;
+            let kick = (2.0 * PI * 60.0 * since_kick).sin() * (-since_kick / 0.12).exp();
+            let snare = noise * (-since_snare / 0.08).exp();
+            *sample = 0.5 * kick + 0.3 * snare;
+        }
+        out
+    }
+
+    #[test]
+    fn reads_the_backbeat() {
+        let dir = tempfile::tempdir().unwrap();
+        let rate = 22050;
+        for (offset, verdict) in [(0.5, "fast"), (0.0, "slow")] {
+            let path = dir.path().join(format!("drums-{verdict}.wav"));
+            write_wav(&path, rate, &[drums(rate, 30, 80.0, offset)]);
+            let args = Args::parse_from([
+                "tempo-octave",
+                path.to_str().unwrap(),
+                "80",
+                "--section",
+                "5",
+                "25",
+            ]);
+            let result: Value = serde_json::from_str(&report(&args).unwrap()).unwrap();
+            assert_eq!(result["whole"]["verdict"], verdict, "{result}");
+            assert_eq!(result["section"]["verdict"], verdict, "{result}");
+            near(&result["whole"]["grid_bpm"], 80.0, 1.0);
+        }
+    }
 }

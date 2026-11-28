@@ -1,8 +1,9 @@
 use std::fs;
 use std::path::PathBuf;
 
+use crate::shared::audio_file::decode;
+use crate::shared::statistics::{mean, round};
 use anyhow::{Context, Result};
-use audio::{decode, mean, round};
 use clap::Parser;
 use ndarray::{ArrayView1, Axis, Slice};
 use num_traits::ToPrimitive;
@@ -117,8 +118,12 @@ fn describe(y: &ArrayView1<f32>) -> Result<Value> {
     }))
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    println!("{}", report(&Args::parse())?);
+    Ok(())
+}
+
+fn report(args: &Args) -> Result<String> {
     let text = fs::read_to_string(&args.score).with_context(|| args.score.display().to_string())?;
     let score: Score = toml::from_str(&text)?;
     let y = decode(&args.wav)?.mono(SR)?;
@@ -145,6 +150,56 @@ fn main() -> Result<()> {
     let formatter = serde_json::ser::PrettyFormatter::with_indent(b" ");
     let mut serializer = serde_json::Serializer::with_formatter(&mut text, formatter);
     serde::Serialize::serialize(&Value::Object(out), &mut serializer)?;
-    println!("{}", String::from_utf8(text)?);
-    Ok(())
+    Ok(String::from_utf8(text)?)
+}
+
+#[cfg(test)]
+mod tests {
+    use std::f64::consts::PI;
+    use std::fs;
+
+    use serde_json::Value;
+
+    use super::*;
+    use crate::shared::test_signal::{near, write_wav};
+
+    #[test]
+    fn skips_silence_and_tracks_a_steady_pitch() {
+        let dir = tempfile::tempdir().unwrap();
+        let rate = 22050;
+        let path = dir.path().join("voice.wav");
+        let bar = 2.0;
+        let frames = (f64::from(rate) * bar * 4.0).to_u32().unwrap();
+        let voice: Vec<f64> = (0..frames)
+            .map(|i| {
+                let t = f64::from(i) / f64::from(rate);
+                if t < bar * 2.0 {
+                    0.0
+                } else {
+                    0.3 * (2.0 * PI * 440.0 * t).sin()
+                }
+            })
+            .collect();
+        write_wav(&path, rate, &[voice]);
+        let score = dir.path().join("score.toml");
+        fs::write(
+            &score,
+            "bpm = 120\n[[sections]]\nname = \"Rest\"\nbars = 2\n[[sections]]\nname = \"Sing\"\nbars = 2\n",
+        )
+        .unwrap();
+        let args = Args::parse_from([
+            "vocal-sections",
+            path.to_str().unwrap(),
+            "--score",
+            score.to_str().unwrap(),
+        ]);
+        let result: Value = serde_json::from_str(&report(&args).unwrap()).unwrap();
+        assert!(result["Rest"].is_null(), "{result}");
+        let sing = &result["Sing"];
+        near(&sing["sound_ratio"], 1.0, 0.02);
+        near(&sing["voiced_of_sound"], 1.0, 0.05);
+        near(&sing["centroid_hz"], 440.0, 40.0);
+        near(&sing["pitch_wobble_cents"], 0.0, 2.0);
+        near(&sing["rms_db"], -13.5, 0.2);
+    }
 }

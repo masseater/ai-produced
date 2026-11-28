@@ -1,8 +1,9 @@
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
+use crate::shared::audio_file::{Decoded, decode};
+use crate::shared::statistics::{mean, percentile, round};
 use anyhow::{Context, Result, bail};
-use audio::{Decoded, decode, mean, percentile, round};
 use clap::Parser;
 use ebur128::{EbuR128, Mode};
 use ndarray::Array1;
@@ -236,12 +237,15 @@ fn pretty(value: &Value) -> Result<String> {
     Ok(String::from_utf8(text)?)
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    println!("{}", report(&Args::parse())?);
+    Ok(())
+}
+
+fn report(args: &Args) -> Result<String> {
     let raw = measure(&args.wav, args.bpm, args.offset, args.duration)?;
     if !args.judge {
-        println!("{}", serde_json::to_string(&raw)?);
-        return Ok(());
+        return Ok(serde_json::to_string(&raw)?);
     }
     let workdir = tempfile::tempdir()?;
     let coded = serde_json::to_value(measure(
@@ -274,6 +278,38 @@ fn main() -> Result<()> {
             "stereo_not_cancelled": raw.stereo_side_to_mid_db < 0.0,
         },
     });
-    println!("{}", pretty(&report)?);
-    Ok(())
+    pretty(&report)
+}
+
+#[cfg(test)]
+mod tests {
+    use std::f64::consts::PI;
+
+    use serde_json::Value;
+
+    use super::*;
+    use crate::shared::test_signal::{near, write_wav};
+
+    #[test]
+    fn reads_a_reference_sine() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("sine.wav");
+        let rate = 48000;
+        let amplitude = 10f64.powf(-23.0 / 20.0);
+        let tone: Vec<f64> = (0..rate * 10)
+            .map(|i| amplitude * (2.0 * PI * 1000.0 * f64::from(i) / f64::from(rate)).sin())
+            .collect();
+        write_wav(&path, rate, &[tone.clone(), tone]);
+        let args = Args::parse_from(["mix-metrics", path.to_str().unwrap(), "--bpm", "120"]);
+        let m: Value = serde_json::from_str(&report(&args).unwrap()).unwrap();
+        near(&m["bpm"], 120.0, 0.0);
+        near(&m["lufs_integrated"], -23.0, 0.1);
+        near(&m["true_peak_dbtp"], -23.0, 0.1);
+        near(&m["stereo_side_to_mid_db"], -120.0, 0.0);
+        near(&m["crest_db"], 3.01, 0.05);
+        near(&m["rms_dbfs"], -26.01, 0.05);
+        near(&m["mid"], 0.0, 0.05);
+        near(&m["spectral_centroid_hz"], 1000.0, 30.0);
+        near(&m["loudness_p90_minus_p10_db"], 0.0, 0.1);
+    }
 }

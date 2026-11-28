@@ -1,12 +1,12 @@
 use std::fs;
 use std::path::{Path, PathBuf};
 
+use crate::shared::basic_pitch_engine::{BasicPitchParams, basic_pitch};
+use crate::shared::midi::{self, Note};
+use crate::shared::muscriptor::{Muscriptor, SAMPLE_RATE, instrument_name};
 use anyhow::{Context, Result};
 use clap::{Parser, ValueEnum};
 use num_traits::ToPrimitive;
-use transcribe::midi::{self, Note};
-use transcribe::muscriptor::{Muscriptor, SAMPLE_RATE, instrument_name};
-use transcribe::{BasicPitchParams, basic_pitch};
 
 const SILENCE_DB: f64 = -60.0;
 
@@ -60,8 +60,14 @@ fn muscriptor(model: &Muscriptor, wav: &Path) -> Result<Vec<u8>> {
     midi::write(&kept, instrument_name)
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
+pub fn run() -> Result<()> {
+    for out in transcribe(&Args::parse())? {
+        println!("{}", out.display());
+    }
+    Ok(())
+}
+
+fn transcribe(args: &Args) -> Result<Vec<PathBuf>> {
     fs::create_dir_all(&args.out_dir)?;
     let model = match args.engine {
         Engine::Muscriptor => Some(Muscriptor::load()?),
@@ -72,6 +78,7 @@ fn main() -> Result<()> {
         frame_threshold: args.frame_threshold,
         minimum_note_length_ms: args.minimum_note_length,
     };
+    let mut written = Vec::new();
     for wav in &args.inputs {
         let bytes = match &model {
             Some(model) => muscriptor(model, wav)?,
@@ -80,7 +87,52 @@ fn main() -> Result<()> {
         let stem = wav.file_stem().with_context(|| wav.display().to_string())?;
         let out = args.out_dir.join(stem).with_extension("mid");
         fs::write(&out, bytes)?;
-        println!("{}", out.display());
+        written.push(out);
     }
-    Ok(())
+    Ok(written)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::shared::note_matching::{Selection, score_files};
+    use crate::shared::test_melody::{write_melody, write_reference};
+
+    fn transcribed_recall(engine: &str) -> f64 {
+        let dir = tempfile::tempdir().unwrap();
+        let wav = dir.path().join("melody.wav");
+        write_melody(&wav);
+        let truth = dir.path().join("truth.mid");
+        write_reference(&truth, 0.0);
+        let out_dir = dir.path().join("out");
+        let args = Args::parse_from([
+            "transcribe",
+            wav.to_str().unwrap(),
+            "-o",
+            out_dir.to_str().unwrap(),
+            "-e",
+            engine,
+        ]);
+        let written = transcribe(&args).unwrap();
+        assert_eq!(written, [out_dir.join("melody.mid")]);
+        let selection = Selection {
+            ref_instrument: None,
+            est_programs: None,
+            max_shift: 0.1,
+        };
+        let score = score_files(&truth, &written[0], &selection).unwrap();
+        eprintln!("{engine}: {score}");
+        score["recall"].as_f64().unwrap()
+    }
+
+    #[test]
+    fn basic_pitch_finds_every_plucked_note() {
+        assert!(transcribed_recall("basic-pitch") >= 0.99);
+    }
+
+    #[test]
+    #[ignore = "downloads the 400 MB MuScriptor model and decodes for minutes"]
+    fn muscriptor_finds_every_plucked_note() {
+        assert!(transcribed_recall("muscriptor") >= 0.99);
+    }
 }

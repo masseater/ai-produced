@@ -1,30 +1,23 @@
 use std::fs;
-use std::path::PathBuf;
+use std::path::Path;
 
 use anyhow::{Context, Result};
-use clap::Parser;
 use num_traits::ToPrimitive;
-use serde_json::json;
-use transcribe::midi::{ScoredNote, read};
+use serde_json::{Value, json};
+
+use crate::shared::midi::{ScoredNote, read};
 
 const ONSET_TOLERANCE: f64 = 0.05;
 const OFFSET_MIN_TOLERANCE: f64 = 0.05;
 const STEP: f64 = 0.005;
 
-#[derive(Parser)]
-#[command(about = "Score a transcription against a reference MIDI with mir_eval's note matching")]
-struct Args {
-    reference: PathBuf,
-    estimate: PathBuf,
-    #[arg(long)]
-    ref_instrument: Option<usize>,
-    #[arg(long, value_delimiter = ',')]
-    est_programs: Option<Vec<u8>>,
-    #[arg(long, default_value_t = 0.1)]
-    max_shift: f64,
+pub struct Selection<'a> {
+    pub ref_instrument: Option<usize>,
+    pub est_programs: Option<&'a [u8]>,
+    pub max_shift: f64,
 }
 
-fn load(path: &PathBuf, track: Option<usize>, programs: Option<&[u8]>) -> Result<Vec<ScoredNote>> {
+fn load(path: &Path, track: Option<usize>, programs: Option<&[u8]>) -> Result<Vec<ScoredNote>> {
     Ok(read(&fs::read(path)?)?
         .into_iter()
         .enumerate()
@@ -114,17 +107,16 @@ fn round3(value: f64) -> f64 {
     (value * 1e3).round_ties_even() / 1e3
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
-    let reference = load(&args.reference, args.ref_instrument, None)?;
-    let estimate = load(&args.estimate, None, args.est_programs.as_deref())?;
-    let steps = ((2.0 * args.max_shift + 1e-9) / STEP)
+pub fn score_files(reference: &Path, estimate: &Path, selection: &Selection) -> Result<Value> {
+    let reference = load(reference, selection.ref_instrument, None)?;
+    let estimate = load(estimate, None, selection.est_programs)?;
+    let steps = ((2.0 * selection.max_shift + 1e-9) / STEP)
         .floor()
         .to_u32()
         .context("max shift")?;
     let mut shift = (0.0, f64::NEG_INFINITY);
     for k in 0..=steps {
-        let s = -args.max_shift + f64::from(k) * STEP;
+        let s = -selection.max_shift + f64::from(k) * STEP;
         let f = score(&reference, &estimate, s, None)?.2;
         if f > shift.1 {
             shift = (s, f);
@@ -133,17 +125,13 @@ fn main() -> Result<()> {
     let shift = shift.0;
     let (precision, recall, f1) = score(&reference, &estimate, shift, None)?;
     let (_, _, f1_offset) = score(&reference, &estimate, shift, Some(0.2))?;
-    println!(
-        "{}",
-        json!({
-            "reference_notes": reference.len(),
-            "estimated_notes": estimate.len(),
-            "shift_ms": (shift * 1000.0).round_ties_even().to_i64().context("shift")?,
-            "precision": round3(precision),
-            "recall": round3(recall),
-            "f1": round3(f1),
-            "f1_with_offset": round3(f1_offset),
-        })
-    );
-    Ok(())
+    Ok(json!({
+        "reference_notes": reference.len(),
+        "estimated_notes": estimate.len(),
+        "shift_ms": (shift * 1000.0).round_ties_even().to_i64().context("shift")?,
+        "precision": round3(precision),
+        "recall": round3(recall),
+        "f1": round3(f1),
+        "f1_with_offset": round3(f1_offset),
+    }))
 }

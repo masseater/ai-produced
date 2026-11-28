@@ -278,3 +278,27 @@ pub fn write(notes: &[Note], name: fn(u16) -> String) -> Result<Vec<u8>> {
     smf.write_std(&mut out)?;
     Ok(out)
 }
+
+#[cfg(test)]
+mod tests {
+    use std::fs;
+
+    use super::*;
+    use crate::shared::test_melody::{MELODY, write_reference};
+
+    #[test]
+    fn round_trips_through_the_reader() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("reference.mid");
+        write_reference(&path, 0.0);
+        let instruments = read(&fs::read(&path).unwrap()).unwrap();
+        assert_eq!(instruments.len(), 1);
+        let notes = &instruments[0].notes;
+        assert_eq!(notes.len(), MELODY.len());
+        for (note, (pitch, onset, offset)) in notes.iter().zip(MELODY) {
+            assert_eq!(note.pitch, pitch);
+            assert!((note.start - onset).abs() < 1e-3);
+            assert!((note.end - offset).abs() < 1e-3);
+        }
+    }
+}
