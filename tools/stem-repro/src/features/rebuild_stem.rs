@@ -7,8 +7,8 @@ use rand_distr::{Distribution, StandardNormal};
 use rustfft::num_complex::Complex;
 use serde_json::{Value, json};
 
-use crate::signal::{Format, Frame, from_mid_side, mid_side, stft, write};
-use crate::song::Song;
+use crate::shared::signal::{Format, Frame, from_mid_side, mid_side, stft, write};
+use crate::shared::song::Song;
 
 pub fn resynth(x: &[Frame], n: usize, seed: u64) -> Result<Vec<Frame>> {
     let mut rng = StdRng::seed_from_u64(seed);

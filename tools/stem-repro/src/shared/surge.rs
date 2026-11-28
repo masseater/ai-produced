@@ -17,8 +17,8 @@ use clack_host::utils::ClapId;
 use num_traits::ToPrimitive;
 use sha2::{Digest, Sha256};
 
-use crate::notes::Event;
-use crate::signal::{Frame, RATE};
+use crate::shared::notes::Event;
+use crate::shared::signal::{Frame, RATE};
 
 const VERSION: &str = "1.3.4";
 const DEB_SHA256: &str = "a6e55064487f624147d515b9ae5fc79a568b69746675b2083abde628ca7bb151";
@@ -356,7 +356,7 @@ impl Surge {
         duration: f64,
         n: usize,
     ) -> Result<Option<Vec<f64>>> {
-        let mut m = crate::signal::mono(&self.render(events, duration)?);
+        let mut m = crate::shared::signal::mono(&self.render(events, duration)?);
         m.truncate(n);
         let silent = m.iter().fold(0.0f64, |a, v| a.max(v.abs())) < 1e-5;
         Ok((!silent && m.iter().all(|v| v.is_finite())).then_some(m))
@@ -374,7 +374,7 @@ impl Drop for Surge {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::signal::SR;
+    use crate::shared::signal::SR;
 
     #[test]
     #[ignore = "downloads Surge XT"]
@@ -403,7 +403,7 @@ mod tests {
             surge.load(patch, &[]).unwrap();
             let out = surge.render(&note, 1.0).unwrap();
             assert_eq!(out.len(), usize::try_from(SR).unwrap());
-            let level = crate::signal::peak(&out);
+            let level = crate::shared::signal::peak(&out);
             assert!(level > 0.01, "{name}: peak {level}");
         }
     }

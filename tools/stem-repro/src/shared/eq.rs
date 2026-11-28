@@ -1,9 +1,9 @@
 use anyhow::Result;
 
-use crate::features::{centers, ltas};
-use crate::signal::{
+use crate::shared::signal::{
     Frame, RATE, channel, fft_convolve, firwin2, interp, join, minimum_phase, mono,
 };
+use crate::shared::spectral::{centers, ltas};
 
 pub fn curve(y: &[Frame], reference: &[Frame]) -> Result<Vec<f64>> {
     Ok(ltas(&mono(reference))?

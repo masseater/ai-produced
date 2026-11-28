@@ -4,13 +4,13 @@ use std::path::Path;
 use anyhow::{Context, Result};
 use serde_json::{Map, Value, json};
 
-use crate::features::{chroma, dist3};
-use crate::note_shape::note_profile;
-use crate::notes::{events, shifted};
-use crate::optim::differential_evolution;
-use crate::signal::{mean, mono, round};
-use crate::song::Song;
-use crate::surge::{Surge, install};
+use crate::shared::note_profile::{mean_abs_diff, note_env};
+use crate::shared::notes::{events, shifted};
+use crate::shared::optim::differential_evolution;
+use crate::shared::signal::{mono, round};
+use crate::shared::song::Song;
+use crate::shared::spectral::{chroma, dist3};
+use crate::shared::surge::{Surge, install};
 
 const PARAMS: [&str; 8] = [
     "a_amp_eg_attack",
@@ -23,17 +23,6 @@ const PARAMS: [&str; 8] = [
     "a_filter_eg_sustain",
 ];
 const SHIFT_MS: f64 = 12.0;
-
-pub fn note_env(m: &[f64], onsets: &[f64]) -> Result<Vec<f64>> {
-    Ok(note_profile(m, onsets, 220, 80)?
-        .iter()
-        .map(|v| v.max(-50.0))
-        .collect())
-}
-
-pub fn mean_abs_diff(a: &[f64], b: &[f64]) -> Result<f64> {
-    mean(a.iter().zip(b).map(|(x, y)| (x - y).abs()))
-}
 
 pub fn run(song: &Song, part: &str, patch: &Path, max_iter: u64, popsize: usize) -> Result<Value> {
     let [b0, b1] = song

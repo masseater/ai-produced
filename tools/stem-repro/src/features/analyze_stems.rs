@@ -2,8 +2,10 @@ use anyhow::{Context, Result};
 use num_traits::ToPrimitive;
 use serde_json::{Map, Value, json};
 
-use crate::signal::{RATE, db, hanning, lufs, mono, peak, rfft, rfftfreq, rms, round, side_mid_db};
-use crate::song::Song;
+use crate::shared::signal::{
+    RATE, db, hanning, lufs, mono, peak, rfft, rfftfreq, rms, round, side_mid_db,
+};
+use crate::shared::song::Song;
 
 const BAND_EDGES: [f64; 11] = [
     20.0, 60.0, 120.0, 250.0, 500.0, 1000.0, 2000.0, 4000.0, 8000.0, 16000.0, 22050.0,

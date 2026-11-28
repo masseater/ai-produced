@@ -10,15 +10,15 @@ use rand_distr::{Distribution, StandardNormal};
 use serde_json::{Map, Value, json};
 use sonara::onset::onset_detect;
 
-use crate::eq::matched;
-use crate::features::dist;
-use crate::optim::differential_evolution;
-use crate::place::rounded;
-use crate::signal::{
+use crate::shared::eq::matched;
+use crate::shared::optim::differential_evolution;
+use crate::shared::placement::rounded;
+use crate::shared::signal::{
     Format, Frame, RATE, SR, correlate_full, correlate_valid, dual, interp, mean, mean_square,
     mono, percentile, rms, round, smooth3_edge, stft, write,
 };
-use crate::song::Song;
+use crate::shared::song::Song;
+use crate::shared::spectral::dist;
 
 const NAMES: [&str; 15] = [
     "f_end",

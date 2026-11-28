@@ -7,12 +7,12 @@ use rustfft::FftPlanner;
 use rustfft::num_complex::Complex;
 use serde_json::{Map, Value, json};
 
-use crate::features::dist;
-use crate::notes::{Note, read};
-use crate::signal::{
+use crate::shared::notes::{Note, read};
+use crate::shared::signal::{
     RATE, hamming, hann_periodic, load, mean, mean_square, mono, percentile, rfft, rfftfreq, round,
 };
-use crate::song::Song;
+use crate::shared::song::Song;
+use crate::shared::spectral::dist;
 
 const HOP: usize = 256;
 const WINDOWS: [(f64, f64); 4] = [(0.0, 30.0), (30.0, 80.0), (80.0, 150.0), (150.0, 300.0)];

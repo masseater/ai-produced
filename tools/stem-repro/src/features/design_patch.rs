@@ -5,13 +5,13 @@ use anyhow::{Context, Result};
 use num_traits::ToPrimitive;
 use serde_json::{Map, Value, json};
 
-use crate::features::dist;
-use crate::notes::{Note, events, read, shifted};
-use crate::optim::cma_es;
-use crate::optimize::{mean_abs_diff, note_env};
-use crate::signal::{Format, RATE, hanning, mean, mono, rfft, round, write};
-use crate::song::Song;
-use crate::surge::{Surge, install};
+use crate::shared::note_profile::{mean_abs_diff, note_env};
+use crate::shared::notes::{Note, events, read, shifted};
+use crate::shared::optim::cma_es;
+use crate::shared::signal::{Format, RATE, hanning, mean, mono, rfft, round, write};
+use crate::shared::song::Song;
+use crate::shared::spectral::dist;
+use crate::shared::surge::{Surge, install};
 
 pub const FILTERS: [(&str, f64); 9] = [
     ("off", 0.0),

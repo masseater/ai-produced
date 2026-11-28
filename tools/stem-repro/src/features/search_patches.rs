@@ -10,11 +10,11 @@ use anyhow::{Context, Result};
 use indexmap::IndexMap;
 use serde_json::{Map, Value, json};
 
-use crate::features::dist;
-use crate::notes::{Event, events};
-use crate::signal::mono;
-use crate::song::Song;
-use crate::surge::{Surge, install, patches};
+use crate::shared::notes::{Event, events};
+use crate::shared::signal::mono;
+use crate::shared::song::Song;
+use crate::shared::spectral::dist;
+use crate::shared::surge::{Surge, install, patches};
 
 const MARK: &str = "stem-repro-result\t";
 const TIMEOUT: Duration = Duration::from_secs(30);

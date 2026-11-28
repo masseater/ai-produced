@@ -3,14 +3,14 @@ use std::path::Path;
 use anyhow::{Context, Result};
 use serde_json::{Map, Value, json};
 
-use crate::eq::{apply, curve};
-use crate::features::env;
-use crate::place::compare;
-use crate::signal::{
+use crate::shared::eq::{apply, curve};
+use crate::shared::placement::compare;
+use crate::shared::signal::{
     Format, Frame, RATE, channel, correlate_full, db, join, load, lufs, mono, percentile,
     resample_poly, round, scale, stats, sum, write,
 };
-use crate::song::Song;
+use crate::shared::song::Song;
+use crate::shared::spectral::env;
 
 fn true_peak_db(x: &[Frame]) -> Result<f64> {
     let mut peak = 0.0f64;
@@ -216,7 +216,7 @@ fn fit_bus(stem_sum: &[Frame], premaster: &[Frame]) -> Result<(Vec<Frame>, Value
     let target = lufs(premaster).context("the premaster is silent")?;
     let want = stats(premaster).crest;
     let x = loudness_to(stem_sum, target);
-    let peak = db(crate::signal::peak(&x));
+    let peak = db(crate::shared::signal::peak(&x));
     let mut best: Option<(f64, Value, Vec<Frame>, Value)> = None;
     for below in [3.0, 6.0, 9.0, 12.0, 15.0] {
         for ratio in [2.0, 4.0, 8.0] {

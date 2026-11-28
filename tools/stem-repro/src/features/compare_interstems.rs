@@ -5,12 +5,12 @@ use indexmap::IndexMap;
 use num_traits::ToPrimitive;
 use serde_json::{Map, Value, json};
 
-use crate::features::{band_power, centers};
-use crate::signal::{
+use crate::shared::signal::{
     Frame, RATE, butter, load, lr_db, lufs, mean, mean_square, mono, rms, round, side_mid_db,
     sosfilt, sum,
 };
-use crate::song::Song;
+use crate::shared::song::Song;
+use crate::shared::spectral::{band_power, centers};
 
 const SILENT: f64 = 0.001;
 

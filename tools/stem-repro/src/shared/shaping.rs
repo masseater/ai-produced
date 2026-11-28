@@ -1,15 +1,10 @@
-use std::path::Path;
-
 use anyhow::{Context, Result};
 use num_traits::ToPrimitive;
-use serde_json::{Value, json};
 
-use crate::place::{compare, place};
-use crate::signal::{
-    Format, Frame, RATE, apply_gain, box_smooth_edge, db, interp, load, mean_square, mono, rms,
-    round, write,
+use crate::shared::signal::{
+    Frame, RATE, apply_gain, box_smooth_edge, db, interp, mean_square, mono, rms, round,
 };
-use crate::song::Song;
+use crate::shared::song::Song;
 
 const BINS: usize = 48;
 
@@ -120,25 +115,4 @@ pub fn beat_gain(song: &Song, y: &[Frame], reference: &[Frame]) -> Result<(Vec<F
         apply_gain(y, &curve),
         g.iter().map(|v| round(*v, 1)).collect(),
     ))
-}
-
-pub fn run(song: &Song, stem: &str, raw: &Path, out: &Path, bars_only: bool) -> Result<Value> {
-    let n = song.frames()?;
-    let raw = load(raw, Some(n))?;
-    let reference = song.stem(stem, Some(n))?;
-    let (mut y, bars) = bar_gain(song, &raw, &reference)?;
-    let mut phase = Vec::new();
-    if !bars_only {
-        (y, phase) = beat_gain(song, &y, &reference)?;
-    }
-    let (y, moves) = place(&y, &reference, 2)?;
-    write(out, &y, Format::Float)?;
-    Ok(json!({
-        "stem": stem,
-        "bar_gain_db": bars,
-        "beat_phase_gain_db": phase,
-        "moves": moves,
-        "before": compare(&raw, &reference)?,
-        "after": compare(&y, &reference)?,
-    }))
 }

@@ -6,9 +6,9 @@ use num_traits::ToPrimitive;
 use serde_json::{Value, json};
 use sonara::core::constantq::cqt;
 
-use crate::notes::{Note, read, write};
-use crate::signal::{SR, mono, percentile};
-use crate::song::Song;
+use crate::shared::notes::{Note, read, write};
+use crate::shared::signal::{SR, mono, percentile};
+use crate::shared::song::Song;
 
 fn midi_hz(pitch: f64) -> f64 {
     440.0 * ((pitch - 69.0) / 12.0).exp2()

@@ -1,17 +1,13 @@
-use std::path::Path;
-
 use anyhow::{Context, Result};
 use num_traits::ToPrimitive;
 use serde::Serialize;
-use serde_json::{Value, json};
 
-use crate::eq::{curve, matched};
-use crate::features::dist;
-use crate::signal::{
-    Format, Frame, RATE, Stats, butter, dual, from_mid_side, load, lr_db, lufs, mid_side, mono,
-    rms, round, scale, side_mid_db, sosfilt, stats, write,
+use crate::shared::eq::{curve, matched};
+use crate::shared::signal::{
+    Frame, RATE, Stats, butter, dual, from_mid_side, lr_db, lufs, mid_side, mono, rms, round,
+    scale, side_mid_db, sosfilt, stats,
 };
-use crate::song::Song;
+use crate::shared::spectral::dist;
 
 #[derive(Serialize, Clone)]
 pub struct Comparison {
@@ -90,19 +86,4 @@ pub fn place(raw: &[Frame], reference: &[Frame], passes: usize) -> Result<(Vec<F
             gain_db: round(gain, 1),
         },
     ))
-}
-
-pub fn run(song: &Song, stem: &str, raw: &Path, out: &Path) -> Result<Value> {
-    let n = song.frames()?;
-    let raw = load(raw, Some(n))?;
-    let reference = song.stem(stem, Some(n))?;
-    let before = compare(&raw, &reference)?;
-    let (y, moves) = place(&raw, &reference, 2)?;
-    write(out, &y, Format::Float)?;
-    Ok(json!({
-        "stem": stem,
-        "before": before,
-        "moves": moves,
-        "after": compare(&y, &reference)?,
-    }))
 }

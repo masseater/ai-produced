@@ -4,14 +4,15 @@ use anyhow::{Context, Result};
 use num_traits::ToPrimitive;
 use serde_json::{Map, Value, json};
 
-use crate::notes::{Note, read};
-use crate::place::{Comparison, compare, place};
-use crate::shape::{bar_gain, beat_gain};
-use crate::signal::{
+use crate::shared::note_profile::note_profile;
+use crate::shared::notes::{Note, read};
+use crate::shared::placement::{Comparison, compare, place};
+use crate::shared::shaping::{bar_gain, beat_gain};
+use crate::shared::signal::{
     Format, Frame, RATE, apply_gain, box_smooth_edge, interp, load, mean, mean_square, mono,
     percentile, round, smooth3_edge, write,
 };
-use crate::song::Song;
+use crate::shared::song::Song;
 
 const HOP: f64 = 0.005;
 
@@ -86,15 +87,6 @@ fn gate(notes: &[Note], shift: f64, release_ms: f64, n: usize) -> Result<Vec<f64
         }
     }
     Ok(g)
-}
-
-pub fn note_profile(m: &[f64], onsets: &[f64], hop: usize, bins: usize) -> Result<Vec<f64>> {
-    let starts: Vec<usize> = onsets
-        .iter()
-        .filter(|t| **t >= 0.0)
-        .map(|t| (t * RATE).to_usize().context("onset"))
-        .collect::<Result<_>>()?;
-    Ok(crate::shape::profile(m, &starts, hop, bins))
 }
 
 fn sample_at(seconds: f64) -> Result<usize> {

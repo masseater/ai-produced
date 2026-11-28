@@ -4,7 +4,7 @@ use num_traits::ToPrimitive;
 use sonara::core::pitch::estimate_tuning;
 use sonara::feature::spectral::chroma_stft;
 
-use crate::signal::{RATE, SR, hanning, moving_mean_same, rfft, rfftfreq};
+use crate::shared::signal::{RATE, SR, hanning, moving_mean_same, rfft, rfftfreq};
 
 #[must_use]
 pub fn edges() -> Vec<f64> {

@@ -4,8 +4,8 @@ use anyhow::{Context, Result};
 use indexmap::IndexMap;
 use serde::Deserialize;
 
-use crate::notes::{Note, read};
-use crate::signal::{Frame, load, slice};
+use crate::shared::notes::{Note, read};
+use crate::shared::signal::{Frame, load, slice};
 
 #[derive(Deserialize)]
 pub struct Part {

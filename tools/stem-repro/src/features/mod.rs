@@ -1,0 +1,13 @@
+pub mod analyze_stems;
+pub mod compare_interstems;
+pub mod design_patch;
+pub mod filter_notes;
+pub mod fit_kick;
+pub mod fit_mastering;
+pub mod measure_timbre;
+pub mod optimize_patch;
+pub mod place_stem;
+pub mod rebuild_stem;
+pub mod search_patches;
+pub mod shape_notes;
+pub mod shape_stem;
