@@ -1,6 +1,6 @@
 # ai-produced
 
-Follow `masseater-ecosystem`, a skill in masseater/skills that says which skills to load in each situation. `vp install` puts the skills in `.agents/skills/`. This repository is based on https://github.com/masseater/typescript-template, and the structure and policies that come from the template follow the template.
+Follow `masseater-style`, a skill in masseater/skills that says which skills to load in each situation. `vp install` puts the skills in `.agents/skills/`. This repository is based on https://github.com/masseater/typescript-template, and the structure and policies that come from the template follow the template.
 
 An AI makes songs here with the same steps a Vocaloid producer takes. Each piece lives in `songs/<number>-<name>/` with the products of each step and a log.md, and `docs/songs.md` describes the layout.
 
